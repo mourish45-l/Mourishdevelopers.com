@@ -1,384 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0088cc" />
-  <title>Mourish Developers</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:700,400&display=swap" rel="stylesheet" />
-  <style>
-    /* Base Styles */
-    body {
-      margin: 0;
-      font-family: 'Poppins', Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      background: #f9fafd;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-    a {
-      color: inherit;
-      transition: color 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    a:hover, a:focus {
-      color: #0088cc;
-      outline: none;
-    }
-    .nav-menu a::after {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%;
-      height: 3px;
-      background: #00aaff;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-      z-index: -1;
-    }
-    .nav-menu a:hover::after,
-    .nav-menu a:focus::after {
-      transform: scaleX(1);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mourish Developers Pro Plus</title>
 
-    /* Navigation */
-    nav {
-      background: #031E40;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: background-color 0.3s ease;
-    }
-    .nav-container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .brand {
-      color: #00aaff;
-      font-size: 1.5rem;
-      font-weight: 700;
-      cursor: default;
-      transition: color 0.3s ease;
-    }
-    .nav-menu {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-      transition: max-height 0.5s ease, opacity 0.5s ease;
-    }
-    .nav-menu li {
-      margin: 0;
-    }
-    .nav-menu a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      padding-bottom: 5px;
-      font-size: 1rem;
-      display: inline-block;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    .nav-menu a:hover,
-    .nav-menu a:focus {
-      color: #00aaff;
-      transform: scale(1.05);
-    }
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .nav-toggle:hover,
-    .nav-toggle:focus {
-      transform: rotate(90deg);
-      outline: none;
-    }
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    /* Responsive Navigation for Mobile */
-    @media (max-width: 768px) {
-      .nav-toggle {
-        display: block;
-      }
-      .nav-menu {
-        position: absolute;
-        top: 56px;
-        right: 0;
-        background: #031E40;
-        flex-direction: column;
-        width: 200px;
-        border-radius: 0 0 0 10px;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        padding: 0 10px;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        transition: max-height 0.5s ease, opacity 0.5s ease;
-      }
-      .nav-menu.open {
-        max-height: 500px;
-        opacity: 1;
-        padding: 15px 10px;
-      }
-      .nav-menu li {
-        margin: 15px 0;
-      }
-      .nav-menu a {
-        font-size: 1.1rem;
-      }
-    }
+<!-- Material Design Lite CSS -->
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-    /* Hero Section */
-    header#hero {
-      background: linear-gradient(135deg, #031E40 0%, #007BFF 50%, #00aaff 100%);
-      color: #fff;
-      text-align: left;
-      padding: 100px 40px 80px;
-      border-bottom-left-radius: 60px;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    header#hero.visible {
-      opacity: 1;
-    }
-    header#hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 15px;
-      transition: transform 0.3s ease;
-    }
-    header#hero h1:hover {
-      transform: scale(1.05);
-    }
-    header#hero p {
-      font-size: 1.3rem;
-      opacity: 0.9;
-      margin-bottom: 30px;
-      transition: color 0.3s ease;
-    }
+<!-- Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-    /* Button */
-    .btn {
-      background: #00aaff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 14px 30px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 2px 10px rgba(0,127,255,0.06);
-      position: relative;
-      overflow: hidden;
-      transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .btn:hover,
-    .btn:focus {
-      background: #0088cc;
-      transform: scale(1.05);
-      box-shadow: 0 4px 16px rgba(0,127,255,0.14);
-      outline: none;
-    }
-    .btn:active {
-      transform: scale(0.97);
-      box-shadow: 0 6px 24px rgba(0,127,255,0.2);
-      transition: none;
-    }
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
-    /* Sections */
-    section {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 40px 20px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    section.visible {
-      opacity: 1;
-    }
-    section h2 {
-      border-left: 6px solid #007BFF;
-      padding-left: 15px;
-      color: #031E40;
-      margin-bottom: 25px;
-      font-size: 2rem;
-      transition: color 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    section.visible h2 {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Pricing List - no opacity or transform transition */
-    ul.pricing {
-      list-style: none;
-      padding-left: 0;
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-    ul.pricing li {
-      background: #f4faff;
-      margin-bottom: 12px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 14px 20px;
-      border-left: 5px solid #007BFF;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      cursor: default;
-    }
-    ul.pricing li:hover {
-      background-color: #daf0ff;
-      transform: translateX(5px);
-    }
-
-    /* Contact Section */
-    #contact p {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-      word-wrap: break-word;
-    }
-
-    /* Footer */
-    footer {
-      background: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      margin-top: 60px;
-      transition: color 0.3s ease;
-    }
-    footer:hover {
-      color: #00aaff;
-    }
-  </style>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    scroll-behavior: smooth;
+  }
+  nav.navbar {
+    background-color: #031E40;
+    z-index: 1030;
+  }
+  nav.navbar a, nav.navbar-brand {
+    color: white !important;
+    font-weight: 600;
+  }
+  nav.navbar a.nav-link.active,
+  nav.navbar a.nav-link:hover {
+    color: #00aaff !important;
+    font-weight: 700;
+  }
+  .hero-carousel .carousel-item {
+    height: 400px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #031E40, #007BFF);
+    border-bottom-left-radius: 60px;
+  }
+  .hero-carousel .carousel-caption {
+    background: rgba(3, 30, 64, 0.75);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .pricing-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+  .feature-icon {
+    font-size: 3rem;
+    color: #007BFF;
+    margin-bottom: 15px;
+  }
+  section h2 {
+    border-left: 6px solid #007BFF;
+    padding-left: 15px;
+    color: #031E40;
+    margin-bottom: 25px;
+  }
+  footer {
+    background-color: #031E40;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  footer .social-icons a {
+    color: #bbb;
+    margin: 0 10px;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+  }
+  footer .social-icons a:hover {
+    color: #00aaff;
+  }
+  #scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1100;
+    background-color: #00aaff;
+    color: white;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 24px;
+  }
+  #scrollTopBtn:hover {
+    background-color: #0088cc;
+  }
+  .mdl-accordion .mdl-expandable {
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    cursor: pointer;
+    color: #031E40;
+  }
+  .mdl-accordion .mdl-expandable:hover {
+    background-color: #e0f0ff;
+  }
+  .mdl-accordion .mdl-expandable-content {
+    padding-left: 1rem;
+    color: #444;
+    font-weight: normal;
+  }
+  #whatsapp-channel img {
+    max-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  }
+</style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-container">
-      <div class="brand">Mourish Developers</div>
-      <button class="nav-toggle" aria-label="toggle navigation">&#9776;</button>
-      <ul class="nav-menu">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#domain">Domain</a></li>
-        <li><a href="#clients">Clients</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#request-form">Request Website Creations</a></li>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm" aria-label="Primary navigation">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="#home">Mourish Developers</a>
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+        <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li class="nav-item"><a href="#whatsapp-channel" class="nav-link">WhatsApp Channel</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <header id="hero">
-    <h1>Mourish Developers</h1>
-    <p>Affordable Websites | Fast, Secure & Professional</p>
-    <a href="#contact" class="btn">Get Started</a>
-  </header>
+<!-- Hero Carousel -->
+<section id="home" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="4000" aria-label="Hero carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="carousel-caption animate__animated animate__fadeInDown">
+        <h1 class="display-4">Mourish Developers</h1>
+        <p class="lead">Affordable, Fast & Professional Websites</p>
+        <a href="#contact" class="btn btn-primary btn-lg mt-3 animate__animated animate__zoomIn">Get Started</a>
+      </div>
+    </div>
+    <div class="carousel-item" style="background: linear-gradient(135deg, #004080, #00aaff);">
+      <div class="carousel-caption animate__animated animate__fadeInDown">
+        <h1 class="display-4">Custom Web Solutions</h1>
+        <p class="lead">From Simple Sites to Secure Payments</p>
+        <a href="#services" class="btn btn-primary btn-lg mt-3 animate__animated animate__zoomIn">Explore Services</a>
+      </div>
+    </div>
+    <div class="carousel-item" style="background: linear-gradient(135deg, #005599, #00ccff);">
+      <div class="carousel-caption animate__animated animate__fadeInDown">
+        <h1 class="display-4">Grow Your Business</h1>
+        <p class="lead">With Responsive & Modern Designs</p>
+        <a href="#projects" class="btn btn-primary btn-lg mt-3 animate__animated animate__zoomIn">See Our Projects</a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#home" data-bs-slide="prev" aria-label="Previous slide">
+    <span class="carousel-control-prev-icon bg-primary rounded-circle p-2"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#home" data-bs-slide="next" aria-label="Next slide">
+    <span class="carousel-control-next-icon bg-primary rounded-circle p-2"></span>
+  </button>
+</section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>At Mourish Developers, we build modern websites tailored to your needs—from simple static 
-      sites to advanced platforms with login & secure payments. We focus on delivering 
-      quality work at affordable prices.</p>
-  </section>
+<!-- About -->
+<section class="container my-5" id="about" tabindex="0">
+  <h2>About Us</h2>
+  <p>At Mourish Developers, we deliver professional, affordable websites tailored to your unique needs. From simple static pages to advanced platforms with login and secure payments, we build with reliability and speed in mind.</p>
+</section>
 
-  <section id="services">
-    <h2>Our Services & Pricing</h2>
-    <ul class="pricing">
-      <li>Simple Website: ₹180</li>
-      <li>Advanced Website: ₹190</li>
-      <li>Very Advanced (Firebase Login/Signup): ₹250</li>
-      <li>Super Advanced (Razorpay Payments): ₹600</li>
-    </ul>
-  </section>
+<!-- Services -->
+<section class="container my-5" id="services" tabindex="0">
+  <h2>Our Services & Pricing</h2>
+  <div class="row g-3">
+    <div class="col-sm-6 col-md-3">
+      <div class="card pricing-card p-3 text-center shadow-sm">
+        <h5>Simple Website</h5>
+        <p class="fs-5 fw-semibold">₹180</p>
+        <i class="bi bi-file-earmark-fill feature-icon"></i>
+        <p>Clean, responsive static website</p>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card pricing-card p-3 text-center shadow-sm">
+        <h5>Advanced Website</h5>
+        <p class="fs-5 fw-semibold">₹190</p>
+        <i class="bi bi-layout-text-window-reverse feature-icon"></i>
+        <p>Dynamic site with advanced UI</p>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card pricing-card p-3 text-center shadow-sm">
+        <h5>Firebase Login System</h5>
+        <p class="fs-5 fw-semibold">₹250</p>
+        <i class="bi bi-person-lock feature-icon"></i>
+        <p>Secure user authentication</p>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card pricing-card p-3 text-center shadow-sm">
+        <h5>Razorpay Payments</h5>
+        <p class="fs-5 fw-semibold">₹600</p>
+        <i class="bi bi-credit-card-2-front-fill feature-icon"></i>
+        <p>Integrated payment gateway</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="domain">
-    <h2>Domain</h2>
-    <p>We provide domains ranging from ₹1 – ₹1600 depending on extension. Or using github if you want free with website.</p>
-  </section>
+<!-- Features -->
+<section class="container my-5" id="features" tabindex="0">
+  <h2>Why Choose Us?</h2>
+  <div class="row text-center g-4">
+    <div class="col-md-4">
+      <i class="bi bi-lightning-charge feature-icon"></i>
+      <h5>Fast Delivery</h5>
+      <p>We value your timeline and deliver projects rapidly without compromising quality.</p>
+    </div>
+    <div class="col-md-4">
+      <i class="bi bi-shield-lock feature-icon"></i>
+      <h5>Secure</h5>
+      <p>Your website and data are safe with modern security best practices.</p>
+    </div>
+    <div class="col-md-4">
+      <i class="bi bi-phone feature-icon"></i>
+      <h5>Mobile Friendly</h5>
+      <p>Responsive design ensures your website looks perfect on every device.</p>
+    </div>
+  </div>
+</section>
 
-  <section id="clients">
-    <h2>Our Clients</h2>
-    <p>⭐ Thulir Creations <a href="https://saradhanagarajan1964-droid.github.io/Thulircreations.com/">Click here</a> type: Simple Website</p>
-    <h3>Reviews:</h3>
-    <p>Archana: It is nice. I really love it. The mourish developers are doing well. I recommend to create website, we can ask mourish Developers.</p>
-  </section>
+<!-- FAQ -->
+<section class="container my-5" id="faq" tabindex="0">
+  <h2>Frequently Asked Questions</h2>
+  <div class="mdl-accordion">
+    <div class="mdl-expandable" tabindex="0" role="button" aria-expanded="false" aria-controls="faq1" id="faq1-header">
+      What is the typical delivery time for a website?
+    </div>
+    <div class="mdl-expandable-content" id="faq1" aria-labelledby="faq1-header" hidden>
+      Typically 1-2 weeks depending on project complexity.
+    </div>
 
-  <section id="projects">
-    <h2>Example Projects</h2>
-    <p><a href="https://mourish45-l.github.io/mourish.educatio.co/">Example 1 project</a></p>
-  </section>
+    <div class="mdl-expandable" tabindex="0" role="button" aria-expanded="false" aria-controls="faq2" id="faq2-header">
+      Do you provide domain and hosting?
+    </div>
+    <div class="mdl-expandable-content" id="faq2" aria-labelledby="faq2-header" hidden>
+      Yes, domains from ₹1 – ₹1600 or free hosting via GitHub Pages.
+    </div>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>📧 Email: <a href="mailto:mourishdevelopers@gmail.com">mourishdevelopers@gmail.com</a></p>
-    <h3>If you want to create a website, Send a message now:</h3>
-  </section>
-  
-  <p><strong>Note:</strong><br>●We didn't add phone number, because it is the company terms and conditions.<br>●We are not spammers. We will not hack at all.<br>●The review are real, not fake.</p>
-  
-  <section id="request-form" style="max-width: 700px; margin: 60px auto; padding: 20px;">
-    <h2 style="border-left: 6px solid #007BFF; padding-left: 15px; color: #031E40; margin-bottom: 25px; font-size: 2rem;">
-      Website Creation Request
-    </h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdVEEpAFfNPzL3w8A8tSSv6Ju3J0k5ymB0ZoGxIIyxVs7B4Jw/viewform?embedded=true"
-      width="100%" height="1536" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-  </section>
+    <div class="mdl-expandable" tabindex="0" role="button" aria-expanded="false" aria-controls="faq3" id="faq3-header">
+      Can you integrate payments on my site?
+    </div>
+    <div class="mdl-expandable-content" id="faq3" aria-labelledby="faq3-header" hidden>
+      Yes, Razorpay and other payment gateways are supported.
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <p>Mourish Developers</p>
-  </footer>
+<!-- Skills -->
+<section class="container my-5" id="skills" tabindex="0">
+  <h2>Developer Skills</h2>
+  <div class="mb-3">
+    <label>HTML / CSS</label>
+    <div class="progress" style="height: 20px;">
+      <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 99%;">99%</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label>JavaScript</label>
+    <div class="progress" style="height: 20px;">
+      <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: 98%;">98%</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label>Firebase</label>
+    <div class="progress" style="height: 20px;">
+      <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 95%;">95%</div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Mobile nav menu toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
+<!-- Testimonials -->
+<section class="container my-5" id="testimonials" tabindex="0">
+  <h2 class="text-center mb-4">What Clients Say</h2>
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+      <div class="carousel-item active p-4 bg-white rounded shadow-sm">
+        <p class="fst-italic">"The Mourish Developers team delivered exactly what I needed on time. Highly recommend!"</p>
+        <p class="fw-semibold text-primary">- Archana</p>
+      </div>
+      <div class="carousel-item p-4 bg-white rounded shadow-sm">
+        <p class="fst-italic">"Professional, affordable, and communicative. Great experience overall."</p>
+        <p class="fw-semibold text-primary">- Rajesh</p>
+      </div>
+      <div class="carousel-item p-4 bg-white rounded shadow-sm">
+        <p class="fst-italic">"Fast delivery and excellent support for my payment integration project."</p>
+        <p class="fw-semibold text-primary">- Priya</p>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" aria-label="Previous">
+      <span class="carousel-control-prev-icon bg-primary rounded-circle p-2"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" aria-label="Next">
+      <span class="carousel-control-next-icon bg-primary rounded-circle p-2"></span>
+    </button>
+  </div>
+</section>
+
+<!-- WhatsApp Channel -->
+<section class="container my-5" id="whatsapp-channel" tabindex="0">
+  <h2>Join Our WhatsApp Channel</h2>
+  <p>Stay updated by joining our WhatsApp channel:</p>
+  <a href="https://whatsapp.com/channel/0029Vb6Ru6i7dmeih1mUBx3s" class="btn btn-success mb-3">
+    Open WhatsApp Channel
+  </a>
+</section>
+
+<!-- Contact -->
+<section class="container my-5" id="contact" tabindex="0">
+  <h2>Contact Us</h2>
+  <form class="mdl-shadow--2dp p-4 rounded bg-white needs-validation" novalidate>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="name" placeholder="Your Name" required />
+      <label for="name">Your Name</label>
+      <div class="invalid-feedback">Please enter your name.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="email" placeholder="Email" required />
+      <label for="email">Email</label>
+      <div class="invalid-feedback">Please enter a valid email.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea class="form-control" id="message" placeholder="Message" required style="height: 120px;"></textarea>
+      <label for="message">Your Message</label>
+      <div class="invalid-feedback">Please write a message.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</section>
+
+<!-- Scroll to top button -->
+<button id="scrollTopBtn" title="Back to Top" aria-label="Back to top" class="btn">
+  <i class="bi bi-arrow-up" style="font-size: 1.5rem;"></i>
+</button>
+
+<!-- Footer -->
+<footer>
+  <p>Mourish Developers</p>
+  <p>
+      
+    <a href="https://instagram.com" aria-label="Instagram" class="text-info text-decoration-none me-3"><i class="bi bi-instagram"></i></a>
+    
+    <a href="https://whatsapp.com/channel/0029VbAjDxt1yT21rTUsR02l" aria-label="Whatsapp" class="text-info text-decoration-none me-3"><i class="bi bi-whatsapp"></i></a>
+    <a href="https://github.com/Mourish45-l/" aria-label="Github" class="text-info text-decoration-none"><i class="bi bi-github"></i></a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Initialize scrollspy
+  new bootstrap.ScrollSpy(document.body, {
+    target: '#navMenu',
+    offset: 70
+  });
+
+  // Scroll to top button logic
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+  scrollTopBtn.addEventListener('keydown', e => {
+    if(e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      scrollTopBtn.click();
+    }
+  });
+
+  // MDL accordion toggle
+  document.querySelectorAll('.mdl-expandable').forEach(el => {
+    el.addEventListener('click', () => {
+      const expanded = el.getAttribute('aria-expanded') === 'true';
+      el.setAttribute('aria-expanded', !expanded);
+      const contentId = el.getAttribute('aria-controls');
+      const content = document.getElementById(contentId);
+      if(content){
+        content.hidden = expanded;
+      }
     });
-    // Close mobile menu on nav link click
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-      });
+    el.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        el.click();
+      }
     });
+  });
 
-    // Animate fade-in for sections and hero header on scroll
-    const sections = document.querySelectorAll('section, header#hero');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+  // Bootstrap form validation
+  (() => {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if(!form.checkValidity()){
+          event.preventDefault();
+          event.stopPropagation();
         }
+        form.classList.add('was-validated');
       });
-    }, { threshold: 0.15 });
-    sections.forEach(section => observer.observe(section));
-  </script>
+    });
+  })();
+
+  // Initialize MDL floating textfields
+  window.componentHandler?.upgradeDom();
+</script>
+
 </body>
 </html>
