@@ -1,263 +1,272 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <!-- Meta and SEO -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mourish Developers build responsive websites and apps using modern technologies like Bootstrap, Firebase, and payment gateways." />
-  <meta name="keywords" content="Mourish Developers, web development, app design, Firebase, e-commerce, responsive websites, India" />
-  <meta name="author" content="Mourish Developers" />
-  <meta name="google-site-verification" content="j75MNZTxGcB7SRU7kZa-ED0csoryKrEjtyOYv79BJ_Q" />
   <title>Mourish Web And App Developers</title>
   <link rel="icon" href="Mourish Developers Logo Design.png" type="image/png">
 
-  <!-- Bootstrap, Icons & Font Awesome -->
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap and Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Font Awesome and Boxicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="bg-[#031B4E] text-white font-poppins overflow-x-hidden relative">
 
-<!-- Animated Background -->
-<div class="animated-bg"></div>
+<!-- Three.js Background Canvas -->
+<canvas id="three-bg" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
 
 <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-md">
-  <div class="container">
-    <a class="navbar-brand text-white fw-bold" href="#home">Mourish Developers</a>
-    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
-      <span class="bi bi-list"></span>
+<nav class="navbar fixed-top navbar-expand-md bg-[rgba(3,27,78,0.85)] backdrop-blur-md border-b border-white/10 py-3 z-50">
+  <div class="container flex flex-wrap items-center justify-between mx-auto">
+    <a href="#home" class="navbar-brand fw-bold text-white flex items-center gap-2 text-xl md:text-2xl font-extrabold select-none">
+      <i class='bx bx-code-alt text-blue-400 text-3xl'></i>Mourish Developers
+    </a>
+    <button class="navbar-toggler bg-white/90 text-blue-700 p-2 rounded-md" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="bi bi-list text-xl"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link text-white" href="#intro-video">About</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#features">Features</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#ai-tools">AI Tools</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#hosting">Hosting</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+    <div class="collapse navbar-collapse justify-end" id="navbarMenu">
+      <ul class="navbar-nav flex flex-col md:flex-row gap-3 md:gap-6 mt-3 md:mt-0 text-white font-semibold">
+        <li><a href="#intro-video" class="nav-link hover:text-blue-400">About</a></li>
+        <li><a href="#services" class="nav-link hover:text-blue-400">Services</a></li>
+        <li><a href="#projects" class="nav-link hover:text-blue-400">Projects</a></li>
+        <li><a href="#features" class="nav-link hover:text-blue-400">Features</a></li>
+        <li><a href="#ai-tools" class="nav-link hover:text-blue-400">AI Tools</a></li>
+        <li><a href="#hosting" class="nav-link hover:text-blue-400">Hosting</a></li>
+        <li><a href="#contact" class="nav-link hover:text-blue-400">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Hero Section -->
-<section id="home" class="hero d-flex align-items-center text-center">
-  <div class="container">
-    <h1>Build Your Digital Future</h1>
-    <p>Stunning websites & powerful apps crafted with precision and creativity</p>
-    <button class="cta-btn mt-3" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-      Start Your Project
-    </button>
-  </div>
+<section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-5 container mx-auto pt-20">
+  <h1 class="text-transparent bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500 bg-clip-text text-6xl md:text-7xl font-extrabold mb-6 animate-text-shine">
+    Build Your Digital Future
+  </h1>
+  <p class="text-lg md:text-xl text-blue-200 max-w-xl mb-8">
+    Stunning websites & powerful apps crafted with precision and creativity
+  </p>
+  <button class="cta-btn px-8 py-3 rounded-full text-white font-semibold shadow-lg shadow-blue-600/50 transition-transform hover:-translate-y-1" 
+          onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+    Start Your Project
+  </button>
 </section>
 
 <!-- Introduction Video -->
-<section id="intro-video" class="py-5">
-  <div class="container text-center">
-    <h2 class="section-title">Meet Mourish Developers</h2>
-    <p class="mb-4 fs-5 text-muted">Discover our journey and expertise</p>
-    <div class="ratio ratio-16x9 rounded overflow-hidden shadow-lg">
-      <iframe 
-        src="https://www.canva.com/design/DAG1fvfpMwY/1QewTjfJGIGpP8O7UHWOww/watch?embed"
-        title="Mourish Developers Intro"
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="glass-card mt-5 p-4">
-      <h4>Get In Touch</h4>
-      <p class="fs-5">
-        <i class="bi bi-envelope-fill me-2"></i>
-        <a href="mailto:mourishdevelopers@gmail.com" class="email-link text-white">mourishdevelopers@gmail.com</a>
-      </p>
-      <p class="text-muted">We usually respond within 24 hours</p>
-    </div>
+<section id="intro-video" class="py-16 container mx-auto px-5 text-center max-w-5xl">
+  <h2 class="section-title text-transparent bg-gradient-to-r from-white via-blue-400 to-purple-700 bg-clip-text font-extrabold text-4xl mb-4 select-none">
+    Meet Mourish Developers
+  </h2>
+  <p class="mb-8 text-blue-300 text-lg">Discover our journey and expertise</p>
+  <div class="video-wrapper mx-auto rounded-3xl overflow-hidden shadow-lg border border-white/10">
+    <iframe class="w-full aspect-video"
+      src="https://www.canva.com/design/DAG1fvfpMwY/1QewTjfJGIGpP8O7UHWOww/watch?embed"
+      title="Mourish Developers Intro"
+      allowfullscreen
+      ></iframe>
+  </div>
+  <div class="glass-card mt-10 max-w-xl mx-auto p-8 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-md text-blue-300">
+    <h4 class="text-2xl font-semibold mb-3">Get In Touch</h4>
+    <p class="text-lg flex items-center justify-center gap-2 font-semibold">
+      <i class="bi bi-envelope-fill text-blue-400"></i>
+      <a href="mailto:mourishdevelopers@gmail.com" class="email-link hover:underline">mourishdevelopers@gmail.com</a>
+    </p>
+    <p class="mt-1 text-sm text-gray-400">We usually respond within 24 hours</p>
   </div>
 </section>
 
 <!-- Features Section -->
-<section id="features" class="py-5">
-  <div class="container text-center">
-    <h2 class="section-title">Why Choose Us</h2>
-    <div class="row g-4 mt-4">
-      <div class="col-md-4">
-        <div class="glass-card p-4">
-          <i class="bi bi-lightning-charge feature-icon"></i>
-          <h3>Lightning Fast</h3>
-          <p>Blazing speed and on-time delivery—never compromising quality.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="glass-card p-4">
-          <i class="bi bi-shield-lock feature-icon"></i>
-          <h3>Bank-Level Security</h3>
-          <p>Top-tier data protection and encryption for your peace of mind.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="glass-card p-4">
-          <i class="fas fa-flask feature-icon"></i>
-          <h3>Testing & QA</h3>
-          <p>We provide test URLs to preview functionality and APIs, sharing screen recordings for review.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="glass-card p-4">
-          <i class="fas fa-server feature-icon"></i>
-          <h3>Backend</h3>
-          <p>We are expert in Backend, Using API Keys, server side logic, etc...</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="glass-card p-4">
-          <i class="bi bi-phone feature-icon"></i>
-          <h3>Mobile First</h3>
-          <p>Responsive and stunning design for all screen sizes.</p>
-        </div>
-      </div>
+<section id="features" class="py-16 container mx-auto px-5 text-center max-w-7xl">
+  <h2 class="section-title select-none">Why Choose Us</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 mt-10">
+    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
+      <i class="bi bi-lightning-charge feature-icon text-6xl mb-4 text-gradient"></i>
+      <h3 class="text-xl font-semibold mb-3 text-white">Lightning Fast</h3>
+      <p class="text-blue-300">Blazing speed and on-time delivery—never compromising quality.</p>
+    </div>
+    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
+      <i class="bi bi-shield-lock feature-icon text-6xl mb-4 text-gradient"></i>
+      <h3 class="text-xl font-semibold mb-3 text-white">Bank-Level Security</h3>
+      <p class="text-blue-300">Top-tier data protection and encryption for your peace of mind.</p>
+    </div>
+    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
+      <i class="fas fa-flask feature-icon text-6xl mb-4 text-gradient"></i>
+      <h3 class="text-xl font-semibold mb-3 text-white">Testing & QA</h3>
+      <p class="text-blue-300">We provide test URLs to preview functionality and APIs, sharing screen recordings for review.</p>
+    </div>
+    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
+      <i class="fas fa-server feature-icon text-6xl mb-4 text-gradient"></i>
+      <h3 class="text-xl font-semibold mb-3 text-white">Backend</h3>
+      <p class="text-blue-300">Expertise in backend, API keys, and server-side logic.</p>
+    </div>
+    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
+      <i class="bi bi-phone feature-icon text-6xl mb-4 text-gradient"></i>
+      <h3 class="text-xl font-semibold mb-3 text-white">Mobile First</h3>
+      <p class="text-blue-300">Responsive and stunning design for all screen sizes.</p>
     </div>
   </div>
 </section>
 
 <!-- Services & Pricing -->
-<section id="services" class="py-5">
-  <div class="container text-center">
-    <h2 class="section-title">Services & Pricing</h2>
-    <div class="row g-4 mt-4">
-      <div class="col-md-3 col-sm-6">
-        <div class="pricing-card">
-          <i class="bi bi-file-earmark-code feature-icon"></i>
-          <h4>Simple Website</h4>
-          <div class="price">₹3K</div>
-          <p>Clean, responsive static website with modern UI.</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="pricing-card">
-          <i class="bi bi-layout-text-window feature-icon"></i>
-          <h4>Advanced Website</h4>
-          <div class="price">₹3.5K</div>
-          <p>Dynamic site with advanced interactivity.</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="pricing-card">
-          <i class="bi bi-person-lock feature-icon"></i>
-          <h4>Firebase Auth</h4>
-          <div class="price">₹4K</div>
-          <p>Secure login system with Firebase integration.</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="pricing-card">
-          <i class="bi bi-credit-card feature-icon"></i>
-          <h4>Payment Gateway</h4>
-          <div class="price">₹4.5K</div>
-          <p>Simulated Razorpay or UPI payment setup.</p>
-        </div>
-      </div>
+<section id="services" class="py-16 container mx-auto px-5 text-center max-w-7xl">
+  <h2 class="section-title select-none">Services & Pricing</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
+      <i class="bi bi-file-earmark-code feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
+      <h4 class="text-2xl font-semibold mb-2">Simple Website</h4>
+      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹3K</div>
+      <p class="text-blue-300">Clean, responsive static website with modern UI.</p>
     </div>
-
-    <div class="glass-card text-center mt-5">
-      <h3>Mobile App Development</h3>
-      <p class="fs-5">Custom Android & iOS apps starting from <span class="price" style="font-size:2rem;">₹10K - ₹20K</span></p>
-      <button class="cta-btn mt-3" onclick="window.open('https://mourish45-l.github.io/app.mourish-developers.open/', '_blank')">Request App Quote</button>
+    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
+      <i class="bi bi-layout-text-window feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
+      <h4 class="text-2xl font-semibold mb-2">Advanced Website</h4>
+      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹3.5K</div>
+      <p class="text-blue-300">Dynamic site with advanced interactivity.</p>
     </div>
+    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
+      <i class="bi bi-person-lock feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
+      <h4 class="text-2xl font-semibold mb-2">Firebase Auth</h4>
+      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹4K</div>
+      <p class="text-blue-300">Secure login system with Firebase integration.</p>
+    </div>
+    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
+      <i class="bi bi-credit-card feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
+      <h4 class="text-2xl font-semibold mb-2">Payment Gateway</h4>
+      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹4.5K</div>
+      <p class="text-blue-300">Simulated Razorpay or UPI payment setup.</p>
+    </div>
+  </div>
+  <div class="glass-card mt-14 max-w-xl mx-auto p-10 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-md text-blue-200">
+    <h3 class="text-3xl font-extrabold mb-4">Mobile App Development</h3>
+    <p class="text-lg mb-6">Custom Android & iOS apps starting from <span class="text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-3xl">₹10K - ₹20K</span></p>
+    <button class="cta-btn px-10 py-3 rounded-full text-white font-semibold shadow-lg shadow-blue-600/50 transition-transform hover:-translate-y-1" 
+            onclick="window.open('https://mourish45-l.github.io/app.mourish-developers.open/', '_blank')">
+      Request App Quote
+    </button>
   </div>
 </section>
 
 <!-- Projects -->
-<section id="projects" class="py-5">
-  <div class="container">
-    <h2 class="section-title text-center">Our Projects</h2>
-    <div class="row g-4 mt-4">
-      <div class="col-lg-4 col-md-6">
-        <div class="project-card">
-          <div class="project-overlay">
-            <h4>E-Commerce Platform</h4>
-            <p>Full-featured online store with payment integration.</p>
-            <span class="badge">₹25,000</span>
-          </div>
-        </div>
+<section id="projects" class="py-16 container mx-auto px-5 max-w-7xl">
+  <h2 class="section-title text-center select-none">Our Projects</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+    <div class="project-card rounded-3xl relative overflow-hidden shadow-md border border-white/20 backdrop-blur-md cursor-pointer group bg-[#0f172a]">
+      <div class="project-overlay absolute inset-0 flex flex-col justify-center items-center text-center text-white p-6 rounded-3xl">
+        <h4 class="text-2xl font-extrabold mb-2">E-Commerce Platform</h4>
+        <p>Full-featured online store with payment integration.</p>
+        <span class="badge bg-white/25 rounded-full py-1 px-6 text-lg font-semibold mt-4 select-none">₹25,000</span>
       </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="project-card">
-          <div class="project-overlay">
-            <h4>Chatbot</h4>
-            <p>Interactive chatbot with messaging and automation.</p>
-            <span class="badge">₹23,000</span>
-          </div>
-        </div>
+    </div>
+    <div class="project-card rounded-3xl relative overflow-hidden shadow-md border border-white/20 backdrop-blur-md cursor-pointer group bg-[#0f172a]">
+      <div class="project-overlay absolute inset-0 flex flex-col justify-center items-center text-center text-white p-6 rounded-3xl">
+        <h4 class="text-2xl font-extrabold mb-2">Chatbot</h4>
+        <p>Interactive chatbot with messaging and automation.</p>
+        <span class="badge bg-white/25 rounded-full py-1 px-6 text-lg font-semibold mt-4 select-none">₹23,000</span>
       </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="project-card">
-          <div class="project-overlay">
-            <h4>Admin Website</h4>
-            <p>Admin dashboard with editable content, settings & UI updates.</p>
-            <span class="badge">₹21,000</span>
-          </div>
-        </div>
+    </div>
+    <div class="project-card rounded-3xl relative overflow-hidden shadow-md border border-white/20 backdrop-blur-md cursor-pointer group bg-[#0f172a]">
+      <div class="project-overlay absolute inset-0 flex flex-col justify-center items-center text-center text-white p-6 rounded-3xl">
+        <h4 class="text-2xl font-extrabold mb-2">Admin Website</h4>
+        <p>Admin dashboard with editable content, settings & UI updates.</p>
+        <span class="badge bg-white/25 rounded-full py-1 px-6 text-lg font-semibold mt-4 select-none">₹21,000</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- AI Tools -->
-<section id="ai-tools" class="py-5">
-  <div class="container text-center">
-    <h2 class="section-title">AI-Powered Development</h2>
-    <p class="text-muted mb-5 fs-5">Integrating modern AI tech into projects</p>
-    <div class="ai-tools-container">
-      <div class="ai-tool-card"><img src="ChatGPT-Logo.png" alt="ChatGPT"><p>ChatGPT</p></div>
-      <div class="ai-tool-card"><img src="claude-icon-8x.png" alt="Claude"><p>Claude</p></div>
-      <div class="ai-tool-card"><img src="perplexity-e6a4e1t06hd6dhczot580o.png" alt="Perplexity"><p>Perplexity</p></div>
-      <div class="ai-tool-card"><img src="Bolt.jpg" alt="Bolt"><p>Bolt</p></div>
-      <div class="ai-tool-card"><img src="gemini_icon-logo_brandlogos.net_bqzeu.png" alt="Gemini"><p>Gemini</p></div>
+<section id="ai-tools" class="py-16 container mx-auto px-5 text-center max-w-7xl">
+  <h2 class="section-title select-none">AI-Powered Development</h2>
+  <p class="text-blue-300 mb-12 max-w-2xl mx-auto text-lg">Integrating modern AI tech into projects</p>
+  <div class="flex flex-wrap justify-center gap-10">
+    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
+      <img src="ChatGPT-Logo.png" alt="ChatGPT" class="w-14 h-14 object-contain" />
+      <p class="font-semibold text-white">ChatGPT</p>
+    </div>
+    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
+      <img src="claude-icon-8x.png" alt="Claude" class="w-14 h-14 object-contain" />
+      <p class="font-semibold text-white">Claude</p>
+    </div>
+    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
+      <img src="perplexity-e6a4e1t06hd6dhczot580o.png" alt="Perplexity" class="w-14 h-14 object-contain" />
+      <p class="font-semibold text-white">Perplexity</p>
+    </div>
+    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
+      <img src="Bolt.jpg" alt="Bolt" class="w-14 h-14 object-contain" />
+      <p class="font-semibold text-white">Bolt</p>
+    </div>
+    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
+      <img src="gemini_icon-logo_brandlogos.net_bqzeu.png" alt="Gemini" class="w-14 h-14 object-contain" />
+      <p class="font-semibold text-white">Gemini</p>
     </div>
   </div>
 </section>
 
 <!-- Hosting -->
-<section id="hosting" class="py-5">
-  <div class="container text-center">
-    <h2 class="section-title">Hosting Partners</h2>
-    <p class="text-muted mb-5">Reliable and scalable hosting options</p>
-    <div class="hosting-container">
-      <div class="hosting-card"><img src="google-cloud.png" alt="Google Cloud"><p>Google Cloud</p><span class="hosting-price">Premium</span></div>
-      <div class="hosting-card"><img src="Godaddy-logo.png" alt="GoDaddy"><p>GoDaddy</p><span class="hosting-price">₹1 - ₹1600/yr</span></div>
-      <div class="hosting-card"><img src="free-github-logo-icon-svg-download-png-47401.png" alt="GitHub Pages"><p>GitHub Pages</p><span class="hosting-price">Free</span></div>
-      <div class="hosting-card"><img src="Hostinger_vector_Logo_logoshape.com_.png" alt="Hostinger"><p>Hostinger</p><span class="hosting-price">Affordable</span></div>
+<section id="hosting" class="py-16 container mx-auto px-5 text-center max-w-7xl">
+  <h2 class="section-title select-none">Hosting Partners</h2>
+  <p class="text-blue-300 mb-12 max-w-2xl mx-auto text-lg">Reliable and scalable hosting options</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
+      <img src="google-cloud.png" alt="Google Cloud" class="max-h-14 object-contain filter brightness-0 invert" />
+      <p class="text-white font-semibold text-lg mt-2">Google Cloud</p>
+      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">Premium</span>
+    </div>
+    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
+      <img src="Godaddy-logo.png" alt="GoDaddy" class="max-h-14 object-contain filter brightness-0 invert" />
+      <p class="text-white font-semibold text-lg mt-2">GoDaddy</p>
+      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">₹1 - ₹1600/yr</span>
+    </div>
+    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
+      <img src="free-github-logo-icon-svg-download-png-47401.png" alt="GitHub Pages" class="max-h-14 object-contain filter brightness-0 invert" />
+      <p class="text-white font-semibold text-lg mt-2">GitHub Pages</p>
+      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">Free</span>
+    </div>
+    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
+      <img src="Hostinger_vector_Logo_logoshape.com_.png" alt="Hostinger" class="max-h-14 object-contain filter brightness-0 invert" />
+      <p class="text-white font-semibold text-lg mt-2">Hostinger</p>
+      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">Affordable</span>
     </div>
   </div>
 </section>
 
 <!-- Contact / CTA -->
-<section id="contact" class="py-5">
-  <div class="container text-center">
-    <div class="glass-card p-5">
-      <h2>Ready to Transform Your Ideas?</h2>
-      <p class="fs-4 mb-4">Let’s create something extraordinary together</p>
-      <button class="cta-btn" onclick="window.open('https://mourish45-l.github.io/website.mourishdevelopers.open/', '_blank')"><i class="bi bi-globe me-2"></i>Website Request</button>
-      <button class="cta-btn mx-2" onclick="window.open('https://whatsapp.com/channel/0029Vb6Ru6i7dmeih1mUBx3s', '_blank')"><i class="bi bi-whatsapp me-2"></i>WhatsApp Channel</button>
-      <button class="cta-btn" onclick="window.open('https://wa.me/+919487410078', '_blank')"><i class="bi bi-whatsapp me-2"></i>Chat on WhatsApp</button>
+<section id="contact" class="py-16 container mx-auto px-5 max-w-3xl">
+  <div class="glass-card p-10 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-md text-center">
+    <h2 class="text-4xl font-extrabold mb-6 select-none">Ready to Transform Your Ideas?</h2>
+    <p class="text-lg mb-8 text-blue-300">Let’s create something extraordinary together</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <button class="cta-btn px-6 py-3 rounded-full font-semibold shadow-lg shadow-blue-600/50 transition-transform hover:-translate-y-1 flex items-center gap-2" 
+              onclick="window.open('https://mourish45-l.github.io/website.mourishdevelopers.open/', '_blank')">
+        <i class="bi bi-globe"></i> Website Request
+      </button>
+      <button class="cta-btn px-6 py-3 rounded-full font-semibold shadow-lg shadow-green-500/50 bg-green-600 hover:bg-green-700 transition-transform hover:-translate-y-1 flex items-center gap-2" 
+              onclick="window.open('https://whatsapp.com/channel/0029Vb6Ru6i7dmeih1mUBx3s', '_blank')">
+        <i class="bi bi-whatsapp"></i> WhatsApp Channel
+      </button>
+      <button class="cta-btn px-6 py-3 rounded-full font-semibold shadow-lg shadow-green-500/50 bg-green-600 hover:bg-green-700 transition-transform hover:-translate-y-1 flex items-center gap-2" 
+              onclick="window.open('https://wa.me/+919487410078', '_blank')">
+        <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+      </button>
     </div>
   </div>
 </section>
 
-<!-- JS and Smooth Scroll -->
+<!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-  });
-});
-</script>
+
+<!-- Three.js Background Script -->
+<script src="script.js"></script>
 
 </body>
-</html>
+        </html>
