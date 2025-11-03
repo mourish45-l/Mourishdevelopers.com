@@ -50,3 +50,57 @@ button.cta-btn {
 }
 
 /* Project section text already white from prior updates */
+/* Styling for all H2 section titles */
+h2.section-title {
+  /* Ensure the text color is a bright, clear white for contrast */
+  color: #FFFFFF !important;
+  
+  /* Remove the default margin top/bottom that Tailwind/Bootstrap might add */
+  margin-top: 0;
+  margin-bottom: 0.5rem; /* Small margin for visual separation */
+
+  /* Set the font size and weight to match the existing design (e.g., 4xl/3xl) */
+  font-size: 2.25rem; /* Equivalent to text-4xl in Tailwind */
+  font-weight: 800; /* Equivalent to font-extrabold */
+  
+  /* Add a subtle neon/glow effect for a high-tech feel */
+  text-shadow: 0 0 5px rgba(139, 92, 246, 0.5), /* Subtle purple glow */
+               0 0 10px rgba(99, 102, 241, 0.4); /* Subtle blue glow */
+  
+  /* Add a decorative element below the title */
+  position: relative;
+  padding-bottom: 1rem; /* Space for the underline */
+}
+
+/* Decorative underline/separator for H2 headings */
+h2.section-title::after {
+  content: '';
+  display: block;
+  width: 6rem; /* Length of the underline */
+  height: 4px;
+  
+  /* Center the underline */
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* Apply a gradient to the underline */
+  background: linear-gradient(90deg, transparent 0%, #a855f7 30%, #6366f1 70%, transparent 100%);
+  
+  /* Position it correctly */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Mobile Responsiveness (Adjust size for smaller screens) */
+@media (max-width: 768px) {
+  h2.section-title {
+    font-size: 1.875rem; /* Equivalent to text-3xl on small screens */
+  }
+  h2.section-title::after {
+    width: 4rem; /* Shorter underline on mobile */
+  }
+}
+
