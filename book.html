@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* App-like behavior overrides */
         body { 
             background-color: #000000; 
             color: #ffffff;
@@ -19,22 +18,248 @@
         .gradient-primary {
             background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
         
         .card-dark {
-            background-color: #111111;
-            border: 1px solid #222222;
+            background-color: #0a0a0a;
+            border: 1px solid #1a1a1a;
         }
 
         .page-section {
             display: none;
             animation: fadeIn 0.2s ease-out;
-            padding-bottom: 100px;
+            padding-bottom: 120px;
         }
+        .page-section.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .sub-tab-active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .sub-tab-inactive {
+            background-color: transparent;
+            color: #666;
+        }
+
+        .input-dark {
+            background-color: #111;
+            border: 1px solid #222;
+            color: white;
+        }
+        .input-dark:focus { border-color: #6366f1; outline: none; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        .price-tag {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-weight: 800;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+
+    <!-- Centered Header -->
+    <header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex items-center justify-between">
+        <div class="w-10"></div> <!-- Spacer -->
+        <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg gradient-primary flex items-center justify-center">
+                <i class="fas fa-code text-white text-[10px]"></i>
+            </div>
+            <h1 class="text-base font-bold tracking-tight">Mourish<span class="text-indigo-500">.</span></h1>
+        </div>
+        <button onclick="switchTab('contact')" class="w-10 h-10 rounded-full bg-[#111] border border-[#222] flex items-center justify-center">
+            <i class="fas fa-paper-plane text-gray-400 text-xs"></i>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto pt-20 px-6 no-scrollbar">
+
+        <!-- ================= HOME ================= -->
+        <div id="home" class="page-section active">
+            <div class="mt-4 mb-8">
+                <h2 class="text-3xl font-bold leading-tight">Digital solutions<br><span class="text-gray-500">crafted with precision.</span></h2>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mb-8">
+                <div onclick="filterServices('web')" class="card-dark p-5 rounded-3xl active:scale-95 transition-transform">
+                    <i class="fas fa-globe text-blue-500 mb-3 text-xl"></i>
+                    <p class="text-sm font-bold">Web Dev</p>
+                    <p class="text-[10px] text-gray-500">From ₹3,000</p>
+                </div>
+                <div onclick="filterServices('app')" class="card-dark p-5 rounded-3xl active:scale-95 transition-transform">
+                    <i class="fas fa-mobile-alt text-purple-500 mb-3 text-xl"></i>
+                    <p class="text-sm font-bold">App Dev</p>
+                    <p class="text-[10px] text-gray-500">From ₹10,000</p>
+                </div>
+            </div>
+
+            <div class="card-dark p-6 rounded-[2rem] border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 to-transparent mb-6">
+                <h3 class="font-bold mb-2">The Mourish Standard</h3>
+                <p class="text-xs text-gray-400 leading-relaxed mb-4">We don't just build; we engineer experiences. High speed, clean code, and zero compromises on quality.</p>
+                <button onclick="switchTab('pricing')" class="text-[10px] font-bold uppercase tracking-widest text-indigo-400 flex items-center gap-2">
+                    Explore Pricing <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= PRICING ================= -->
+        <div id="pricing" class="page-section">
+            <h2 class="text-xl font-bold mb-6">Service Plans</h2>
+
+            <!-- Segmented Control -->
+            <div class="flex p-1 bg-[#111] rounded-2xl mb-6 border border-white/5">
+                <button id="tab-web" onclick="togglePricing('web')" class="flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-active">WEB</button>
+                <button id="tab-app" onclick="togglePricing('app')" class="flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-inactive">APP</button>
+            </div>
+
+            <!-- Web Plans -->
+            <div id="web-services-container" class="space-y-3">
+                <div onclick="bookService('Simple Web', '3000')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">Simple</h4><p class="text-[10px] text-gray-500">Portfolio & Static</p></div>
+                    <div class="price-tag">₹3,000</div>
+                </div>
+                <div onclick="bookService('Advance Web', '3500')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">Advance</h4><p class="text-[10px] text-gray-500">Dynamic Features</p></div>
+                    <div class="price-tag">₹3,500</div>
+                </div>
+                <div onclick="bookService('Login Web', '4000')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">Login</h4><p class="text-[10px] text-gray-500">Auth Systems</p></div>
+                    <div class="price-tag">₹4,000</div>
+                </div>
+                <div onclick="bookService('Payment Web', '4500')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">Payment</h4><p class="text-[10px] text-gray-500">Gateway Integration</p></div>
+                    <div class="price-tag">₹4,500</div>
+                </div>
+                <div onclick="bookService('AI Web', '5000')" class="card-dark p-5 rounded-2xl flex justify-between items-center border-indigo-500/30">
+                    <div><h4 class="text-sm font-bold">AI Powered</h4><p class="text-[10px] text-gray-500">Intelligence Layers</p></div>
+                    <div class="price-tag text-indigo-400">₹5,000</div>
+                </div>
+            </div>
+
+            <!-- App Plans -->
+            <div id="app-services-container" class="space-y-3 hidden">
+                <div onclick="bookService('Native/Web App', '10000')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">Native/Web App</h4><p class="text-[10px] text-gray-500">Hybrid Solution</p></div>
+                    <div class="price-tag">₹10,000</div>
+                </div>
+                <div onclick="bookService('Android App', '10000')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">Android</h4><p class="text-[10px] text-gray-500">Play Store Ready</p></div>
+                    <div class="price-tag">₹10,000</div>
+                </div>
+                <div onclick="bookService('iOS App', '15000')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">iOS</h4><p class="text-[10px] text-gray-500">App Store Ready</p></div>
+                    <div class="price-tag">₹15,000</div>
+                </div>
+                <div onclick="bookService('Android + iOS App', '20000')" class="card-dark p-5 rounded-2xl flex justify-between items-center border-purple-500/30">
+                    <div><h4 class="text-sm font-bold">Android + iOS</h4><p class="text-[10px] text-gray-500">Universal Package</p></div>
+                    <div class="price-tag text-purple-400">₹20,000</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= BOOKING ================= -->
+        <div id="booking" class="page-section">
+            <h2 class="text-xl font-bold mb-6">Checkout</h2>
+            <div class="card-dark p-6 rounded-3xl">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center"><i class="fas fa-check text-white text-xs"></i></div>
+                    <div>
+                        <p id="displayServiceName" class="text-sm font-bold">Plan Selected</p>
+                        <p id="displayServicePrice" class="text-xs text-gray-500 tracking-wider font-bold">---</p>
+                    </div>
+                </div>
+                <form onsubmit="handleBooking(event)" class="space-y-4">
+                    <input type="text" id="bookingName" required placeholder="Full Name" class="input-dark w-full rounded-2xl px-5 py-4 text-sm">
+                    <input type="tel" id="bookingPhone" required placeholder="WhatsApp Number" class="input-dark w-full rounded-2xl px-5 py-4 text-sm">
+                    <textarea id="bookingMessage" rows="3" placeholder="Additional details..." class="input-dark w-full rounded-2xl px-5 py-4 text-sm"></textarea>
+                    <input type="hidden" id="bookingService">
+                    <button type="submit" class="w-full gradient-primary py-5 rounded-2xl font-bold text-xs uppercase tracking-widest active:scale-95 transition-transform">Proceed to Book</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ================= CONTACT ================= -->
+        <div id="contact" class="page-section">
+            <h2 class="text-xl font-bold mb-6">Contact</h2>
+            <div class="space-y-3">
+                <a href="mailto:mourishdevelopers@gmail.com" class="card-dark p-6 rounded-3xl flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center"><i class="fas fa-envelope text-white"></i></div>
+                    <div><p class="text-xs font-bold">Email us</p><p class="text-[10px] text-gray-500">mourishdevelopers@gmail.com</p></div>
+                </a>
+                <div class="card-dark p-8 rounded-[2rem] text-center border-dashed border-white/10">
+                    <p class="text-xs text-gray-500 font-bold mb-4 uppercase tracking-[0.3em]">Support Hours</p>
+                    <p class="text-sm">Monday — Saturday</p>
+                    <p class="text-xs text-gray-600">09:00 AM — 08:00 PM</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Navigation -->
+    <nav class="fixed bottom-0 w-full bg-black/80 backdrop-blur-xl border-t border-white/5 h-[80px] px-10 flex justify-between items-center">
+        <button onclick="switchTab('home')" class="nav-btn active text-white" data-target="home"><i class="fas fa-home text-lg"></i></button>
+        <button onclick="switchTab('pricing')" class="nav-btn text-gray-600" data-target="pricing"><i class="fas fa-th-large text-lg"></i></button>
+        <button onclick="switchTab('booking')" class="nav-btn text-gray-600" data-target="booking"><i class="fas fa-shopping-bag text-lg"></i></button>
+        <button onclick="switchTab('contact')" class="nav-btn text-gray-600" data-target="contact"><i class="fas fa-user text-lg"></i></button>
+    </nav>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if(btn.dataset.target === tabId) { btn.classList.add('text-white'); btn.classList.remove('text-gray-600'); } 
+                else { btn.classList.remove('text-white'); btn.classList.add('text-gray-600'); }
+            });
+            document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function togglePricing(type) {
+            const webBtn = document.getElementById('tab-web');
+            const appBtn = document.getElementById('tab-app');
+            const webCont = document.getElementById('web-services-container');
+            const appCont = document.getElementById('app-services-container');
+            if (type === 'web') {
+                webBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-active";
+                appBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-inactive";
+                webCont.classList.remove('hidden'); appCont.classList.add('hidden');
+            } else {
+                webBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-inactive";
+                appBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-active";
+                webCont.classList.add('hidden'); appCont.classList.remove('hidden');
+            }
+        }
+
+        function filterServices(type) { switchTab('pricing'); setTimeout(() => togglePricing(type), 50); }
+
+        function bookService(name, price) {
+            document.getElementById('bookingService').value = name;
+            document.getElementById('displayServiceName').innerText = name;
+            document.getElementById('displayServicePrice').innerText = '₹' + parseInt(price).toLocaleString() + ' INR';
+            switchTab('booking');
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            const service = document.getElementById('bookingService').value;
+            const name = document.getElementById('bookingName').value;
+            const phone = document.getElementById('bookingPhone').value;
+            const msg = document.getElementById('bookingMessage').value;
+            window.location.href = `mailto:mourishdevelopers@gmail.com?subject=Project: ${service}&body=Client: ${name}%0APhone: ${phone}%0ABrief: ${msg}`;
+        }
+    </script>
+</body>
+</html>        }
         .page-section.active { display: block; }
         
         @keyframes fadeIn {
@@ -310,15 +535,9 @@
         function switchTab(tabId) {
             document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.dataset.target === tabId) {
-                    btn.classList.add('text-blue-500');
-                    btn.classList.remove('text-gray-600');
-                } else {
-                    btn.classList.remove('text-blue-500');
-                    btn.classList.add('text-gray-600');
-                }
+                if(btn.dataset.target === tabId) { btn.classList.add('text-white'); btn.classList.remove('text-gray-600'); } 
+                else { btn.classList.remove('text-white'); btn.classList.add('text-gray-600'); }
             });
             document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -328,32 +547,34 @@
             const appBtn = document.getElementById('tab-app');
             const webCont = document.getElementById('web-services-container');
             const appCont = document.getElementById('app-services-container');
-
             if (type === 'web') {
-                webBtn.className = "flex-1 py-2.5 text-xs font-bold rounded-lg transition-all sub-tab-active";
-                appBtn.className = "flex-1 py-2.5 text-xs font-bold rounded-lg transition-all sub-tab-inactive";
-                webCont.classList.remove('hidden');
-                appCont.classList.add('hidden');
+                webBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-active";
+                appBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-inactive";
+                webCont.classList.remove('hidden'); appCont.classList.add('hidden');
             } else {
-                webBtn.className = "flex-1 py-2.5 text-xs font-bold rounded-lg transition-all sub-tab-inactive";
-                appBtn.className = "flex-1 py-2.5 text-xs font-bold rounded-lg transition-all sub-tab-active";
-                webCont.classList.add('hidden');
-                appCont.classList.remove('hidden');
+                webBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-inactive";
+                appBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-active";
+                webCont.classList.add('hidden'); appCont.classList.remove('hidden');
             }
         }
 
-        function filterServices(type) {
-            switchTab('pricing');
-            setTimeout(() => togglePricing(type), 50);
-        }
+        function filterServices(type) { switchTab('pricing'); setTimeout(() => togglePricing(type), 50); }
 
         function bookService(name, price) {
             document.getElementById('bookingService').value = name;
             document.getElementById('displayServiceName').innerText = name;
-            document.getElementById('displayServicePrice').innerText = price === 'Custom' ? 'Custom Quote' : 'Estimated: ₹' + price;
+            document.getElementById('displayServicePrice').innerText = '₹' + parseInt(price).toLocaleString() + ' INR';
             switchTab('booking');
         }
 
         function handleBooking(e) {
             e.preventDefault();
-          
+            const service = document.getElementById('bookingService').value;
+            const name = document.getElementById('bookingName').value;
+            const phone = document.getElementById('bookingPhone').value;
+            const msg = document.getElementById('bookingMessage').value;
+            window.location.href = `mailto:mourishdevelopers@gmail.com?subject=Project: ${service}&body=Client: ${name}%0APhone: ${phone}%0ABrief: ${msg}`;
+        }
+    </script>
+</body>
+</html>
