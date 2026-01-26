@@ -14,16 +14,22 @@
             overscroll-behavior-y: none;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        
+
         .gradient-primary { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
+        .gradient-success { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+        
         .card-dark { background-color: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.2s; cursor: pointer; }
-        .card-dark:active { transform: scale(0.96); border-color: #6366f1; }
+        .card-dark:active { transform: scale(0.98); border-color: #6366f1; }
 
         .page-section { display: none; animation: fadeIn 0.3s ease-out; padding-bottom: 120px; }
         .page-section.active { display: block; }
-        
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* Success Checkmark Animation */
+        @keyframes scaleUp { 0% { transform: scale(0); opacity: 0; } 80% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+        .checkmark-circle { animation: scaleUp 0.5s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+        
         .sub-tab-active { background-color: #ffffff; color: #000000; }
         .sub-tab-inactive { background-color: transparent; color: #666; }
 
@@ -32,8 +38,18 @@
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .price-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 99px; font-weight: 800; font-size: 12px; }
-        
+
         nav .nav-btn.active-link { color: #6366f1; transform: translateY(-2px); }
+
+        /* Payment Brand Colors */
+        .bg-gpay { background: rgba(66, 133, 244, 0.1); border-color: rgba(66, 133, 244, 0.2); color: #4285F4; }
+        .bg-phonepe { background: rgba(103, 58, 183, 0.1); border-color: rgba(103, 58, 183, 0.2); color: #673AB7; }
+        .bg-paytm { background: rgba(0, 186, 242, 0.1); border-color: rgba(0, 186, 242, 0.2); color: #00BAF2; }
+        .bg-upi { background: rgba(255, 121, 0, 0.1); border-color: rgba(255, 121, 0, 0.2); color: #FF7900; }
+
+        /* Loader */
+        .loader { border: 3px solid #333; border-top: 3px solid #6366f1; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body class="h-screen flex flex-col overflow-hidden">
@@ -53,6 +69,7 @@
 
     <main class="flex-1 overflow-y-auto pt-20 px-6 no-scrollbar">
 
+        <!-- HOME SECTION -->
         <div id="home" class="page-section active">
             <div class="mt-4 mb-8">
                 <h2 class="text-3xl font-bold leading-tight">Digital solutions<br><span class="text-gray-500">crafted with precision.</span></h2>
@@ -78,6 +95,7 @@
             </div>
         </div>
 
+        <!-- PRICING SECTION -->
         <div id="pricing" class="page-section">
             <h2 class="text-xl font-bold mb-6">Service Plans</h2>
             <div class="flex p-1 bg-[#111] rounded-2xl mb-6 border border-white/5">
@@ -93,12 +111,12 @@
                     <div><h4 class="text-sm font-bold">Advance</h4><p class="text-[10px] text-gray-500">Dynamic Features</p></div>
                     <div class="price-tag">₹3,500</div>
                 </div>
-<div onclick="bookService('Login Web', '4000')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
-                    <div><h4 class="text-sm font-bold">Login</h4><p class="text-[10px] text-gray-500">Login Page with continue with Google</p></div>
+                <div onclick="bookService('Login Web', '4000')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">Login</h4><p class="text-[10px] text-gray-500">Login + Google Auth</p></div>
                     <div class="price-tag">₹4,000</div>
                 </div>
-<div onclick="bookService('Payment Web', '4500')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
-                    <div><h4 class="text-sm font-bold">Payment</h4><p class="text-[10px] text-gray-500">Payment intergrationa for E-commerce </p></div>
+                <div onclick="bookService('Payment Web', '4500')" class="card-dark p-5 rounded-2xl flex justify-between items-center">
+                    <div><h4 class="text-sm font-bold">Payment</h4><p class="text-[10px] text-gray-500">E-commerce Integration</p></div>
                     <div class="price-tag">₹4,500</div>
                 </div>
                 <div onclick="bookService('AI Powered Web', '5000')" class="card-dark p-5 rounded-2xl flex justify-between items-center border-indigo-500/30">
@@ -118,8 +136,9 @@
             </div>
         </div>
 
+        <!-- BOOKING / CHECKOUT SECTION -->
         <div id="booking" class="page-section">
-            <h2 class="text-xl font-bold mb-6">Checkout</h2>
+            <h2 class="text-xl font-bold mb-6">Checkout Details</h2>
             <div class="card-dark p-6 rounded-3xl">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center"><i class="fas fa-shopping-cart text-white text-xs"></i></div>
@@ -128,14 +147,120 @@
                         <p id="displayServicePrice" class="text-xs text-indigo-500 tracking-wider font-bold">Please select from pricing</p>
                     </div>
                 </div>
-                <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-4">
+                <form id="bookingForm" onsubmit="handleProceedToPay(event)" class="space-y-4">
                     <input type="text" id="bookingName" required placeholder="Full Name" class="input-dark w-full rounded-2xl px-5 py-4 text-sm">
                     <input type="tel" id="bookingPhone" required placeholder="WhatsApp Number" class="input-dark w-full rounded-2xl px-5 py-4 text-sm">
-                    <textarea id="bookingMessage" rows="3" placeholder="Tell us about your project..." class="input-dark w-full rounded-2xl px-5 py-4 text-sm"></textarea>
+                    <textarea id="bookingMessage" rows="3" placeholder="Project requirements..." class="input-dark w-full rounded-2xl px-5 py-4 text-sm"></textarea>
                     <input type="hidden" id="bookingService">
-                    <button type="submit" class="w-full gradient-primary py-5 rounded-2xl font-bold text-xs uppercase tracking-widest">Send Inquiry</button>
+                    <input type="hidden" id="bookingPriceRaw">
+                    <button type="submit" class="w-full gradient-primary py-5 rounded-2xl font-bold text-xs uppercase tracking-widest">
+                        Proceed to Pay <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
                 </form>
             </div>
+        </div>
+
+        <!-- PAYMENT GATEWAY SECTION -->
+        <div id="payment-gateway" class="page-section">
+            <div class="text-center mb-6">
+                <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Total Payable</p>
+                <h1 id="payAmount" class="text-4xl font-bold text-white">₹0</h1>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mt-3">
+                    <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
+                    <span id="timer" class="text-[10px] font-mono text-red-400">14:59</span>
+                </div>
+            </div>
+
+            <!-- UPI QR -->
+            <div class="card-dark p-6 rounded-3xl mb-4 flex flex-col items-center justify-center bg-white/5 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none"></div>
+                <div class="bg-white p-2 rounded-xl mb-3 shadow-lg shadow-black/50">
+                    <!-- QR Code -->
+                    <img id="qrCodeImage" src="" alt="UPI QR" class="w-40 h-40 object-contain rounded-lg">
+                </div>
+                <p class="text-[10px] text-gray-400 flex items-center gap-1">
+                    <i class="fas fa-shield-alt text-green-500"></i> Scan to Pay
+                </p>
+                <p class="text-[9px] text-gray-600 mt-2 font-mono">lifegas1987-1@okhdfcbank</p>
+            </div>
+
+            <!-- UPI APPS -->
+            <h3 class="text-sm font-bold mb-3 pl-1">Tap to Pay</h3>
+            <div class="space-y-2">
+                <button onclick="payViaApp('gpay')" class="w-full card-dark bg-gpay p-4 rounded-2xl flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-lg"><i class="fab fa-google text-blue-500"></i></div>
+                        <span class="text-sm font-bold">Google Pay</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                </button>
+                <button onclick="payViaApp('phonepe')" class="w-full card-dark bg-phonepe p-4 rounded-2xl flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-[#673AB7] flex items-center justify-center text-white text-xs font-bold">Pe</div>
+                        <span class="text-sm font-bold">PhonePe</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                </button>
+                <button onclick="payViaApp('paytm')" class="w-full card-dark bg-paytm p-4 rounded-2xl flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-[#00BAF2] flex items-center justify-center text-white text-[8px] font-bold tracking-tighter">PAYTM</div>
+                        <span class="text-sm font-bold">Paytm</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                </button>
+                <button onclick="payViaApp('default')" class="w-full card-dark bg-upi p-4 rounded-2xl flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white text-[8px] font-bold">BHIM</div>
+                        <span class="text-sm font-bold">Other UPI Apps</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-xs opacity-50"></i>
+                </button>
+            </div>
+            
+            <button onclick="switchTab('booking')" class="w-full py-4 text-xs text-gray-500 font-bold mt-4">Cancel Payment</button>
+        </div>
+
+        <!-- PAYMENT CONFIRMATION OVERLAY -->
+        <div id="processing-overlay" class="fixed inset-0 z-[60] bg-black/95 hidden flex flex-col items-center justify-center text-center px-8">
+            <div class="loader mb-6"></div>
+            <h3 class="text-lg font-bold mb-1">Waiting for Payment</h3>
+            <p class="text-xs text-gray-500 mb-8 max-w-[200px]">Please complete the payment in your UPI app and return here.</p>
+            
+            <button onclick="confirmManualPayment()" class="w-full max-w-xs gradient-primary py-4 rounded-2xl font-bold text-xs uppercase tracking-widest">
+                I have Paid
+            </button>
+            <button onclick="closeOverlay()" class="mt-4 text-xs text-gray-500">Cancel</button>
+        </div>
+
+        <!-- SUCCESS PAGE -->
+        <div id="success-page" class="page-section text-center pt-10">
+            <div class="flex justify-center mb-8">
+                <div class="w-24 h-24 rounded-full gradient-success flex items-center justify-center shadow-[0_0_50px_rgba(34,197,94,0.4)] checkmark-circle">
+                    <i class="fas fa-check text-4xl text-white"></i>
+                </div>
+            </div>
+            <h2 class="text-2xl font-bold mb-2">Payment Successful!</h2>
+            <p class="text-xs text-gray-400 mb-8">Your transaction has been recorded.</p>
+
+            <div class="card-dark p-6 rounded-3xl text-left mb-6 border-dashed border-white/20">
+                <div class="flex justify-between mb-3">
+                    <span class="text-xs text-gray-500">Payment ID</span>
+                    <span class="text-xs font-mono" id="receipt-id">#MRSH-8829</span>
+                </div>
+                <div class="flex justify-between mb-3">
+                    <span class="text-xs text-gray-500">Date</span>
+                    <span class="text-xs font-mono" id="receipt-date">Oct 24, 2025</span>
+                </div>
+                <div class="flex justify-between border-t border-white/10 pt-3 mt-3">
+                    <span class="text-sm font-bold">Amount Paid</span>
+                    <span class="text-sm font-bold text-green-400" id="receipt-amount">₹5,000</span>
+                </div>
+            </div>
+
+            <button onclick="finalizeBooking()" class="w-full gradient-success py-5 rounded-2xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-green-900/20">
+                Share Receipt on WhatsApp <i class="fab fa-whatsapp ml-1 text-base"></i>
+            </button>
+            <button onclick="location.reload()" class="mt-4 text-xs text-gray-500 font-bold">Back to Home</button>
         </div>
 
         <div id="contact" class="page-section">
@@ -163,17 +288,30 @@
     </nav>
 
     <script>
+        // Store booking data
+        let currentBooking = {};
+
         function switchTab(tabId) {
             document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            
-            // Update Navigation Icons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active-link', 'text-white');
-                btn.classList.add('text-gray-600');
-            });
-            document.getElementById('nav-' + tabId).classList.add('active-link');
-            
+
+            const nav = document.querySelector('nav');
+            if(tabId === 'payment-gateway' || tabId === 'success-page') {
+                nav.style.transform = 'translateY(100%)';
+                nav.style.transition = 'transform 0.3s ease';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+
+            if(tabId !== 'payment-gateway' && tabId !== 'success-page') {
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active-link', 'text-white');
+                    btn.classList.add('text-gray-600');
+                });
+                const navBtn = document.getElementById('nav-' + tabId);
+                if(navBtn) navBtn.classList.add('active-link');
+            }
+
             document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -182,7 +320,7 @@
             const appBtn = document.getElementById('tab-app');
             const webCont = document.getElementById('web-services-container');
             const appCont = document.getElementById('app-services-container');
-            
+
             if (type === 'web') {
                 webBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-active";
                 appBtn.className = "flex-1 py-3 text-[10px] font-bold rounded-xl transition-all sub-tab-inactive";
@@ -201,30 +339,132 @@
 
         function bookService(name, price) {
             document.getElementById('bookingService').value = name;
+            document.getElementById('bookingPriceRaw').value = price;
+            
             document.getElementById('displayServiceName').innerText = name;
             document.getElementById('displayServiceName').classList.remove('text-gray-400');
             document.getElementById('displayServiceName').classList.add('text-white');
-            document.getElementById('displayServicePrice').innerText = '₹' + parseInt(price).toLocaleString();
+            
+            const formattedPrice = '₹' + parseInt(price).toLocaleString();
+            document.getElementById('displayServicePrice').innerText = formattedPrice;
+            
             switchTab('booking');
         }
 
-        function handleBooking(e) {
+        function handleProceedToPay(e) {
             e.preventDefault();
             const service = document.getElementById('bookingService').value;
+            const price = document.getElementById('bookingPriceRaw').value;
+            
             if(!service) {
-                alert("Please select a plan from the pricing section first.");
-                switchTab('pricing');
+                alert("Please select a plan first.");
                 return;
             }
 
-            const name = document.getElementById('bookingName').value;
-            const phone = document.getElementById('bookingPhone').value;
-            const msg = document.getElementById('bookingMessage').value;
+            // Store data
+            currentBooking = {
+                name: document.getElementById('bookingName').value,
+                phone: document.getElementById('bookingPhone').value,
+                message: document.getElementById('bookingMessage').value,
+                service: service,
+                price: price,
+                id: 'MRSH-' + Math.floor(1000 + Math.random() * 9000)
+            };
 
-            // Using WhatsApp for better conversion in India
-            const text = `*Mourish Dev Inquiry*%0A*Plan:* ${service}%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Message:* ${msg}`;
-            window.open(`https://wa.me/910000000000?text=${text}`, '_blank'); // Replace with your number
+            // Setup Payment Page
+            document.getElementById('payAmount').innerText = '₹' + parseInt(price).toLocaleString();
+            
+            // Generate QR Code with SPECIFIC UPI ID
+            const payeeVPA = "lifegas1987-1@okhdfcbank";
+            const payeeName = "MourishDevelopers";
+            const upiString = `upi://pay?pa=${payeeVPA}&pn=${payeeName}&am=${price}&tn=${currentBooking.id}`;
+            
+            document.getElementById('qrCodeImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiString)}`;
+            
+            switchTab('payment-gateway');
+            startTimer();
+        }
+
+        function startTimer() {
+            let duration = 60 * 15; // 15 minutes
+            const display = document.querySelector('#timer');
+            const timer = setInterval(function () {
+                let minutes = parseInt(duration / 60, 10);
+                let seconds = parseInt(duration % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--duration < 0) {
+                    clearInterval(timer);
+                    alert("Session expired");
+                    switchTab('home');
+                }
+            }, 1000);
+        }
+
+        function payViaApp(appName) {
+            const payeeVPA = "lifegas1987-1@okhdfcbank";
+            const payeeName = "MourishDevelopers";
+            const amount = currentBooking.price;
+            const txnId = currentBooking.id;
+            
+            // Base Params
+            const params = `pa=${payeeVPA}&pn=${payeeName}&am=${amount}&tn=${txnId}&cu=INR`;
+            
+            let url = "";
+
+            if (appName === 'phonepe') {
+                url = `phonepe://pay?${params}`;
+            } else if (appName === 'paytm') {
+                url = `paytmmp://pay?${params}`;
+            } else if (appName === 'gpay') {
+                url = `tez://upi/pay?${params}`;
+            } else {
+                url = `upi://pay?${params}`;
+            }
+
+            // Fallback strategy: If specific scheme fails, browser might show error. 
+            // Standard web practice is to try the link. 
+            // If it works, the app opens. 
+            // After clicking, we show the confirmation overlay.
+            
+            window.location.href = url;
+            
+            // Show overlay after a short delay to allow the app to open
+            setTimeout(() => {
+                const overlay = document.getElementById('processing-overlay');
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+            }, 1000);
+        }
+
+        function closeOverlay() {
+            const overlay = document.getElementById('processing-overlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+        }
+
+        function confirmManualPayment() {
+            closeOverlay();
+            
+            // Populate Success Page
+            const date = new Date();
+            document.getElementById('receipt-id').innerText = '#' + currentBooking.id;
+            document.getElementById('receipt-date').innerText = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            document.getElementById('receipt-amount').innerText = '₹' + parseInt(currentBooking.price).toLocaleString();
+            
+            switchTab('success-page');
+        }
+
+        function finalizeBooking() {
+            const text = `*New Web Development Request*%0A%0A*PROJECT DETAILS*%0A*Plan:* ${currentBooking.service}%0A*Requirements:* ${currentBooking.message}%0A%0A*PAYMENT PROOF*%0A*Status:* ✅ Payment Successful%0A*Order ID:* ${currentBooking.id}%0A*Amount Paid:* ₹${currentBooking.price}%0A*UPI ID Used:* lifegas1987-1@okhdfcbank%0A%0A*CLIENT INFO*%0A*Name:* ${currentBooking.name}%0A*Phone:* ${currentBooking.phone}%0A%0A_Sent via Mourish Website_`;
+            window.open(`https://wa.me/919487410078?text=${text}`, '_blank');
         }
     </script>
 </body>
 </html>
+
+
