@@ -157,7 +157,7 @@
                 <form id="bookingForm" onsubmit="handleProceedToPay(event)" class="space-y-4">
                     <input type="text" id="bookingName" required placeholder="Full Name" class="input-dark w-full rounded-2xl px-5 py-4 text-sm">
                     <input type="number" id="bookingPhone" required placeholder="WhatsApp Number" class="input-dark w-full rounded-2xl px-5 py-4 text-sm">
-                    <textarea id="bookingMessage" rows="3" placeholder="Project requirements..." class="input-dark w-full rounded-2xl px-5 py-4 text-sm"></textarea>
+                    <textarea id="bookingMessage" rows="3" placeholder="Project requirements...(Enter Your Business Name)" class="input-dark w-full rounded-2xl px-5 py-4 text-sm"></textarea>
                     <input type="hidden" id="bookingService">
                     <input type="hidden" id="bookingPriceRaw">
                     <button type="submit" id="proceedBtn" class="w-full gradient-primary py-5 rounded-2xl font-bold text-xs uppercase tracking-widest">
@@ -218,7 +218,7 @@
 
         <div id="processing-overlay" class="fixed inset-0 z-[60] bg-black/95 hidden flex flex-col items-center justify-center text-center px-8">
             <h3 class="text-lg font-bold mb-2">Verify Payment</h3>
-            <p class="text-xs text-gray-500 mb-6 max-w-[250px]">Please complete payment in your UPI app, then copy and paste the **Transaction/Reference ID (UTR)** below for verification.</p>
+            <p class="text-xs text-gray-500 mb-6 Please type your **UPI ID** below for verification.</p>
             
             <div class="w-full max-w-xs space-y-4">
                 <input type="text" id="manualPaymentId" placeholder="Enter Payment ID / UTR (Required)" class="input-dark w-full rounded-xl px-5 py-4 text-center text-sm font-mono border-indigo-500/50">
@@ -802,7 +802,7 @@
         }
 
         function finalizeBookingWhatsApp() {
-            const text = `*New Web Development Request*%0A%0A*PROJECT DETAILS*%0A*Plan:* ${currentBooking.service}%0A*Requirements:* ${currentBooking.message}%0A%0A*PAYMENT PROOF*%0A*Status:* ✅ Payment Successful%0A*Order ID:* ${currentBooking.id}%0A*Transaction ID (UTR):* ${currentBooking.paymentId}%0A*Amount Paid:* ₹${currentBooking.price}%0A*UPI ID Used:* lifegas1987-1@okhdfcbank%0A%0A*CLIENT INFO*%0A*Name:* ${currentBooking.name}%0A*Phone:* ${currentBooking.phone}%0A%0A_Sent via Mourish Website_`;
+            const text = `*New Web Development Request*%0A%0A*PROJECT DETAILS*%0A*Plan:* ${currentBooking.service}%0A*Requirements:* ${currentBooking.message}%0A%0A*PAYMENT PROOF*%0A*Status:* ✅ Payment Successful%0A*Order ID:* ${currentBooking.id}%0A*UPI ID:* ${currentBooking.paymentId}%0A*Amount Paid:* ₹${currentBooking.price}%0A*UPI ID Used:* lifegas1987-1@okhdfcbank%0A%0A*CLIENT INFO*%0A*Name:* ${currentBooking.name}%0A*Phone:* ${currentBooking.phone}%0A%0A_Sent via Mourish Website_`;
             window.open(`https://wa.me/919487410078?text=${text}`, '_blank');
         }
     </script>
