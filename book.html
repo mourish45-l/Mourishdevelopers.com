@@ -50,6 +50,9 @@
         /* Loader */
         .loader { border: 3px solid #333; border-top: 3px solid #6366f1; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .auth-container { max-width: 400px; margin: 0 auto; }
+        .admin-badge { background: #ef4444; color: white; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 8px; }
     </style>
 </head>
 <body class="h-screen flex flex-col overflow-hidden">
@@ -62,14 +65,14 @@
             </div>
             <h1 class="text-base font-bold tracking-tight">Mourish<span class="text-indigo-500">.</span></h1>
         </div>
-        <button onclick="switchTab('contact')" class="w-10 h-10 rounded-full bg-[#111] border border-[#222] flex items-center justify-center">
-            <i class="fas fa-paper-plane text-gray-400 text-xs"></i>
+        <button onclick="switchTab('profile')" class="w-10 h-10 rounded-full bg-[#111] border border-[#222] flex items-center justify-center overflow-hidden">
+             <i class="fas fa-user text-gray-400 text-xs" id="header-user-icon"></i>
+             <img id="header-user-img" src="" class="w-full h-full object-cover hidden">
         </button>
     </header>
 
     <main class="flex-1 overflow-y-auto pt-20 px-6 no-scrollbar">
 
-        <!-- HOME SECTION -->
         <div id="home" class="page-section active">
             <div class="mt-4 mb-8">
                 <h2 class="text-3xl font-bold leading-tight">Digital solutions<br><span class="text-gray-500">crafted with precision.</span></h2>
@@ -95,7 +98,6 @@
             </div>
         </div>
 
-        <!-- PRICING SECTION -->
         <div id="pricing" class="page-section">
             <h2 class="text-xl font-bold mb-6">Service Plans</h2>
             <div class="flex p-1 bg-[#111] rounded-2xl mb-6 border border-white/5">
@@ -136,9 +138,14 @@
             </div>
         </div>
 
-        <!-- BOOKING / CHECKOUT SECTION -->
         <div id="booking" class="page-section">
             <h2 class="text-xl font-bold mb-6">Checkout Details</h2>
+            
+            <div id="booking-login-alert" class="hidden mb-4 p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20">
+                <p class="text-xs text-indigo-300 mb-2"><i class="fas fa-info-circle mr-1"></i> You must be logged in to book.</p>
+                <button onclick="switchTab('profile')" class="text-xs font-bold text-white bg-indigo-600 px-3 py-1 rounded-lg">Login Now</button>
+            </div>
+
             <div class="card-dark p-6 rounded-3xl">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center"><i class="fas fa-shopping-cart text-white text-xs"></i></div>
@@ -153,14 +160,13 @@
                     <textarea id="bookingMessage" rows="3" placeholder="Project requirements..." class="input-dark w-full rounded-2xl px-5 py-4 text-sm"></textarea>
                     <input type="hidden" id="bookingService">
                     <input type="hidden" id="bookingPriceRaw">
-                    <button type="submit" class="w-full gradient-primary py-5 rounded-2xl font-bold text-xs uppercase tracking-widest">
+                    <button type="submit" id="proceedBtn" class="w-full gradient-primary py-5 rounded-2xl font-bold text-xs uppercase tracking-widest">
                         Proceed to Pay <i class="fas fa-arrow-right ml-2"></i>
                     </button>
                 </form>
             </div>
         </div>
 
-        <!-- PAYMENT GATEWAY SECTION -->
         <div id="payment-gateway" class="page-section">
             <div class="text-center mb-6">
                 <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Total Payable</p>
@@ -171,11 +177,9 @@
                 </div>
             </div>
 
-            <!-- UPI QR -->
             <div class="card-dark p-6 rounded-3xl mb-4 flex flex-col items-center justify-center bg-white/5 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none"></div>
                 <div class="bg-white p-2 rounded-xl mb-3 shadow-lg shadow-black/50">
-                    <!-- QR Code -->
                     <img id="qrCodeImage" src="" alt="UPI QR" class="w-40 h-40 object-contain rounded-lg">
                 </div>
                 <p class="text-[10px] text-gray-400 flex items-center gap-1">
@@ -184,9 +188,8 @@
                 <p class="text-[9px] text-gray-600 mt-2 font-mono">lifegas1987-1@okhdfcbank</p>
             </div>
 
-            <!-- UPI APPS -->
             <h3 class="text-sm font-bold mb-3 pl-1">Tap to Pay</h3>
-            <div class="space-y-2">
+            <div class="space-y-2 mb-6">
                 <button onclick="payViaApp('gpay')" class="w-full card-dark bg-gpay p-4 rounded-2xl flex items-center justify-between">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-lg"><i class="fab fa-google text-blue-500"></i></div>
@@ -208,48 +211,43 @@
                     </div>
                     <i class="fas fa-chevron-right text-xs opacity-50"></i>
                 </button>
-                <button onclick="payViaApp('default')" class="w-full card-dark bg-upi p-4 rounded-2xl flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white text-[8px] font-bold">BHIM</div>
-                        <span class="text-sm font-bold">Other UPI Apps</span>
-                    </div>
-                    <i class="fas fa-chevron-right text-xs opacity-50"></i>
+            </div>
+            
+            <button onclick="switchTab('booking')" class="w-full py-4 text-xs text-gray-500 font-bold">Cancel Payment</button>
+        </div>
+
+        <div id="processing-overlay" class="fixed inset-0 z-[60] bg-black/95 hidden flex flex-col items-center justify-center text-center px-8">
+            <h3 class="text-lg font-bold mb-2">Verify Payment</h3>
+            <p class="text-xs text-gray-500 mb-6 max-w-[250px]">Please complete payment in your UPI app, then copy and paste the **Transaction/Reference ID (UTR)** below for verification.</p>
+            
+            <div class="w-full max-w-xs space-y-4">
+                <input type="text" id="manualPaymentId" placeholder="Enter Payment ID / UTR (Required)" class="input-dark w-full rounded-xl px-5 py-4 text-center text-sm font-mono border-indigo-500/50">
+                
+                <button onclick="confirmManualPayment()" class="w-full gradient-primary py-4 rounded-2xl font-bold text-xs uppercase tracking-widest">
+                    Verify & Submit
                 </button>
             </div>
             
-            <button onclick="switchTab('booking')" class="w-full py-4 text-xs text-gray-500 font-bold mt-4">Cancel Payment</button>
+            <button onclick="closeOverlay()" class="mt-6 text-xs text-gray-500 underline">Close</button>
         </div>
 
-        <!-- PAYMENT CONFIRMATION OVERLAY -->
-        <div id="processing-overlay" class="fixed inset-0 z-[60] bg-black/95 hidden flex flex-col items-center justify-center text-center px-8">
-            <div class="loader mb-6"></div>
-            <h3 class="text-lg font-bold mb-1">Waiting for Payment</h3>
-            <p class="text-xs text-gray-500 mb-8 max-w-[200px]">Please complete the payment in your UPI app and return here.</p>
-            
-            <button onclick="confirmManualPayment()" class="w-full max-w-xs gradient-primary py-4 rounded-2xl font-bold text-xs uppercase tracking-widest">
-                I have Paid
-            </button>
-            <button onclick="closeOverlay()" class="mt-4 text-xs text-gray-500">Cancel</button>
-        </div>
-
-        <!-- SUCCESS PAGE -->
         <div id="success-page" class="page-section text-center pt-10">
             <div class="flex justify-center mb-8">
                 <div class="w-24 h-24 rounded-full gradient-success flex items-center justify-center shadow-[0_0_50px_rgba(34,197,94,0.4)] checkmark-circle">
                     <i class="fas fa-check text-4xl text-white"></i>
                 </div>
             </div>
-            <h2 class="text-2xl font-bold mb-2">Payment Successful!</h2>
-            <p class="text-xs text-gray-400 mb-8">Your transaction has been recorded.</p>
+            <h2 class="text-2xl font-bold mb-2">Booking Confirmed!</h2>
+            <p class="text-xs text-gray-400 mb-8">Your details have been saved securely.</p>
 
             <div class="card-dark p-6 rounded-3xl text-left mb-6 border-dashed border-white/20">
                 <div class="flex justify-between mb-3">
-                    <span class="text-xs text-gray-500">Payment ID</span>
+                    <span class="text-xs text-gray-500">Order ID</span>
                     <span class="text-xs font-mono" id="receipt-id">#MRSH-8829</span>
                 </div>
                 <div class="flex justify-between mb-3">
-                    <span class="text-xs text-gray-500">Date</span>
-                    <span class="text-xs font-mono" id="receipt-date">Oct 24, 2025</span>
+                    <span class="text-xs text-gray-500">Payment ID (UTR)</span>
+                    <span class="text-xs font-mono text-indigo-400" id="receipt-utr">...</span>
                 </div>
                 <div class="flex justify-between border-t border-white/10 pt-3 mt-3">
                     <span class="text-sm font-bold">Amount Paid</span>
@@ -257,35 +255,348 @@
                 </div>
             </div>
 
-            <button onclick="finalizeBooking()" class="w-full gradient-success py-5 rounded-2xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-green-900/20">
-                Share Receipt on WhatsApp <i class="fab fa-whatsapp ml-1 text-base"></i>
+            <button onclick="finalizeBookingWhatsApp()" class="w-full gradient-success py-5 rounded-2xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-green-900/20">
+                Send to WhatsApp <i class="fab fa-whatsapp ml-1 text-base"></i>
             </button>
             <button onclick="location.reload()" class="mt-4 text-xs text-gray-500 font-bold">Back to Home</button>
         </div>
 
-        <div id="contact" class="page-section">
-            <h2 class="text-xl font-bold mb-6">Contact</h2>
-            <div class="space-y-3">
-                <a href="mailto:mourishdevelopers@gmail.com" class="card-dark p-6 rounded-3xl flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center"><i class="fas fa-envelope text-white"></i></div>
-                    <div><p class="text-xs font-bold">Email us</p><p class="text-[10px] text-gray-500">mourishdevelopers@gmail.com</p></div>
-                </a>
-                <div class="card-dark p-8 rounded-[2rem] text-center border-dashed border-white/10">
-                    <p class="text-xs text-gray-500 font-bold mb-4 uppercase tracking-[0.3em]">Support Hours</p>
-                    <p class="text-sm">Monday — Saturday</p>
-                    <p class="text-xs text-gray-600">09:00 AM — 08:00 PM</p>
+        <div id="profile" class="page-section">
+            <h2 class="text-xl font-bold mb-6">Profile</h2>
+
+            <div id="auth-forms" class="auth-container">
+                <div class="flex p-1 bg-[#111] rounded-2xl mb-6 border border-white/5">
+                    <button onclick="toggleAuth('login')" id="btn-login" class="flex-1 py-3 text-[10px] font-bold rounded-xl sub-tab-active">LOGIN</button>
+                    <button onclick="toggleAuth('signup')" id="btn-signup" class="flex-1 py-3 text-[10px] font-bold rounded-xl sub-tab-inactive">SIGN UP</button>
                 </div>
+
+                <button onclick="handleGoogleLogin()" class="w-full bg-white text-black py-4 rounded-2xl font-bold text-xs uppercase tracking-widest mb-4 flex items-center justify-center gap-3">
+                    <i class="fab fa-google text-red-500"></i> Continue with Google
+                </button>
+                
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="h-px bg-white/10 flex-1"></div>
+                    <span class="text-[10px] text-gray-500">OR</span>
+                    <div class="h-px bg-white/10 flex-1"></div>
+                </div>
+
+                <form id="loginForm" class="space-y-4">
+                    <input type="email" id="loginEmail" placeholder="Email" class="input-dark w-full rounded-2xl px-5 py-4 text-sm" required>
+                    <input type="password" id="loginPassword" placeholder="Password" class="input-dark w-full rounded-2xl px-5 py-4 text-sm" required>
+                    <button type="submit" class="w-full gradient-primary py-4 rounded-2xl font-bold text-xs uppercase tracking-widest">Login</button>
+                </form>
+
+                <form id="signupForm" class="space-y-4 hidden">
+                    <input type="email" id="signupEmail" placeholder="Email" class="input-dark w-full rounded-2xl px-5 py-4 text-sm" required>
+                    <input type="password" id="signupPassword" placeholder="Password" class="input-dark w-full rounded-2xl px-5 py-4 text-sm" required>
+                    <button type="submit" class="w-full gradient-primary py-4 rounded-2xl font-bold text-xs uppercase tracking-widest">Create Account</button>
+                </form>
+                <p id="authError" class="text-red-500 text-xs text-center mt-4 hidden"></p>
+            </div>
+
+            <div id="user-profile" class="hidden">
+                <div class="card-dark p-6 rounded-3xl flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center overflow-hidden">
+                        <img id="profile-img-lg" src="" class="w-full h-full object-cover hidden">
+                        <span id="profile-initial" class="text-indigo-400 font-bold text-xl">U</span>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-white flex items-center">
+                            <span id="profile-name">User</span>
+                            <span id="admin-badge" class="hidden admin-badge">ADMIN</span>
+                        </p>
+                        <p id="profile-email" class="text-xs text-gray-500">user@example.com</p>
+                    </div>
+                </div>
+
+                <button id="admin-dashboard-btn" onclick="openAdminDashboard()" class="w-full hidden bg-gray-800 border border-gray-700 p-4 rounded-2xl mb-4 flex items-center justify-between">
+                    <span class="text-sm font-bold text-white"><i class="fas fa-lock mr-2 text-red-500"></i> Admin Dashboard</span>
+                    <i class="fas fa-chevron-right text-gray-500"></i>
+                </button>
+
+                <div class="mt-8">
+                    <h3 class="text-sm font-bold mb-4 text-gray-400 border-b border-white/10 pb-2">My Bookings</h3>
+                    <div id="user-bookings-list" class="space-y-3 pb-6">
+                        <div class="text-center text-gray-600 text-xs py-4">No bookings found.</div>
+                    </div>
+                </div>
+
+                <button onclick="handleLogout()" class="w-full border border-red-500/30 text-red-500 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest mt-6">Logout</button>
+            </div>
+        </div>
+
+        <div id="admin-dashboard" class="page-section">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold">Admin Dashboard</h2>
+                <button onclick="switchTab('profile')" class="text-xs text-gray-500">Back</button>
+            </div>
+            
+            <div class="flex gap-2 mb-4">
+                <div class="bg-gray-900 rounded-xl p-4 flex-1 border border-gray-800">
+                    <p class="text-[10px] text-gray-500 uppercase">Total Orders</p>
+                    <h3 class="text-2xl font-bold" id="admin-total-orders">0</h3>
+                </div>
+                <div class="bg-gray-900 rounded-xl p-4 flex-1 border border-gray-800">
+                    <p class="text-[10px] text-gray-500 uppercase">Revenue</p>
+                    <h3 class="text-2xl font-bold text-green-500" id="admin-total-revenue">₹0</h3>
+                </div>
+            </div>
+
+            <h3 class="text-sm font-bold mb-4 text-gray-400">All Bookings (Realtime)</h3>
+            <div id="admin-bookings-list" class="space-y-3 pb-20">
+                <div class="text-center text-gray-600 text-xs py-10">Loading data...</div>
             </div>
         </div>
 
     </main>
 
-    <nav class="fixed bottom-0 w-full bg-black/80 backdrop-blur-xl border-t border-white/5 h-[85px] px-10 flex justify-between items-center pb-4">
+    <nav class="fixed bottom-0 w-full bg-black/80 backdrop-blur-xl border-t border-white/5 h-[85px] px-10 flex justify-between items-center pb-4 z-40">
         <button onclick="switchTab('home')" class="nav-btn active-link" id="nav-home"><i class="fas fa-home text-lg"></i></button>
         <button onclick="switchTab('pricing')" class="nav-btn text-gray-600" id="nav-pricing"><i class="fas fa-th-large text-lg"></i></button>
         <button onclick="switchTab('booking')" class="nav-btn text-gray-600" id="nav-booking"><i class="fas fa-shopping-bag text-lg"></i></button>
-        <button onclick="switchTab('contact')" class="nav-btn text-gray-600" id="nav-contact"><i class="fas fa-user text-lg"></i></button>
+        <button onclick="switchTab('profile')" class="nav-btn text-gray-600" id="nav-profile"><i class="fas fa-user text-lg"></i></button>
     </nav>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp, where } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDVTOOenFVKEJoya0LSchrMqjBmNUSh7uI",
+            authDomain: "mourish-developers-studio-2025.firebaseapp.com",
+            databaseURL: "https://mourish-developers-studio-2025-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "mourish-developers-studio-2025",
+            storageBucket: "mourish-developers-studio-2025.firebasestorage.app",
+            messagingSenderId: "22567220213",
+            appId: "1:22567220213:web:31e392665b3f48025466bc",
+            measurementId: "G-GHDC1SE3SH"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        // GLOBAL AUTH STATE
+        let currentUser = null;
+        const ADMIN_EMAIL = "mourishdevelopers@gmail.com";
+
+        // GOOGLE LOGIN HANDLER
+        window.handleGoogleLogin = async () => {
+            const errEl = document.getElementById('authError');
+            try {
+                await signInWithPopup(auth, googleProvider);
+                errEl.classList.add('hidden');
+            } catch (error) {
+                console.error(error);
+                errEl.textContent = "Google Sign-In Failed. " + error.message;
+                errEl.classList.remove('hidden');
+            }
+        };
+
+        // STANDARD EMAIL HANDLERS
+        window.handleLogin = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errEl = document.getElementById('authError');
+            
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                errEl.classList.add('hidden');
+            } catch (error) {
+                errEl.textContent = error.message;
+                errEl.classList.remove('hidden');
+            }
+        };
+
+        window.handleSignup = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const errEl = document.getElementById('authError');
+
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                errEl.classList.add('hidden');
+            } catch (error) {
+                errEl.textContent = error.message;
+                errEl.classList.remove('hidden');
+            }
+        };
+
+        window.handleLogout = () => {
+            signOut(auth);
+            location.reload();
+        };
+
+        document.getElementById('loginForm').addEventListener('submit', window.handleLogin);
+        document.getElementById('signupForm').addEventListener('submit', window.handleSignup);
+
+        // AUTH LISTENER
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            if (user) {
+                // UI Updates
+                document.getElementById('auth-forms').classList.add('hidden');
+                document.getElementById('user-profile').classList.remove('hidden');
+                
+                // Set User Info
+                document.getElementById('profile-email').textContent = user.email;
+                document.getElementById('profile-name').textContent = user.displayName || "Mourish Member";
+                
+                // Header Icon Logic
+                if(user.photoURL) {
+                    const img = document.getElementById('header-user-img');
+                    const icon = document.getElementById('header-user-icon');
+                    const lgImg = document.getElementById('profile-img-lg');
+                    const lgInit = document.getElementById('profile-initial');
+                    
+                    img.src = user.photoURL; img.classList.remove('hidden'); icon.classList.add('hidden');
+                    lgImg.src = user.photoURL; lgImg.classList.remove('hidden'); lgInit.classList.add('hidden');
+                } else {
+                    document.getElementById('profile-initial').textContent = user.email[0].toUpperCase();
+                }
+
+                document.getElementById('booking-login-alert').classList.add('hidden');
+                document.getElementById('proceedBtn').disabled = false;
+                document.getElementById('proceedBtn').innerText = "Proceed to Pay";
+
+                // Load User Specific Bookings
+                loadUserBookings(user.email);
+
+                // Admin Check
+                if(user.email === ADMIN_EMAIL) {
+                    document.getElementById('admin-badge').classList.remove('hidden');
+                    document.getElementById('admin-dashboard-btn').classList.remove('hidden');
+                } else {
+                    document.getElementById('admin-badge').classList.add('hidden');
+                    document.getElementById('admin-dashboard-btn').classList.add('hidden');
+                }
+            } else {
+                document.getElementById('auth-forms').classList.remove('hidden');
+                document.getElementById('user-profile').classList.add('hidden');
+                document.getElementById('booking-login-alert').classList.remove('hidden');
+                document.getElementById('proceedBtn').disabled = true;
+                document.getElementById('proceedBtn').innerText = "Login to Book";
+            }
+        });
+
+        // LOAD USER BOOKINGS
+        async function loadUserBookings(email) {
+            const list = document.getElementById('user-bookings-list');
+            list.innerHTML = '<div class="loader mx-auto w-4 h-4 border-2"></div>';
+
+            try {
+                // Query: Select bookings where userEmail == current email
+                const q = query(collection(db, "bookings"), where("userEmail", "==", email), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+
+                if(querySnapshot.empty) {
+                    list.innerHTML = '<div class="text-center text-gray-600 text-xs py-4">No past bookings found.</div>';
+                    return;
+                }
+
+                let html = '';
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    let dateStr = "Unknown Date";
+                    if(data.timestamp) {
+                        dateStr = new Date(data.timestamp.seconds * 1000).toLocaleDateString();
+                    }
+
+                    html += `
+                    <div class="card-dark p-4 rounded-2xl flex justify-between items-center">
+                        <div>
+                            <p class="text-xs font-bold text-white">${data.service}</p>
+                            <p class="text-[10px] text-gray-500">${dateStr} • Order #${data.id}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-xs font-bold text-green-400">₹${data.price}</span>
+                            <span class="text-[9px] bg-green-900/30 text-green-400 px-2 py-0.5 rounded-full">Paid</span>
+                        </div>
+                    </div>`;
+                });
+                list.innerHTML = html;
+
+            } catch(e) {
+                console.error("Error loading history:", e);
+                // Usually happens if index is missing in Firestore. 
+                // For simple queries it usually works automatically.
+                list.innerHTML = '<div class="text-center text-red-500 text-[10px] py-4">Could not load history.</div>';
+            }
+        }
+
+        // SAVE BOOKING TO FIRESTORE
+        window.saveBookingToFirestore = async (bookingData) => {
+            try {
+                await addDoc(collection(db, "bookings"), {
+                    ...bookingData,
+                    timestamp: serverTimestamp(),
+                    userEmail: currentUser ? currentUser.email : 'guest'
+                });
+                return true;
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                alert("Error saving booking. Screenshot this screen.");
+                return false;
+            }
+        };
+
+        // ADMIN: FETCH ALL BOOKINGS
+        window.loadAdminData = async () => {
+            if(!currentUser || currentUser.email !== ADMIN_EMAIL) return;
+
+            const listContainer = document.getElementById('admin-bookings-list');
+            listContainer.innerHTML = '<div class="loader mx-auto"></div>';
+
+            const q = query(collection(db, "bookings"), orderBy("timestamp", "desc"));
+            const querySnapshot = await getDocs(q);
+            
+            let html = '';
+            let total = 0;
+            let revenue = 0;
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                total++;
+                revenue += parseInt(data.price || 0);
+                
+                let dateStr = "Just now";
+                if(data.timestamp) {
+                    dateStr = new Date(data.timestamp.seconds * 1000).toLocaleDateString() + ' ' + new Date(data.timestamp.seconds * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                }
+
+                html += `
+                <div class="card-dark p-4 rounded-2xl border-l-4 border-indigo-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold text-sm text-white">${data.name}</h4>
+                        <span class="text-[10px] text-gray-500 font-mono">${dateStr}</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-xs mb-2">
+                        <div class="text-gray-400">Service: <span class="text-white">${data.service}</span></div>
+                        <div class="text-gray-400 text-right">Price: <span class="text-green-400 font-bold">₹${data.price}</span></div>
+                    </div>
+                    <div class="bg-black/30 p-2 rounded-lg mb-2">
+                        <p class="text-[9px] text-gray-500 uppercase">Verification (Payment ID)</p>
+                        <p class="font-mono text-xs text-indigo-400 break-all select-all">${data.paymentId}</p>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px] text-gray-500">
+                        <span><i class="fab fa-whatsapp"></i> ${data.phone}</span>
+                        <span class="text-indigo-300">${data.userEmail}</span>
+                    </div>
+                </div>`;
+            });
+
+            if(total === 0) html = '<div class="text-center text-gray-500 mt-10">No bookings yet.</div>';
+
+            listContainer.innerHTML = html;
+            document.getElementById('admin-total-orders').textContent = total;
+            document.getElementById('admin-total-revenue').textContent = '₹' + revenue.toLocaleString();
+        };
+
+    </script>
 
     <script>
         // Store booking data
@@ -296,14 +607,13 @@
             document.getElementById(tabId).classList.add('active');
 
             const nav = document.querySelector('nav');
-            if(tabId === 'payment-gateway' || tabId === 'success-page') {
+            if(tabId === 'payment-gateway' || tabId === 'success-page' || tabId === 'admin-dashboard') {
                 nav.style.transform = 'translateY(100%)';
-                nav.style.transition = 'transform 0.3s ease';
             } else {
                 nav.style.transform = 'translateY(0)';
             }
 
-            if(tabId !== 'payment-gateway' && tabId !== 'success-page') {
+            if(tabId !== 'payment-gateway' && tabId !== 'success-page' && tabId !== 'admin-dashboard') {
                 document.querySelectorAll('.nav-btn').forEach(btn => {
                     btn.classList.remove('active-link', 'text-white');
                     btn.classList.add('text-gray-600');
@@ -315,6 +625,32 @@
             document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // --- AUTH UI TOGGLE ---
+        function toggleAuth(type) {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const btnLogin = document.getElementById('btn-login');
+            const btnSignup = document.getElementById('btn-signup');
+
+            if(type === 'login') {
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                btnLogin.className = "flex-1 py-3 text-[10px] font-bold rounded-xl sub-tab-active";
+                btnSignup.className = "flex-1 py-3 text-[10px] font-bold rounded-xl sub-tab-inactive";
+            } else {
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                btnLogin.className = "flex-1 py-3 text-[10px] font-bold rounded-xl sub-tab-inactive";
+                btnSignup.className = "flex-1 py-3 text-[10px] font-bold rounded-xl sub-tab-active";
+            }
+        }
+
+        function openAdminDashboard() {
+            switchTab('admin-dashboard');
+            if(window.loadAdminData) window.loadAdminData();
+        }
+
+        // --- PRICING LOGIC ---
         function togglePricing(type) {
             const webBtn = document.getElementById('tab-web');
             const appBtn = document.getElementById('tab-app');
@@ -353,6 +689,12 @@
 
         function handleProceedToPay(e) {
             e.preventDefault();
+            // Auth check
+            if(document.getElementById('proceedBtn').disabled) {
+                switchTab('profile');
+                return;
+            }
+
             const service = document.getElementById('bookingService').value;
             const price = document.getElementById('bookingPriceRaw').value;
             
@@ -368,13 +710,14 @@
                 message: document.getElementById('bookingMessage').value,
                 service: service,
                 price: price,
-                id: 'MRSH-' + Math.floor(1000 + Math.random() * 9000)
+                id: 'MRSH-' + Math.floor(1000 + Math.random() * 9000),
+                paymentId: '' // Will be filled later
             };
 
             // Setup Payment Page
             document.getElementById('payAmount').innerText = '₹' + parseInt(price).toLocaleString();
             
-            // Generate QR Code with SPECIFIC UPI ID
+            // Generate QR
             const payeeVPA = "lifegas1987-1@okhdfcbank";
             const payeeName = "MourishDevelopers";
             const upiString = `upi://pay?pa=${payeeVPA}&pn=${payeeName}&am=${price}&tn=${currentBooking.id}`;
@@ -410,30 +753,17 @@
             const payeeName = "MourishDevelopers";
             const amount = currentBooking.price;
             const txnId = currentBooking.id;
-            
-            // Base Params
             const params = `pa=${payeeVPA}&pn=${payeeName}&am=${amount}&tn=${txnId}&cu=INR`;
             
             let url = "";
+            if (appName === 'phonepe') url = `phonepe://pay?${params}`;
+            else if (appName === 'paytm') url = `paytmmp://pay?${params}`;
+            else if (appName === 'gpay') url = `tez://upi/pay?${params}`;
+            else url = `upi://pay?${params}`;
 
-            if (appName === 'phonepe') {
-                url = `phonepe://pay?${params}`;
-            } else if (appName === 'paytm') {
-                url = `paytmmp://pay?${params}`;
-            } else if (appName === 'gpay') {
-                url = `tez://upi/pay?${params}`;
-            } else {
-                url = `upi://pay?${params}`;
-            }
-
-            // Fallback strategy: If specific scheme fails, browser might show error. 
-            // Standard web practice is to try the link. 
-            // If it works, the app opens. 
-            // After clicking, we show the confirmation overlay.
-            
             window.location.href = url;
             
-            // Show overlay after a short delay to allow the app to open
+            // Show overlay to collect UTR
             setTimeout(() => {
                 const overlay = document.getElementById('processing-overlay');
                 overlay.classList.remove('hidden');
@@ -447,24 +777,34 @@
             overlay.classList.remove('flex');
         }
 
-        function confirmManualPayment() {
+        async function confirmManualPayment() {
+            const utr = document.getElementById('manualPaymentId').value;
+            if(!utr || utr.length < 4) {
+                alert("Please enter the Payment ID (UTR/Reference No) from your UPI App.");
+                return;
+            }
+
+            currentBooking.paymentId = utr;
             closeOverlay();
             
+            // SAVE TO FIREBASE
+            if(window.saveBookingToFirestore) {
+                await window.saveBookingToFirestore(currentBooking);
+            }
+
             // Populate Success Page
             const date = new Date();
             document.getElementById('receipt-id').innerText = '#' + currentBooking.id;
-            document.getElementById('receipt-date').innerText = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            document.getElementById('receipt-utr').innerText = currentBooking.paymentId;
             document.getElementById('receipt-amount').innerText = '₹' + parseInt(currentBooking.price).toLocaleString();
             
             switchTab('success-page');
         }
 
-        function finalizeBooking() {
-            const text = `*New Web Development Request*%0A%0A*PROJECT DETAILS*%0A*Plan:* ${currentBooking.service}%0A*Requirements:* ${currentBooking.message}%0A%0A*PAYMENT PROOF*%0A*Status:* ✅ Payment Successful%0A*Order ID:* ${currentBooking.id}%0A*Amount Paid:* ₹${currentBooking.price}%0A*UPI ID Used:* lifegas1987-1@okhdfcbank%0A%0A*CLIENT INFO*%0A*Name:* ${currentBooking.name}%0A*Phone:* ${currentBooking.phone}%0A%0A_Sent via Mourish Website_`;
+        function finalizeBookingWhatsApp() {
+            const text = `*New Web Development Request*%0A%0A*PROJECT DETAILS*%0A*Plan:* ${currentBooking.service}%0A*Requirements:* ${currentBooking.message}%0A%0A*PAYMENT PROOF*%0A*Status:* ✅ Payment Successful%0A*Order ID:* ${currentBooking.id}%0A*Transaction ID (UTR):* ${currentBooking.paymentId}%0A*Amount Paid:* ₹${currentBooking.price}%0A*UPI ID Used:* lifegas1987-1@okhdfcbank%0A%0A*CLIENT INFO*%0A*Name:* ${currentBooking.name}%0A*Phone:* ${currentBooking.phone}%0A%0A_Sent via Mourish Website_`;
             window.open(`https://wa.me/919487410078?text=${text}`, '_blank');
         }
     </script>
 </body>
 </html>
-
-
