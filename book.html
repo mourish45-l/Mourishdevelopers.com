@@ -802,7 +802,7 @@
         }
 
         function finalizeBookingWhatsApp() {
-            const text = `*New Web Development Request*%0A%0A*PROJECT DETAILS*%0A*Plan:* ${currentBooking.service}%0A*Requirements:* ${currentBooking.message}%0A%0A*PAYMENT PROOF*%0A*Status:* ✅ Payment Successful%0A*Order ID:* ${currentBooking.id}%0A*UPI ID:* ${currentBooking.paymentId}%0A*Amount Paid:* ₹${currentBooking.price}%0A*UPI ID Used:* lifegas1987-1@okhdfcbank%0A%0A*CLIENT INFO*%0A*Name:* ${currentBooking.name}%0A*Phone:* ${currentBooking.phone}%0A%0A_Sent via Mourish Website_`;
+            const text = `*New Web Development Request*%0A%0A*PROJECT DETAILS*%0A*Plan:* ${currentBooking.service}%0A*Requirements:* ${currentBooking.message}%0A%0A*PAYMENT PROOF*%0A*Status:* ✅ Payment Successful%0A*Order ID:* ${currentBooking.id}%0A*UPI ID Used to Pay:* ${currentBooking.paymentId}%0A*Amount Paid:* ₹${currentBooking.price}%0A*UPI ID Used:* lifegas1987-1@okhdfcbank%0A%0A*CLIENT INFO*%0A*Name:* ${currentBooking.name}%0A*Phone:* ${currentBooking.phone}%0A%0A_Sent via Mourish Website_`;
             window.open(`https://wa.me/919487410078?text=${text}`, '_blank');
         }
     </script>
