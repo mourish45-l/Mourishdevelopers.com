@@ -1,412 +1,416 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mourish Developers Web And App Developers</title>
-  <link rel="icon" href="Mourish Developers Logo Design.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mourish Developers | Responsive 3D Experiences</title>
+    <link rel="icon" href="Mourish Developers Logo Design.png" type="image/png">
   <meta name="description" content="Mourish Developers build responsive websites and apps using modern technologies like Bootstrap, Firebase, and payment gateways." />
   <meta name="keywords" content="Mourish Developers, web development, app design, Firebase, e-commerce, responsive websites, India" />
   <meta name="author" content="Mourish Developers" />
   <meta name="google-site-verification" content="j75MNZTxGcB7SRU7kZa-ED0csoryKrEjtyOYv79BJ_Q" /> 
 <meta name="google-site-verification" content="Yvg_j7ciGOIbdx7vKkvaGd0_lVvqM8SPzKixw152-Hg" />
   <meta name="google-site-verification" content="HiLK2kinkGRGiOGoiNuHry-dK_8hT0bD6wjprqP1uMg" />
+  
+    <!-- Frameworks & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Bootstrap and Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-  <!-- Font Awesome and Boxicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
+    <style>
+        :root {
+            --bg-deep: #0a0a0f;
+            --neon-cyan: #00f0ff;
+            --electric-purple: #8b5cf6;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        #hero-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .pricing-card, .client-card, .feature-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+        }
+
+        @media (hover: hover) {
+            .pricing-card:hover, .client-card:hover, .feature-card:hover {
+                transform: translateY(-10px);
+                border-color: var(--neon-cyan);
+                background: rgba(255, 255, 255, 0.06);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.75rem; line-height: 1.1; }
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+    </style>
 </head>
-<body class="bg-[#031B4E] text-white font-poppins overflow-x-hidden relative">
+<body>
 
-<!-- Three.js Background Canvas -->
-<canvas id="three-bg" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
+    <canvas id="hero-canvas"></canvas>
 
-<!-- Navbar -->
-<!-- ... Your Navbar & entire content as it is ... -->
- <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-md bg-[rgba(3,27,78,0.85)] backdrop-blur-md border-b border-white/10 py-3 z-50">
-  <div class="container flex flex-wrap items-center justify-between mx-auto">
-    <a href="#home" class="navbar-brand fw-bold text-white flex items-center gap-2 text-xl md:text-2xl font-extrabold select-none">
-      <i class='bx bx-code-alt text-blue-400 text-3xl'></i>Mourish Developers
-    </a>
-    <button class="navbar-toggler bg-white/90 text-blue-700 p-2 rounded-md" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="bi bi-list text-xl"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-end" id="navbarMenu">
-      <ul class="navbar-nav flex flex-col md:flex-row gap-3 md:gap-6 mt-3 md:mt-0 text-white font-semibold">
-        <li><a href="#intro-video" class="nav-link hover:text-blue-400">About</a></li>
-        <li><a href="#services" class="nav-link hover:text-blue-400">Services</a></li>
-        <li><a href="#features" class="nav-link hover:text-blue-400">Features</a></li>
-        <li><a href="#ai-tools" class="nav-link hover:text-blue-400">AI Tools</a></li>
-        <li><a href="#hosting" class="nav-link hover:text-blue-400">Hosting</a></li>
-<li><a href="#clients" class="nav-link hover:text-blue-400">Clients</a></li>
-        <li><a href="#contact" class="nav-link hover:text-blue-400">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[100] px-4 md:px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 md:px-8 py-3">
+            <div class="text-xl md:text-2xl font-bold font-heading tracking-tighter">
+                MOURISH<span class="text-[#00f0ff]"> Developers</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#features" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Features</a>
+                <a href="#work" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Clients</a>
+                <a href="#pricing" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Pricing</a>
+                <a href="book.html" class="bg-white text-black px-6 py-2 rounded-full text-sm font-bold hover:bg-[#00f0ff] transition-all flex items-center gap-2">
+                    Book Now
+                </a>
+            </div>
 
-<!-- Hero Section -->
-<section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-5 container mx-auto pt-20">
-  <h1 class="text-transparent bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500 bg-clip-text text-6xl md:text-7xl font-extrabold mb-6 animate-text-shine">
-    Build Your Digital Future
-  </h1>
-  <p class="text-lg md:text-xl text-blue-200 max-w-xl mb-8">
-    Stunning websites & powerful apps crafted with precision and creativity
-  </p>
-  <button class="cta-btn px-8 py-3 rounded-full text-white font-semibold shadow-lg shadow-blue-600/50 transition-transform hover:-translate-y-1" 
-          onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-    Start Your Project
-  </button>
-</section>
+            <button id="menu-toggle" class="md:hidden text-2xl p-2 focus:outline-none">
+                <i class="bx bx-menu-alt-right"></i>
+            </button>
+        </div>
+    </nav>
 
-<!-- Introduction Video -->
-<section id="intro-video" class="py-16 container mx-auto px-5 text-center max-w-5xl">
-  <h2 class="section-title text-transparent bg-gradient-to-r from-white via-blue-400 to-purple-700 bg-clip-text font-extrabold text-4xl mb-4 select-none">
-    Meet Mourish Developers
-  </h2>
-  <p class="mb-8 text-blue-300 text-lg">Discover our journey and expertise</p>
-  <div class="video-wrapper mx-auto rounded-3xl overflow-hidden shadow-lg border border-white/10">
-    <iframe class="w-full aspect-video"
-      src="https://www.canva.com/design/DAG1fvfpMwY/1QewTjfJGIGpP8O7UHWOww/watch?embed"
-      title="Mourish Developers Intro"
-      allowfullscreen
-      ></iframe>
-  </div>
-  <div class="glass-card mt-10 max-w-xl mx-auto p-8 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-md text-blue-300">
-    <h4 class="text-2xl font-semibold mb-3">Get In Touch</h4>
-    <p class="text-lg flex items-center justify-center gap-2 font-semibold">
-      <i class="bi bi-envelope-fill text-blue-400"></i>
-      <a href="mailto:mourishdevelopers@gmail.com" class="email-link hover:underline">mourishdevelopers@gmail.com</a>
-    </p>
-    <p class="mt-1 text-sm text-gray-400">We usually respond within 24 hours</p>
-  </div>
-</section>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[110] bg-[#0a0a0f] p-8 flex flex-col items-center justify-center space-y-8 md:hidden">
+        <button id="menu-close" class="absolute top-8 right-8 text-4xl">
+            <i class="bx bx-x"></i>
+        </button>
+        <a href="#features" class="text-2xl font-bold font-heading mobile-link">Features</a>
+        <a href="#work" class="text-2xl font-bold font-heading mobile-link">Clients</a>
+        <a href="#pricing" class="text-2xl font-bold font-heading mobile-link">Pricing</a>
+        <a href="book.html" class="bg-[#8b5cf6] w-full text-center py-4 rounded-xl font-bold">Book Now</a>
+    </div>
 
-<!-- Features Section -->
-<section id="features" class="py-16 container mx-auto px-5 text-center max-w-7xl">
-  <h2 class="text-transparent bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500 bg-clip-text text-6xl md:text-7xl font-extrabold mb-6 animate-text-shine">Why Choose Us</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 mt-10">
-    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
-      <i class="bi bi-lightning-charge feature-icon text-6xl mb-4 text-gradient"></i>
-      <h3 class="text-xl font-semibold mb-3 text-white">Lightning Fast</h3>
-      <p class="text-blue-300">Blazing speed and on-time delivery—never compromising quality.</p>
-    </div>
-    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
-      <i class="bi bi-shield-lock feature-icon text-6xl mb-4 text-gradient"></i>
-      <h3 class="text-xl font-semibold mb-3 text-white">Bank-Level Security</h3>
-      <p class="text-blue-300">Top-tier data protection and encryption for your peace of mind.</p>
-    </div>
-    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
-      <i class="fas fa-flask feature-icon text-6xl mb-4 text-gradient"></i>
-      <h3 class="text-xl font-semibold mb-3 text-white">Testing & QA</h3>
-      <p class="text-blue-300">We provide test URLs to preview functionality and APIs, sharing screen recordings for review.</p>
-    </div>
-    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
-      <i class="fas fa-server feature-icon text-6xl mb-4 text-gradient"></i>
-      <h3 class="text-xl font-semibold mb-3 text-white">Backend</h3>
-      <p class="text-blue-300">Expertise in backend, API keys, and server-side logic.</p>
-    </div>
-    <div class="glass-card p-8 rounded-3xl border border-white/20 backdrop-blur-md">
-      <i class="bi bi-phone feature-icon text-6xl mb-4 text-gradient"></i>
-      <h3 class="text-xl font-semibold mb-3 text-white">Mobile First</h3>
-      <p class="text-blue-300">Responsive and stunning design for all screen sizes.</p>
-    </div>
-  </div>
-</section>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20">
+        <div class="max-w-4xl" id="hero-text">
+            <span class="inline-block px-4 py-1 glass rounded-full text-[10px] md:text-xs font-bold tracking-widest text-[#8b5cf6] mb-6 uppercase">Hyper-Fast Delivery Ecosystem</span>
+            <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
+                High-End Web <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6]">In 7 Days</span>
+            </h1>
+            <p class="text-gray-400 text-base md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+                Premium websites delivered in <span class="text-white font-bold underline decoration-[#00f0ff]">1 week</span>. 
+                Full-scale mobile applications ready in <span class="text-white font-bold underline decoration-[#8b5cf6]">1 month</span>.
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
+                <a href="book.html" class="w-full sm:w-auto px-8 py-4 bg-[#8b5cf6] rounded-xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(139,92,246,0.4)]">
+                    Book Your Project
+                </a>
+                <a href="#pricing" class="w-full sm:w-auto px-8 py-4 glass rounded-xl font-bold border border-white/10 hover:bg-white/5 transition-all">View Price List</a>
+            </div>
+        </div>
+    </section>
 
-<!-- Services & Pricing -->
-<section id="services" class="py-16 container mx-auto px-5 text-center max-w-7xl">
-  <h2 class="text-transparent bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500 bg-clip-text text-6xl md:text-7xl font-extrabold mb-6 animate-text-shine">Services & Pricing</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-12">
-    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
-      <i class="bi bi-file-earmark-code feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
-      <h4 class="text-2xl font-semibold mb-2">Simple Website</h4>
-      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹3K</div>
-      <p class="text-blue-300">Clean, responsive static website with modern UI.</p>
-    </div>
-    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
-      <i class="bi bi-layout-text-window feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
-      <h4 class="text-2xl font-semibold mb-2">Advanced Website</h4>
-      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹3.5K</div>
-      <p class="text-blue-300">Dynamic site with advanced interactivity.</p>
-    </div>
-    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
-      <i class="bi bi-person-lock feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
-      <h4 class="text-2xl font-semibold mb-2">Login Website</h4>
-      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹4K</div>
-      <p class="text-blue-300">Secure login system with Firebase and other third party app integration.</p>
-    </div>
-    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
-      <i class="bi bi-credit-card feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
-      <h4 class="text-2xl font-semibold mb-2">Payment Website</h4>
-      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹4.5K</div>
-      <p class="text-blue-300">Payment intergration on your website with Razorpay, PhonePe, Easebuzz, etc.</p>
-    </div>
-    <div class="pricing-card p-8 rounded-3xl border border-white/20 backdrop-blur-md group cursor-pointer transition-transform hover:scale-[1.05]">
-      <i class="fa-solid fa-microchip-ai feature-icon text-5xl mb-4 text-gradient group-hover:animate-bounce"></i>
-      <h4 class="text-2xl font-semibold mb-2">AI Powered Website</h4>
-      <div class="price text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-4xl mb-3">₹5K</div>
-      <p class="text-blue-300">AI intergration on your website with Gemini(Google), DeepSeek, ChatGPT(OpenAI), etc.</p>
-    </div>
-  </div>
-  <div class="glass-card mt-14 max-w-xl mx-auto p-10 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-md text-blue-200">
-    <h3 class="text-3xl font-extrabold mb-4">Mobile App Development</h3>
-    <p class="text-lg mb-6">Custom Android & iOS apps starting from <span class="text-transparent bg-gradient-to-r from-white via-pink-500 to-purple-600 font-extrabold text-3xl">₹10K - ₹20K</span></p>
-    <button class="cta-btn px-10 py-3 rounded-full text-white font-semibold shadow-lg shadow-blue-600/50 transition-transform hover:-translate-y-1" 
-            onclick="window.open('book.html')">
-      Request App Quote
-    </button>
-  </div>
-</section>
+    <!-- Features Section -->
+    <section id="features" class="py-20 md:py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-6xl font-bold mb-4">Core Features</h2>
+                <p class="text-gray-400 text-sm md:text-base">Why world-class brands choose Mourish Developers.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="feature-card glass p-8 rounded-3xl">
+                    <i class="bx bx-bolt-circle text-4xl text-[#00f0ff] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-2">Turbo Speed</h3>
+                    <p class="text-gray-500 text-sm">Websites delivered in under 7 days without compromising quality.</p>
+                </div>
+                <div class="feature-card glass p-8 rounded-3xl">
+                    <i class="bx bx-layer text-4xl text-[#8b5cf6] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-2">3D Immersive</h3>
+                    <p class="text-gray-500 text-sm">Integrating Three.js and WebGL for interactive user experiences.</p>
+                </div>
+                <div class="feature-card glass p-8 rounded-3xl">
+                    <i class="bx bx-shield-quarter text-4xl text-[#00f0ff] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-2">Bank-Grade</h3>
+                    <p class="text-gray-500 text-sm">Secure auth and payment systems built with modern encryption.</p>
+                </div>
+                <div class="feature-card glass p-8 rounded-3xl">
+                    <i class="bx bx-mobile-alt text-4xl text-[#8b5cf6] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-2">Native Apps</h3>
+                    <p class="text-gray-500 text-sm">Custom Android and iOS solutions ready for production in 30 days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Clients -->
-<section id="clients" class="py-16 container mx-auto px-5 max-w-7xl">
-  <h2 style="text-align: center;" class="text-transparent bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500 bg-clip-text text-6xl md:text-7xl font-extrabold mb-6 animate-text-shine">Our Clients</h2>  
-<!-- Thulir Creations Project Card -->  <div class="mt-12 bg-[#0f172a] rounded-3xl shadow-md border border-white/20 p-8 backdrop-blur-md">
-    <h3 class="text-center text-3xl font-extrabold text-white mb-6 select-none">Thulir Creations</h3><!-- Website Link -->
-<p class="text-center mb-6">
-  <a href="https://mourish45-l.github.io/thulircreations.store/" target="_blank" class="text-blue-400 underline text-lg select-none">
-    Visit Thulir Creations Website
-  </a>
-</p>
-  
-</div>
-  <div class="mt-12 bg-[#0f172a] rounded-3xl shadow-md border border-white/20 p-8 backdrop-blur-md">
-    <h3 class="text-center text-3xl font-extrabold text-white mb-6 select-none">Life Gas System</h3><!-- Website Link -->
-<p class="text-center mb-6">
-  <a href="https://manufacturing.lgs.co.in/" target="_blank" class="text-blue-400 underline text-lg select-none">
-    Visit Life Gas System Website
-  </a>
-</p>
-</div>
-  
-  <div class="mt-12 bg-[#0f172a] rounded-3xl shadow-md border border-white/20 p-8 backdrop-blur-md">
-    <h3 class="text-center text-3xl font-extrabold text-white mb-6 select-none">Anira BS Enterprises</h3><!-- Website Link -->
-<p class="text-center mb-6">
-  <a href="https://mourish45-l.github.io/Anira-BS-Enterprisers/" target="_blank" class="text-blue-400 underline text-lg select-none">
-    Visit Anira BS Enterprises Website 
-  </a>
-</p>
-  </div>
+    <!-- Clients Section -->
+    <section id="work" class="py-20 md:py-32 px-6 bg-gradient-to-b from-transparent to-[#0a0a0f]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-6xl font-bold mb-4">Strategic Partners</h2>
+                <p class="text-gray-400 text-sm md:text-base">Trusted by innovative companies globally.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="https://mourish45-l.github.io/thulircreations.store/" target="_blank" class="client-card glass p-8 rounded-3xl flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 glass rounded-full flex items-center justify-center mb-6">
+                        <i class="bx bx-shopping-bag text-2xl text-[#00f0ff]"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Thulir Creations</h3>
+                    <p class="text-gray-500 text-xs mb-4">Retail & Store Experience</p>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#00f0ff]">Visit Store <i class="bx bx-right-arrow-alt align-middle"></i></span>
+                </a>
+                <a href="https://manufacturing.lgs.co.in/" target="_blank" class="client-card glass p-8 rounded-3xl flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 glass rounded-full flex items-center justify-center mb-6">
+                        <i class="bx bx-factory text-2xl text-[#8b5cf6]"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Life Gas System</h3>
+                    <p class="text-gray-500 text-xs mb-4">Industrial Manufacturing</p>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#8b5cf6]">Explore System <i class="bx bx-right-arrow-alt align-middle"></i></span>
+                </a>
+                <a href="https://mourish45-l.github.io/Anira-BS-Enterprisers/" target="_blank" class="client-card glass p-8 rounded-3xl flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 glass rounded-full flex items-center justify-center mb-6">
+                        <i class="bx bx-briefcase text-2xl text-[#00f0ff]"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Anira BS Enterprises</h3>
+                    <p class="text-gray-500 text-xs mb-4">Enterprise Management</p>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#00f0ff]">View Profile <i class="bx bx-right-arrow-alt align-middle"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-  </div>
-</section>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 md:py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-6xl font-bold mb-4 text-center">Pricing Plans</h2>
+                <p class="text-gray-400 text-sm md:text-base">Scalable digital infrastructure for every need.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Simple -->
+                <div class="pricing-card glass p-8 md:p-10 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Simple</h3>
+                            <span class="text-[10px] glass px-2 py-1 rounded text-[#00f0ff]">7 DAYS</span>
+                        </div>
+                        <div class="text-3xl font-bold mb-6 text-[#00f0ff]">₹3,000 <span class="text-sm font-normal text-gray-500">/start</span></div>
+                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Responsive Landing Page</li>
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Modern UI Kit</li>
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Standard SEO</li>
+                        </ul>
+                    </div>
+                    <a href="book.html" class="text-center w-full py-4 glass rounded-xl font-bold text-sm hover:bg-white hover:text-black transition-all">Book Now</a>
+                </div>
 
-<!-- AI Tools -->
-<section id="ai-tools" class="py-16 container mx-auto px-5 text-center max-w-7xl">
-  <h2 class="text-transparent bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500 bg-clip-text text-6xl md:text-7xl font-extrabold mb-6 animate-text-shine">AI-Powered Development</h2>
-  <p class="text-blue-300 mb-12 max-w-2xl mx-auto text-lg">Integrating modern AI tech into projects</p>
-  <div class="flex flex-wrap justify-center gap-10">
-    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="ChatGPT-Logo.png" alt="ChatGPT" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">ChatGPT</p>
-    </div>
-    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="claude-icon-8x.png" alt="Claude" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Claude</p>
-    </div>
-    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="perplexity-e6a4e1t06hd6dhczot580o.png" alt="Perplexity" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Perplexity</p>
-    </div>
-      <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="download.jpeg" alt="Trae" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Trae</p>
-    </div>
-    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="download (1).png" alt="Cursor" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Emergent</p>
-    </div>
-    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="download (2).png" alt="Perplexity" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Cursor</p>
-    </div>
-      <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="download.png" alt="Perplexity" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Google AI Studio</p>
-      </div>
-    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="Bolt.jpg" alt="Bolt" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Bolt</p>
-    </div>
-    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="deepseek-icon-filled-256.png" alt="DeepSeek" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">DeepSeek</p>
-    </div>
-     <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="Gemini_Generated_Image_bd74xwbd74xwbd74.png" alt="Mourish AI" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Mourish AI</p>
-    </div>
-    <div class="ai-tool-card rounded-xl border border-white/20 backdrop-blur-md p-6 flex flex-col items-center gap-4 cursor-pointer transition hover:scale-105">
-      <img src="gemini_icon-logo_brandlogos.net_bqzeu.png" alt="Gemini" class="w-14 h-14 object-contain" />
-      <p class="font-semibold text-white">Gemini</p>
-    </div>
-  </div>
-</section>
-        
- 
+                <!-- Advanced -->
+                <div class="pricing-card glass p-8 md:p-10 rounded-3xl border-[#8b5cf6]/40 relative flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 bg-[#8b5cf6] px-4 py-1 text-[10px] font-bold uppercase rounded-bl-xl">Popular</div>
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Advanced</h3>
+                            <span class="text-[10px] glass px-2 py-1 rounded">7 DAYS</span>
+                        </div>
+                        <div class="text-3xl font-bold mb-6">₹3,500 <span class="text-sm font-normal text-gray-500">/start</span></div>
+                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
+                            <li><i class="bx bx-check text-[#8b5cf6] mr-2"></i> Multi-page Architecture</li>
+                            <li><i class="bx bx-check text-[#8b5cf6] mr-2"></i> Custom 3D Elements</li>
+                            <li><i class="bx bx-check text-[#8b5cf6] mr-2"></i> GSAP Animations</li>
+                        </ul>
+                    </div>
+                    <a href="book.html" class="text-center w-full py-4 bg-[#8b5cf6] rounded-xl font-bold text-sm hover:scale-105 transition-all">Book Now</a>
+                </div>
 
-<!-- Hosting -->
-<section id="hosting" class="py-16 container mx-auto px-5 text-center max-w-7xl">
-  <h2 class="text-transparent bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500 bg-clip-text text-6xl md:text-7xl font-extrabold mb-6 animate-text-shine">Hosting Partners</h2>
-  <p class="text-blue-300 mb-12 max-w-2xl mx-auto text-lg">Reliable and scalable hosting options</p>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
-      <img src="google-cloud.png" alt="Google Cloud" class="max-h-14 object-contain filter brightness-0 invert" />
-      <p class="text-white font-semibold text-lg mt-2">Google Cloud</p>
-      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">Premium</span>
-    </div>
-    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
-      <img src="Godaddy-logo.png" alt="GoDaddy" class="max-h-14 object-contain filter brightness-0 invert" />
-      <p class="text-white font-semibold text-lg mt-2">GoDaddy</p>
-      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">₹1 - ₹1600/yr</span>
-    </div>
-    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
-      <img src="free-github-logo-icon-svg-download-png-47401.png" alt="GitHub Pages" class="max-h-14 object-contain filter brightness-0 invert" />
-      <p class="text-white font-semibold text-lg mt-2">GitHub Pages</p>
-      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">₹25</span>
-    </div>
-    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
-      <img src="hi.png" alt="vercel" class="max-h-14 object-contain filter brightness-0 invert" />
-      <p class="text-white font-semibold text-lg mt-2">Vercel</p>
-      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">₹100</span>
-    </div>
-    <div class="hosting-card rounded-xl border border-white/20 backdrop-blur-md p-8 flex flex-col items-center gap-4 cursor-default transition-all hover:scale-105">
-      <img src="Hostinger_vector_Logo_logoshape.com_.png" alt="Hostinger" class="max-h-14 object-contain filter brightness-0 invert" />
-      <p class="text-white font-semibold text-lg mt-2">Hostinger</p>
-      <span class="hosting-price py-1 px-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold text-sm select-none">Affordable</span>
-    </div>
-  </div>
- </section>
+                <!-- Auth -->
+                <div class="pricing-card glass p-8 md:p-10 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Auth/Login</h3>
+                            <span class="text-[10px] glass px-2 py-1 rounded text-[#00f0ff]">7 DAYS</span>
+                        </div>
+                        <div class="text-3xl font-bold mb-6">₹4,000 <span class="text-sm font-normal text-gray-500">/start</span></div>
+                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
+                            <li><i class="bx bx-lock text-[#00f0ff] mr-2"></i> Secure User Authentication</li>
+                            <li><i class="bx bx-user-circle text-[#00f0ff] mr-2"></i> Dashboard UI</li>
+                            <li><i class="bx bx-data text-[#00f0ff] mr-2"></i> Database Hosting</li>
+                        </ul>
+                    </div>
+                    <a href="book.html" class="text-center w-full py-4 glass rounded-xl font-bold text-sm hover:bg-white hover:text-black transition-all">Book Now</a>
+                </div>
+                                <div class="pricing-card glass p-8 md:p-10 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Payment</h3>
+                            <span class="text-[10px] glass px-2 py-1 rounded text-[#00f0ff]">7 DAYS</span>
+                        </div>
+                        <div class="text-3xl font-bold mb-6 text-[#00f0ff]">₹4,500 <span class="text-sm font-normal text-gray-500">/start</span></div>
+                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Full payment intergration</li>
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Best for E commerce</li>
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> We will not share your PAN to others</li>
+                        </ul>
+                    </div>
+                    <a href="book.html" class="text-center w-full py-4 glass rounded-xl font-bold text-sm hover:bg-white hover:text-black transition-all">Book Now</a>
+                </div>
+                                                <div class="pricing-card glass p-8 md:p-10 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">AI</h3>
+                            <span class="text-[10px] glass px-2 py-1 rounded text-[#00f0ff]">7 DAYS</span>
+                        </div>
+                        <div class="text-3xl font-bold mb-6 text-[#00f0ff]">₹5,000 <span class="text-sm font-normal text-gray-500">/start</span></div>
+                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Full AI intergration</li>
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Intergrate AI like gemini, chatgpt </li>
+                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Secure chat</li>
+                        </ul>
+                    </div>
+                    <a href="book.html" class="text-center w-full py-4 glass rounded-xl font-bold text-sm hover:bg-white hover:text-black transition-all">Book Now</a>
+                </div>
+            </div>
 
-<!-- Contact / CTA -->
-<section id="contact" class="py-16 container mx-auto px-5 max-w-3xl">
-  <div class="glass-card p-10 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-md text-center">
-    <h2 class="text-4xl font-extrabold mb-6 select-none">Ready to Transform Your Ideas?</h2>
-    <p class="text-lg mb-8 text-blue-300">Let’s create something extraordinary together</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <button class="cta-btn px-6 py-3 rounded-full font-semibold shadow-lg shadow-blue-600/50 transition-transform hover:-translate-y-1 flex items-center gap-2" 
-              onclick="window.open('book.html')">
-        <i class="bi bi-globe"></i> Website Request
-      </button>
-      <button class="cta-btn px-6 py-3 rounded-full font-semibold shadow-lg shadow-green-500/50 bg-green-600 hover:bg-green-700 transition-transform hover:-translate-y-1 flex items-center gap-2" 
-              onclick="window.open('https://www.whatsapp.com/channel/0029Vb7HEDm3LdQd58bdIy1a', '_blank')">
-        <i class="bi bi-whatsapp"></i> WhatsApp Channel
-      </button>
-      <button class="cta-btn px-6 py-3 rounded-full font-semibold shadow-lg shadow-green-500/50 bg-green-600 hover:bg-green-700 transition-transform hover:-translate-y-1 flex items-center gap-2" 
-              onclick="window.open('https://wa.me/+919487410078', '_blank')">
-        <i class="bi bi-whatsapp"></i> Chat on WhatsApp
-      </button>
-    </div>
-  </div>
-</section>
+            <!-- Mobile Apps -->
+            <div class="mt-8 glass p-6 md:p-8 rounded-3xl border-l-4 border-[#8b5cf6] flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+                        <h4 class="text-lg md:text-xl font-bold">Native App Development</h4>
+                        <span class="text-[8px] bg-[#8b5cf6]/20 text-[#8b5cf6] px-2 py-1 rounded font-bold">30 DAYS</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">High-performance Android and iOS solutions.</p>
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6] mb-2">
+                        ₹10,000 - ₹50,000
+                    </div>
+                    <a href="book.html?service=MobileApp" class="px-6 py-2 bg-white/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#8b5cf6] hover:bg-white/10 transition-all">Book Now <i class="bx bx-right-arrow-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Professional Footer -->
-<footer class="mt-16 py-10 bg-[rgba(3,27,78,0.95)] border-t border-white/10 text-blue-200 text-center relative z-30">
-  <div class="container mx-auto px-5">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-3 justify-center">
-        <img src="Mourish Developers Logo Design.png" alt="Mourish Logo" class="h-10 w-10 rounded-full border border-blue-500" />
-        <span class="font-extrabold text-2xl text-white">Mourish Developers</span>
-      </div>
-      <div class="flex gap-4 justify-center">
-        <a href="mailto:mourishdevelopers@gmail.com" class="hover:text-blue-400 transition" title="Email"><i class="bi bi-envelope-fill text-xl"></i></a>
-        <a href="https://wa.me/+919487410078" class="hover:text-green-400 transition" title="WhatsApp"><i class="bi bi-whatsapp text-xl"></i></a>
-        <a href="https://github.com/mourish45-l" class="hover:text-gray-300 transition" title="GitHub"><i class="bx bxl-github text-xl"></i></a>
-        <a href="https://mourish45-l.github.io/website.mourishdevelopers.open/" class="hover:text-pink-400 transition" title="Website"><i class="bi bi-globe text-xl"></i></a>
-      </div>
-    </div>
-    <div class="mt-6 text-sm text-blue-400">
-      &copy; 2026 Mourish Developers. All rights reserved. Handcrafted with <span class="text-pink-400">&hearts;</span> in India.
-    </div>
-    <div class="mt-2 text-xs text-blue-500">
-      Built with <span class="font-semibold">Tailwind CSS</span>, <span class="font-semibold">Bootstrap</span>, <span class="font-semibold">Three.js</span> &amp; <span class="font-semibold">modern UI/UX</span>.
-    </div>
-  </div>
-</footer>
+    <!-- Footer -->
+    <footer class="pt-20 pb-10 px-6 glass mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="text-2xl font-bold font-heading mb-6">MOURISH<span class="text-[#00f0ff]">.</span></div>
+                    <p class="text-gray-400 text-sm max-w-sm leading-relaxed mb-6">
+                        Crafting high-end immersive digital experiences.
+                    </p>
+                    <div class="space-y-2 text-xs md:text-sm">
+                        <a href="mailto:mourishdevelopers@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
+                            <i class="bx bx-envelope"></i> mourishdevelopers@gmail.com
+                        </a>
+                        <a href="https://wa.me/919487410078" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
+                            <i class="bx bxl-whatsapp"></i> +91 9487410078
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4 uppercase text-xs text-[#8b5cf6]">Sitemap</h5>
+                    <ul class="text-gray-500 text-xs space-y-2">
+                        <li><a href="book.html">Start a Project</a></li>
+                        <li><a href="https://mourish45-l.github.io/profilo.mourish/">Our Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4 uppercase text-xs text-[#8b5cf6]">Connect</h5>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/mourish45-l" class="text-2xl hover:text-[#00f0ff]"><i class='bx bxl-github'></i></a>
+                        <a href="https://wa.me/919487410078" class="text-2xl hover:text-[#25D366]"><i class='bx bxl-whatsapp'></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-10 border-t border-white/5 text-center text-gray-500 text-[10px] uppercase tracking-widest">
+                &copy; 2026 Mourish Developers. All rights reserved.
+            </div>
+        </div>
+    </footer>
 
-<!-- Bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Three.js Background Script -->
-<script type="module">
-  // ...Your Three.js and JS code exactly as provided...
- import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
-(function() {
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    60,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
-  const renderer = new THREE.WebGLRenderer({
-    canvas: document.getElementById('three-bg'),
-    antialias: true,
-    alpha: true,
-  });
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const toggleMenu = () => mobileMenu.classList.toggle('active');
+        menuToggle.addEventListener('click', toggleMenu);
+        menuClose.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x031b4e, 1);
-
-  // Geometry and Material
-  const geometry = new THREE.TorusKnotGeometry(12, 3, 150, 20);
-  const material = new THREE.MeshStandardMaterial({
-    color: 0x8b5cf6,
-    metalness: 0.5,
-    roughness: 0.4,
-  });
-  const torusKnot = new THREE.Mesh(geometry, material);
-  scene.add(torusKnot);
-
-  // Lights
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-  scene.add(ambientLight);
-  const pointLight = new THREE.PointLight(0x4f46e5, 3);
-  pointLight.position.set(20, 15, 20);
-  scene.add(pointLight);
-
-  camera.position.z = 40;
-
-  // Animation loop
-  function animate() {
-    requestAnimationFrame(animate);
-    torusKnot.rotation.x += 0.008;
-    torusKnot.rotation.y += 0.01;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-})();
-
-// Handle broken images for Project and AI Tool sections
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.project-card img, .ai-tool-card img').forEach(img => {
-    img.onerror = () => {
-      // Remove broken image
-      img.remove();
-
-      // Create icon fallback
-      const icon = document.createElement('i');
-      icon.className = 'bx bx-error-circle text-white text-4xl';
-      // Insert icon where the image was
-      img.parentNode.insertBefore(icon, img.nextSibling);
-    };
-  });
-});
-</script>
-
+        let scene, camera, renderer, objects = [];
+        function init3D() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            const geometryTypes = [new THREE.IcosahedronGeometry(1, 1), new THREE.TorusGeometry(0.7, 0.2, 16, 100)];
+            const count = window.innerWidth < 768 ? 8 : 15;
+            for(let i = 0; i < count; i++) {
+                const material = new THREE.MeshPhongMaterial({ color: i % 2 === 0 ? 0x00f0ff : 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.15 });
+                const mesh = new THREE.Mesh(geometryTypes[Math.floor(Math.random() * geometryTypes.length)], material);
+                mesh.position.set((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, (Math.random() - 0.5) * 10);
+                const scale = Math.random() * 1.5 + 0.5;
+                mesh.scale.set(scale, scale, scale);
+                scene.add(mesh);
+                objects.push(mesh);
+            }
+            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            const p1 = new THREE.PointLight(0x00f0ff, 2); p1.position.set(5, 5, 5); scene.add(p1);
+            camera.position.z = 8;
+        }
+        function animate() {
+            requestAnimationFrame(animate);
+            objects.forEach((obj, idx) => {
+                obj.rotation.x += 0.003;
+                obj.rotation.y += 0.003;
+                obj.position.y += Math.sin(Date.now() * 0.001 + idx) * 0.002;
+            });
+            renderer.render(scene, camera);
+        }
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        window.onload = () => {
+            init3D(); animate();
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.from("#hero-text > *", { duration: 1, y: 30, opacity: 0, stagger: 0.2, ease: "power3.out" });
+        };
+    </script>
 </body>
 </html>
