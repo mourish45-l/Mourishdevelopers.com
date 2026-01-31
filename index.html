@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mourish Developers | Responsive 3D Experiences</title>
+    <title>Mourish Developers</title>
     <link rel="icon" href="Mourish Developers Logo Design.png" type="image/png">
   <meta name="description" content="Mourish Developers build responsive websites and apps using modern technologies like Bootstrap, Firebase, and payment gateways." />
   <meta name="keywords" content="Mourish Developers, web development, app design, Firebase, e-commerce, responsive websites, India" />
@@ -21,6 +21,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
+        @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-wrapper {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 100%;
+    animation: scroll 30s linear infinite;
+}
+
+.tech-pill {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    margin: 0 15px;
+    border-radius: 12px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.tech-pill:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--neon-cyan);
+    transform: translateY(-2px);
+}
+
+.tech-pill img {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+}
+        
         :root {
             --bg-deep: #0a0a0f;
             --neon-cyan: #00f0ff;
@@ -218,31 +264,56 @@
     </div>
     
     <div class="relative flex overflow-x-hidden glass py-10 border-y border-white/5">
-        <div class="tech-marquee space-x-12 flex items-center">
-            <div class="flex flex-col items-center gap-2 group">
-                <i class="bx bxl-react text-5xl text-[#61DAFB] group-hover:scale-110 transition-transform"></i>
-                <span class="text-[10px] font-bold tracking-widest text-gray-500">REACT</span>
+      <div class="marquee-wrapper">
+        <div class="marquee-content">
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React">
+                <span class="font-bold text-sm">React</span>
             </div>
-            <div class="flex flex-col items-center gap-2 group">
-                <i class="bx bxl-tailwind-css text-5xl text-[#38BDF8] group-hover:scale-110 transition-transform"></i>
-                <span class="text-[10px] font-bold tracking-widest text-gray-500">TAILWIND</span>
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase">
+                <span class="font-bold text-sm">Firebase</span>
             </div>
-            <div class="flex flex-col items-center gap-2 group">
-                <i class="bx bxl-firebase text-5xl text-[#FFCA28] group-hover:scale-110 transition-transform"></i>
-                <span class="text-[10px] font-bold tracking-widest text-gray-500">FIREBASE</span>
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/tailwindcss/38BDF8" alt="Tailwind">
+                <span class="font-bold text-sm">Tailwind CSS</span>
             </div>
-            <div class="flex flex-col items-center gap-2 group">
-                <i class="bx bxl-nodejs text-5xl text-[#339933] group-hover:scale-110 transition-transform"></i>
-                <span class="text-[10px] font-bold tracking-widest text-gray-500">NODE.JS</span>
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL">
+                <span class="font-bold text-sm">MySQL</span>
             </div>
-            <div class="flex flex-col items-center gap-2 group">
-                <i class="bx bxl-stripe text-5xl text-[#635BFF] group-hover:scale-110 transition-transform"></i>
-                <span class="text-[10px] font-bold tracking-widest text-gray-500">STRIPE</span>
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB">
+                <span class="font-bold text-sm">MongoDB</span>
             </div>
-            <div class="flex flex-col items-center gap-2 group">
-                <i class="bx bxl-mongodb text-5xl text-[#47A248] group-hover:scale-110 transition-transform"></i>
-                <span class="text-[10px] font-bold tracking-widest text-gray-500">MONGODB</span>
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI">
+                <span class="font-bold text-sm">OpenAI</span>
             </div>
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/googlegemini/8E75FF" alt="Gemini">
+                <span class="font-bold text-sm">Gemini AI</span>
+            </div>
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/googlepay/white" alt="GPay">
+                <span class="font-bold text-sm">Google Pay</span>
+            </div>
+            <div class="tech-pill">
+                <img src="https://cdn.simpleicons.org/razorpay/3395FF" alt="Razorpay">
+                <span class="font-bold text-sm">Razorpay</span>
+            </div>
+        </div>
+
+        <div class="marquee-content" aria-hidden="true">
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React"><span class="font-bold text-sm">React</span></div>
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase"><span class="font-bold text-sm">Firebase</span></div>
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/tailwindcss/38BDF8" alt="Tailwind"><span class="font-bold text-sm">Tailwind CSS</span></div>
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"><span class="font-bold text-sm">MySQL</span></div>
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB"><span class="font-bold text-sm">MongoDB</span></div>
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI"><span class="font-bold text-sm">OpenAI</span></div>
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/googlegemini/8E75FF" alt="Gemini"><span class="font-bold text-sm">Gemini AI</span></div>
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/googlepay/white" alt="GPay"><span class="font-bold text-sm">Google Pay</span></div>
+            <div class="tech-pill"><img src="https://cdn.simpleicons.org/razorpay/3395FF" alt="Razorpay"><span class="font-bold text-sm">Razorpay</span></div>
         </div>
     </div>
       </section>
