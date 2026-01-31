@@ -99,6 +99,7 @@
                 <a href="#features" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Features</a>
                 <a href="#work" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Clients</a>
                 <a href="#pricing" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Pricing</a>
+                <a href="#tech" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">tech</a>
                 <a href="book.html" class="bg-white text-black px-6 py-2 rounded-full text-sm font-bold hover:bg-[#00f0ff] transition-all flex items-center gap-2">
                     Book Now
                 </a>
@@ -118,6 +119,7 @@
         <a href="#features" class="text-2xl font-bold font-heading mobile-link">Features</a>
         <a href="#work" class="text-2xl font-bold font-heading mobile-link">Clients</a>
         <a href="#pricing" class="text-2xl font-bold font-heading mobile-link">Pricing</a>
+        <a href="#tech" class="text-2xl font-bold font-heading mobile-link">tech</a>
         <a href="book.html" class="bg-[#8b5cf6] w-full text-center py-4 rounded-xl font-bold">Book Now</a>
     </div>
 
@@ -210,6 +212,53 @@
         </div>
     </section>
 
+      <section id="tech" class="py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-12">
+        <h2 style="text-align: center;" class="text-3xl md:text-5xl font-bold font-heading">The Tech Powering <br><span class="text-[#00f0ff]">Your Vision</span></h2>
+    </div>
+    
+    <div class="relative flex overflow-x-hidden glass py-10 border-y border-white/5">
+        <div class="tech-marquee space-x-12 flex items-center">
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-react text-5xl text-[#61DAFB] group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">REACT</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-tailwind-css text-5xl text-[#38BDF8] group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">TAILWIND</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-firebase text-5xl text-[#FFCA28] group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">FIREBASE</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-nodejs text-5xl text-[#339933] group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">NODE.JS</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-stripe text-5xl text-[#635BFF] group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">STRIPE</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-mongodb text-5xl text-[#47A248] group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">MONGODB</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-react text-5xl text-[#61DAFB]"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">REACT</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-tailwind-css text-5xl text-[#38BDF8]"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">TAILWIND</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="bx bxl-firebase text-5xl text-[#FFCA28]"></i>
+                <span class="text-[10px] font-bold tracking-widest text-gray-500">FIREBASE</span>
+            </div>
+        </div>
+    </div>
+      </section>
+    
     <!-- Pricing Section -->
     <section id="pricing" class="py-20 md:py-32 px-6">
         <div class="max-w-7xl mx-auto">
@@ -326,7 +375,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 sm:col-span-2">
-                    <div class="text-2xl font-bold font-heading mb-6">MOURISH<span class="text-[#00f0ff]">.</span></div>
+                    <div class="text-2xl font-bold font-heading mb-6">MOURISH<span class="text-[#00f0ff]"> Developers</span></div>
                     <p class="text-gray-400 text-sm max-w-sm leading-relaxed mb-6">
                         Crafting high-end immersive digital experiences.
                     </p>
@@ -372,26 +421,53 @@
 
         let scene, camera, renderer, objects = [];
         function init3D() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            const geometryTypes = [new THREE.IcosahedronGeometry(1, 1), new THREE.TorusGeometry(0.7, 0.2, 16, 100)];
-            const count = window.innerWidth < 768 ? 8 : 15;
-            for(let i = 0; i < count; i++) {
-                const material = new THREE.MeshPhongMaterial({ color: i % 2 === 0 ? 0x00f0ff : 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.15 });
-                const mesh = new THREE.Mesh(geometryTypes[Math.floor(Math.random() * geometryTypes.length)], material);
-                mesh.position.set((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, (Math.random() - 0.5) * 10);
-                const scale = Math.random() * 1.5 + 0.5;
-                mesh.scale.set(scale, scale, scale);
-                scene.add(mesh);
-                objects.push(mesh);
-            }
-            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-            const p1 = new THREE.PointLight(0x00f0ff, 2); p1.position.set(5, 5, 5); scene.add(p1);
-            camera.position.z = 8;
-        }
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Complex Geometry 
+    const geometryTypes = [
+        new THREE.IcosahedronGeometry(1, 1), 
+        new THREE.TorusGeometry(0.7, 0.2, 16, 100),
+        new THREE.OctahedronGeometry(1, 0) // Added Octahedron
+    ];
+
+    const count = window.innerWidth < 768 ? 12 : 25; // Increased count
+    for(let i = 0; i < count; i++) {
+        const material = new THREE.MeshPhongMaterial({ 
+            color: i % 3 === 0 ? 0x00f0ff : (i % 3 === 1 ? 0x8b5cf6 : 0xffffff), 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.2 
+        });
+        const mesh = new THREE.Mesh(geometryTypes[Math.floor(Math.random() * geometryTypes.length)], material);
+        mesh.position.set((Math.random() - 0.5) * 30, (Math.random() - 0.5) * 30, (Math.random() - 0.5) * 15);
+        const scale = Math.random() * 1.5 + 0.2;
+        mesh.scale.set(scale, scale, scale);
+        scene.add(mesh);
+        objects.push(mesh);
+    }
+
+    // ADDED: Starfield/Particles
+    const particlesGeom = new THREE.BufferGeometry();
+    const particlesCount = 1500;
+    const posArray = new Float32Array(particlesCount * 3);
+    for(let i=0; i < particlesCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 50;
+    }
+    particlesGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMat = new THREE.PointsMaterial({ size: 0.005, color: 0x8b5cf6 });
+    const particlesMesh = new THREE.Points(particlesGeom, particlesMat);
+    scene.add(particlesMesh);
+    objects.push(particlesMesh); // Will rotate slowly
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+    const p1 = new THREE.PointLight(0x00f0ff, 2); p1.position.set(10, 10, 10); scene.add(p1);
+    camera.position.z = 10;
+}
+
         function animate() {
             requestAnimationFrame(animate);
             objects.forEach((obj, idx) => {
