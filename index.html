@@ -620,8 +620,18 @@
             </div>
         </div>
     </footer>
-
-    <script>
+    <div id="talk-btn-container" class="fixed bottom-8 right-8 z-[120]">
+    <a href="talk.html" class="group relative flex items-center justify-center w-16 h-16 bg-[#00f0ff] rounded-full shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all hover:scale-110">
+        <span class="absolute inset-0 rounded-full bg-[#00f0ff] animate-ping opacity-25"></span>
+        <i class="bx bx-chat text-black text-2xl"></i>
+        <span class="absolute right-full mr-4 px-3 py-1 glass rounded-md text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-tighter">
+            Let's Talk
+        </span>
+    </a>
+</div>
+    
+    
+       <script>
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -671,6 +681,23 @@
             init3D(); animate();
             gsap.registerPlugin(ScrollTrigger);
             gsap.from("#hero-text > *", { duration: 1, y: 30, opacity: 0, stagger: 0.2, ease: "power3.out" });
+        };
+        window.onload = () => {
+            init3D(); 
+            animate();
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Hero Animations
+            gsap.from("#hero-text > *", { duration: 1, y: 30, opacity: 0, stagger: 0.2, ease: "power3.out" });
+
+            // New Animation: Floating Talk Button Entry
+            gsap.from("#talk-btn-container", {
+                duration: 1.5,
+                x: 100,
+                opacity: 0,
+                delay: 1,
+                ease: "elastic.out(1, 0.75)"
+            });
         };
     </script>
 </body>
