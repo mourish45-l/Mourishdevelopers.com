@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to Mourish AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body { background: #0a0a0f; color: white; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .chat-container { height: calc(100vh - 200px); }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #00f0ff; border-radius: 10px; }
+    </style>
+</head>
+<body class="overflow-hidden">
+
+    <nav class="p-6">
+        <a href="index.html" class="glass px-4 py-2 rounded-xl text-sm hover:text-[#00f0ff] transition-all">
+            <i class="bx bx-left-arrow-alt align-middle mr-2"></i> Back to Home
+        </a>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold font-heading">Mourish <span class="text-[#00f0ff]">AI Assistant</span></h1>
+            <p class="text-gray-500 text-sm">Ask me about our 7-day delivery, pricing, or tech stack.</p>
+        </div>
+
+        <div class="glass rounded-3xl p-6 flex flex-col chat-container">
+            <div id="chat-box" class="flex-grow overflow-y-auto space-y-4 mb-4 pr-2">
+                <div class="flex justify-start">
+                    <div class="bg-white/5 p-4 rounded-2xl rounded-tl-none max-w-[80%] text-sm leading-relaxed">
+                        Hello! I'm the Mourish AI. How can I help you build your next digital masterpiece today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <input id="user-input" type="text" placeholder="Analyze the website services..." 
+                    class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 focus:outline-none focus:border-[#00f0ff] transition-all pr-16">
+                <button id="send-btn" class="absolute right-2 top-2 bg-[#00f0ff] text-black p-3 rounded-xl hover:scale-105 transition-transform">
+                    <i class="bx bxs-send text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        // Replace with your actual backend URL after deployment
+        const BACKEND_URL = "http://localhost:3000/chat";
+
+        function appendMessage(role, text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+            msgDiv.innerHTML = `
+                <div class="${role === 'user' ? 'bg-[#8b5cf6] text-white' : 'bg-white/5'} p-4 rounded-2xl ${role === 'user' ? 'rounded-tr-none' : 'rounded-tl-none'} max-w-[80%] text-sm shadow-xl">
+                    ${text}
+                </div>
+            `;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            gsap.from(msgDiv, { opacity: 0, y: 10, duration: 0.4 });
+        }
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            appendMessage('user', message);
+            userInput.value = '';
+
+            try {
+                const response = await fetch(BACKEND_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                const data = await response.json();
+                appendMessage('ai', data.reply);
+            } catch (error) {
+                appendMessage('ai', "Sorry, I'm having trouble connecting to my brain right now.");
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+    </script>
+</body>
+</html>
