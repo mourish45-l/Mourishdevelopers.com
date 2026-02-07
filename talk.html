@@ -3,94 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talk to Mourish AI</title>
+    <title>Mourish AI | Expert Assistant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        body { background: #0a0a0f; color: white; font-family: 'Inter', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .chat-container { height: calc(100vh - 200px); }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: #00f0ff; border-radius: 10px; }
+        body { background: #050508; color: white; font-family: 'Inter', sans-serif; overflow: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .chat-scroll { height: calc(100vh - 320px); scrollbar-width: thin; scrollbar-color: #00f0ff transparent; }
+        .glow-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .loading-pulse { animation: pulse 1.5s infinite; }
     </style>
 </head>
-<body class="overflow-hidden">
+<body class="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-purple-900/10 to-black">
 
-    <nav class="p-6">
-        <a href="index.html" class="glass px-4 py-2 rounded-xl text-sm hover:text-[#00f0ff] transition-all">
-            <i class="bx bx-left-arrow-alt align-middle mr-2"></i> Back to Home
+    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto">
+        <a href="index.html" class="glass px-5 py-2 rounded-full text-xs font-bold uppercase tracking-tighter hover:bg-white/10 transition-all">
+            <i class="bx bx-arrow-back mr-2"></i> Exit Chat
         </a>
+        <div id="status-pill" class="glass px-4 py-2 rounded-full text-[10px] uppercase flex items-center gap-2 border-[#ff3b3b]/30">
+            <span id="status-dot" class="w-2 h-2 rounded-full bg-red-500"></span>
+            <span id="status-text">Brain Offline</span>
+        </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6">
+    <main class="max-w-3xl mx-auto px-6 mt-4">
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold font-heading">Mourish <span class="text-[#00f0ff]">AI Assistant</span></h1>
-            <p class="text-gray-500 text-sm">Ask me about our 7-day delivery, pricing, or tech stack.</p>
+            <h1 class="text-4xl font-black tracking-tighter glow-text">MOURISH <span class="text-[#00f0ff]">AI</span></h1>
+            <p class="text-gray-400 text-sm mt-2">Local Knowledge Engine • No API Required</p>
         </div>
 
-        <div class="glass rounded-3xl p-6 flex flex-col chat-container">
-            <div id="chat-box" class="flex-grow overflow-y-auto space-y-4 mb-4 pr-2">
+        <div class="glass rounded-[2rem] p-6 shadow-2xl relative overflow-hidden">
+            <div id="loading-overlay" class="absolute inset-0 bg-black/80 z-50 flex flex-col items-center justify-center transition-opacity duration-500">
+                <div class="w-48 bg-white/5 h-1 rounded-full overflow-hidden mb-4">
+                    <div id="load-progress" class="h-full bg-[#00f0ff] w-0 transition-all duration-300"></div>
+                </div>
+                <p class="text-[10px] uppercase tracking-widest text-gray-400 loading-pulse">Syncing Local Database...</p>
+            </div>
+
+            <div id="chat-content" class="chat-scroll overflow-y-auto space-y-6 pr-4 mb-4">
                 <div class="flex justify-start">
-                    <div class="bg-white/5 p-4 rounded-2xl rounded-tl-none max-w-[80%] text-sm leading-relaxed">
-                        Hello! I'm the Mourish AI. How can I help you build your next digital masterpiece today?
+                    <div class="glass p-4 rounded-2xl rounded-tl-none border-l-2 border-[#00f0ff] max-w-[85%] text-sm leading-relaxed">
+                        I am synced with <b>mourishdevelopers.vercel.app</b>. Ask me about our 7-day website delivery, pricing, or tech stack!
                     </div>
                 </div>
             </div>
 
-            <div class="relative">
-                <input id="user-input" type="text" placeholder="Analyze the website services..." 
-                    class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 focus:outline-none focus:border-[#00f0ff] transition-all pr-16">
-                <button id="send-btn" class="absolute right-2 top-2 bg-[#00f0ff] text-black p-3 rounded-xl hover:scale-105 transition-transform">
-                    <i class="bx bxs-send text-xl"></i>
+            <div class="relative group">
+                <input id="user-input" type="text" placeholder="Ask about our services..." 
+                    class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-6 pr-16 focus:outline-none focus:border-[#00f0ff] transition-all group-hover:border-white/20">
+                <button id="send-btn" class="absolute right-2 top-2 bg-[#00f0ff] text-black w-10 h-10 rounded-xl flex items-center justify-center hover:scale-105 transition-transform">
+                    <i class="bx bxs-paper-plane text-xl"></i>
                 </button>
             </div>
         </div>
     </main>
 
-    <script>
-        const chatBox = document.getElementById('chat-box');
+    <script type="module">
+        import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
+
+        // THE CORE KNOWLEDGE BASE (Instructions for the AI)
+        const MOURISH_KNOWLEDGE = `
+        Mourish Developers is a high-end web and app development agency. 
+        Website: mourishdevelopers.vercel.app. 
+        Services and Pricing: 
+        Simple Static Website costs 3000 rupees and takes 7 days. 
+        Advanced Interative Website costs 3500 rupees. 
+        Login/Auth Website with Firebase costs 4000 rupees. 
+        Payment Integration (Razorpay/PhonePe) costs 4500 rupees. 
+        AI Integration (Gemini/ChatGPT) costs 5000 rupees. 
+        Mobile App Development (Android/iOS) starts from 10,000 to 20,000 rupees and takes 30 days. 
+        Technologies used: React, Three.js, GSAP, Tailwind CSS, Firebase, and WebGL. 
+        Features: Lightning fast delivery, mobile-first design, and bank-level security. 
+        Clients include Thulir Creations and Life Gas System.
+        `;
+
+        let qa_pipeline;
+        const chatBox = document.getElementById('chat-content');
         const userInput = document.getElementById('user-input');
-        const sendBtn = document.getElementById('send-btn');
+        const loadProgress = document.getElementById('load-progress');
+        const overlay = document.getElementById('loading-overlay');
 
-        // Replace with your actual backend URL after deployment
-        const BACKEND_URL = "http://localhost:3000/chat";
-
-        function appendMessage(role, text) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
-            msgDiv.innerHTML = `
-                <div class="${role === 'user' ? 'bg-[#8b5cf6] text-white' : 'bg-white/5'} p-4 rounded-2xl ${role === 'user' ? 'rounded-tr-none' : 'rounded-tl-none'} max-w-[80%] text-sm shadow-xl">
-                    ${text}
-                </div>
-            `;
-            chatBox.appendChild(msgDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-            gsap.from(msgDiv, { opacity: 0, y: 10, duration: 0.4 });
-        }
-
-        async function sendMessage() {
-            const message = userInput.value.trim();
-            if (!message) return;
-
-            appendMessage('user', message);
-            userInput.value = '';
-
+        async function init() {
             try {
-                const response = await fetch(BACKEND_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message })
+                // Using a Question-Answering model (optimized for finding answers in context)
+                qa_pipeline = await pipeline('question-answering', 'Xenova/distilbert-base-cased-distilled-squad', {
+                    progress_callback: (data) => {
+                        if (data.status === 'progress') {
+                            loadProgress.style.width = `${data.progress}%`;
+                        }
+                    }
                 });
-                const data = await response.json();
-                appendMessage('ai', data.reply);
-            } catch (error) {
-                appendMessage('ai', "Sorry, I'm having trouble connecting to my brain right now.");
+
+                gsap.to(overlay, { opacity: 0, pointerEvents: 'none', duration: 1 });
+                document.getElementById('status-dot').className = "w-2 h-2 rounded-full bg-cyan-400 animate-pulse";
+                document.getElementById('status-text').innerText = "AI Online";
+                document.getElementById('status-pill').classList.remove('border-[#ff3b3b]/30');
+                document.getElementById('status-pill').classList.add('border-cyan-400/30');
+            } catch (err) {
+                document.getElementById('status-text').innerText = "Load Failed";
+                console.error(err);
             }
         }
 
-        sendBtn.addEventListener('click', sendMessage);
-        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+        async function askAI() {
+            const question = userInput.value.trim();
+            if (!question || !qa_pipeline) return;
+
+            appendMsg('user', question);
+            userInput.value = '';
+
+            // Loading state for AI
+            const tempId = Date.now();
+            appendMsg('ai', 'Thinking...', tempId);
+
+            const result = await qa_pipeline({
+                question: question,
+                context: MOURISH_KNOWLEDGE
+            });
+
+            const reply = result.answer || "I'm not sure about that. Please check mourishdevelopers.vercel.app for details!";
+            updateMsg(tempId, reply);
+        }
+
+        function appendMsg(role, text, id = null) {
+            const div = document.createElement('div');
+            div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+            div.id = id;
+            div.innerHTML = `
+                <div class="${role === 'user' ? 'bg-[#8b5cf6] font-medium' : 'glass border-l-2 border-[#00f0ff]'} p-4 rounded-2xl ${role === 'user' ? 'rounded-tr-none' : 'rounded-tl-none'} max-w-[85%] text-sm shadow-lg">
+                    ${text}
+                </div>
+            `;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            gsap.from(div, { y: 10, opacity: 0, duration: 0.3 });
+        }
+
+        function updateMsg(id, text) {
+            const el = document.getElementById(id).querySelector('div');
+            el.innerHTML = text;
+        }
+
+        document.getElementById('send-btn').onclick = askAI;
+        userInput.onkeypress = (e) => { if(e.key === 'Enter') askAI(); };
+
+        init();
     </script>
 </body>
 </html>
