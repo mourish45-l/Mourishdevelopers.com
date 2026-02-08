@@ -1,123 +1,36 @@
-
-                        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mourish AI | Responsive</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        body { background: #050508; color: white; font-family: 'Inter', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+<script>
+async function analyzeWebsite() {
+    const url = document.getElementById('websiteURL').value;
+    const resultContainer = document.getElementById('results');
+    const loadingMessage = document.getElementById('loading');
+    
+    loadingMessage.style.display = 'block'; // Show loading state
+    resultContainer.innerHTML = ''; // Clear previous results
+    
+    try {
+        const response = await fetch('/api/analyze', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url }),
+        });
         
-        /* Responsive Height Fix for Mobile Safari/Chrome */
-        .h-screen-safe { height: 100vh; height: -webkit-fill-available; }
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
         
-        .chat-scroll { 
-            scrollbar-width: thin; 
-            scrollbar-color: #00f0ff transparent;
-        }
-    </style>
-</head>
-<body class="bg-black flex flex-col h-screen-safe overflow-hidden">
+        const data = await response.json();
+        resultContainer.innerHTML = `<h3>Analysis Results:</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+    } catch (error) {
+        resultContainer.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+    } finally {
+        loadingMessage.style.display = 'none'; // Hide loading state
+    }
+}
+</script>
 
-    <nav class="p-4 md:p-6 flex justify-between items-center w-full max-w-7xl mx-auto z-50">
-        <a href="index.html" class="glass px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all">
-            <i class="bx bx-left-arrow-alt mr-1"></i> Exit
-        </a>
-        <div class="glass px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[9px] md:text-[10px] uppercase flex items-center gap-2 border-cyan-400/20">
-            <span id="status-dot" class="w-2 h-2 rounded-full bg-red-500"></span>
-            <span id="status-text" class="hidden sm:inline">Brain Offline</span>
-        </div>
-    </nav>
-
-    <main class="flex-grow flex flex-col items-center justify-start px-4 pb-4 md:pb-8">
-        
-        <div class="text-center mb-4 md:mb-8">
-            <h1 class="text-2xl md:text-4xl font-black tracking-tighter uppercase">Mourish <span class="text-[#00f0ff]">AI</span></h1>
-            <p class="text-gray-500 text-[10px] md:text-xs uppercase tracking-widest mt-1">Responsive Local Intelligence</p>
-        </div>
-
-        <div class="w-full md:max-w-3xl lg:max-w-4xl flex-grow glass rounded-[1.5rem] md:rounded-[2.5rem] p-4 md:p-8 flex flex-col relative overflow-hidden shadow-2xl">
-            
-            <div id="loading-overlay" class="absolute inset-0 bg-black/90 z-50 flex flex-col items-center justify-center p-6 text-center">
-                <div class="w-full max-w-[200px] bg-white/5 h-1 rounded-full overflow-hidden mb-4">
-                    <div id="load-progress" class="h-full bg-[#00f0ff] w-0 transition-all duration-300"></div>
-                </div>
-                <p class="text-[9px] md:text-[10px] uppercase tracking-widest text-gray-400 animate-pulse">Downloading Local Model (~30MB)...</p>
-            </div>
-
-            <div id="chat-content" class="flex-grow overflow-y-auto chat-scroll space-y-4 md:space-y-6 pr-2 mb-4">
-                <div class="flex justify-start">
-                    <div class="glass p-3 md:p-4 rounded-2xl rounded-tl-none border-l-2 border-[#00f0ff] max-w-[90%] md:max-w-[80%] text-xs md:text-sm leading-relaxed">
-                        Welcome to <b>Mourish AI</b>. I am optimized for desktop, tablet, and mobile. Ask me anything about our services!
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative mt-auto">
-                <div class="flex gap-2 items-center bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-1 pr-2 focus-within:border-[#00f0ff] transition-all">
-                    <input id="user-input" type="text" placeholder="Type a message..." 
-                        class="w-full bg-transparent py-3 md:py-4 px-4 text-xs md:text-sm focus:outline-none" disabled>
-                    <button id="send-btn" class="bg-[#00f0ff] text-black w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center hover:scale-105 transition-transform shrink-0" disabled>
-                        <i class="bx bxs-paper-plane text-lg md:text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script type="module">
-        import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
-
-        const MOURISH_KNOWLEDGE = `Mourish Developers: Websites in 7 days (3000-5000 INR), Apps in 30 days (10k-20k INR). Tech: React, Three.js, GSAP., simple website: 3000, advance website: 3500, login webiste: 4000, payment webiste: 4500, AI website: 5000, mobile app: 10000-20000, email: mourishdevelopers@gmail.com, whatsapp number: 9487410078, mobile number: 9487410078`;
-        
-        let qa;
-        const chatBox = document.getElementById('chat-content');
-        const input = document.getElementById('user-input');
-        const btn = document.getElementById('send-btn');
-
-        async function init() {
-            try {
-                qa = await pipeline('question-answering', 'Xenova/distilbert-base-cased-distilled-squad', {
-                    progress_callback: (d) => { if(d.status==='progress') document.getElementById('load-progress').style.width = d.progress + '%'; }
-                });
-                gsap.to('#loading-overlay', { opacity: 0, pointerEvents: 'none' });
-                document.getElementById('status-dot').style.backgroundColor = '#00f0ff';
-                document.getElementById('status-text').innerText = "AI Active";
-                input.disabled = false; btn.disabled = false;
-            } catch (e) { console.error(e); }
-        }
-
-        async function chat() {
-            const val = input.value.trim();
-            if (!val) return;
-            append('user', val);
-            input.value = '';
-            
-            const typingId = Date.now();
-            append('ai', '...', typingId);
-            
-            const res = await qa({ question: val, context: MOURISH_KNOWLEDGE });
-            update(typingId, res.answer || "Check our site for details!");
-        }
-
-        function append(role, text, id = null) {
-            const d = document.createElement('div');
-            d.id = id;
-            d.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
-            d.innerHTML = `<div class="${role === 'user' ? 'bg-[#8b5cf6]' : 'glass border-l-2 border-[#00f0ff]'} p-3 md:p-4 rounded-2xl max-w-[85%] text-xs md:text-sm">${text}</div>`;
-            chatBox.appendChild(d);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function update(id, text) { document.getElementById(id).querySelector('div').innerText = text; }
-
-        btn.onclick = chat;
-        input.onkeypress = (e) => { if(e.key === 'Enter') chat(); };
-        init();
-    </script>
-</body>
-</html>
+<input type="text" id="websiteURL" placeholder="Enter website URL" />
+<button onclick="analyzeWebsite()">Analyze</button>
+<div id="loading" style="display:none;">Loading...</div>
+<div id="results"></div>
