@@ -1,33 +1,33 @@
-// Assuming this is the current content of server.js
-
 const express = require('express');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+require('dotenv').config();
+
 const app = express();
-const PORT = process.env.PORT || 3000; // Use environment variable for PORT
-const { analyzeWebsite } = require('./analyzer'); // Assuming you have an analyzer module
+const PORT = process.env.PORT || 3000;
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-app.use(express.json()); // Middleware to parse JSON bodies
+app.use(express.json());
 
-// Example existing endpoint
-app.get('/', (req, res) => {
-    res.send('Welcome to Mourishdevelopers.com');
-});
-
-// New /analyze endpoint
-app.post('/analyze', async (req, res) => {
+app.post('/ask', async (req, res) => {
     try {
-        const { url } = req.body;
-        if (!url) {
-            return res.status(400).json({ error: 'URL is required' });
-        }
-        const analysisResult = await analyzeWebsite(url); // Call to analyzeWebsite function
-        res.json(analysisResult);
+        const { question } = req.body;
+        const companyUrl = process.env.WEBSITE_URL; // Uses mourishdevelopers.vercel.app
+
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        
+        // System instruction telling the AI to refer to your specific website
+        const prompt = `You are the official AI assistant for Mourish Developers. 
+        Your primary source of information is ${companyUrl}. 
+        Please answer the following user doubt professionally based on this company's context: ${question}`;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        res.json({ answer: response.text() });
     } catch (error) {
-        console.error('Error during analysis:', error);
-        res.status(500).json({ error: 'An error occurred during analysis' });
+        res.status(500).json({ error: 'Failed to generate response' });
     }
 });
 
-// Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
