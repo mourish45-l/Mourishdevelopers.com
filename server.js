@@ -1,40 +1,33 @@
+// Assuming this is the current content of server.js
+
 const express = require('express');
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const cors = require('cors');
-
 const app = express();
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 3000; // Use environment variable for PORT
+const { analyzeWebsite } = require('./analyzer'); // Assuming you have an analyzer module
 
-// Your provided API Key
-const genAI = new GoogleGenerativeAI("AIzaSyC8l2vvmhCA7r5Kj1k2yF6bmWTJceTmSrU");
+app.use(express.json()); // Middleware to parse JSON bodies
 
-const SYSTEM_PROMPT = `
-You are the Mourish AI Assistant. Your purpose is to help users understand Mourish Developers.
-Website context: https://mourishdevelopers.veecel.app/
-Knowledge: 
-- Mourish Developers builds high-end websites in 7 days and apps in 30 days.
-- Pricing starts at ₹3,000 for simple sites and ₹10,000 for apps.
-- Technologies: Three.js, React, Firebase, GSAP, WebGL.
-- Tone: Professional, tech-savvy, helpful, and concise.
-Always analyze queries based on this website's services.
-`;
+// Example existing endpoint
+app.get('/', (req, res) => {
+    res.send('Welcome to Mourishdevelopers.com');
+});
 
-app.post('/chat', async (req, res) => {
+// New /analyze endpoint
+app.post('/analyze', async (req, res) => {
     try {
-        const { message } = req.body;
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-        
-        // Combining system prompt with user message for context
-        const prompt = `${SYSTEM_PROMPT}\n\nUser Question: ${message}`;
-        
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        res.json({ reply: response.text() });
+        const { url } = req.body;
+        if (!url) {
+            return res.status(400).json({ error: 'URL is required' });
+        }
+        const analysisResult = await analyzeWebsite(url); // Call to analyzeWebsite function
+        res.json(analysisResult);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Failed to connect to Mourish AI" });
+        console.error('Error during analysis:', error);
+        res.status(500).json({ error: 'An error occurred during analysis' });
     }
 });
 
-app.listen(3000, () => console.log('Mourish Backend running on port 3000'));
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
