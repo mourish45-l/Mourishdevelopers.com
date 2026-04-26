@@ -1,723 +1,397 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mourish Developers</title>
-    <link rel="icon" href="Mourish Developers Logo Design.png" type="image/png">
+    <title>Mourish Developers | Premium Web & App Design</title>
+       <link rel="icon" href="Mourish Developers Logo Design.png" type="image/png">
   <meta name="description" content="Mourish Developers build responsive websites and apps using modern technologies like Bootstrap, Firebase, and payment gateways." />
   <meta name="keywords" content="Mourish Developers, web development, app design, Firebase, e-commerce, responsive websites, India" />
   <meta name="author" content="Mourish Developers" />
   <meta name="google-site-verification" content="j75MNZTxGcB7SRU7kZa-ED0csoryKrEjtyOYv79BJ_Q" /> 
 <meta name="google-site-verification" content="Yvg_j7ciGOIbdx7vKkvaGd0_lVvqM8SPzKixw152-Hg" />
   <meta name="google-site-verification" content="HiLK2kinkGRGiOGoiNuHry-dK_8hT0bD6wjprqP1uMg" />
-  
-    <!-- Frameworks & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <script src="script.js"></script>
-
-    <style>
-        @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.marquee-wrapper {
-    display: flex;
-    overflow: hidden;
-    user-select: none;
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-}
-
-.marquee-content {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: space-around;
-    min-width: 100%;
-    animation: scroll 30s linear infinite;
-}
-
-.tech-pill {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px 20px;
-    margin: 0 15px;
-    border-radius: 12px;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-}
-
-.tech-pill:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--neon-cyan);
-    transform: translateY(-2px);
-}
-
-.tech-pill img {
-    width: 24px;
-    height: 24px;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
-}
-        
-        :root {
-            --bg-deep: #0a0a0f;
-            --neon-cyan: #00f0ff;
-            --electric-purple: #8b5cf6;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        body {
-            background-color: var(--bg-deep);
-            color: white;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        h1, h2, h3, .font-heading {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        #hero-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .glass {
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-        }
-
-        .pricing-card, .client-card, .feature-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            height: 100%;
-        }
-
-        @media (hover: hover) {
-            .pricing-card:hover, .client-card:hover, .feature-card:hover {
-                transform: translateY(-10px);
-                border-color: var(--neon-cyan);
-                background: rgba(255, 255, 255, 0.06);
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        milk: '#FDFCF8',
+                        salt: '#E5E5E1',
+                        charcoal: '#121212',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
             }
         }
-
-        @media (max-width: 640px) {
-            .hero-title { font-size: 2.75rem; line-height: 1.1; }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
-
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%);
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        #mobile-menu.active {
-            transform: translateX(0);
+        .dark .glass {
+            background: rgba(18, 18, 18, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .milk-gradient {
+            background: radial-gradient(circle at top right, #fff, #f3f4f6);
+        }
+        .dark .milk-gradient {
+            background: radial-gradient(circle at top right, #1a1a1a, #121212);
+        }
+        .salted-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .salted-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
     </style>
 </head>
-<body>
+<body class="bg-milk dark:bg-charcoal text-charcoal dark:text-salt transition-colors duration-500">
 
-    <canvas id="hero-canvas"></canvas>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-[100] px-4 md:px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 md:px-8 py-3">
-            <div class="text-xl md:text-2xl font-bold font-heading tracking-tighter">
-                MOURISH<span class="text-[#00f0ff]"> Developers</span>
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="bg-charcoal dark:bg-milk p-2 rounded-xl">
+                    <i class="fa-solid fa-bolt text-milk dark:text-charcoal"></i>
+                </div>
+                <span class="text-xl font-black tracking-tighter uppercase">Mourish</span>
             </div>
             
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">About Us</a>
-                <a href="#features" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Features</a>
-                <a href="#work" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Clients</a>
-                <a href="#pricing" class="text-sm font-medium hover:text-[#00f0ff] transition-colors">Pricing</a>
-                <a href="book.html" class="bg-white text-black px-6 py-2 rounded-full text-sm font-bold hover:bg-[#00f0ff] transition-all flex items-center gap-2">
+            <div class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-widest opacity-70">
+                <a href="#web" class="hover:opacity-100 transition-opacity">Web</a>
+                <a href="#apps" class="hover:opacity-100 transition-opacity">Apps</a>
+                <a href="#portfolio" class="hover:opacity-100 transition-opacity">Portfolio</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full border border-charcoal/10 dark:border-salt/10 hover:bg-charcoal/5 dark:hover:bg-salt/5">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+                <a href="https://==mourishdeveloepers.vercel.app/book.html" class="bg-charcoal dark:bg-milk text-milk dark:text-charcoal px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform">
                     Book Now
                 </a>
             </div>
-
-            <button id="menu-toggle" class="md:hidden text-2xl p-2 focus:outline-none">
-                <i class="bx bx-menu-alt-right"></i>
-            </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-[110] bg-[#0a0a0f] p-8 flex flex-col items-center justify-center space-y-8 md:hidden">
-        <button id="menu-close" class="absolute top-8 right-8 text-4xl">
-            <i class="bx bx-x"></i>
-        </button>
-        <a href="#about" class="text-2xl font-bold font-heading mobile-link">About Us</a>
-        <a href="#features" class="text-2xl font-bold font-heading mobile-link">Features</a>
-        <a href="#work" class="text-2xl font-bold font-heading mobile-link">Clients</a>
-        <a href="#pricing" class="text-2xl font-bold font-heading mobile-link">Pricing</a>
-        <a href="book.html" class="bg-[#8b5cf6] w-full text-center py-4 rounded-xl font-bold">Book Now</a>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20">
-        <div class="max-w-4xl" id="hero-text">
-            <span class="inline-block px-4 py-1 glass rounded-full text-[10px] md:text-xs font-bold tracking-widest text-[#8b5cf6] mb-6 uppercase">Hyper-Fast Delivery Ecosystem</span>
-            <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
-                High-End Web <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6]">In 7 Days</span>
-            </h1>
-            <p class="text-gray-400 text-base md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-                Premium websites delivered in <span class="text-white font-bold underline decoration-[#00f0ff]">1 week</span>. 
-                Full-scale mobile applications ready in <span class="text-white font-bold underline decoration-[#8b5cf6]">1 month</span>.
-            </p>
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center items-center">
-                <a href="book.html" class="w-full sm:w-auto px-8 py-4 bg-[#8b5cf6] rounded-xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(139,92,246,0.4)]">
-                    Book Your Project
-                </a>
-                <a href="#pricing" class="w-full sm:w-auto px-8 py-4 glass rounded-xl font-bold border border-white/10 hover:bg-white/5 transition-all">View Price List</a>
-            </div>
-        </div>
-    </section>
-   <section id="about" class="py-24 px-6 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
-            <span class="text-[#00f0ff] font-bold tracking-widest text-xs uppercase">Our Story</span>
-            <h2 class="text-4xl md:text-6xl font-bold font-heading mt-4 mb-8">Architecting the <br><span class="text-[#8b5cf6]">Digital Future.</span></h2>
-            <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                At Mourish Developers, we don't just build websites; we engineer high-performance digital ecosystems. Born from the need for speed and precision, we've mastered the art of 7-day deployment without sacrificing a single pixel of quality.
-            </p>
-            <div class="grid grid-cols-2 gap-6 mt-10">
-                <div class="glass p-6 rounded-2xl border-l-2 border-[#00f0ff]">
-                    <div class="text-3xl font-bold mb-1">100+</div>
-                    <div class="text-gray-500 text-xs uppercase tracking-tighter">Projects Delivered</div>
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center pt-20 px-6 milk-gradient">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+            <div class="animate-fade-in-up">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-charcoal/10 dark:border-salt/10 text-[10px] font-bold uppercase tracking-widest mb-6">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span>Accepting New Projects</span>
                 </div>
-                <div class="glass p-6 rounded-2xl border-l-2 border-[#8b5cf6]">
-                    <div class="text-3xl font-bold mb-1">99%</div>
-                    <div class="text-gray-500 text-xs uppercase tracking-tighter">Client Satisfaction</div>
-                </div>
-            </div>
-        </div>
-        <div class="relative">
-            <div class="absolute -inset-4 bg-gradient-to-r from-[#00f0ff]/20 to-[#8b5cf6]/20 blur-3xl rounded-full"></div>
-            <div class="glass p-8 rounded-[2rem] relative z-10 border-white/10">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                    <i class="bx bx-check-shield text-[#00f0ff]"></i> Our Mission
-                </h3>
-                <p class="text-gray-400 text-sm leading-loose">
-                    To bridge the gap between complex technology and seamless user experience. We empower startups and established enterprises in India and globally by providing bank-grade security and 3D immersive designs as standard.
+                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8">
+                    DESIGNING <br> THE <span class="text-transparent" style="-webkit-text-stroke: 1px currentColor">FUTURE.</span>
+                </h1>
+                <p class="text-lg opacity-60 max-w-md mb-10 leading-relaxed">
+                    Mourish Developers creates hyper-efficient, visually stunning websites and cross-platform apps with salted UI aesthetics and milk-smooth performance.
                 </p>
+                <div class="flex items-center space-x-6">
+                    <a href="#web" class="group flex items-center space-x-3 font-bold text-sm uppercase tracking-widest">
+                        <span>Explore Pricing</span>
+                        <div class="w-10 h-10 rounded-full border border-charcoal/20 dark:border-salt/20 flex items-center justify-center group-hover:bg-charcoal group-hover:text-milk dark:group-hover:bg-milk dark:group-hover:text-charcoal transition-all">
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
-   </section>
-    
-    <!-- Features Section -->
-    <section id="features" class="py-20 md:py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-6xl font-bold mb-4">Core Features</h2>
-                <p class="text-gray-400 text-sm md:text-base">Why world-class brands choose Mourish Developers.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="feature-card glass p-8 rounded-3xl">
-                    <i class="bx bx-bolt-circle text-4xl text-[#00f0ff] mb-6"></i>
-                    <h3 class="text-xl font-bold mb-2">Turbo Speed</h3>
-                    <p class="text-gray-500 text-sm">Websites delivered in under 7 days without compromising quality.</p>
-                </div>
-                <div class="feature-card glass p-8 rounded-3xl">
-                    <i class="bx bx-layer text-4xl text-[#8b5cf6] mb-6"></i>
-                    <h3 class="text-xl font-bold mb-2">3D Immersive</h3>
-                    <p class="text-gray-500 text-sm">Integrating Three.js and WebGL for interactive user experiences.</p>
-                </div>
-                <div class="feature-card glass p-8 rounded-3xl">
-                    <i class="bx bx-shield-quarter text-4xl text-[#00f0ff] mb-6"></i>
-                    <h3 class="text-xl font-bold mb-2">Bank-Grade</h3>
-                    <p class="text-gray-500 text-sm">Secure auth and payment systems built with modern encryption.</p>
-                </div>
-                <div class="feature-card glass p-8 rounded-3xl">
-                    <i class="bx bx-mobile-alt text-4xl text-[#8b5cf6] mb-6"></i>
-                    <h3 class="text-xl font-bold mb-2">Native Apps</h3>
-                    <p class="text-gray-500 text-sm">Custom Android and iOS solutions ready for production in 30 days.</p>
+            <div class="relative hidden lg:block">
+                <div class="aspect-square bg-salt/50 dark:bg-white/5 rounded-[4rem] flex items-center justify-center relative overflow-hidden">
+                    <i class="fa-solid fa-code text-[12rem] opacity-5"></i>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="p-8 glass rounded-3xl border border-white/10 shadow-2xl animate-bounce">
+                            <i class="fa-solid fa-mobile-screen-button text-4xl"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-   <section class="py-24 px-6 bg-gradient-to-b from-transparent to-black/40">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-5xl font-bold font-heading mb-4">Market Disruption</h2>
-            <p class="text-gray-400">High-end technology shouldn't cost a fortune. See how we compare.</p>
-        </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="glass p-8 rounded-3xl border-white/5">
-                <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
-                    <i class="bx bx-stats text-[#00f0ff]"></i> Pricing Index (INR)
-                </h3>
-                
-                <div class="space-y-8">
-                    <div>
-                        <div class="flex justify-between text-xs mb-2 uppercase tracking-widest text-gray-500">
-                            <span>Basic Landing Page</span>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex items-center gap-4">
-                                <div class="h-4 bg-gray-800 rounded-full flex-grow overflow-hidden">
-                                    <div class="h-full bg-gray-600 w-[80%]"></div>
-                                </div>
-                                <span class="text-xs text-gray-400">Others: ₹25k</span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="h-6 bg-[#00f0ff]/20 rounded-full flex-grow overflow-hidden border border-[#00f0ff]/30">
-                                    <div class="h-full bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6] w-[15%]"></div>
-                                </div>
-                                <span class="text-sm font-bold text-[#00f0ff]">Mourish: ₹3k</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between text-xs mb-2 uppercase tracking-widest text-gray-500">
-                            <span>E-commerce / Auth</span>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex items-center gap-4">
-                                <div class="h-4 bg-gray-800 rounded-full flex-grow overflow-hidden">
-                                    <div class="h-full bg-gray-600 w-[90%]"></div>
-                                </div>
-                                <span class="text-xs text-gray-400">Others: ₹60k</span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="h-6 bg-[#00f0ff]/20 rounded-full flex-grow overflow-hidden border border-[#00f0ff]/30">
-                                    <div class="h-full bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6] w-[10%]"></div>
-                                </div>
-                                <span class="text-sm font-bold text-[#00f0ff]">Mourish: ₹4.5k</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="mt-8 text-[10px] text-gray-600 italic">*Based on 2026 industry average vs Mourish starter plans.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="p-6 rounded-2xl border border-white/5 bg-white/5">
-                    <h4 class="text-red-400 font-bold mb-4 uppercase text-xs tracking-widest">Other Companies</h4>
-                    <ul class="space-y-3 text-sm text-gray-500">
-                        <li class="flex gap-2"><i class="bx bx-x text-red-500"></i> Slow Templates</li>
-                        <li class="flex gap-2"><i class="bx bx-x text-red-500"></i> 2-4 Weeks Delivery</li>
-                        <li class="flex gap-2"><i class="bx bx-x text-red-500"></i> No 3D Elements</li>
-                        <li class="flex gap-2"><i class="bx bx-x text-red-500"></i> Hidden Fees</li>
-                    </ul>
-                </div>
-
-                <div class="p-6 rounded-2xl border border-[#00f0ff]/20 bg-[#00f0ff]/5 shadow-[0_0_30px_rgba(0,240,255,0.1)]">
-                    <h4 class="text-[#00f0ff] font-bold mb-4 uppercase text-xs tracking-widest">Mourish Developers</h4>
-                    <ul class="space-y-3 text-sm text-gray-300">
-                        <li class="flex gap-2"><i class="bx bx-check text-[#00f0ff]"></i> Custom React Code</li>
-                        <li class="flex gap-2"><i class="bx bx-check text-[#00f0ff]"></i> 7-Day Launch</li>
-                        <li class="flex gap-2"><i class="bx bx-check text-[#00f0ff]"></i> 3D / AI Integrated</li>
-                        <li class="flex gap-2"><i class="bx bx-check text-[#00f0ff]"></i> Zero Hidden Costs</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-                    </section>
-    
-    <!-- Clients Section -->
-    
-                       <section id="work" class="py-20 md:py-32 px-6 bg-gradient-to-b from-transparent to-[#0a0a0f]">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-6xl font-bold mb-4">Strategic Partners</h2>
-            <p class="text-gray-400 text-sm md:text-base">Trusted by innovative companies globally.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <a href="https://mourish45-l.github.io/thulircreations.store/" target="_blank" class="client-card glass p-8 rounded-3xl flex flex-col items-center text-center group">
-                <div class="w-16 h-16 glass rounded-full flex items-center justify-center mb-6">
-                    <i class="bx bx-shopping-bag text-2xl text-[#00f0ff]"></i>
-                </div>
-                <h3 class="text-lg font-bold mb-1 text-white">Thulir Creations</h3>
-                <p class="text-gray-500 text-xs mb-4">Retail & Store Experience</p>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#00f0ff]">Visit Store <i class="bx bx-right-arrow-alt align-middle"></i></span>
-            </a>
-
-            <a href="https://deepika-s-accersories.vercel.app/" target="_blank" class="client-card glass p-8 rounded-3xl flex flex-col items-center text-center group">
-                <div class="w-16 h-16 glass rounded-full flex items-center justify-center mb-6">
-                    <i class="bx bx-gem text-2xl text-[#8b5cf6]"></i>
-                </div>
-                <h3 class="text-lg font-bold mb-1 text-white">Deepika's Accessories</h3>
-                <p class="text-gray-500 text-xs mb-4">Accessories Sellers</p>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#8b5cf6]">Explore Accessories <i class="bx bx-right-arrow-alt align-middle"></i></span>
-            </a>
-
-            <a href="https://manufacturing.lgs.co.in/" target="_blank" class="client-card glass p-8 rounded-3xl flex flex-col items-center text-center group">
-                <div class="w-16 h-16 glass rounded-full flex items-center justify-center mb-6">
-                    <i class="bx bx-factory text-2xl text-[#8b5cf6]"></i>
-                </div>
-                <h3 class="text-lg font-bold mb-1 text-white">Life Gas System</h3>
-                <p class="text-gray-500 text-xs mb-4">Industrial Manufacturing</p>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#8b5cf6]">Explore System <i class="bx bx-right-arrow-alt align-middle"></i></span>
-            </a>
-
-            <a href="https://mourish45-l.github.io/Anira-BS-Enterprisers/" target="_blank" class="client-card glass p-8 rounded-3xl flex flex-col items-center text-center group">
-                <div class="w-16 h-16 glass rounded-full flex items-center justify-center mb-6">
-                    <i class="bx bx-briefcase text-2xl text-[#00f0ff]"></i>
-                </div>
-                <h3 class="text-lg font-bold mb-1 text-white">Anira BS Enterprises</h3>
-                <p class="text-gray-500 text-xs mb-4">Enterprise Management</p>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#00f0ff]">View Profile <i class="bx bx-right-arrow-alt align-middle"></i></span>
-            </a>
-        </div>
-    </div>
-</section>
-
-
-      <section id="tech" class="py-20 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 mb-12">
-        <h2 style="text-align: center;" class="text-3xl md:text-5xl font-bold font-heading">The Tech Powering <br><span class="text-[#00f0ff]">Your Vision</span></h2>
-    </div>
-    
-    <div class="relative flex overflow-x-hidden glass py-10 border-y border-white/5">
-      <div class="marquee-wrapper">
-        <div class="marquee-content">
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React">
-                <span class="font-bold text-sm">React</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase">
-                <span class="font-bold text-sm">Firebase</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/tailwindcss/38BDF8" alt="Tailwind">
-                <span class="font-bold text-sm">Tailwind CSS</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL">
-                <span class="font-bold text-sm">MySQL</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB">
-                <span class="font-bold text-sm">MongoDB</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI">
-                <span class="font-bold text-sm">OpenAI</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/googlegemini/8E75FF" alt="Gemini">
-                <span class="font-bold text-sm">Gemini AI</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/googlepay/white" alt="GPay">
-                <span class="font-bold text-sm">Google Pay</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/razorpay/3395FF" alt="Razorpay">
-                <span class="font-bold text-sm">Razorpay</span>
-            </div>
-        </div>
-
-        <div class="marquee-content" aria-hidden="true">
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React"><span class="font-bold text-sm">React</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase"><span class="font-bold text-sm">Firebase</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/tailwindcss/38BDF8" alt="Tailwind"><span class="font-bold text-sm">Tailwind CSS</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"><span class="font-bold text-sm">MySQL</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB"><span class="font-bold text-sm">MongoDB</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI"><span class="font-bold text-sm">OpenAI</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/googlegemini/8E75FF" alt="Gemini"><span class="font-bold text-sm">Gemini AI</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/googlepay/white" alt="GPay"><span class="font-bold text-sm">Google Pay</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/razorpay/3395FF" alt="Razorpay"><span class="font-bold text-sm">Razorpay</span></div>
-        </div>
-    </div>
-      </section>
-    
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 md:py-32 px-6">
+    <!-- Web Pricing -->
+    <section id="web" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-6xl font-bold mb-4 text-center">Pricing Plans</h2>
-                <p class="text-gray-400 text-sm md:text-base">Scalable digital infrastructure for every need.</p>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4">Website Ecosystem</h2>
+                    <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Fixed pricing. No hidden costs.</p>
+                </div>
+                <div class="h-px flex-1 bg-charcoal/10 dark:bg-salt/10 mx-10 hidden md:block"></div>
+                <span class="text-6xl font-black opacity-5">01</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Simple -->
+                <div class="salted-card p-10 bg-white dark:bg-white/5 rounded-[2.5rem] border border-charcoal/5 dark:border-white/5">
+                    <h3 class="text-xs font-black uppercase tracking-widest opacity-40 mb-10">Standard</h3>
+                    <div class="text-5xl font-black mb-2">₹3,000</div>
+                    <div class="text-xl font-bold mb-8 italic opacity-80">Simple Web</div>
+                    <ul class="space-y-4 mb-10 text-sm opacity-60">
+                        <li><i class="fa-solid fa-check mr-2"></i> 3 Premium Pages</li>
+                        <li><i class="fa-solid fa-check mr-2"></i> Responsive Layout</li>
+                        <li><i class="fa-solid fa-check mr-2"></i> Contact Integration</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl border border-charcoal/10 dark:border-salt/10 font-bold hover:bg-charcoal hover:text-milk dark:hover:bg-milk dark:hover:text-charcoal transition-all">Select Plan</button>
+                </div>
+                <!-- Custom -->
+                <div class="salted-card p-10 bg-charcoal text-milk dark:bg-milk dark:text-charcoal rounded-[2.5rem] relative overflow-hidden">
+                    <div class="absolute top-6 right-6 px-3 py-1 bg-blue-500 text-white text-[10px] font-black rounded-lg">NEW</div>
+                    <h3 class="text-xs font-black uppercase tracking-widest opacity-40 mb-10">Premium</h3>
+                    <div class="text-5xl font-black mb-2">₹7,000</div>
+                    <div class="text-xl font-bold mb-8 italic">Custom Design</div>
+                    <ul class="space-y-4 mb-10 text-sm opacity-80">
+                        <li><i class="fa-solid fa-check mr-2 text-blue-400"></i> Unlimited Pages</li>
+                        <li><i class="fa-solid fa-check mr-2 text-blue-400"></i> Advanced SEO</li>
+                        <li><i class="fa-solid fa-check mr-2 text-blue-400"></i> Priority Support</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl bg-white/10 dark:bg-charcoal/10 backdrop-blur-md font-bold hover:bg-white dark:hover:bg-charcoal hover:text-charcoal dark:hover:text-milk transition-all">Select Plan</button>
+                </div>
+                <!-- AI -->
+                <div class="salted-card p-10 bg-white dark:bg-white/5 rounded-[2.5rem] border border-charcoal/5 dark:border-white/5">
+                    <h3 class="text-xs font-black uppercase tracking-widest opacity-40 mb-10">Intelligent</h3>
+                    <div class="text-5xl font-black mb-2">₹5,000</div>
+                    <div class="text-xl font-bold mb-8 italic opacity-80">AI Integration</div>
+                    <ul class="space-y-4 mb-10 text-sm opacity-60">
+                        <li><i class="fa-solid fa-check mr-2"></i> Gemini/GPT API</li>
+                        <li><i class="fa-solid fa-check mr-2"></i> Smart Chatbots</li>
+                        <li><i class="fa-solid fa-check mr-2"></i> Automation Flow</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl border border-charcoal/10 dark:border-salt/10 font-bold hover:bg-charcoal hover:text-milk dark:hover:bg-milk dark:hover:text-charcoal transition-all">Select Plan</button>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <!-- Simple -->
-                <div class="pricing-card glass p-8 md:p-10 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">Simple</h3>
-                            <span class="text-[10px] glass px-2 py-1 rounded text-[#00f0ff]">7 DAYS</span>
-                        </div>
-                        <div class="text-3xl font-bold mb-6 text-[#00f0ff]">₹3,000 <span class="text-sm font-normal text-gray-500">/start</span></div>
-                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Responsive Landing Page</li>
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Modern UI Kit</li>
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Standard SEO</li>
-                        </ul>
-                    </div>
-                    <a href="book.html" class="text-center w-full py-4 glass rounded-xl font-bold text-sm hover:bg-white hover:text-black transition-all">Book Now</a>
+            <!-- Secondary Pricing List -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-6 border border-charcoal/5 dark:border-salt/5 rounded-2xl flex justify-between items-center">
+                    <span class="font-bold opacity-60">Advance Web</span>
+                    <span class="font-black">₹3,500</span>
                 </div>
-
-                <!-- Advanced -->
-                <div class="pricing-card glass p-8 md:p-10 rounded-3xl border-[#8b5cf6]/40 relative flex flex-col justify-between">
-                    <div class="absolute top-0 right-0 bg-[#8b5cf6] px-4 py-1 text-[10px] font-bold uppercase rounded-bl-xl">Popular</div>
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">Advanced</h3>
-                            <span class="text-[10px] glass px-2 py-1 rounded">7 DAYS</span>
-                        </div>
-                        <div class="text-3xl font-bold mb-6">₹3,500 <span class="text-sm font-normal text-gray-500">/start</span></div>
-                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
-                            <li><i class="bx bx-check text-[#8b5cf6] mr-2"></i> Multi-page Architecture</li>
-                            <li><i class="bx bx-check text-[#8b5cf6] mr-2"></i> Custom 3D Elements</li>
-                            <li><i class="bx bx-check text-[#8b5cf6] mr-2"></i> GSAP Animations</li>
-                        </ul>
-                    </div>
-                    <a href="book.html" class="text-center w-full py-4 bg-[#8b5cf6] rounded-xl font-bold text-sm hover:scale-105 transition-all">Book Now</a>
+                <div class="p-6 border border-charcoal/5 dark:border-salt/5 rounded-2xl flex justify-between items-center">
+                    <span class="font-bold opacity-60">Login System</span>
+                    <span class="font-black">₹4,000</span>
                 </div>
-
-                <!-- Auth -->
-                <div class="pricing-card glass p-8 md:p-10 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">Auth/Login</h3>
-                            <span class="text-[10px] glass px-2 py-1 rounded text-[#00f0ff]">7 DAYS</span>
-                        </div>
-                        <div class="text-3xl font-bold mb-6">₹4,000 <span class="text-sm font-normal text-gray-500">/start</span></div>
-                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
-                            <li><i class="bx bx-lock text-[#00f0ff] mr-2"></i> Secure User Authentication</li>
-                            <li><i class="bx bx-user-circle text-[#00f0ff] mr-2"></i> Dashboard UI</li>
-                            <li><i class="bx bx-data text-[#00f0ff] mr-2"></i> Database Hosting</li>
-                        </ul>
-                    </div>
-                    <a href="book.html" class="text-center w-full py-4 glass rounded-xl font-bold text-sm hover:bg-white hover:text-black transition-all">Book Now</a>
-                </div>
-                                <div class="pricing-card glass p-8 md:p-10 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">Payment</h3>
-                            <span class="text-[10px] glass px-2 py-1 rounded text-[#00f0ff]">7 DAYS</span>
-                        </div>
-                        <div class="text-3xl font-bold mb-6 text-[#00f0ff]">₹4,500 <span class="text-sm font-normal text-gray-500">/start</span></div>
-                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Full payment intergration</li>
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Best for E commerce</li>
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> We will not share your PAN to others</li>
-                        </ul>
-                    </div>
-                    <a href="book.html" class="text-center w-full py-4 glass rounded-xl font-bold text-sm hover:bg-white hover:text-black transition-all">Book Now</a>
-                </div>
-                                                <div class="pricing-card glass p-8 md:p-10 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">AI</h3>
-                            <span class="text-[10px] glass px-2 py-1 rounded text-[#00f0ff]">7 DAYS</span>
-                        </div>
-                        <div class="text-3xl font-bold mb-6 text-[#00f0ff]">₹5,000 <span class="text-sm font-normal text-gray-500">/start</span></div>
-                        <ul class="space-y-3 mb-10 text-gray-400 text-sm">
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Full AI intergration</li>
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Intergrate AI like gemini, chatgpt </li>
-                            <li><i class="bx bx-check text-[#00f0ff] mr-2"></i> Secure chat</li>
-                        </ul>
-                    </div>
-                    <a href="book.html" class="text-center w-full py-4 glass rounded-xl font-bold text-sm hover:bg-white hover:text-black transition-all">Book Now</a>
-                </div>
-            </div>
-
-            <!-- Mobile Apps -->
-            <div class="mt-8 glass p-6 md:p-8 rounded-3xl border-l-4 border-[#8b5cf6] flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div class="mb-6 md:mb-0">
-                    <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
-                        <h4 class="text-lg md:text-xl font-bold">Native App Development</h4>
-                        <span class="text-[8px] bg-[#8b5cf6]/20 text-[#8b5cf6] px-2 py-1 rounded font-bold">60 DAYS</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">High-performance Android and iOS solutions.</p>
-                </div>
-                <div class="flex flex-col items-center md:items-end">
-                    <div class="text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#8b5cf6] mb-2">
-                        ₹10,000 - ₹20,000
-                    </div>
-                    <a href="book.html?service=MobileApp" class="px-6 py-2 bg-white/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#8b5cf6] hover:bg-white/10 transition-all">Book Now <i class="bx bx-right-arrow-alt"></i></a>
+                <div class="p-6 border border-charcoal/5 dark:border-salt/5 rounded-2xl flex justify-between items-center">
+                    <span class="font-bold opacity-60">Payment Gateway</span>
+                    <span class="font-black">₹4,500</span>
                 </div>
             </div>
         </div>
     </section>
-<section class="py-20 bg-black/20 border-y border-white/5">
-    <div class="max-w-7xl mx-auto px-6 mb-10 text-center">
-        <p class="text-gray-500 text-sm font-medium">Reliable Deployment via Industry Leaders</p>
-    </div>
 
-    <div class="marquee-wrapper">
-        <div class="marquee-content">
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/godaddy/ffffff" alt="GoDaddy">
-                <span class="font-bold text-sm">GoDaddy</span>
+    <!-- App Pricing -->
+    <section id="apps" class="py-32 px-6 bg-salt/30 dark:bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4">Application Development</h2>
+                    <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Native power. Fluid experiences.</p>
+                </div>
+                <span class="text-6xl font-black opacity-5">02</span>
             </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/vercel/ffffff" alt="Vercel">
-                <span class="font-bold text-sm">Vercel</span>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Android -->
+                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-charcoal/5 dark:border-salt/5 text-center">
+                    <i class="fa-brands fa-android text-3xl mb-4 text-green-500"></i>
+                    <h4 class="font-bold mb-2">Android App</h4>
+                    <div class="text-3xl font-black">₹10,000</div>
+                </div>
+                <!-- iOS -->
+                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-charcoal/5 dark:border-salt/5 text-center relative overflow-hidden">
+                    <div class="absolute top-2 right-4 text-[8px] font-black text-blue-500 uppercase">NEW</div>
+                    <i class="fa-brands fa-apple text-3xl mb-4"></i>
+                    <h4 class="font-bold mb-2">iOS Native</h4>
+                    <div class="text-3xl font-black">₹15,000</div>
+                </div>
+                <!-- Apple Bundle -->
+                <div class="p-8 bg-charcoal text-milk dark:bg-milk dark:text-charcoal rounded-3xl text-center">
+                    <i class="fa-solid fa-layer-group text-3xl mb-4"></i>
+                    <h4 class="font-bold mb-2 uppercase text-[10px] tracking-widest">Apple Eco-System</h4>
+                    <div class="text-3xl font-black">₹35,000</div>
+                    <p class="text-[9px] mt-2 opacity-50">iPhone + iPadOS</p>
+                </div>
+                <!-- Windows -->
+                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-charcoal/5 dark:border-salt/5 text-center relative overflow-hidden">
+                    <div class="absolute top-2 right-4 text-[8px] font-black text-blue-500 uppercase">NEW</div>
+                    <i class="fa-brands fa-windows text-3xl mb-4 text-blue-400"></i>
+                    <h4 class="font-bold mb-2">Windows</h4>
+                    <div class="text-3xl font-black">₹34,000</div>
+                </div>
             </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub">
-                <span class="font-bold text-sm">GitHub</span>
+
+            <!-- More Apps -->
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                 <div class="p-8 glass rounded-3xl flex flex-col justify-center border border-charcoal/5 dark:border-salt/5">
+                    <span class="text-[10px] font-black text-blue-500 uppercase mb-2">New Release</span>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold">iPadOS Native</span>
+                        <span class="font-black">₹30,000</span>
+                    </div>
+                 </div>
+                 <div class="p-8 glass rounded-3xl flex flex-col justify-center border border-charcoal/5 dark:border-salt/5">
+                    <span class="text-[10px] font-black text-blue-500 uppercase mb-2">New Release</span>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold">Linux Desktop</span>
+                        <span class="font-black">₹15,000</span>
+                    </div>
+                 </div>
+                 <div class="p-8 glass rounded-3xl flex flex-col justify-center border border-charcoal/5 dark:border-salt/5">
+                    <span class="text-[10px] font-black text-blue-500 uppercase mb-2">New Release</span>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold">macOS Native</span>
+                        <span class="font-black">₹35,000</span>
+                    </div>
+                    <p class="text-[9px] mt-2 opacity-40">*(9,000/yr for download store access)*</p>
+                 </div>
             </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/hostinger/ffffff" alt="Hostinger">
-                <span class="font-bold text-sm">Hostinger</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/googleplay/ffffff" alt="Google Play">
-                <span class="font-bold text-sm">Google Play</span>
-            </div>
-            <div class="tech-pill">
-                <img src="https://cdn.simpleicons.org/appstore/ffffff" alt="App Store">
-                <span class="font-bold text-sm">App Store</span>
-            </div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/godaddy/ffffff" alt="GoDaddy"><span class="font-bold text-sm">GoDaddy</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/vercel/ffffff" alt="Vercel"><span class="font-bold text-sm">Vercel</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub"><span class="font-bold text-sm">GitHub</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/hostinger/ffffff" alt="Hostinger"><span class="font-bold text-sm">Hostinger</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/googleplay/ffffff" alt="Google Play"><span class="font-bold text-sm">Google Play Store</span></div>
-            <div class="tech-pill"><img src="https://cdn.simpleicons.org/appstore/ffffff" alt="App Store"><span class="font-bold text-sm">App Store</span></div>
         </div>
-    </div>
-</section>
-    
-    <!-- Newsletter Section -->
-    <section class="py-20 px-6 bg-gradient-to-r from-[#00f0ff]/10 to-[#8b5cf6]/10">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4">Stay Updated</h2>
-            <p class="text-gray-400 text-lg mb-8">Get the latest updates on our projects and tech insights delivered to your inbox.</p>
-            <form id="newsletter-form" action="mailto:mourishdevelopers@gmail.com" method="post" enctype="text/plain" class="max-w-md mx-auto">
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" class="flex-1 px-4 py-3 glass rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00f0ff]" required>
-                    <button type="submit" class="px-6 py-3 bg-[#8b5cf6] rounded-xl font-bold hover:scale-105 transition-all shadow-[0_0_30px_rgba(139,92,246,0.4)]">Subscribe</button>
-                </div>
-            </form>
-    
-    <!-- Footer -->
-    <footer class="pt-20 pb-10 px-0 glass mt-20">
-        <div class="mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-1 sm:col-span-2">
-                    <div class="text-2xl font-bold font-heading mb-6">MOURISH<span class="text-[#00f0ff]"> Developers</span></div>
-                    <p class="text-gray-400 text-sm max-w-sm leading-relaxed mb-6">
-                        Crafting high-end immersive digital experiences.
-                    </p>
-                    <div class="space-y-2 text-xs md:text-sm">
-                        <a href="mailto:mourishdevelopers@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
-                            <i class="bx bx-envelope"></i> mourishdevelopers@gmail.com
-                        </a>
-                        <a href="https://wa.me/919487410078" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
-                            <i class="bx bxl-whatsapp"></i> +91 9487410078
-                        </a>
+    </section>
+
+    <!-- Bundles (Mega) -->
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto bg-charcoal dark:bg-milk text-milk dark:text-charcoal rounded-[4rem] p-12 md:p-24 overflow-hidden relative">
+            <div class="relative z-10">
+                <h2 class="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-12">The <span class="text-blue-500 italic">Grand</span><br>Bundles.</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="p-8 border border-white/10 dark:border-charcoal/10 rounded-3xl">
+                        <span class="text-[10px] font-black bg-blue-500 text-white px-2 py-1 rounded mb-4 inline-block">BEST VALUE</span>
+                        <h4 class="text-2xl font-bold mb-4">Desktop Bundle</h4>
+                        <div class="text-4xl font-black mb-6">₹1,00,000</div>
+                        <p class="text-sm opacity-60">Complete coverage for Windows, Linux, and macOS platforms.</p>
                     </div>
-                </div>
-                <div>
-                    <h5 class="font-bold mb-4 uppercase text-xs text-[#8b5cf6]">Sitemap</h5>
-                    <ul class="text-gray-500 text-xs space-y-2">
-                        <li><a href="book.html">Start a Project</a></li>
-                        <li><a href="https://mourish45-l.github.io/profilo.mourish/">Our Portfolio</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-bold mb-4 uppercase text-xs text-[#8b5cf6]">Connect</h5>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/mourish45-l" class="text-2xl hover:text-[#00f0ff]"><i class='bx bxl-github'></i></a>
-                        <a href="https://wa.me/919487410078" class="text-2xl hover:text-[#25D366]"><i class='bx bxl-whatsapp'></i></a>
-                        <i class="bi bi-robot text-2xl text-gray-400"></i>
+                    <div class="p-8 border border-white/10 dark:border-charcoal/10 rounded-3xl">
+                        <span class="text-[10px] font-black bg-blue-500 text-white px-2 py-1 rounded mb-4 inline-block">POPULAR</span>
+                        <h4 class="text-2xl font-bold mb-4">Mobile & Tablet</h4>
+                        <div class="text-4xl font-black mb-6">₹50,000</div>
+                        <p class="text-sm opacity-60">The complete handheld suite. iOS, Android, and iPadOS.</p>
+                    </div>
+                    <div class="p-8 bg-blue-600 text-white rounded-3xl">
+                        <span class="text-[10px] font-black bg-white/20 px-2 py-1 rounded mb-4 inline-block">ULTIMATE</span>
+                        <h4 class="text-2xl font-bold mb-4">Full Stack Bundle</h4>
+                        <div class="text-4xl font-black mb-6">₹2,00,000</div>
+                        <p class="text-sm opacity-80">Every platform. Every device. The master key for your empire.</p>
                     </div>
                 </div>
             </div>
-            <div class="pt-10 border-t border-white/5 text-center text-gray-500 text-[10px] uppercase tracking-widest">
-            2026 Mourish Developers
+            <div class="absolute bottom-0 right-0 opacity-10 translate-x-1/4 translate-y-1/4">
+                <i class="fa-solid fa-cubes text-[20rem]"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4">Client Portfolio</h2>
+                    <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Proven track record of excellence.</p>
+                </div>
+                <span class="text-6xl font-black opacity-5">03</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="https://mourish45-l.github.io/Anira-BS-Enterprisers/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-charcoal/5 dark:border-salt/5">
+                    <div class="text-center z-10 p-6">
+                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:scale-110 transition-transform">Anira BS Enterprises</h4>
+                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></p>
+                    </div>
+                    <div class="absolute inset-0 bg-charcoal opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                </a>
+                                <a href="https://mourish45-l.github.io/thulircreations.store/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-charcoal/5 dark:border-salt/5">
+                    <div class="text-center z-10 p-6">
+                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:scale-110 transition-transform">Thulir Creations</h4>
+                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></p>
+                    </div>
+                    <div class="absolute inset-0 bg-charcoal opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                </a>
+                <a href="https://manufacturing.lgs.co.in/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-charcoal/5 dark:border-salt/5">
+                    <div class="text-center z-10 p-6">
+                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:scale-110 transition-transform">Life Gas System</h4>
+                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></p>
+                    </div>
+                    <div class="absolute inset-0 bg-charcoal opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-charcoal/5 dark:border-salt/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="bg-charcoal dark:bg-milk p-1.5 rounded-lg">
+                            <i class="fa-solid fa-bolt text-xs text-milk dark:text-charcoal"></i>
+                        </div>
+                        <span class="font-black uppercase tracking-tighter">Mourish Developers</span>
+                    </div>
+                    <p class="text-xs opacity-40 max-w-xs uppercase leading-loose font-bold tracking-widest">
+                        Crafting high-end digital solutions for modern brands. Performance driven. Design centered.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col items-end gap-4">
+                    <div class="text-[10px] font-black opacity-30 uppercase tracking-[0.2em]">Contact & Bookings</div>
+                    <a href="https://mourishdeveloepers.vercel.app/book.html" class="text-2xl font-black hover:italic transition-all">mourishdeveloepers.vercel.app</a>
+                </div>
+            </div>
+            
+            <div class="mt-20 pt-10 border-t border-charcoal/5 dark:border-salt/5 flex flex-col md:flex-row justify-between text-[10px] font-bold opacity-30 uppercase tracking-widest">
+                <span>2025 Mourish Developers</span>
+                <span>Terms of Service / Privacy Policy</span>
             </div>
         </div>
     </footer>
-       <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const menuClose = document.getElementById('menu-close');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        const toggleMenu = () => mobileMenu.classList.toggle('active');
-        menuToggle.addEventListener('click', toggleMenu);
-        menuClose.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
-        let scene, camera, renderer, objects = [];
-        function init3D() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            const geometryTypes = [new THREE.IcosahedronGeometry(1, 1), new THREE.TorusGeometry(0.7, 0.2, 16, 100)];
-            const count = window.innerWidth < 768 ? 8 : 15;
-            for(let i = 0; i < count; i++) {
-                const material = new THREE.MeshPhongMaterial({ color: i % 2 === 0 ? 0x00f0ff : 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.15 });
-                const mesh = new THREE.Mesh(geometryTypes[Math.floor(Math.random() * geometryTypes.length)], material);
-                mesh.position.set((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, (Math.random() - 0.5) * 10);
-                const scale = Math.random() * 1.5 + 0.5;
-                mesh.scale.set(scale, scale, scale);
-                scene.add(mesh);
-                objects.push(mesh);
-            }
-            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-            const p1 = new THREE.PointLight(0x00f0ff, 2); p1.position.set(5, 5, 5); scene.add(p1);
-            camera.position.z = 8;
-        }
-        function animate() {
-            requestAnimationFrame(animate);
-            objects.forEach((obj, idx) => {
-                obj.rotation.x += 0.003;
-                obj.rotation.y += 0.003;
-                obj.position.y += Math.sin(Date.now() * 0.001 + idx) * 0.002;
-            });
-            renderer.render(scene, camera);
-        }
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-        window.onload = () => {
-            init3D(); animate();
-            gsap.registerPlugin(ScrollTrigger);
-            gsap.from("#hero-text > *", { duration: 1, y: 30, opacity: 0, stagger: 0.2, ease: "power3.out" });
-        };
-        window.onload = () => {
-            init3D(); 
-            animate();
-            gsap.registerPlugin(ScrollTrigger);
+    <script>
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
             
-            // Hero Animations
-            gsap.from("#hero-text > *", { duration: 1, y: 30, opacity: 0, stagger: 0.2, ease: "power3.out" });
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                html.classList.add('dark');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
 
-            // New Animation: Floating Talk Button Entry
-            gsap.from("#talk-btn-container", {
-                duration: 1.5,
-                x: 100,
-                opacity: 0,
-                delay: 1,
-                ease: "elastic.out(1, 0.75)"
-            });
-        };
-
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-milk/80', 'dark:bg-charcoal/80', 'backdrop-blur-xl', 'py-4', 'shadow-sm');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('bg-milk/80', 'dark:bg-charcoal/80', 'backdrop-blur-xl', 'py-4', 'shadow-sm');
+                nav.classList.add('py-6');
+            }
+        });
     </script>
 </body>
 </html>
