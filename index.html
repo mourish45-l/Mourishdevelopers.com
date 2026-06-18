@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mourish Developers | Premium Web & App Design</title>
-       <link rel="icon" "1781795678964.png"
-" type="image/png">
-  <meta name="description" content="Mourish Developers build responsive websites and apps using modern technologies like Bootstrap, Firebase, and payment gateways." />
-  <meta name="keywords" content="Mourish Developers, web development, app design, Firebase, e-commerce, responsive websites, India" />
-  <meta name="author" content="Mourish Developers" />
-  <meta name="google-site-verification" content="j75MNZTxGcB7SRU7kZa-ED0csoryKrEjtyOYv79BJ_Q" /> 
-<meta name="google-site-verification" content="Yvg_j7ciGOIbdx7vKkvaGd0_lVvqM8SPzKixw152-Hg" />
-  <meta name="google-site-verification" content="HiLK2kinkGRGiOGoiNuHry-dK_8hT0bD6wjprqP1uMg" />
+    <link rel="icon" href="1781795678964.png" type="image/png">
+    <meta name="description" content="Mourish Developers build responsive websites and apps using modern technologies like Bootstrap, Firebase, and payment gateways." />
+    <meta name="keywords" content="Mourish Developers, web development, app design, Firebase, e-commerce, responsive websites, India" />
+    <meta name="author" content="Mourish Developers" />
+    <meta name="google-site-verification" content="j75MNZTxGcB7SRU7kZa-ED0csoryKrEjtyOYv79BJ_Q" /> 
+    <meta name="google-site-verification" content="Yvg_j7ciGOIbdx7vKkvaGd0_lVvqM8SPzKixw152-Hg" />
+    <meta name="google-site-verification" content="HiLK2kinkGRGiOGoiNuHry-dK_8hT0bD6wjprqP1uMg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -21,6 +20,12 @@
             theme: {
                 extend: {
                     colors: {
+                        // Colors extracted from branding guide image_bdf41043-d969-41b3-8de1-731d1c11b7c3.png
+                        brandTeal: '#00796B',
+                        brandBlue: '#0288D1',
+                        brandLime: '#CDDC39',
+                        brandBrown: '#795548',
+                        brandDark: '#3A4C91D', // Deep dark backdrop container
                         milk: '#FDFCF8',
                         salt: '#E5E5E1',
                         charcoal: '#121212',
@@ -46,10 +51,10 @@
         }
         
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(0, 121, 107, 0.03);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 121, 107, 0.1);
         }
         .dark .glass {
             background: rgba(18, 18, 18, 0.6);
@@ -66,7 +71,7 @@
         }
         .salted-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 121, 107, 0.15);
         }
     </style>
 </head>
@@ -75,24 +80,29 @@
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="bg-charcoal dark:bg-milk p-2 rounded-xl">
-                    <i class="fa-solid fa-bolt text-milk dark:text-charcoal"></i>
+            <div class="flex items-center space-x-3">
+                <!-- Brand Logo Placeholder Area -->
+                <div class="flex items-center justify-center bg-brandTeal dark:bg-brandTeal p-2 rounded-xl w-10 h-10 overflow-hidden shadow-md">
+                    <!-- Replace the icon line below with your asset <img src="logo.png" class="object-contain w-full h-full" alt="Mourish Logo"> -->
+                    <i class="fa-solid fa-code text-brandLime text-lg"></i>
                 </div>
-                <span class="text-xl font-black tracking-tighter uppercase">Mourish</span>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-tighter uppercase leading-none text-brandTeal dark:text-milk">Mourish</span>
+                    <span class="text-[9px] tracking-[0.22em] uppercase font-bold text-brandBlue dark:text-brandLime leading-none mt-1">Developers</span>
+                </div>
             </div>
             
             <div class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-widest opacity-70">
-                <a href="#web" class="hover:opacity-100 transition-opacity">Web</a>
-                <a href="#apps" class="hover:opacity-100 transition-opacity">Apps</a>
-                <a href="#portfolio" class="hover:opacity-100 transition-opacity">Portfolio</a>
+                <a href="#web" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors">Web</a>
+                <a href="#apps" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors">Apps</a>
+                <a href="#portfolio" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors">Portfolio</a>
             </div>
 
             <div class="flex items-center space-x-4">
                 <button onclick="toggleDarkMode()" class="p-2 rounded-full border border-charcoal/10 dark:border-salt/10 hover:bg-charcoal/5 dark:hover:bg-salt/5">
-                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                    <i id="theme-icon" class="fa-solid fa-moon text-brandTeal dark:text-brandLime"></i>
                 </button>
-                <a href="https://mourishdevelopers.vercel.app/book.html" class="bg-charcoal dark:bg-milk text-milk dark:text-charcoal px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform">
+                <a href="https://mourishdevelopers.vercel.app/book.html" class="bg-brandTeal dark:bg-brandLime text-milk dark:text-charcoal px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-lg shadow-brandTeal/20 dark:shadow-brandLime/10">
                     Book Now
                 </a>
             </div>
@@ -103,31 +113,32 @@
     <section class="min-h-screen flex items-center pt-20 px-6 milk-gradient">
         <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
             <div class="animate-fade-in-up">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-charcoal/10 dark:border-salt/10 text-[10px] font-bold uppercase tracking-widest mb-6">
-                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <span>Accepting New Projects</span>
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-brandTeal/20 dark:border-brandLime/20 text-[10px] font-bold uppercase tracking-widest mb-6 bg-brandTeal/5 dark:bg-brandLime/5">
+                    <span class="w-2 h-2 rounded-full bg-brandLime animate-pulse"></span>
+                    <span class="text-brandTeal dark:text-brandLime">Accepting New Projects</span>
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8">
-                    DESIGNING <br> THE <span class="text-transparent" style="-webkit-text-stroke: 1px currentColor">FUTURE.</span>
+                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8 text-charcoal dark:text-milk">
+                    DESIGNING <br> THE <span class="text-transparent" style="-webkit-text-stroke: 1px #0288D1">FUTURE.</span>
                 </h1>
-                <p class="text-lg opacity-60 max-w-md mb-10 leading-relaxed">
-                    Mourish Developers creates hyper-efficient, visually stunning websites and cross-platform apps with salted UI aesthetics and milk-smooth performance.
+                <p class="text-lg opacity-70 max-w-md mb-10 leading-relaxed">
+                    Mourish Developers creates hyper-efficient, visually stunning websites and cross-platform apps using your custom signature brand identity ecosystem.
                 </p>
                 <div class="flex items-center space-x-6">
-                    <a href="#web" class="group flex items-center space-x-3 font-bold text-sm uppercase tracking-widest">
+                    <a href="#web" class="group flex items-center space-x-3 font-bold text-sm uppercase tracking-widest text-brandTeal dark:text-brandLime">
                         <span>Explore Pricing</span>
-                        <div class="w-10 h-10 rounded-full border border-charcoal/20 dark:border-salt/20 flex items-center justify-center group-hover:bg-charcoal group-hover:text-milk dark:group-hover:bg-milk dark:group-hover:text-charcoal transition-all">
+                        <div class="w-10 h-10 rounded-full border border-brandTeal/20 dark:border-brandLime/20 flex items-center justify-center group-hover:bg-brandTeal group-hover:text-milk dark:group-hover:bg-brandLime dark:group-hover:text-charcoal transition-all">
                             <i class="fa-solid fa-arrow-down text-xs"></i>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="relative hidden lg:block">
-                <div class="aspect-square bg-salt/50 dark:bg-white/5 rounded-[4rem] flex items-center justify-center relative overflow-hidden">
-                    <i class="fa-solid fa-code text-[12rem] opacity-5"></i>
+                <div class="aspect-square bg-salt/50 dark:bg-white/5 rounded-[4rem] flex items-center justify-center relative overflow-hidden border border-brandTeal/10">
+                    <!-- Subtle watermark logo element inside workspace view -->
+                    <i class="fa-solid fa-cubes text-[12rem] text-brandTeal opacity-5"></i>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div class="p-8 glass rounded-3xl border border-white/10 shadow-2xl animate-bounce">
-                            <i class="fa-solid fa-mobile-screen-button text-4xl"></i>
+                            <i class="fa-solid fa-mobile-screen-button text-4xl text-brandBlue"></i>
                         </div>
                     </div>
                 </div>
@@ -140,66 +151,66 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                 <div>
-                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4">Website Ecosystem</h2>
+                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4 text-brandTeal dark:text-milk">Website Ecosystem</h2>
                     <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Fixed pricing. No hidden costs.</p>
                 </div>
                 <div class="h-px flex-1 bg-charcoal/10 dark:bg-salt/10 mx-10 hidden md:block"></div>
-                <span class="text-6xl font-black opacity-5">01</span>
+                <span class="text-6xl font-black opacity-10 text-brandBlue">01</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Simple -->
                 <div class="salted-card p-10 bg-white dark:bg-white/5 rounded-[2.5rem] border border-charcoal/5 dark:border-white/5">
-                    <h3 class="text-xs font-black uppercase tracking-widest opacity-40 mb-10">Standard</h3>
-                    <div class="text-5xl font-black mb-2">₹3,000</div>
-                    <div class="text-xl font-bold mb-8 italic opacity-80">Simple Web</div>
-                    <ul class="space-y-4 mb-10 text-sm opacity-60">
-                        <li><i class="fa-solid fa-check mr-2"></i> 3 Premium Pages</li>
-                        <li><i class="fa-solid fa-check mr-2"></i> Responsive Layout</li>
-                        <li><i class="fa-solid fa-check mr-2"></i> Contact Integration</li>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-brandTeal opacity-60 mb-10">Standard</h3>
+                    <div class="text-5xl font-black mb-2 text-charcoal dark:text-milk">₹3,000</div>
+                    <div class="text-xl font-bold mb-8 italic opacity-80 text-brandBlue">Simple Web</div>
+                    <ul class="space-y-4 mb-10 text-sm opacity-70">
+                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> 3 Premium Pages</li>
+                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Responsive Layout</li>
+                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Contact Integration</li>
                     </ul>
-                    <button class="w-full py-4 rounded-2xl border border-charcoal/10 dark:border-salt/10 font-bold hover:bg-charcoal hover:text-milk dark:hover:bg-milk dark:hover:text-charcoal transition-all">Select Plan</button>
+                    <button class="w-full py-4 rounded-2xl border border-brandTeal/20 dark:border-brandLime/20 font-bold hover:bg-brandTeal hover:text-milk dark:hover:bg-brandLime dark:hover:text-charcoal transition-all">Select Plan</button>
                 </div>
-                <!-- Custom -->
-                <div class="salted-card p-10 bg-charcoal text-milk dark:bg-milk dark:text-charcoal rounded-[2.5rem] relative overflow-hidden">
-                    <div class="absolute top-6 right-6 px-3 py-1 bg-blue-500 text-white text-[10px] font-black rounded-lg">NEW</div>
-                    <h3 class="text-xs font-black uppercase tracking-widest opacity-40 mb-10">Premium</h3>
+                <!-- Custom / Premium styled directly on brand values -->
+                <div class="salted-card p-10 bg-brandTeal text-milk dark:bg-white/10 rounded-[2.5rem] relative overflow-hidden border border-brandTeal/20 shadow-xl">
+                    <div class="absolute top-6 right-6 px-3 py-1 bg-brandLime text-charcoal text-[10px] font-black rounded-lg">NEW</div>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-brandLime mb-10">Premium</h3>
                     <div class="text-5xl font-black mb-2">₹7,000</div>
-                    <div class="text-xl font-bold mb-8 italic">Custom Design</div>
-                    <ul class="space-y-4 mb-10 text-sm opacity-80">
-                        <li><i class="fa-solid fa-check mr-2 text-blue-400"></i> Unlimited Pages</li>
-                        <li><i class="fa-solid fa-check mr-2 text-blue-400"></i> Advanced SEO</li>
-                        <li><i class="fa-solid fa-check mr-2 text-blue-400"></i> Priority Support</li>
+                    <div class="text-xl font-bold mb-8 italic text-brandLime">Custom Design</div>
+                    <ul class="space-y-4 mb-10 text-sm opacity-90">
+                        <li><i class="fa-solid fa-check mr-2 text-brandLime"></i> Unlimited Pages</li>
+                        <li><i class="fa-solid fa-check mr-2 text-brandLime"></i> Advanced SEO</li>
+                        <li><i class="fa-solid fa-check mr-2 text-brandLime"></i> Priority Support</li>
                     </ul>
-                    <button class="w-full py-4 rounded-2xl bg-white/10 dark:bg-charcoal/10 backdrop-blur-md font-bold hover:bg-white dark:hover:bg-charcoal hover:text-charcoal dark:hover:text-milk transition-all">Select Plan</button>
+                    <button class="w-full py-4 rounded-2xl bg-milk/10 backdrop-blur-md font-bold hover:bg-milk hover:text-brandTeal transition-all">Select Plan</button>
                 </div>
                 <!-- AI -->
                 <div class="salted-card p-10 bg-white dark:bg-white/5 rounded-[2.5rem] border border-charcoal/5 dark:border-white/5">
-                    <h3 class="text-xs font-black uppercase tracking-widest opacity-40 mb-10">Intelligent</h3>
-                    <div class="text-5xl font-black mb-2">₹5,000</div>
-                    <div class="text-xl font-bold mb-8 italic opacity-80">AI Integration</div>
-                    <ul class="space-y-4 mb-10 text-sm opacity-60">
-                        <li><i class="fa-solid fa-check mr-2"></i> Gemini/GPT API</li>
-                        <li><i class="fa-solid fa-check mr-2"></i> Smart Chatbots</li>
-                        <li><i class="fa-solid fa-check mr-2"></i> Automation Flow</li>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-brandTeal opacity-60 mb-10">Intelligent</h3>
+                    <div class="text-5xl font-black mb-2 text-charcoal dark:text-milk">₹5,000</div>
+                    <div class="text-xl font-bold mb-8 italic opacity-80 text-brandBlue">AI Integration</div>
+                    <ul class="space-y-4 mb-10 text-sm opacity-70">
+                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Gemini/GPT API</li>
+                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Smart Chatbots</li>
+                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Automation Flow</li>
                     </ul>
-                    <button class="w-full py-4 rounded-2xl border border-charcoal/10 dark:border-salt/10 font-bold hover:bg-charcoal hover:text-milk dark:hover:bg-milk dark:hover:text-charcoal transition-all">Select Plan</button>
+                    <button class="w-full py-4 rounded-2xl border border-brandTeal/20 dark:border-brandLime/20 font-bold hover:bg-brandTeal hover:text-milk dark:hover:bg-brandLime dark:hover:text-charcoal transition-all">Select Plan</button>
                 </div>
             </div>
             
             <!-- Secondary Pricing List -->
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="p-6 border border-charcoal/5 dark:border-salt/5 rounded-2xl flex justify-between items-center">
-                    <span class="font-bold opacity-60">Advance Web</span>
-                    <span class="font-black">₹3,500</span>
+                <div class="p-6 border border-brandTeal/10 dark:border-salt/5 rounded-2xl flex justify-between items-center bg-white dark:bg-transparent">
+                    <span class="font-bold opacity-70">Advance Web</span>
+                    <span class="font-black text-brandTeal dark:text-brandLime">₹3,500</span>
                 </div>
-                <div class="p-6 border border-charcoal/5 dark:border-salt/5 rounded-2xl flex justify-between items-center">
-                    <span class="font-bold opacity-60">Login System</span>
-                    <span class="font-black">₹4,000</span>
+                <div class="p-6 border border-brandTeal/10 dark:border-salt/5 rounded-2xl flex justify-between items-center bg-white dark:bg-transparent">
+                    <span class="font-bold opacity-70">Login System</span>
+                    <span class="font-black text-brandTeal dark:text-brandLime">₹4,000</span>
                 </div>
-                <div class="p-6 border border-charcoal/5 dark:border-salt/5 rounded-2xl flex justify-between items-center">
-                    <span class="font-bold opacity-60">Payment Gateway</span>
-                    <span class="font-black">₹4,500</span>
+                <div class="p-6 border border-brandTeal/10 dark:border-salt/5 rounded-2xl flex justify-between items-center bg-white dark:bg-transparent">
+                    <span class="font-bold opacity-70">Payment Gateway</span>
+                    <span class="font-black text-brandTeal dark:text-brandLime">₹4,500</span>
                 </div>
             </div>
         </div>
@@ -210,99 +221,40 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                 <div>
-                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4">Application Development</h2>
+                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4 text-brandTeal dark:text-milk">Application Development</h2>
                     <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Native power. Fluid experiences.</p>
                 </div>
-                <span class="text-6xl font-black opacity-5">02</span>
+                <span class="text-6xl font-black opacity-10 text-brandBlue">02</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Android -->
-                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-charcoal/5 dark:border-salt/5 text-center">
-                    <i class="fa-brands fa-android text-3xl mb-4 text-green-500"></i>
+                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-brandTeal/10 dark:border-salt/5 text-center">
+                    <i class="fa-brands fa-android text-3xl mb-4 text-brandLime"></i>
                     <h4 class="font-bold mb-2">Android App</h4>
-                    <div class="text-3xl font-black">₹10,000</div>
+                    <div class="text-3xl font-black text-brandTeal dark:text-milk">₹10,000</div>
                 </div>
                 <!-- iOS -->
-                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-charcoal/5 dark:border-salt/5 text-center relative overflow-hidden">
-                    <div class="absolute top-2 right-4 text-[8px] font-black text-blue-500 uppercase">NEW</div>
-                    <i class="fa-brands fa-apple text-3xl mb-4"></i>
+                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-brandTeal/10 dark:border-salt/5 text-center relative overflow-hidden">
+                    <div class="absolute top-2 right-4 text-[8px] font-black text-brandBlue uppercase">NEW</div>
+                    <i class="fa-brands fa-apple text-3xl mb-4 text-brandBlue"></i>
                     <h4 class="font-bold mb-2">iOS Native</h4>
-                    <div class="text-3xl font-black">₹15,000</div>
+                    <div class="text-3xl font-black text-brandTeal dark:text-milk">₹15,000</div>
                 </div>
-                <!-- Apple Bundle -->
-                <div class="p-8 bg-charcoal text-milk dark:bg-milk dark:text-charcoal rounded-3xl text-center">
-                    <i class="fa-solid fa-layer-group text-3xl mb-4"></i>
-                    <h4 class="font-bold mb-2 uppercase text-[10px] tracking-widest">Apple Eco-System</h4>
-                    <div class="text-3xl font-black">₹35,000</div>
-                    <p class="text-[9px] mt-2 opacity-50">iPhone + iPadOS</p>
+                <!-- Custom Bundle Area -->
+                <div class="p-8 bg-brandBlue text-milk rounded-3xl text-center shadow-lg shadow-brandBlue/20">
+                    <i class="fa-solid fa-layer-group text-3xl mb-4 text-brandLime"></i>
+                    <h4 class="font-bold mb-2 uppercase text-[10px] tracking-widest text-white">Apple Eco-System</h4>
+                    <div class="text-3xl font-black text-white">₹35,000</div>
+                    <p class="text-[9px] mt-2 opacity-70">iPhone + iPadOS</p>
                 </div>
                 <!-- Windows -->
-                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-charcoal/5 dark:border-salt/5 text-center relative overflow-hidden">
-                    <div class="absolute top-2 right-4 text-[8px] font-black text-blue-500 uppercase">NEW</div>
-                    <i class="fa-brands fa-windows text-3xl mb-4 text-blue-400"></i>
+                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-brandTeal/10 dark:border-salt/5 text-center relative overflow-hidden">
+                    <div class="absolute top-2 right-4 text-[8px] font-black text-brandBlue uppercase">NEW</div>
+                    <i class="fa-brands fa-windows text-3xl mb-4 text-brandBlue"></i>
                     <h4 class="font-bold mb-2">Windows</h4>
-                    <div class="text-3xl font-black">₹34,000</div>
+                    <div class="text-3xl font-black text-brandTeal dark:text-milk">₹34,000</div>
                 </div>
-            </div>
-
-            <!-- More Apps -->
-            <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                 <div class="p-8 glass rounded-3xl flex flex-col justify-center border border-charcoal/5 dark:border-salt/5">
-                    <span class="text-[10px] font-black text-blue-500 uppercase mb-2">New Release</span>
-                    <div class="flex justify-between items-center">
-                        <span class="font-bold">iPadOS Native</span>
-                        <span class="font-black">₹30,000</span>
-                    </div>
-                 </div>
-                 <div class="p-8 glass rounded-3xl flex flex-col justify-center border border-charcoal/5 dark:border-salt/5">
-                    <span class="text-[10px] font-black text-blue-500 uppercase mb-2">New Release</span>
-                    <div class="flex justify-between items-center">
-                        <span class="font-bold">Linux Desktop</span>
-                        <span class="font-black">₹15,000</span>
-                    </div>
-                 </div>
-                 <div class="p-8 glass rounded-3xl flex flex-col justify-center border border-charcoal/5 dark:border-salt/5">
-                    <span class="text-[10px] font-black text-blue-500 uppercase mb-2">New Release</span>
-                    <div class="flex justify-between items-center">
-                        <span class="font-bold">macOS Native</span>
-                        <span class="font-black">₹35,000</span>
-                    </div>
-                    <p class="text-[9px] mt-2 opacity-40">*(9,000/yr for download store access)*</p>
-                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bundles (Mega) -->
-    <section class="py-32 px-6">
-        <div class="max-w-7xl mx-auto bg-charcoal dark:bg-milk text-milk dark:text-charcoal rounded-[4rem] p-12 md:p-24 overflow-hidden relative">
-            <div class="relative z-10">
-                <h2 class="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-12">The <span class="text-blue-500 italic">Grand</span><br>Bundles.</h2>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="p-8 border border-white/10 dark:border-charcoal/10 rounded-3xl">
-                        <span class="text-[10px] font-black bg-blue-500 text-white px-2 py-1 rounded mb-4 inline-block">BEST VALUE</span>
-                        <h4 class="text-2xl font-bold mb-4">Desktop Bundle</h4>
-                        <div class="text-4xl font-black mb-6">₹1,00,000</div>
-                        <p class="text-sm opacity-60">Complete coverage for Windows, Linux, and macOS platforms.</p>
-                    </div>
-                    <div class="p-8 border border-white/10 dark:border-charcoal/10 rounded-3xl">
-                        <span class="text-[10px] font-black bg-blue-500 text-white px-2 py-1 rounded mb-4 inline-block">POPULAR</span>
-                        <h4 class="text-2xl font-bold mb-4">Mobile & Tablet</h4>
-                        <div class="text-4xl font-black mb-6">₹50,000</div>
-                        <p class="text-sm opacity-60">The complete handheld suite. iOS, Android, and iPadOS.</p>
-                    </div>
-                    <div class="p-8 bg-blue-600 text-white rounded-3xl">
-                        <span class="text-[10px] font-black bg-white/20 px-2 py-1 rounded mb-4 inline-block">ULTIMATE</span>
-                        <h4 class="text-2xl font-bold mb-4">Full Stack Bundle</h4>
-                        <div class="text-4xl font-black mb-6">₹2,00,000</div>
-                        <p class="text-sm opacity-80">Every platform. Every device. The master key for your empire.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="absolute bottom-0 right-0 opacity-10 translate-x-1/4 translate-y-1/4">
-                <i class="fa-solid fa-cubes text-[20rem]"></i>
             </div>
         </div>
     </section>
@@ -312,62 +264,59 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                 <div>
-                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4">Client Portfolio</h2>
+                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4 text-brandTeal dark:text-milk">Client Portfolio</h2>
                     <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Proven track record of excellence.</p>
                 </div>
-                <span class="text-6xl font-black opacity-5">03</span>
+                <span class="text-6xl font-black opacity-10 text-brandBlue">03</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="https://mourish45-l.github.io/Anira-BS-Enterprisers/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-charcoal/5 dark:border-salt/5">
+                <a href="https://mourish45-l.github.io/Anira-BS-Enterprisers/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-brandTeal/10 dark:border-salt/5">
                     <div class="text-center z-10 p-6">
-                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:scale-110 transition-transform">Anira BS Enterprises</h4>
-                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></p>
+                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:text-brandTeal dark:group-hover:text-brandLime transition-colors">Anira BS Enterprises</h4>
+                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-brandBlue"></i></p>
                     </div>
-                    <div class="absolute inset-0 bg-charcoal opacity-0 group-hover:opacity-5 transition-opacity"></div>
                 </a>
-                                <a href="https://mourish45-l.github.io/thulircreations.store/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-charcoal/5 dark:border-salt/5">
+                <a href="https://mourish45-l.github.io/thulircreations.store/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-brandTeal/10 dark:border-salt/5">
                     <div class="text-center z-10 p-6">
-                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:scale-110 transition-transform">Thulir Creations</h4>
-                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></p>
+                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:text-brandTeal dark:group-hover:text-brandLime transition-colors">Thulir Creations</h4>
+                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-brandBlue"></i></p>
                     </div>
-                    <div class="absolute inset-0 bg-charcoal opacity-0 group-hover:opacity-5 transition-opacity"></div>
                 </a>
-                <a href="https://manufacturing.lgs.co.in/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-charcoal/5 dark:border-salt/5">
+                <a href="https://manufacturing.lgs.co.in/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-brandTeal/10 dark:border-salt/5">
                     <div class="text-center z-10 p-6">
-                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:scale-110 transition-transform">Life Gas System</h4>
-                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></p>
+                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:text-brandTeal dark:group-hover:text-brandLime transition-colors">Life Gas System</h4>
+                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-brandBlue"></i></p>
                     </div>
-                    <div class="absolute inset-0 bg-charcoal opacity-0 group-hover:opacity-5 transition-opacity"></div>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 px-6 border-t border-charcoal/5 dark:border-salt/5">
+    <footer class="py-20 px-6 border-t border-brandTeal/10 dark:border-salt/5">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
                 <div>
                     <div class="flex items-center space-x-2 mb-6">
-                        <div class="bg-charcoal dark:bg-milk p-1.5 rounded-lg">
-                            <i class="fa-solid fa-bolt text-xs text-milk dark:text-charcoal"></i>
+                        <div class="bg-brandTeal p-2 rounded-lg">
+                            <i class="fa-solid fa-bolt text-xs text-brandLime"></i>
                         </div>
-                        <span class="font-black uppercase tracking-tighter">Mourish Developers</span>
+                        <span class="font-black uppercase tracking-tighter text-brandTeal dark:text-milk">Mourish Developers</span>
                     </div>
-                    <p class="text-xs opacity-40 max-w-xs uppercase leading-loose font-bold tracking-widest">
+                    <p class="text-xs opacity-50 max-w-xs uppercase leading-loose font-bold tracking-widest">
                         Crafting high-end digital solutions for modern brands. Performance driven. Design centered.
                     </p>
                 </div>
                 
                 <div class="flex flex-col items-end gap-4">
                     <div class="text-[10px] font-black opacity-30 uppercase tracking-[0.2em]">Contact & Bookings</div>
-                    <a href="https://mourishdevelopers.vercel.app/book.html" class="text-2xl font-black hover:italic transition-all">mourishdevelopers.vercel.app</a>
+                    <a href="https://mourishdevelopers.vercel.app/book.html" class="text-2xl font-black text-brandTeal dark:text-brandLime hover:underline decoration-brandBlue">mourishdevelopers.vercel.app</a>
                 </div>
             </div>
             
             <div class="mt-20 pt-10 border-t border-charcoal/5 dark:border-salt/5 flex flex-col md:flex-row justify-between text-[10px] font-bold opacity-30 uppercase tracking-widest">
-                <span>2025 Mourish Developers</span>
+                <span>2026 Mourish Developers</span>
                 <span>Terms of Service / Privacy Policy</span>
             </div>
         </div>
@@ -390,10 +339,10 @@
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                nav.classList.add('bg-milk/80', 'dark:bg-charcoal/80', 'backdrop-blur-xl', 'py-4', 'shadow-sm');
+                nav.classList.add('bg-milk/80', 'dark:bg-charcoal/80', 'backdrop-blur-xl', 'py-4', 'shadow-md');
                 nav.classList.remove('py-6');
             } else {
-                nav.classList.remove('bg-milk/80', 'dark:bg-charcoal/80', 'backdrop-blur-xl', 'py-4', 'shadow-sm');
+                nav.classList.remove('bg-milk/80', 'dark:bg-charcoal/80', 'backdrop-blur-xl', 'py-4', 'shadow-md');
                 nav.classList.add('py-6');
             }
         });
