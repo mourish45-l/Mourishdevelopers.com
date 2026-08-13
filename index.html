@@ -1,144 +1,411 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth">
 <head>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mourish Developers | Premium Web & App Design</title>
-    <link rel="icon" href="1781795678964.png" type="image/png">
-    <meta name="description" content="Mourish Developers build responsive websites and apps using modern technologies like Bootstrap, Firebase, and payment gateways." />
-    <meta name="keywords" content="Mourish Developers, web development, app design, Firebase, e-commerce, responsive websites, India" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mourish Developers · Medical &amp; Digital</title>
+    <link rel="icon" href="1781795678964.png" type="image/png" />
+    <meta name="description" content="Mourish Developers: Medical Gas Pipeline, ICU Curtains, OT, Vinyl Flooring, Equipment, Civil, Fire Alarm, Web & App Development." />
+    <meta name="keywords" content="Mourish Developers, medical gas pipeline, ICU curtains, OT, vinyl flooring, medical equipment, civil, fire alarm, web development, app development" />
     <meta name="author" content="Mourish Developers" />
-    <meta name="google-site-verification" content="j75MNZTxGcB7SRU7kZa-ED0csoryKrEjtyOYv79BJ_Q" /> 
+    <meta name="google-site-verification" content="j75MNZTxGcB7SRU7kZa-ED0csoryKrEjtyOYv79BJ_Q" />
     <meta name="google-site-verification" content="Yvg_j7ciGOIbdx7vKkvaGd0_lVvqM8SPzKixw152-Hg" />
     <meta name="google-site-verification" content="HiLK2kinkGRGiOGoiNuHry-dK_8hT0bD6wjprqP1uMg" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        // Colors extracted from branding guide image_bdf41043-d969-41b3-8de1-731d1c11b7c3.png
                         brandTeal: '#00796B',
                         brandBlue: '#0288D1',
                         brandLime: '#CDDC39',
-                        brandBrown: '#795548',
-                        brandDark: '#3A4C91D', // Deep dark backdrop container
-                        milk: '#FDFCF8',
-                        salt: '#E5E5E1',
-                        charcoal: '#121212',
+                        brandGold: '#F9A825',
+                        brandCoral: '#EF5350',
+                        brandIndigo: '#3949AB',
+                        milk: '#F8FAFC',
+                        salt: '#E2E8F0',
+                        charcoal: '#0F172A',
+                    },
+                    fontFamily: {
+                        display: ['"Inter"', 'system-ui', 'sans-serif'],
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-14px)' },
+                        },
                     }
                 }
             }
         }
     </script>
     <style>
-        @import url('https://googleapis.com');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap');
 
-        body {
-            font-family: 'Syncoplate', sans-serif;
+        * {
+            font-family: 'Inter', system-ui, sans-serif;
         }
-        
-        .glass {
-            background: rgba(0, 121, 107, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 121, 107, 0.1);
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
-        .dark .glass {
-            background: rgba(18, 18, 18, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-color: rgba(255, 255, 255, 0.06);
         }
-        .milk-gradient {
-            background: radial-gradient(circle at top right, #fff, #f3f4f6);
+
+        .card-elevate {
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .dark .milk-gradient {
-            background: radial-gradient(circle at top right, #1a1a1a, #121212);
+        .card-elevate:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 60px rgba(0, 121, 107, 0.12);
         }
-        .salted-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .dark .card-elevate:hover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
         }
-        .salted-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 121, 107, 0.15);
+
+        .gradient-bar {
+            height: 4px;
+            width: 60px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00796B, #0288D1, #CDDC39);
+        }
+        .gradient-bar-center {
+            height: 4px;
+            width: 60px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00796B, #0288D1, #CDDC39);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-glow {
+            background: radial-gradient(ellipse at 20% 50%, rgba(0, 121, 107, 0.08), transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(2, 136, 209, 0.06), transparent 60%);
+        }
+        .dark .hero-glow {
+            background: radial-gradient(ellipse at 20% 50%, rgba(0, 121, 107, 0.12), transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(2, 136, 209, 0.08), transparent 60%);
+        }
+
+        .pill-badge {
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: rgba(0, 121, 107, 0.08);
+            color: #00796B;
+        }
+        .dark .pill-badge {
+            background: rgba(205, 220, 57, 0.1);
+            color: #CDDC39;
+        }
+
+        .stat-figure {
+            font-size: 2.6rem;
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #00796B, #0288D1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+        .dark .stat-figure {
+            background: linear-gradient(135deg, #CDDC39, #0288D1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .quick-link {
+            transition: all 0.25s ease;
+        }
+        .quick-link:hover {
+            transform: translateX(6px);
+            color: #00796B;
+        }
+        .dark .quick-link:hover {
+            color: #CDDC39;
+        }
+
+        .term-highlight {
+            background: rgba(0, 121, 107, 0.06);
+            border-left: 3px solid #00796B;
+            padding: 0.75rem 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .dark .term-highlight {
+            background: rgba(205, 220, 57, 0.06);
+            border-left-color: #CDDC39;
+        }
+
+        .term-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 9999px;
+            background: rgba(0, 121, 107, 0.1);
+            color: #00796B;
+            font-weight: 800;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .dark .term-number {
+            background: rgba(205, 220, 57, 0.12);
+            color: #CDDC39;
+        }
+
+        .partner-badge {
+            background: rgba(205, 220, 57, 0.08);
+            border: 1px solid rgba(205, 220, 57, 0.2);
+        }
+        .dark .partner-badge {
+            background: rgba(205, 220, 57, 0.05);
+            border-color: rgba(205, 220, 57, 0.1);
+        }
+
+        .logo-icon {
+            transition: transform 0.3s ease;
+        }
+        .logo-icon:hover {
+            transform: rotate(-8deg) scale(1.05);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00796B;
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #CDDC39;
         }
     </style>
 </head>
-<body class="bg-milk dark:bg-charcoal text-charcoal dark:text-salt transition-colors duration-500">
+<body class="bg-milk dark:bg-charcoal text-charcoal dark:text-salt transition-colors duration-500 antialiased">
 
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <!-- ===== NAVBAR ===== -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- ===== LOGO WITH IMG TAG ===== -->
+            <a href="#" class="flex items-center space-x-3 group no-underline">
+                <div class="logo-icon flex items-center justify-center w-11 h-11 rounded-xl bg-brandTeal dark:bg-brandTeal shadow-lg shadow-brandTeal/30 flex-shrink-0 overflow-hidden">
+                    <img src="IMG_20260812_211849.png" class="w-full h-full object-cover" alt="Mourish Logo" />
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="text-xl font-black tracking-[-0.04em] uppercase text-brandTeal dark:text-milk group-hover:text-brandBlue dark:group-hover:text-brandLime transition-colors">Mourish</span>
+                    <span class="text-[8px] tracking-[0.3em] uppercase font-bold text-brandBlue dark:text-brandLime">Developers</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#services" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors opacity-70 hover:opacity-100">Services</a>
+                <a href="#about" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors opacity-70 hover:opacity-100">About</a>
+                <a href="#team" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors opacity-70 hover:opacity-100">Team</a>
+                <a href="#dev" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors opacity-70 hover:opacity-100">Development</a>
+                <a href="#terms" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors opacity-70 hover:opacity-100">Terms</a>
+            </div>
+
             <div class="flex items-center space-x-3">
-                <!-- Brand Logo Placeholder Area -->
-                <div class="flex items-center justify-center bg-brandTeal dark:bg-brandTeal p-2 rounded-xl w-10 h-10 overflow-hidden shadow-md">
-                    <img src="1781795678964.png" class="object-contain w-full h-full" alt="Mourish Logo"> 
-
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-xl font-black tracking-tighter uppercase leading-none text-brandTeal dark:text-milk">Mourish</span>
-                    <span class="text-[9px] tracking-[0.22em] uppercase font-bold text-brandBlue dark:text-brandLime leading-none mt-1">Developers</span>
-                </div>
-            </div>
-            
-            <div class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-widest opacity-70">
-                <a href="#web" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors">Web</a>
-                <a href="#apps" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors">Apps</a>
-                <a href="#portfolio" class="hover:text-brandTeal dark:hover:text-brandLime transition-colors">Portfolio</a>
-            </div>
-
-            <div class="flex items-center space-x-4">
-                <button onclick="toggleDarkMode()" class="p-2 rounded-full border border-charcoal/10 dark:border-salt/10 hover:bg-charcoal/5 dark:hover:bg-salt/5">
-                    <i id="theme-icon" class="fa-solid fa-moon text-brandTeal dark:text-brandLime"></i>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full border border-charcoal/10 dark:border-salt/10 hover:bg-charcoal/5 dark:hover:bg-salt/5 transition-colors">
+                    <i id="theme-icon" class="fa-solid fa-moon text-brandTeal dark:text-brandLime text-sm"></i>
                 </button>
-                <a href="https://mourishdevelopers.vercel.app/book.html" class="bg-brandTeal dark:bg-brandLime text-milk dark:text-charcoal px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-lg shadow-brandTeal/20 dark:shadow-brandLime/10">
+                <a href="https://mourishdevelopers.vercel.app/book.html" class="bg-brandTeal dark:bg-brandLime text-milk dark:text-charcoal px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-lg shadow-brandTeal/25 dark:shadow-brandLime/15">
                     Book Now
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="min-h-screen flex items-center pt-20 px-6 milk-gradient">
-        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-            <div class="animate-fade-in-up">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-brandTeal/20 dark:border-brandLime/20 text-[10px] font-bold uppercase tracking-widest mb-6 bg-brandTeal/5 dark:bg-brandLime/5">
+    <!-- ===== HERO ===== -->
+    <section class="min-h-screen flex items-center pt-24 px-6 relative overflow-hidden hero-glow">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="animate-fade-up">
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-brandTeal/20 dark:border-brandLime/20 text-[9px] font-bold uppercase tracking-widest mb-6 bg-brandTeal/5 dark:bg-brandLime/5">
                     <span class="w-2 h-2 rounded-full bg-brandLime animate-pulse"></span>
-                    <span class="text-brandTeal dark:text-brandLime">Accepting New Projects</span>
+                    <span class="text-brandTeal dark:text-brandLime">Medical Infrastructure + Digital</span>
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8 text-charcoal dark:text-milk">
-                    DESIGNING <br> THE <span class="text-transparent" style="-webkit-text-stroke: 1px #0288D1">FUTURE.</span>
+                <h1 class="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter mb-6">
+                    <span class="text-charcoal dark:text-milk">Gas ·</span>
+                    <span class="text-brandTeal dark:text-brandLime">Curtains</span><br />
+                    <span class="text-charcoal dark:text-milk">OT ·</span>
+                    <span class="text-brandBlue">Flooring</span>
                 </h1>
-                <p class="text-lg opacity-70 max-w-md mb-10 leading-relaxed">
-                    Mourish Developers creates hyper-efficient, visually stunning websites and cross-platform apps using your custom signature brand identity ecosystem.
+                <div class="gradient-bar mb-6"></div>
+                <p class="text-base opacity-70 max-w-lg leading-relaxed mb-8">
+                    Mourish delivers turnkey medical gas pipelines, ICU cubicle tracks, OT solutions, vinyl flooring, equipment, civil works, and fire alarm — plus premium web &amp; app development.
                 </p>
-                <div class="flex items-center space-x-6">
-                    <a href="#web" class="group flex items-center space-x-3 font-bold text-sm uppercase tracking-widest text-brandTeal dark:text-brandLime">
-                        <span>Explore Pricing</span>
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="#services" class="group flex items-center space-x-3 font-bold text-sm uppercase tracking-widest text-brandTeal dark:text-brandLime">
+                        <span>Explore All</span>
                         <div class="w-10 h-10 rounded-full border border-brandTeal/20 dark:border-brandLime/20 flex items-center justify-center group-hover:bg-brandTeal group-hover:text-milk dark:group-hover:bg-brandLime dark:group-hover:text-charcoal transition-all">
                             <i class="fa-solid fa-arrow-down text-xs"></i>
                         </div>
                     </a>
+                    <div class="flex items-center space-x-3 text-xs font-mono bg-white/60 dark:bg-charcoal/60 backdrop-blur-sm px-4 py-2 rounded-full border border-charcoal/5 dark:border-salt/5">
+                        <i class="fa-solid fa-phone text-brandBlue"></i>
+                        <span class="font-bold">9487410078</span>
+                        <span class="opacity-30">/</span>
+                        <span class="font-bold">9659233313</span>
+                    </div>
                 </div>
             </div>
-            <div class="relative hidden lg:block">
-                <div class="aspect-square bg-salt/50 dark:bg-white/5 rounded-[4rem] flex items-center justify-center relative overflow-hidden border border-brandTeal/10">
-                    <!-- Subtle watermark logo element inside workspace view -->
-                    <i class="fa-solid fa-cubes text-[12rem] text-brandTeal opacity-5"></i>
+            <div class="relative hidden lg:flex items-center justify-center">
+                <div class="w-full aspect-square max-w-lg rounded-[3rem] bg-gradient-to-br from-brandTeal/5 via-brandBlue/5 to-brandLime/5 border border-brandTeal/10 flex items-center justify-center relative overflow-hidden">
+                    <i class="fa-solid fa-hospital text-[10rem] text-brandTeal/10"></i>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="p-8 glass rounded-3xl border border-white/10 shadow-2xl animate-bounce">
-                            <i class="fa-solid fa-mobile-screen-button text-4xl text-brandBlue"></i>
+                        <div class="glass-card p-8 rounded-3xl shadow-2xl animate-float border border-white/20">
+                            <i class="fa-solid fa-microscope text-5xl text-brandBlue"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-8 left-8 glass-card px-5 py-3 rounded-2xl border border-white/20">
+                        <span class="text-xs font-black uppercase tracking-widest text-brandTeal dark:text-brandLime">Trusted Partner</span>
+                    </div>
+                    <div class="absolute top-8 right-8 glass-card px-5 py-3 rounded-2xl border border-white/20 bg-brandLime/10 dark:bg-brandLime/20">
+                        <span class="text-xs font-black uppercase tracking-widest text-brandLime dark:text-brandLime">New Medical 2026</span>
+                    </div>
+                    <div class="absolute top-8 left-8 glass-card px-5 py-3 rounded-2xl border border-white/20">
+                        <span class="text-xs font-black uppercase tracking-widest text-brandBlue dark:text-brandBlue">Since 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES (Learn More Removed) ===== -->
+    <section id="services" class="py-28 px-6 bg-salt/10 dark:bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="pill-badge">Our Solutions</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-3 text-charcoal dark:text-milk">Complete Medical <br /><span class="text-brandTeal dark:text-brandLime">Infrastructure</span></h2>
+                <div class="gradient-bar-center mt-4"></div>
+                <p class="opacity-50 text-sm mt-4">End-to-end solutions for modern healthcare facilities</p>
+                <div class="mt-4 inline-block px-4 py-1.5 rounded-full bg-brandLime/20 text-brandLime dark:bg-brandLime/10 dark:text-brandLime text-[10px] font-black uppercase tracking-widest border border-brandLime/30">
+                    <i class="fa-solid fa-star mr-1"></i> New Medical 2026
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-8 border border-charcoal/5 dark:border-white/5 shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-brandTeal/10 dark:bg-brandTeal/20 flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-bolt text-2xl text-brandTeal"></i>
+                    </div>
+                    <h3 class="text-lg font-black tracking-tight">Medical Gas Pipeline</h3>
+                    <p class="text-sm opacity-60 mt-2 leading-relaxed">Central oxygen, vacuum, medical air — certified installation with manifold &amp; alarm systems.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-8 border border-charcoal/5 dark:border-white/5 shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-brandBlue/10 dark:bg-brandBlue/20 flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-vector-square text-2xl text-brandBlue"></i>
+                    </div>
+                    <h3 class="text-lg font-black tracking-tight">ICU Curtains &amp; Cubical Track</h3>
+                    <p class="text-sm opacity-60 mt-2 leading-relaxed">Privacy, infection control, smooth glide tracks — custom sizes &amp; fire-retardant fabrics.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-8 border border-charcoal/5 dark:border-white/5 shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-brandLime/20 dark:bg-brandLime/10 flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-syringe text-2xl text-brandLime"></i>
+                    </div>
+                    <h3 class="text-lg font-black tracking-tight">Operational Theatre</h3>
+                    <p class="text-sm opacity-60 mt-2 leading-relaxed">Modular OT, laminar flow, surgical lighting, pendants, and medical gas outlets.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-8 border border-charcoal/5 dark:border-white/5 shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-brandGold/20 dark:bg-brandGold/10 flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-layer-group text-2xl text-brandGold"></i>
+                    </div>
+                    <h3 class="text-lg font-black tracking-tight">Vinyl Flooring</h3>
+                    <p class="text-sm opacity-60 mt-2 leading-relaxed">Hygienic, anti-slip, homogeneous sheet &amp; tile — ideal for OT, ICU, and wards.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-8 border border-charcoal/5 dark:border-white/5 shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-brandCoral/10 dark:bg-brandCoral/20 flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-microscope text-2xl text-brandCoral"></i>
+                    </div>
+                    <h3 class="text-lg font-black tracking-tight">Medical Equipment</h3>
+                    <p class="text-sm opacity-60 mt-2 leading-relaxed">Patient monitors, ventilators, ICU beds, infusion pumps, and diagnostic devices.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-8 border border-charcoal/5 dark:border-white/5 shadow-sm">
+                    <div class="w-14 h-14 rounded-2xl bg-brandIndigo/10 dark:bg-brandIndigo/20 flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-hard-hat text-2xl text-brandIndigo"></i>
+                    </div>
+                    <h3 class="text-lg font-black tracking-tight">Civil · Fire Alarm</h3>
+                    <p class="text-sm opacity-60 mt-2 leading-relaxed">Structural works, fire detection, suppression systems, and emergency lighting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT US ===== -->
+    <section id="about" class="py-28 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+                <span class="pill-badge">About Us</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-3 text-charcoal dark:text-milk">
+                    Building <span class="text-brandTeal dark:text-brandLime">Healthcare</span> &amp; Digital <span class="text-brandBlue">Futures</span>
+                </h2>
+                <div class="gradient-bar mt-4"></div>
+                <p class="text-base opacity-70 leading-relaxed mt-6">
+                    Mourish Developers is a multidisciplinary firm specializing in medical infrastructure and digital innovation. We combine engineering excellence with cutting-edge technology to deliver holistic solutions for modern healthcare facilities.
+                </p>
+                <p class="text-base opacity-60 leading-relaxed mt-4">
+                    From medical gas pipelines and OT modules to responsive web apps and AI-driven platforms — we are your trusted partner for end-to-end project execution.
+                </p>
+                <div class="grid grid-cols-3 gap-4 mt-8" id="stats-container">
+                    <div>
+                        <span class="stat-figure" data-target="10">0</span><span class="stat-figure">+</span>
+                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-50">Years Expertise</p>
+                    </div>
+                    <div>
+                        <span class="stat-figure" data-target="120">0</span><span class="stat-figure">+</span>
+                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-50">Projects Delivered</p>
+                    </div>
+                    <div>
+                        <span class="stat-figure" data-target="98">0</span><span class="stat-figure">%</span>
+                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-50">Client Satisfaction</p>
+                    </div>
+                </div>
+                <div class="mt-6 inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brandLime/10 border border-brandLime/30 text-brandLime dark:bg-brandLime/5 dark:text-brandLime">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="text-xs font-black uppercase tracking-widest">New Medical 2026 · Since 2025</span>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 relative">
+                <div class="aspect-square rounded-[3rem] bg-gradient-to-br from-brandTeal/5 via-brandBlue/5 to-brandLime/5 border border-brandTeal/10 flex items-center justify-center relative overflow-hidden">
+                    <i class="fa-solid fa-building-columns text-[10rem] text-brandTeal/5"></i>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="glass-card p-10 rounded-3xl shadow-2xl border border-white/20 text-center">
+                            <i class="fa-solid fa-handshake text-5xl text-brandTeal mb-3"></i>
+                            <p class="text-sm font-black uppercase tracking-widest text-charcoal dark:text-milk">Trusted Partner</p>
+                            <p class="text-[10px] opacity-50">Since 2025</p>
                         </div>
                     </div>
                 </div>
@@ -146,187 +413,324 @@
         </div>
     </section>
 
-    <!-- Web Pricing -->
-    <section id="web" class="py-32 px-6">
+    <!-- ===== TEAM & PARTNERSHIPS ===== -->
+    <section id="team" class="py-28 px-6 bg-salt/10 dark:bg-white/[0.02]">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div>
-                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4 text-brandTeal dark:text-milk">Website Ecosystem</h2>
-                    <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Fixed pricing. No hidden costs.</p>
-                </div>
-                <div class="h-px flex-1 bg-charcoal/10 dark:bg-salt/10 mx-10 hidden md:block"></div>
-                <span class="text-6xl font-black opacity-10 text-brandBlue">01</span>
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="pill-badge">Team &amp; Partners</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-3 text-charcoal dark:text-milk">
+                    <span class="text-brandTeal dark:text-brandLime">10+ Years</span> Experienced <br />Workers &amp; <span class="text-brandBlue">Partnerships</span>
+                </h2>
+                <div class="gradient-bar-center mt-4"></div>
+                <p class="opacity-50 text-sm mt-4">Our team brings decades of combined expertise in medical infrastructure</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Simple -->
-                <div class="salted-card p-10 bg-white dark:bg-white/5 rounded-[2.5rem] border border-charcoal/5 dark:border-white/5">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-brandTeal opacity-60 mb-10">Standard</h3>
-                    <div class="text-5xl font-black mb-2 text-charcoal dark:text-milk">₹3,000</div>
-                    <div class="text-xl font-bold mb-8 italic opacity-80 text-brandBlue">Simple Web</div>
-                    <ul class="space-y-4 mb-10 text-sm opacity-70">
-                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> 3 Premium Pages</li>
-                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Responsive Layout</li>
-                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Contact Integration</li>
-                    </ul>
-                    <button class="w-full py-4 rounded-2xl border border-brandTeal/20 dark:border-brandLime/20 font-bold hover:bg-brandTeal hover:text-milk dark:hover:bg-brandLime dark:hover:text-charcoal transition-all">Select Plan</button>
-                </div>
-                <!-- Custom / Premium styled directly on brand values -->
-                <div class="salted-card p-10 bg-brandTeal text-milk dark:bg-white/10 rounded-[2.5rem] relative overflow-hidden border border-brandTeal/20 shadow-xl">
-                    <div class="absolute top-6 right-6 px-3 py-1 bg-brandLime text-charcoal text-[10px] font-black rounded-lg">NEW</div>
-                    <h3 class="text-xs font-black uppercase tracking-widest text-brandLime mb-10">Premium</h3>
-                    <div class="text-5xl font-black mb-2">₹7,000</div>
-                    <div class="text-xl font-bold mb-8 italic text-brandLime">Custom Design</div>
-                    <ul class="space-y-4 mb-10 text-sm opacity-90">
-                        <li><i class="fa-solid fa-check mr-2 text-brandLime"></i> Unlimited Pages</li>
-                        <li><i class="fa-solid fa-check mr-2 text-brandLime"></i> Advanced SEO</li>
-                        <li><i class="fa-solid fa-check mr-2 text-brandLime"></i> Priority Support</li>
-                    </ul>
-                    <button class="w-full py-4 rounded-2xl bg-milk/10 backdrop-blur-md font-bold hover:bg-milk hover:text-brandTeal transition-all">Select Plan</button>
-                </div>
-                <!-- AI -->
-                <div class="salted-card p-10 bg-white dark:bg-white/5 rounded-[2.5rem] border border-charcoal/5 dark:border-white/5">
-                    <h3 class="text-xs font-black uppercase tracking-widest text-brandTeal opacity-60 mb-10">Intelligent</h3>
-                    <div class="text-5xl font-black mb-2 text-charcoal dark:text-milk">₹5,000</div>
-                    <div class="text-xl font-bold mb-8 italic opacity-80 text-brandBlue">AI Integration</div>
-                    <ul class="space-y-4 mb-10 text-sm opacity-70">
-                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Gemini/GPT API</li>
-                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Smart Chatbots</li>
-                        <li><i class="fa-solid fa-check mr-2 text-brandTeal"></i> Automation Flow</li>
-                    </ul>
-                    <button class="w-full py-4 rounded-2xl border border-brandTeal/20 dark:border-brandLime/20 font-bold hover:bg-brandTeal hover:text-milk dark:hover:bg-brandLime dark:hover:text-charcoal transition-all">Select Plan</button>
-                </div>
-            </div>
-            
-            <!-- Secondary Pricing List -->
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="p-6 border border-brandTeal/10 dark:border-salt/5 rounded-2xl flex justify-between items-center bg-white dark:bg-transparent">
-                    <span class="font-bold opacity-70">Advance Web</span>
-                    <span class="font-black text-brandTeal dark:text-brandLime">₹3,500</span>
-                </div>
-                <div class="p-6 border border-brandTeal/10 dark:border-salt/5 rounded-2xl flex justify-between items-center bg-white dark:bg-transparent">
-                    <span class="font-bold opacity-70">Login System</span>
-                    <span class="font-black text-brandTeal dark:text-brandLime">₹4,000</span>
-                </div>
-                <div class="p-6 border border-brandTeal/10 dark:border-salt/5 rounded-2xl flex justify-between items-center bg-white dark:bg-transparent">
-                    <span class="font-bold opacity-70">Payment Gateway</span>
-                    <span class="font-black text-brandTeal dark:text-brandLime">₹4,500</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- App Pricing -->
-    <section id="apps" class="py-32 px-6 bg-salt/30 dark:bg-white/[0.02]">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div>
-                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4 text-brandTeal dark:text-milk">Application Development</h2>
-                    <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Native power. Fluid experiences.</p>
-                </div>
-                <span class="text-6xl font-black opacity-10 text-brandBlue">02</span>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <!-- Android -->
-                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-brandTeal/10 dark:border-salt/5 text-center">
-                    <i class="fa-brands fa-android text-3xl mb-4 text-brandLime"></i>
-                    <h4 class="font-bold mb-2">Android App</h4>
-                    <div class="text-3xl font-black text-brandTeal dark:text-milk">₹10,000</div>
-                </div>
-                <!-- iOS -->
-                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-brandTeal/10 dark:border-salt/5 text-center relative overflow-hidden">
-                    <div class="absolute top-2 right-4 text-[8px] font-black text-brandBlue uppercase">NEW</div>
-                    <i class="fa-brands fa-apple text-3xl mb-4 text-brandBlue"></i>
-                    <h4 class="font-bold mb-2">iOS Native</h4>
-                    <div class="text-3xl font-black text-brandTeal dark:text-milk">₹15,000</div>
-                </div>
-                <!-- Custom Bundle Area -->
-                <div class="p-8 bg-brandBlue text-milk rounded-3xl text-center shadow-lg shadow-brandBlue/20">
-                    <i class="fa-solid fa-layer-group text-3xl mb-4 text-brandLime"></i>
-                    <h4 class="font-bold mb-2 uppercase text-[10px] tracking-widest text-white">Apple Eco-System</h4>
-                    <div class="text-3xl font-black text-white">₹35,000</div>
-                    <p class="text-[9px] mt-2 opacity-70">iPhone + iPadOS</p>
-                </div>
-                <!-- Windows -->
-                <div class="p-8 bg-white dark:bg-charcoal rounded-3xl border border-brandTeal/10 dark:border-salt/5 text-center relative overflow-hidden">
-                    <div class="absolute top-2 right-4 text-[8px] font-black text-brandBlue uppercase">NEW</div>
-                    <i class="fa-brands fa-windows text-3xl mb-4 text-brandBlue"></i>
-                    <h4 class="font-bold mb-2">Windows</h4>
-                    <div class="text-3xl font-black text-brandTeal dark:text-milk">₹34,000</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio -->
-    <section id="portfolio" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div>
-                    <h2 class="text-4xl font-black tracking-tighter uppercase mb-4 text-brandTeal dark:text-milk">Client Portfolio</h2>
-                    <p class="opacity-50 uppercase text-xs font-bold tracking-widest">Proven track record of excellence.</p>
-                </div>
-                <span class="text-6xl font-black opacity-10 text-brandBlue">03</span>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="https://mourish45-l.github.io/Anira-BS-Enterprisers/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-brandTeal/10 dark:border-salt/5">
-                    <div class="text-center z-10 p-6">
-                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:text-brandTeal dark:group-hover:text-brandLime transition-colors">Anira BS Enterprises</h4>
-                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-brandBlue"></i></p>
-                    </div>
-                </a>
-                <a href="https://mourish45-l.github.io/thulircreations.store/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-brandTeal/10 dark:border-salt/5">
-                    <div class="text-center z-10 p-6">
-                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:text-brandTeal dark:group-hover:text-brandLime transition-colors">Thulir Creations</h4>
-                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-brandBlue"></i></p>
-                    </div>
-                </a>
-                <a href="https://manufacturing.lgs.co.in/" target="_blank" class="group relative aspect-video bg-salt dark:bg-white/5 rounded-[2.5rem] overflow-hidden flex items-center justify-center border border-brandTeal/10 dark:border-salt/5">
-                    <div class="text-center z-10 p-6">
-                        <h4 class="font-black uppercase tracking-tighter text-xl group-hover:text-brandTeal dark:group-hover:text-brandLime transition-colors">Life Gas System</h4>
-                        <p class="text-[10px] font-bold opacity-40 mt-2 uppercase tracking-widest">Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-brandBlue"></i></p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-20 px-6 border-t border-brandTeal/10 dark:border-salt/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
-                <div>
-                    <div class="flex items-center space-x-2 mb-6">
-                        <div class="bg-brandTeal p-2 rounded-lg">
-                            <i class="fa-solid fa-bolt text-xs text-brandLime"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-10 border border-charcoal/5 dark:border-white/5 shadow-sm">
+                    <div class="flex items-start gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-brandTeal/10 dark:bg-brandTeal/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-users text-3xl text-brandTeal"></i>
                         </div>
-                        <span class="font-black uppercase tracking-tighter text-brandTeal dark:text-milk">Mourish Developers</span>
+                        <div>
+                            <h3 class="text-2xl font-black tracking-tight text-brandTeal dark:text-brandLime">10+ Years Experienced Workers</h3>
+                            <p class="text-sm opacity-60 mt-2 leading-relaxed">
+                                Our core team consists of engineers, technicians, and developers with over a decade of hands-on experience in medical gas systems, OT installations, and digital infrastructure.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mt-4">
+                                <span class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-brandTeal/5 dark:bg-brandTeal/10 text-brandTeal dark:text-brandLime rounded-full border border-brandTeal/10">Certified Engineers</span>
+                                <span class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-brandBlue/5 dark:bg-brandBlue/10 text-brandBlue rounded-full border border-brandBlue/10">Quality Assured</span>
+                                <span class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-brandLime/10 dark:bg-brandLime/10 text-brandLime rounded-full border border-brandLime/20">10+ Projects</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-xs opacity-50 max-w-xs uppercase leading-loose font-bold tracking-widest">
-                        Crafting high-end digital solutions for modern brands. Performance driven. Design centered.
+                </div>
+
+                <div class="card-elevate partner-badge bg-white dark:bg-white/5 rounded-3xl p-10 border border-brandLime/20 dark:border-brandLime/10 shadow-sm relative overflow-hidden">
+                    <div class="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-brandLime/5"></div>
+                    <div class="flex items-start gap-6 relative z-10">
+                        <div class="w-16 h-16 rounded-2xl bg-brandLime/20 dark:bg-brandLime/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-hand-holding-heart text-3xl text-brandLime"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black tracking-tight text-brandLime">Official Partner — Life Gas System</h3>
+                            <p class="text-sm opacity-70 mt-2 leading-relaxed">
+                                We are proud to be an integral part of the <strong class="text-charcoal dark:text-milk">Life Gas System</strong> ecosystem, delivering high-quality medical gas pipeline solutions and OT infrastructure for leading healthcare providers across India.
+                            </p>
+                            <div class="flex items-center gap-3 mt-4">
+                                <span class="text-[10px] font-black uppercase tracking-widest text-brandLime">&#9733; Trusted Partner</span>
+                                <span class="w-px h-4 bg-brandLime/30"></span>
+                                <span class="text-[10px] font-bold uppercase tracking-widest opacity-50">Since 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+                <div class="glass-card p-5 rounded-2xl text-center border border-white/10">
+                    <i class="fa-solid fa-trophy text-2xl text-brandGold mb-2"></i>
+                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-70">Award Winning</p>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center border border-white/10">
+                    <i class="fa-solid fa-shield-halved text-2xl text-brandTeal mb-2"></i>
+                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-70">Safety First</p>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center border border-white/10">
+                    <i class="fa-solid fa-clock text-2xl text-brandLime mb-2"></i>
+                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-70">24/7 Support</p>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center border border-white/10">
+                    <i class="fa-solid fa-handshake text-2xl text-brandBlue mb-2"></i>
+                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-70">Trusted Partner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DEVELOPMENT ===== -->
+    <section id="dev" class="py-28 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="pill-badge">Digital Products</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-3 text-charcoal dark:text-milk">
+                    Web <span class="text-brandBlue">&amp;</span> App <span class="text-brandTeal dark:text-brandLime">Development</span>
+                </h2>
+                <div class="gradient-bar-center mt-4"></div>
+                <p class="opacity-50 text-sm mt-4">Premium multi-page websites &amp; cross-platform apps from ₹3,000</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-7 border border-charcoal/5 dark:border-white/5 text-center shadow-sm">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-brandTeal/10 dark:bg-brandTeal/20 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-globe text-2xl text-brandTeal"></i>
+                    </div>
+                    <h4 class="font-black text-base">Multi-Page Websites</h4>
+                    <p class="text-xs opacity-60 mt-1">Responsive, SEO, e‑commerce, AI chatbots, unlimited pages</p>
+                    <div class="mt-4 text-[10px] font-bold bg-brandTeal/10 dark:bg-brandTeal/20 text-brandTeal px-4 py-1.5 rounded-full inline-block">from ₹3,000</div>
+                </div>
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-7 border border-charcoal/5 dark:border-white/5 text-center shadow-sm">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-brandLime/20 dark:bg-brandLime/10 flex items-center justify-center mb-4">
+                        <i class="fa-brands fa-android text-2xl text-brandLime"></i>
+                    </div>
+                    <h4 class="font-black text-base">Android Apps</h4>
+                    <p class="text-xs opacity-60 mt-1">Native, Firebase, payment gateways, multi-screen</p>
+                    <div class="mt-4 text-[10px] font-bold bg-brandTeal/10 dark:bg-brandTeal/20 text-brandTeal px-4 py-1.5 rounded-full inline-block">from ₹10,000</div>
+                </div>
+                <div class="card-elevate bg-white dark:bg-white/5 rounded-3xl p-7 border border-charcoal/5 dark:border-white/5 text-center shadow-sm relative overflow-hidden">
+                    <div class="absolute top-3 right-3 text-[8px] font-black bg-brandBlue text-white px-2.5 py-0.5 rounded-full uppercase">New</div>
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-brandBlue/10 dark:bg-brandBlue/20 flex items-center justify-center mb-4">
+                        <i class="fa-brands fa-apple text-2xl text-brandBlue"></i>
+                    </div>
+                    <h4 class="font-black text-base">iOS Native</h4>
+                    <p class="text-xs opacity-60 mt-1">iPhone &amp; iPad, App Store ready, multi-page flows</p>
+                    <div class="mt-4 text-[10px] font-bold bg-brandTeal/10 dark:bg-brandTeal/20 text-brandTeal px-4 py-1.5 rounded-full inline-block">from ₹15,000</div>
+                </div>
+                <div class="card-elevate bg-brandTeal text-milk rounded-3xl p-7 text-center shadow-xl shadow-brandTeal/20 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-brandLime/10"></div>
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-white/10 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-rocket text-2xl text-brandLime"></i>
+                    </div>
+                    <h4 class="font-black text-base">Full‑Stack</h4>
+                    <p class="text-xs opacity-90 mt-1">Web + App + Admin panel, multi-tenant</p>
+                    <div class="mt-4 text-[10px] font-bold bg-brandLime/20 text-brandLime px-4 py-1.5 rounded-full inline-block">Custom Quote</div>
+                </div>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 p-5 glass-card rounded-3xl border border-brandTeal/10">
+                <div class="flex items-center justify-center space-x-4 text-sm font-bold">
+                    <i class="fa-solid fa-phone-volume text-brandTeal"></i>
+                    <span>Web / App: <span class="text-brandBlue">9487410078</span></span>
+                </div>
+                <div class="flex items-center justify-center space-x-4 text-sm font-bold">
+                    <i class="fa-solid fa-phone-volume text-brandTeal"></i>
+                    <span>Medical / Other: <span class="text-brandBlue">9659233313</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TERMS & CONDITIONS FOR WEB ===== -->
+    <section id="terms" class="py-28 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="pill-badge">Legal</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-3 text-charcoal dark:text-milk">
+                    Terms <span class="text-brandTeal dark:text-brandLime">&amp;</span> Conditions <br /><span class="text-base font-medium opacity-50 tracking-normal">for Web Development only</span>
+                </h2>
+                <div class="gradient-bar-center mt-4"></div>
+                <p class="opacity-50 text-sm mt-4">Service terms, payment policies &amp; data protection</p>
+            </div>
+
+            <div class="space-y-10">
+                <!-- 1 -->
+                <div class="flex gap-4">
+                    <span class="term-number mt-0.5">1</span>
+                    <div>
+                        <h3 class="text-lg font-black tracking-tight">Payment and Deployment</h3>
+                        <div class="term-highlight mt-2">
+                            <p class="text-sm opacity-80 leading-relaxed"><span class="font-bold">Pre-Payment Policy:</span> Full payment for the service and the domain registration must be cleared before the website is published.</p>
+                            <p class="text-sm opacity-80 leading-relaxed mt-1"><span class="font-bold">No Free Trials:</span> We do not offer free trials or "test periods" due to the immediate costs associated with development and resource allocation.</p>
+                            <p class="text-sm opacity-80 leading-relaxed mt-1"><span class="font-bold">Transparency in Pricing:</span> For domain purchases and yearly maintenance, we will provide a direct screenshot of the official registrar's billing page. This ensures you pay the exact market price with zero hidden markups.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="flex gap-4">
+                    <span class="term-number mt-0.5">2</span>
+                    <div>
+                        <h3 class="text-lg font-black tracking-tight">Domain &amp; Service Maintenance</h3>
+                        <div class="term-highlight mt-2">
+                            <p class="text-sm opacity-80 leading-relaxed"><span class="font-bold">Annual Renewals:</span> Domain names and hosting services require yearly payment.</p>
+                            <p class="text-sm opacity-80 leading-relaxed mt-1"><span class="font-bold">Payment Options:</span> You may choose to pay the registrar directly or send the payment to us to process on your behalf.</p>
+                            <p class="text-sm opacity-80 leading-relaxed mt-1"><span class="font-bold text-brandCoral dark:text-brandCoral">Late Renewal Risk:</span> Failure to pay the yearly maintenance fee may result in the loss of your domain name and website accessibility.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="flex gap-4">
+                    <span class="term-number mt-0.5">3</span>
+                    <div>
+                        <h3 class="text-lg font-black tracking-tight">Data Privacy &amp; Sensitive Information</h3>
+                        <div class="term-highlight mt-2">
+                            <p class="text-sm opacity-80 leading-relaxed"><span class="font-bold">Required Data:</span> To facilitate professional setups (Domain registration, Firebase architecture, and Payment Gateway integration), we require access to:</p>
+                            <ul class="text-sm opacity-80 leading-relaxed list-disc list-inside mt-1 ml-2">
+                                <li><span class="font-bold">Government ID:</span> PAN Card (for Indian payment gateway verification and tax compliance).</li>
+                                <li><span class="font-bold">Accounts:</span> Temporary access to a Google Account.</li>
+                            </ul>
+                            <p class="text-sm opacity-80 leading-relaxed mt-2"><span class="font-bold">Security Guarantee:</span> We use this information strictly for the technical setup of your project. We will not use this sensitive data for any other purpose.</p>
+                            <p class="text-sm opacity-80 leading-relaxed mt-1"><span class="font-bold">Data Deletion:</span> Once the setup is complete (e.g., Firebase is linked or the domain is secured), we will permanently remove your accounts and sensitive documents from our devices.</p>
+                            <p class="text-sm opacity-80 leading-relaxed mt-1"><span class="font-bold text-brandBlue dark:text-brandBlue">DPDP Act Compliance:</span> In accordance with the Digital Personal Data Protection Act (2023), we act as a "Data Processor." We process your personal data only for the specific purposes mentioned above and ensure its protection during the development lifecycle.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="flex gap-4">
+                    <span class="term-number mt-0.5">4</span>
+                    <div>
+                        <h3 class="text-lg font-black tracking-tight">Warranty and Post-Launch Fees</h3>
+                        <div class="term-highlight mt-2">
+                            <p class="text-sm opacity-80 leading-relaxed"><span class="font-bold">90-Day Bug Window:</span> You are encouraged to check for any changes or bugs within the first 90 days of delivery. All identified bugs will be fixed for free during this period.</p>
+                            <p class="text-sm opacity-80 leading-relaxed mt-1"><span class="font-bold">Post-Warranty Charge:</span> If a bug or change is requested after the 90-day window, a service fee of ₹20 ($0.21) per request will be applied.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="flex gap-4">
+                    <span class="term-number mt-0.5">5</span>
+                    <div>
+                        <h3 class="text-lg font-black tracking-tight">Intellectual Property &amp; Code</h3>
+                        <div class="term-highlight mt-2">
+                            <p class="text-sm opacity-80 leading-relaxed"><span class="font-bold">Ownership:</span> Full ownership of the website and its assets is transferred to you only after the final payment is received.</p>
+                            <p class="text-sm opacity-80 leading-relaxed mt-1"><span class="font-bold">Third-Party Terms:</span> By using services like Firebase or Google Cloud, you also agree to their respective terms of service.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="flex gap-4">
+                    <span class="term-number mt-0.5">6</span>
+                    <div>
+                        <h3 class="text-lg font-black tracking-tight">Liability</h3>
+                        <div class="term-highlight mt-2">
+                            <p class="text-sm opacity-80 leading-relaxed">We are not responsible for site downtime caused by third-party hosting providers (Firebase/Google) or the expiration of domains due to unpaid maintenance fees.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 p-6 rounded-3xl bg-gradient-to-r from-brandTeal/5 via-brandBlue/5 to-brandLime/5 border border-brandTeal/10 dark:border-white/5 text-center">
+                <p class="text-sm font-bold uppercase tracking-widest text-brandTeal dark:text-brandLime">
+                    <i class="fa-solid fa-shield-halved mr-2"></i> Your trust is our priority — transparent, fair, and compliant.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT STRIP ===== -->
+    <section class="py-16 px-6 bg-brandTeal/5 dark:bg-white/[0.02] border-y border-brandTeal/10 dark:border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brandTeal dark:text-brandLime">Let's Talk</span>
+                <h3 class="text-2xl font-black tracking-tighter text-charcoal dark:text-milk">Ready to build something <span class="text-brandTeal dark:text-brandLime">great</span>?</h3>
+            </div>
+            <div class="flex flex-wrap items-center gap-4">
+                <a href="tel:9487410078" class="flex items-center space-x-3 bg-white dark:bg-charcoal/50 px-6 py-3 rounded-full border border-charcoal/5 dark:border-white/5 shadow-sm hover:shadow-md transition-all">
+                    <i class="fa-solid fa-phone text-brandTeal"></i>
+                    <span class="font-bold text-sm">9487410078</span>
+                </a>
+                <a href="https://mourishdevelopers.vercel.app/book.html" class="bg-brandTeal dark:bg-brandLime text-milk dark:text-charcoal px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-lg shadow-brandTeal/25 dark:shadow-brandLime/15">
+                    Book Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="py-16 px-6 bg-charcoal dark:bg-black/90 text-salt">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brandTeal shadow-lg shadow-brandTeal/30 overflow-hidden">
+                            <img src="IMG_20260812_211849.png" class="w-full h-full object-cover" alt="Mourish Logo" />
+                        </div>
+                        <span class="font-black uppercase tracking-tighter text-xl text-milk">Mourish</span>
+                    </div>
+                    <p class="text-xs opacity-50 max-w-xs leading-relaxed">
+                        Medical infrastructure · Web · Apps · Digital transformation since 2025.
                     </p>
                 </div>
-                
-                <div class="flex flex-col items-end gap-4">
-                    <div class="text-[10px] font-black opacity-30 uppercase tracking-[0.2em]">Contact & Bookings</div>
-                    <a href="https://mourishdevelopers.vercel.app/book.html" class="text-2xl font-black text-brandTeal dark:text-brandLime hover:underline decoration-brandBlue">mourishdevelopers.vercel.app</a>
+                <div>
+                    <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-brandLime/60 mb-4">Medical Solutions</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="quick-link"><a href="#services" class="opacity-60 hover:opacity-100 transition">Gas Pipeline</a></li>
+                        <li class="quick-link"><a href="#services" class="opacity-60 hover:opacity-100 transition">ICU Curtains</a></li>
+                        <li class="quick-link"><a href="#services" class="opacity-60 hover:opacity-100 transition">Operational Theatre</a></li>
+                        <li class="quick-link"><a href="#services" class="opacity-60 hover:opacity-100 transition">Vinyl Flooring</a></li>
+                        <li class="quick-link"><a href="#services" class="opacity-60 hover:opacity-100 transition">Medical Equipment</a></li>
+                        <li class="quick-link"><a href="#services" class="opacity-60 hover:opacity-100 transition">Civil · Fire Alarm</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-brandLime/60 mb-4">Digital</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="quick-link"><a href="#dev" class="opacity-60 hover:opacity-100 transition">Websites</a></li>
+                        <li class="quick-link"><a href="#dev" class="opacity-60 hover:opacity-100 transition">Android Apps</a></li>
+                        <li class="quick-link"><a href="#dev" class="opacity-60 hover:opacity-100 transition">iOS Apps</a></li>
+                        <li class="quick-link"><a href="#dev" class="opacity-60 hover:opacity-100 transition">Full‑Stack</a></li>
+                        <li class="quick-link"><a href="#dev" class="opacity-60 hover:opacity-100 transition">AI Integration</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-brandLime/60 mb-4">Company</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="quick-link"><a href="#about" class="opacity-60 hover:opacity-100 transition">About Us</a></li>
+                        <li class="quick-link"><a href="#team" class="opacity-60 hover:opacity-100 transition">Team &amp; Partners</a></li>
+                        <li class="quick-link"><a href="#terms" class="opacity-60 hover:opacity-100 transition">Terms &amp; Conditions</a></li>
+                        <li class="quick-link"><a href="https://mourishdevelopers.vercel.app/book.html" class="opacity-60 hover:opacity-100 transition">Book Now</a></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-salt/5">
+                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-40">Contact</p>
+                        <p class="text-sm font-mono mt-1"><i class="fa-solid fa-phone mr-2 text-brandTeal"></i>9487410078</p>
+                        <p class="text-sm font-mono"><i class="fa-solid fa-phone mr-2 text-brandTeal"></i>9659233313</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="mt-20 pt-10 border-t border-charcoal/5 dark:border-salt/5 flex flex-col md:flex-row justify-between text-[10px] font-bold opacity-30 uppercase tracking-widest">
-                <span>2026 Mourish Developers</span>
-                <span>Terms of Service / Privacy Policy</span>
+            <div class="mt-16 pt-8 border-t border-salt/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-widest opacity-30">
+                <span>© 2026 Mourish Developers — All rights reserved</span>
+                <div class="flex space-x-6">
+                    <a href="#terms" class="hover:opacity-100 transition">Terms</a>
+                    <a href="#" class="hover:opacity-100 transition">Privacy</a>
+                    <a href="#" class="hover:opacity-100 transition">Cookies</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // ===== DARK MODE TOGGLE =====
         function toggleDarkMode() {
             const html = document.documentElement;
             const icon = document.getElementById('theme-icon');
-            
             if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
                 icon.classList.replace('fa-moon', 'fa-sun');
@@ -336,14 +740,48 @@
             }
         }
 
+        // ===== NAVBAR SCROLL =====
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-milk/80', 'dark:bg-charcoal/80', 'backdrop-blur-xl', 'py-4', 'shadow-md');
-                nav.classList.remove('py-6');
+            if (window.scrollY > 40) {
+                nav.classList.add('glass-card', 'py-3', 'shadow-sm');
+                nav.classList.remove('py-4');
             } else {
-                nav.classList.remove('bg-milk/80', 'dark:bg-charcoal/80', 'backdrop-blur-xl', 'py-4', 'shadow-md');
-                nav.classList.add('py-6');
+                nav.classList.remove('glass-card', 'py-3', 'shadow-sm');
+                nav.classList.add('py-4');
+            }
+        });
+
+        // ===== COUNT ANIMATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumbers = document.querySelectorAll('.stat-figure[data-target]');
+            let animated = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animated) {
+                        animated = true;
+                        statNumbers.forEach(el => {
+                            const target = parseInt(el.getAttribute('data-target'));
+                            let current = 0;
+                            const increment = Math.ceil(target / 60);
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    el.textContent = target;
+                                    clearInterval(timer);
+                                } else {
+                                    el.textContent = current;
+                                }
+                            }, 25);
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            const statsContainer = document.getElementById('stats-container');
+            if (statsContainer) {
+                observer.observe(statsContainer);
             }
         });
     </script>
