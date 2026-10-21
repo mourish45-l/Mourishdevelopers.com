@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Mourish Developers · Medical · Fire Safety · Civil Works</title>
-  <meta name="description" content="Mourish Developers: Medical Gas Pipeline, ICU Curtains, OT, Vinyl Flooring, Hospital Fire Safety, Civil Renovation, Web &amp; App Development." />
+  <title>Mourish Developers · Medical · Fire Safety · Hospital Renovation</title>
+  <meta name="description" content="Mourish Developers: Medical Gas Pipeline, ICU Curtains, OT, Vinyl Flooring, Hospital Fire Safety, Hospital Renovation, Web &amp; App Development." />
   <meta name="theme-color" content="#FBF9FF" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -118,9 +118,7 @@
     button, a, input, textarea { touch-action: manipulation; }
     :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 8px; }
 
-    /* ============================================================
-       AMBIENT BACKGROUND
-       ============================================================ */
+    /* Ambient background */
     .bg-scene { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; contain: strict; }
     .orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; transform: translateZ(0); }
     .orb-1 { width: 55vmax; height: 55vmax; top: -25vmax; left: -20vmax; background: radial-gradient(circle, rgba(var(--accent-glow), .70), transparent 62%); animation: orb1 32s var(--ease-out) infinite; }
@@ -137,9 +135,7 @@
       mask-image: radial-gradient(ellipse at center, black 20%, transparent 72%);
     }
 
-    /* ============================================================
-       GLASS + CARDS
-       ============================================================ */
+    /* Glass + cards */
     .glass {
       background: rgba(255, 255, 255, 0.78);
       -webkit-backdrop-filter: blur(22px) saturate(155%);
@@ -178,9 +174,7 @@
     }
     .tonal:hover { transform: translate3d(0, -4px, 0); box-shadow: 0 20px 40px -22px rgba(47, 109, 91, 0.35); }
 
-    /* ============================================================
-       BUTTONS
-       ============================================================ */
+    /* Buttons */
     .btn-filled, .btn-wa, .btn-tonal {
       position: relative; overflow: hidden;
       transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), background-position .55s var(--ease-out), filter .2s var(--ease-out);
@@ -196,33 +190,19 @@
     .ripple { position: absolute; border-radius: 9999px; transform: scale(0); animation: ripple .58s var(--ease-out) forwards; pointer-events: none; }
     @keyframes ripple { to { transform: scale(2.8); opacity: 0; } }
 
-    /* ============================================================
-       HAMBURGER — ANIMATED 3 LINES → X
-       ============================================================ */
+    /* Hamburger */
     .hamburger {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      width: 44px;
-      height: 44px;
-      cursor: pointer;
-      background: var(--primary-container);
-      border-radius: 9999px;
-      border: none;
-      position: relative;
-      transition: background .2s var(--ease-out), transform .25s var(--ease-spring);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 5px; width: 44px; height: 44px; cursor: pointer;
+      background: var(--primary-container); border-radius: 9999px; border: none;
+      position: relative; transition: background .2s var(--ease-out), transform .25s var(--ease-spring);
       flex-shrink: 0;
     }
-    .hamburger:hover { background: var(--primary-container); filter: brightness(.94); }
+    .hamburger:hover { filter: brightness(.94); }
     .hamburger:active { transform: scale(.94); }
     .hamburger span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--on-primary-container);
-      border-radius: 9999px;
+      display: block; width: 20px; height: 2px;
+      background: var(--on-primary-container); border-radius: 9999px;
       transition: transform .35s var(--ease-spring), opacity .2s var(--ease-out);
       transform-origin: center;
     }
@@ -230,88 +210,50 @@
     .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ============================================================
-       DRAWER
-       ============================================================ */
+    /* Drawer */
     #drawer-overlay {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(16, 26, 46, .45);
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-      z-index: 90;
-      opacity: 0;
-      pointer-events: none;
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+      z-index: 90; opacity: 0; pointer-events: none;
       transition: opacity .35s var(--ease-out);
     }
-    #drawer-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    #drawer-overlay.open { opacity: 1; pointer-events: auto; }
 
     #drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      height: 100dvh;
+      position: fixed; top: 0; right: 0;
+      height: 100vh; height: 100dvh;
       width: min(400px, 100vw);
-      z-index: 91;
-      background: #FFFFFF;
+      z-index: 91; background: #FFFFFF;
       border-left: 1px solid rgba(47, 109, 91, .12);
       box-shadow: -20px 0 60px -20px rgba(16, 26, 46, .35);
       transform: translate3d(100%, 0, 0);
       transition: transform .42s var(--ease-out);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      display: flex; flex-direction: column; overflow: hidden;
     }
     #drawer.open { transform: translate3d(0, 0, 0); }
-    @media (max-width: 480px) {
-      #drawer { width: 100vw; }
-    }
+    @media (max-width: 480px) { #drawer { width: 100vw; } }
 
     #drawer-scroll {
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 0 0 1.5rem;
-      overscroll-behavior: contain;
+      flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 0 0 1.5rem; overscroll-behavior: contain;
     }
 
     .drawer-link {
-      display: flex;
-      align-items: center;
-      gap: .85rem;
-      padding: .85rem 1rem;
-      border-radius: 16px;
-      color: var(--on-surface);
-      font-weight: 600;
-      font-size: var(--fs-sm);
+      display: flex; align-items: center; gap: .85rem;
+      padding: .85rem 1rem; border-radius: 16px;
+      color: var(--on-surface); font-weight: 600; font-size: var(--fs-sm);
       text-decoration: none;
       transition: background .2s var(--ease-out), color .2s var(--ease-out), transform .2s var(--ease-out);
     }
-    .drawer-link:hover {
-      background: var(--primary-container);
-      color: var(--primary);
-      transform: translateX(2px);
-    }
+    .drawer-link:hover { background: var(--primary-container); color: var(--primary); transform: translateX(2px); }
     .drawer-link .di {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-size: 15px;
-      flex-shrink: 0;
-      background: var(--surface-container);
-      color: var(--on-surface-variant);
+      width: 36px; height: 36px; border-radius: 12px;
+      display: grid; place-items: center; font-size: 15px; flex-shrink: 0;
+      background: var(--surface-container); color: var(--on-surface-variant);
       transition: background .2s var(--ease-out), color .2s var(--ease-out);
     }
-    .drawer-link:hover .di {
-      background: var(--primary);
-      color: #fff;
-    }
+    .drawer-link:hover .di { background: var(--primary); color: #fff; }
     .drawer-link.fire .di { background: var(--fire-soft); color: var(--fire); }
     .drawer-link.fire:hover { background: var(--fire-soft); color: var(--fire); }
     .drawer-link.fire:hover .di { background: var(--fire); color: #fff; }
@@ -322,50 +264,27 @@
     .drawer-link.wa:hover { background: rgba(37, 211, 102, .14); color: #0d7a3e; }
     .drawer-link.wa:hover .di { background: var(--wa); color: #fff; }
 
-    .drawer-section {
-      padding: 0 1rem;
-      margin-top: 1.25rem;
-    }
+    .drawer-section { padding: 0 1rem; margin-top: 1.25rem; }
     .drawer-section-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: #94a3b8;
-      padding: 0 .85rem;
-      margin-bottom: .5rem;
-      display: block;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: #94a3b8;
+      padding: 0 .85rem; margin-bottom: .5rem; display: block;
     }
-
     .drawer-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      padding: .45rem .8rem;
-      border-radius: 9999px;
-      border: 1px solid rgba(47, 109, 91, .16);
-      background: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      color: #475569;
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .45rem .8rem; border-radius: 9999px;
+      border: 1px solid rgba(47, 109, 91, .16); background: #fff;
+      font-size: 11px; font-weight: 600; color: #475569;
       text-decoration: none;
       transition: all .2s var(--ease-out);
     }
-    .drawer-chip:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--primary-container);
-      transform: translateY(-1px);
-    }
+    .drawer-chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-container); transform: translateY(-1px); }
     .drawer-chip.fire:hover { border-color: var(--fire); color: var(--fire); background: var(--fire-soft); }
     .drawer-chip.civil:hover { border-color: var(--civil); color: var(--civil); background: var(--civil-soft); }
 
     .accent-dot {
-      width: 26px; height: 26px;
-      border-radius: 9999px;
-      background: var(--dot);
-      border: 2px solid transparent;
+      width: 26px; height: 26px; border-radius: 9999px;
+      background: var(--dot); border: 2px solid transparent;
       outline: 1px solid rgba(16, 26, 46, .12);
       transition: transform .2s var(--ease-spring), box-shadow .2s var(--ease-out);
       cursor: pointer;
@@ -373,9 +292,7 @@
     .accent-dot:hover { transform: scale(1.15); }
     .accent-dot[aria-pressed="true"] { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--dot); }
 
-    /* ============================================================
-       SCROLL PROGRESS + BACK TO TOP
-       ============================================================ */
+    /* Progress + To top */
     #scroll-progress {
       position: fixed; top: 0; left: 0; height: 3px; width: 100%;
       transform: scaleX(0); transform-origin: 0 50%; z-index: 80;
@@ -411,9 +328,6 @@
     [data-copy]:hover { filter: brightness(1.05); }
     [data-copy]:active { transform: scale(.97); }
 
-    /* ============================================================
-       FAB + TO TOP + TOASTS
-       ============================================================ */
     #fab-container { position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 70; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; }
     @media (min-width: 640px) { #fab-container { right: 1.5rem; bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); } }
     #fab-menu { display: flex; flex-direction: column; align-items: flex-end; gap: .625rem; }
@@ -444,9 +358,6 @@
     #cursor-glow { position: fixed; top: 0; left: 0; width: 360px; height: 360px; border-radius: 9999px; pointer-events: none; z-index: 1; background: radial-gradient(circle at center, rgba(var(--accent-glow), .30) 0%, rgba(var(--accent-glow), .10) 30%, transparent 62%); transform: translate3d(-50%, -50%, 0); mix-blend-mode: multiply; }
     @media (hover: none), (pointer: coarse) { #cursor-glow { display: none; } }
 
-    /* ============================================================
-       FORM ELEMENTS
-       ============================================================ */
     .form-input { width: 100%; padding: .75rem .9rem; border-radius: 14px; border: 1px solid rgba(47, 109, 91, 0.15); background: #fff; font-size: max(16px, var(--fs-sm)); line-height: 1.4; color: var(--on-surface); transition: border-color .2s var(--ease-out), box-shadow .2s var(--ease-out); font-family: inherit; }
     .form-input::placeholder { color: #94a3b8; }
     .form-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(var(--accent-glow), .25); }
@@ -517,7 +428,6 @@
   <div id="drawer-overlay" aria-hidden="true"></div>
 
   <aside id="drawer" aria-labelledby="drawer-title" aria-hidden="true" role="dialog" aria-modal="true">
-    <!-- Drawer header -->
     <div class="flex items-center justify-between px-4 py-4 border-b" style="border-color: rgba(47, 109, 91, .10);">
       <a href="#top" class="flex items-center gap-2.5 group" aria-label="Mourish home" data-drawer-link>
         <div class="w-9 h-9 rounded-2xl bg-mint grid place-items-center relative shrink-0 transition-transform duration-300 group-hover:rotate-3">
@@ -535,11 +445,9 @@
       </button>
     </div>
 
-    <!-- Scrollable content -->
     <div id="drawer-scroll">
       <h2 id="drawer-title" class="sr-only">Navigation menu</h2>
 
-      <!-- Main links -->
       <nav class="p-3 space-y-0.5" aria-label="Main menu">
         <a href="#services" class="drawer-link" data-drawer-link>
           <span class="di"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
@@ -549,9 +457,9 @@
           <span class="di"><i class="fa-solid fa-fire-extinguisher" aria-hidden="true"></i></span>
           <span>Fire Safety</span>
         </a>
-        <a href="#civil-works" class="drawer-link civil" data-drawer-link>
-          <span class="di"><i class="fa-solid fa-hammer" aria-hidden="true"></i></span>
-          <span>Civil Works</span>
+        <a href="#renovation" class="drawer-link civil" data-drawer-link>
+          <span class="di"><i class="fa-solid fa-hospital" aria-hidden="true"></i></span>
+          <span>Hospital Renovation</span>
         </a>
         <a href="#book" class="drawer-link wa" data-drawer-link>
           <span class="di"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
@@ -576,7 +484,6 @@
         </a>
       </nav>
 
-      <!-- Quick service shortcuts -->
       <div class="drawer-section">
         <span class="drawer-section-title">Quick services</span>
         <div class="flex flex-wrap gap-1.5 px-1">
@@ -584,11 +491,10 @@
           <a href="#services" class="drawer-chip" data-drawer-link><i class="fa-solid fa-vector-square text-[10px]" aria-hidden="true"></i>ICU</a>
           <a href="#services" class="drawer-chip" data-drawer-link><i class="fa-solid fa-syringe text-[10px]" aria-hidden="true"></i>OT</a>
           <a href="#fire-safety" class="drawer-chip fire" data-drawer-link><i class="fa-solid fa-fire-extinguisher text-[10px]" aria-hidden="true"></i>Fire Safety</a>
-          <a href="#civil-works" class="drawer-chip civil" data-drawer-link><i class="fa-solid fa-hammer text-[10px]" aria-hidden="true"></i>Civil Works</a>
+          <a href="#renovation" class="drawer-chip civil" data-drawer-link><i class="fa-solid fa-hospital text-[10px]" aria-hidden="true"></i>Renovation</a>
         </div>
       </div>
 
-      <!-- MD3 accent switcher -->
       <div class="drawer-section">
         <span class="drawer-section-title">MD3 Pastel Palette</span>
         <div class="flex flex-wrap items-center gap-2 px-1" role="group" aria-label="Theme colour">
@@ -601,7 +507,6 @@
         </div>
       </div>
 
-      <!-- Contact -->
       <div class="drawer-section">
         <span class="drawer-section-title">Contact</span>
         <div class="px-1 space-y-1.5">
@@ -609,7 +514,7 @@
             <span class="di" style="background: var(--error-container); color: var(--fire);"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
             <span class="flex flex-col leading-tight">
               <span class="font-mono font-bold text-slate-900" style="font-size: var(--fs-sm);">9659233313</span>
-              <span class="text-slate-500" style="font-size: var(--fs-tiny);">Medical · Fire · Civil</span>
+              <span class="text-slate-500" style="font-size: var(--fs-tiny);">Medical · Fire · Renovation</span>
             </span>
           </a>
           <a href="tel:9487410078" class="drawer-link" style="padding: .7rem .85rem;">
@@ -622,7 +527,6 @@
         </div>
       </div>
 
-      <!-- GSTIN -->
       <div class="drawer-section">
         <button type="button" data-copy="33CQLPT6813M1Z7"
                 class="w-full text-left font-mono p-2.5 rounded-xl border"
@@ -634,7 +538,6 @@
       </div>
     </div>
 
-    <!-- Drawer footer -->
     <div class="px-4 py-3 border-t space-y-2" style="border-color: rgba(47, 109, 91, .10);">
       <a href="#book" class="btn-wa w-full px-5 py-3 rounded-full font-bold text-white inline-flex items-center justify-center gap-2" style="font-size: var(--fs-sm);" data-drawer-link>
         <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i>
@@ -646,9 +549,7 @@
 
   <!-- ===================== HEADER ===================== -->
   <header class="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 pt-3 sm:pt-4">
-    <nav class="max-w-7xl mx-auto glass rounded-full px-3 sm:px-5 py-2 flex items-center justify-between gap-2"
-         aria-label="Main navigation">
-
+    <nav class="max-w-7xl mx-auto glass rounded-full px-3 sm:px-5 py-2 flex items-center justify-between gap-2" aria-label="Main navigation">
       <a href="#top" class="flex items-center gap-2.5 sm:gap-3 group shrink-0" aria-label="Mourish home">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-mint grid place-items-center relative shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3">
           <span class="absolute inset-0 grid place-items-center font-extrabold text-sm" style="color: var(--on-primary-container)">M</span>
@@ -665,14 +566,8 @@
           <i class="fa-brands fa-whatsapp text-sm" aria-hidden="true"></i>
           <span class="hidden xs:inline sm:inline">Book</span>
         </a>
-
-        <!-- THE HAMBURGER — visible on ALL screens -->
-        <button id="hamburger" type="button"
-                aria-label="Open menu" aria-expanded="false" aria-controls="drawer"
-                class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer" class="hamburger">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
@@ -689,7 +584,7 @@
         <div class="relative flex flex-wrap items-center gap-2">
           <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full font-bold border" style="font-size: var(--fs-tiny); background: var(--primary-container); color: var(--on-primary-container); border-color: rgba(var(--accent-glow), .55);">
             <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background: var(--primary)" aria-hidden="true"></span>
-            Medical · Fire Safety · Civil Works
+            Medical · Fire Safety · Hospital Renovation
           </span>
           <span data-copy="33CQLPT6813M1Z7" role="button" tabindex="0" aria-label="Copy GSTIN" class="px-3 py-1.5 rounded-full font-mono font-bold border" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00; border-color: rgba(180, 83, 9, .2);">
             GSTIN: 33CQLPT6813M1Z7
@@ -699,11 +594,11 @@
         <h1 id="hero-title" class="relative font-black tracking-tight leading-[1.05] text-slate-900" style="font-size: var(--fs-h1); letter-spacing: -0.025em;">
           Turnkey
           <span class="hero-grad">Gas, Safety,</span><br />
-          Civil &amp; Digital.
+          Renovation &amp; Digital.
         </h1>
 
         <p class="relative text-slate-600 max-w-xl leading-relaxed" style="font-size: var(--fs-body)">
-          Medical gas pipelines, ICU &amp; OT infrastructure, hospital fire safety and firefighting systems, civil renovation works, and premium web &amp; app development — all under one roof.
+          Medical gas pipelines, ICU &amp; OT infrastructure, hospital fire safety and firefighting systems, full hospital renovation works, and premium web &amp; app development — all under one roof.
         </p>
 
         <div class="relative flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1">
@@ -724,13 +619,13 @@
             <span class="px-3 py-1 rounded-full font-bold bg-white/70" style="font-size: var(--fs-tiny); color: var(--primary);">Since 2025</span>
           </div>
           <h2 class="font-extrabold mt-3" style="font-size: var(--fs-h3)">New Medical 2026</h2>
-          <p class="mt-1.5 leading-relaxed opacity-80" style="font-size: var(--fs-xs)">Precision execution for hospital lifelines, fire safety, and sanitized operating suites.</p>
+          <p class="mt-1.5 leading-relaxed opacity-80" style="font-size: var(--fs-xs)">Precision execution for hospital lifelines, fire safety, and complete hospital renovation.</p>
         </div>
 
         <div class="tonal text-white" style="padding: var(--sp-card); background: linear-gradient(135deg, #1E3F35, #1B1C18);">
           <span class="font-mono uppercase tracking-widest text-emerald-300" style="font-size: var(--fs-tiny)">Unified Tax Identity</span>
           <p data-copy="33CQLPT6813M1Z7" role="button" tabindex="0" aria-label="Copy GSTIN" class="font-mono font-bold text-emerald-300 mt-2 select-all" style="font-size: var(--fs-sm)">33CQLPT6813M1Z7</p>
-          <p class="text-slate-300 leading-relaxed mt-2" style="font-size: var(--fs-xs)">Common GSTIN across medical, fire safety, civil, and digital operations.</p>
+          <p class="text-slate-300 leading-relaxed mt-2" style="font-size: var(--fs-xs)">Common GSTIN across medical, fire safety, renovation, and digital operations.</p>
         </div>
 
         <div class="tonal flex items-center gap-4" style="padding: var(--sp-card); background: var(--peach-container); color: #311300;">
@@ -756,8 +651,8 @@
             <span>Vinyl Flooring</span><span style="color: var(--primary)">◆</span>
             <span style="color: var(--fire)">Fire Safety</span><span style="color: var(--primary)">◆</span>
             <span style="color: var(--fire)">Fire NOC</span><span style="color: var(--primary)">◆</span>
-            <span style="color: var(--civil)">Civil Renovation</span><span style="color: var(--primary)">◆</span>
-            <span style="color: var(--civil)">Barrier-Free</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--civil)">Hospital Renovation</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--civil)">Ward Refurbishment</span><span style="color: var(--primary)">◆</span>
             <span>Websites</span><span style="color: var(--primary)">◆</span>
             <span>Android · iOS</span><span style="color: var(--primary)">◆</span>
           </div>
@@ -768,8 +663,8 @@
             <span>Vinyl Flooring</span><span style="color: var(--primary)">◆</span>
             <span style="color: var(--fire)">Fire Safety</span><span style="color: var(--primary)">◆</span>
             <span style="color: var(--fire)">Fire NOC</span><span style="color: var(--primary)">◆</span>
-            <span style="color: var(--civil)">Civil Renovation</span><span style="color: var(--primary)">◆</span>
-            <span style="color: var(--civil)">Barrier-Free</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--civil)">Hospital Renovation</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--civil)">Ward Refurbishment</span><span style="color: var(--primary)">◆</span>
             <span>Websites</span><span style="color: var(--primary)">◆</span>
             <span>Android · iOS</span><span style="color: var(--primary)">◆</span>
           </div>
@@ -862,8 +757,8 @@
             <div class="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" style="background: linear-gradient(135deg, var(--error-container), var(--amber-container)); color: var(--fire);" aria-hidden="true"><i class="fa-solid fa-fire-extinguisher"></i></div>
             <span class="font-mono font-bold text-slate-300" style="font-size: var(--fs-tiny)">06</span>
           </div>
-          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3)">Fire Safety &amp; Civil Works</h3>
-          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm)">Dedicated hospital firefighting systems and civil renovation — see the two full sections below.</p>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3)">Fire Safety &amp; Renovation</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm)">Dedicated hospital firefighting systems and full hospital renovation — see the two sections below.</p>
           <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between font-mono" style="font-size: var(--fs-tiny);">
             <span class="font-semibold" style="color: var(--fire);">Explore below</span>
             <i class="fa-solid fa-arrow-down group-hover:translate-y-0.5 transition-transform" style="color: var(--fire);" aria-hidden="true"></i>
@@ -872,7 +767,7 @@
       </div>
     </section>
 
-    <!-- FIRE SAFETY -->
+    <!-- ===================== FIRE SAFETY ===================== -->
     <section id="fire-safety" aria-labelledby="fire-title" style="margin-bottom: var(--sp-section)">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 reveal">
         <div>
@@ -952,19 +847,19 @@
       </div>
     </section>
 
-    <!-- CIVIL WORKS -->
-    <section id="civil-works" aria-labelledby="civil-title" style="margin-bottom: var(--sp-section)">
+    <!-- ===================== HOSPITAL RENOVATION ===================== -->
+    <section id="renovation" aria-labelledby="renovation-title" style="margin-bottom: var(--sp-section)">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 reveal">
         <div>
           <span class="font-mono font-bold tracking-[0.2em] uppercase flex items-center gap-1.5" style="font-size: var(--fs-tiny); color: var(--civil);">
-            <i class="fa-solid fa-hammer" aria-hidden="true"></i>
-            Hospital Civil Works &amp; Renovation
+            <i class="fa-solid fa-hospital" aria-hidden="true"></i>
+            Hospital Renovation &amp; Refurbishment
           </span>
-          <h2 id="civil-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2)">Civil Construction &amp; Renovation</h2>
-          <p class="text-slate-600 mt-1.5" style="font-size: var(--fs-sm)">Turnkey civil construction, renovation, and interior fit-out — live-hospital friendly execution.</p>
+          <h2 id="renovation-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2)">Hospital Renovation Works</h2>
+          <p class="text-slate-600 mt-1.5" style="font-size: var(--fs-sm)">Complete renovation, refurbishment, and upgrade of existing hospital facilities — phased and live-hospital friendly.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00;"><i class="fa-solid fa-trowel-bricks" aria-hidden="true"></i>Structural</span>
+          <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00;"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>Renovation</span>
           <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00;"><i class="fa-solid fa-wheelchair" aria-hidden="true"></i>Barrier-Free</span>
           <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00;"><i class="fa-solid fa-hard-hat" aria-hidden="true"></i>Phased</span>
         </div>
@@ -973,41 +868,41 @@
       <div class="grid lg:grid-cols-12 gap-3 sm:gap-5 items-start">
         <div class="lg:col-span-8 grid sm:grid-cols-2" style="gap: var(--sp-gap)" data-stagger>
           <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
-            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-trowel-bricks"></i></div>
-            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Structural Renovation</h3>
-            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Load-bearing alterations, seismic upgrades, and wall removals with engineer sign-off.</p>
+            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-hospital"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Ward &amp; ICU Renovation</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Full renovation of patient wards, ICU bays, and isolation rooms — new finishes, upgraded services, modern layout.</p>
           </article>
           <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
-            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-hospital"></i></div>
-            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Ward &amp; ICU Conversion</h3>
-            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Patient room upgrades, ICU bays, negative-pressure isolation rooms, and OT anterooms.</p>
+            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-syringe"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">OT Refurbishment</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Existing operating theatres modernized — new laminar flow, sterilized wall finishes, gas outlet upgrades, surgical lighting.</p>
           </article>
           <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
             <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-couch"></i></div>
-            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Interior Fit-Out</h3>
-            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Flooring, ceilings, wall finishes, joinery, and nurse-station fabrication.</p>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Interior Refit</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Flooring replacement, ceiling upgrades, wall cladding, joinery renewal, and nurse-station reconfiguration.</p>
           </article>
           <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
             <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-shower"></i></div>
-            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Washrooms &amp; Plumbing</h3>
-            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Accessible washrooms, medical-grade fixtures, drainage, and anti-microbial surfaces.</p>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Washroom Modernization</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Accessible washrooms, medical-grade fixtures, drainage rework, and anti-microbial surfaces throughout.</p>
           </article>
           <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
             <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-wheelchair"></i></div>
-            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Barrier-Free Access</h3>
-            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Ramps, wider doors, grab bars, tactile paths, and wheelchair turning radius.</p>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Barrier-Free Upgrades</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Retrofitting ramps, widening doors, adding grab bars, tactile paths, and wheelchair turning radius to existing buildings.</p>
           </article>
           <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
             <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-paint-roller"></i></div>
-            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Finishes &amp; Painting</h3>
-            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Anti-bacterial paint, hygienic wall cladding, and epoxy floor coatings for clinical zones.</p>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Finishes &amp; Repainting</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Anti-bacterial paint, hygienic wall cladding, and epoxy floor coatings applied to clinical zones during off-hours.</p>
           </article>
         </div>
 
         <aside class="lg:col-span-4">
           <div class="rounded-3xl overflow-hidden relative" style="padding: var(--sp-card); background: linear-gradient(135deg, #FFFBEB 0%, #FFDEA6 60%, #FDE68A 100%);">
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-xl bg-white/70 backdrop-blur grid place-items-center text-[#B45309] text-lg shrink-0"><i class="fa-solid fa-hammer" aria-hidden="true"></i></div>
+              <div class="w-10 h-10 rounded-xl bg-white/70 backdrop-blur grid place-items-center text-[#B45309] text-lg shrink-0"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></div>
               <div>
                 <p class="text-[#92400E]/80 font-mono uppercase tracking-widest" style="font-size: var(--fs-tiny)">Renovation Process</p>
                 <h3 class="text-[#451A03] font-extrabold" style="font-size: var(--fs-h3)">4-step handover</h3>
@@ -1019,9 +914,9 @@
               <li class="flex gap-2.5"><span class="step-num" style="background:#fff;color:#B45309">3</span><span class="text-[#451A03]">Phased execution (live-hospital friendly)</span></li>
               <li class="flex gap-2.5"><span class="step-num" style="background:#fff;color:#B45309">4</span><span class="text-[#451A03]">Snag closure + handover</span></li>
             </ol>
-            <a href="#book" data-book-preset="Civil &amp; Renovation" class="mt-5 inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full font-bold text-white hover:scale-[1.01] transition-transform" style="font-size: var(--fs-xs); background: linear-gradient(135deg, #B45309, #D97706 55%, #F59E0B);">
+            <a href="#book" data-book-preset="Hospital Renovation" class="mt-5 inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full font-bold text-white hover:scale-[1.01] transition-transform" style="font-size: var(--fs-xs); background: linear-gradient(135deg, #B45309, #D97706 55%, #F59E0B);">
               <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
-              Book Site Visit
+              Book Renovation Site Visit
             </a>
             <p class="text-[#92400E]/80 mt-2.5 text-center font-mono" style="font-size: var(--fs-tiny);">
               or call <a href="tel:9659233313" class="text-[#451A03] font-bold hover:underline">9659233313</a>
@@ -1031,7 +926,7 @@
       </div>
     </section>
 
-    <!-- BOOK -->
+    <!-- ===================== BOOK ===================== -->
     <section id="book" aria-labelledby="book-title" style="margin-bottom: var(--sp-section)">
       <div class="grid lg:grid-cols-12 gap-3 sm:gap-5 items-start">
         <div class="lg:col-span-7 m3-card reveal relative overflow-hidden" style="padding: var(--sp-card);">
@@ -1050,7 +945,7 @@
             </div>
             <h2 id="book-title" class="font-extrabold text-slate-900" style="font-size: var(--fs-h2)">Book a service</h2>
             <p class="text-slate-600 mt-1.5" style="font-size: var(--fs-sm);">
-              <strong class="text-slate-800">Medical · Fire Safety · Civil Renovation</strong> — all confirmed via WhatsApp on
+              <strong class="text-slate-800">Medical · Fire Safety · Hospital Renovation</strong> — all confirmed via WhatsApp on
               <a href="tel:9659233313" class="font-mono font-bold text-m3Primary hover:underline">+91 9659233313</a>.
             </p>
           </header>
@@ -1068,7 +963,7 @@
                 <button type="button" class="svc-chip" data-svc="Vinyl Flooring" data-cat="medical" aria-pressed="false"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>Vinyl Flooring</span></button>
                 <button type="button" class="svc-chip" data-svc="Medical Equipment" data-cat="medical" aria-pressed="false"><i class="fa-solid fa-microscope" aria-hidden="true"></i><span>Equipment</span></button>
                 <button type="button" class="svc-chip fire-chip" data-svc="Fire Safety Systems" data-cat="fire" aria-pressed="false"><i class="fa-solid fa-fire-extinguisher" aria-hidden="true"></i><span>Fire Safety</span></button>
-                <button type="button" class="svc-chip civil-chip" data-svc="Civil &amp; Renovation" data-cat="civil" aria-pressed="false"><i class="fa-solid fa-hammer" aria-hidden="true"></i><span>Civil / Renovation</span></button>
+                <button type="button" class="svc-chip civil-chip" data-svc="Hospital Renovation" data-cat="civil" aria-pressed="false"><i class="fa-solid fa-hospital" aria-hidden="true"></i><span>Hospital Renovation</span></button>
                 <button type="button" class="svc-chip" data-svc="Other / Custom" data-cat="other" aria-pressed="false"><i class="fa-solid fa-plus" aria-hidden="true"></i><span>Other</span></button>
               </div>
               <p id="err-services" class="hidden mt-2 font-semibold" style="font-size: var(--fs-tiny); color: var(--error)" role="alert"></p>
@@ -1108,7 +1003,7 @@
 
             <div class="mb-4">
               <label for="bk-notes" class="block font-bold text-slate-700 mb-1.5" style="font-size: var(--fs-xs);">Requirements</label>
-              <textarea id="bk-notes" name="notes" rows="3" maxlength="400" placeholder="e.g. 20-bed ICU + fire NOC audit + ward renovation" class="form-input"></textarea>
+              <textarea id="bk-notes" name="notes" rows="3" maxlength="400" placeholder="e.g. 20-bed ICU renovation + fire NOC audit + ward flooring" class="form-input"></textarea>
               <div class="flex justify-between mt-1">
                 <span class="font-mono text-slate-400" style="font-size: var(--fs-tiny);">Details help us quote faster.</span>
                 <span id="notes-count" class="font-mono text-slate-400" style="font-size: var(--fs-tiny);">0 / 400</span>
@@ -1159,7 +1054,7 @@
 
           <div class="tonal reveal" style="padding: var(--sp-card); background: var(--peach-container); color: #311300;">
             <p class="font-bold mb-1" style="font-size: var(--fs-xs);">Prefer to talk?</p>
-            <p class="opacity-80 mb-3" style="font-size: var(--fs-tiny);">Call our unified line — medical, fire, and civil enquiries.</p>
+            <p class="opacity-80 mb-3" style="font-size: var(--fs-tiny);">Call our unified line — medical, fire, and renovation enquiries.</p>
             <a href="tel:9659233313" class="flex items-center gap-2 font-mono font-bold" style="font-size: var(--fs-sm);">
               <i class="fa-solid fa-phone" style="color: var(--civil)" aria-hidden="true"></i> 9659233313
             </a>
@@ -1175,10 +1070,10 @@
           <span class="font-mono font-bold tracking-[0.2em] text-m3Primary uppercase" style="font-size: var(--fs-tiny);">Our Trajectory</span>
           <h2 id="about-title" class="font-extrabold text-slate-900" style="font-size: var(--fs-h2);">Building Healthcare &amp; Digital Futures</h2>
           <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-body);">
-            Mourish Developers is a multidisciplinary firm specializing in medical infrastructure, hospital fire safety, civil renovation, and digital innovation. We combine engineering excellence with cutting-edge technology to deliver holistic solutions for modern healthcare facilities.
+            Mourish Developers is a multidisciplinary firm specializing in medical infrastructure, hospital fire safety, hospital renovation, and digital innovation. We combine engineering excellence with cutting-edge technology to deliver holistic solutions for modern healthcare facilities.
           </p>
           <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-body);">
-            From medical gas pipelines and firefighting systems to ward renovations and AI-driven platforms — we are your trusted partner for end-to-end project execution.
+            From medical gas pipelines and firefighting systems to complete ward renovations and AI-driven platforms — we are your trusted partner for end-to-end project execution.
           </p>
         </div>
         <div class="lg:col-span-5">
@@ -1190,7 +1085,7 @@
                 <p class="text-slate-500" style="font-size: var(--fs-xs);">Since 2025</p>
               </div>
             </div>
-            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs);">Official life-support gas, fire safety, and civil renovation provider.</p>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs);">Official life-support gas, fire safety, and hospital renovation provider.</p>
             <div class="pt-4 border-t border-slate-200/70">
               <span class="font-mono uppercase tracking-widest text-slate-400" style="font-size: var(--fs-tiny);">Registered GSTIN</span>
               <p data-copy="33CQLPT6813M1Z7" role="button" tabindex="0" aria-label="Copy GSTIN" class="font-mono font-bold text-m3Primary mt-1 select-all" style="font-size: var(--fs-sm);">33CQLPT6813M1Z7</p>
@@ -1210,7 +1105,7 @@
         <article class="m3-card space-y-4" style="padding: var(--sp-card);">
           <div class="w-11 h-11 rounded-2xl bg-mint text-m3Primary grid place-items-center text-xl"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
           <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3);">Experienced Engineering Team</h3>
-          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm);">Our core team consists of elite engineers, technicians, and developers with hands-on expertise in medical gas systems, fire safety, civil renovation, and digital infrastructure.</p>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm);">Our core team consists of elite engineers, technicians, and developers with hands-on expertise in medical gas systems, fire safety, hospital renovation, and digital infrastructure.</p>
         </article>
         <article class="m3-card space-y-4" style="padding: var(--sp-card);">
           <div class="w-11 h-11 rounded-2xl bg-lav grid place-items-center text-xl" style="color: #6750A4;"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i></div>
@@ -1368,8 +1263,8 @@
       <a href="#fire-safety" class="fab-item rounded-full pl-4 pr-5 py-2.5 flex items-center gap-2.5 font-mono font-bold text-white shadow-lg" style="font-size: var(--fs-tiny); background: linear-gradient(135deg,#B3261E,#E11D48);">
         <i class="fa-solid fa-fire-extinguisher text-sm" aria-hidden="true"></i> Fire Safety
       </a>
-      <a href="#civil-works" class="fab-item rounded-full pl-4 pr-5 py-2.5 flex items-center gap-2.5 font-mono font-bold text-white shadow-lg" style="font-size: var(--fs-tiny); background: linear-gradient(135deg,#B45309,#D97706);">
-        <i class="fa-solid fa-hammer text-sm" aria-hidden="true"></i> Civil Works
+      <a href="#renovation" class="fab-item rounded-full pl-4 pr-5 py-2.5 flex items-center gap-2.5 font-mono font-bold text-white shadow-lg" style="font-size: var(--fs-tiny); background: linear-gradient(135deg,#B45309,#D97706);">
+        <i class="fa-solid fa-hospital text-sm" aria-hidden="true"></i> Renovation
       </a>
     </div>
     <button id="fab" type="button" aria-expanded="false" aria-controls="fab-menu" aria-label="Quick contact" class="rounded-2xl btn-filled text-white grid place-items-center shadow-xl" style="width: 3.25rem; height: 3.25rem;">
@@ -1380,7 +1275,6 @@
   <!-- TOASTS -->
   <div id="toast-stack" class="fixed left-1/2 -translate-x-1/2 z-[110] flex flex-col items-center gap-2 pointer-events-none px-4 w-full max-w-md" style="bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- ===================== SCRIPTS ===================== -->
   <script>
     (function () {
       'use strict';
@@ -1390,7 +1284,7 @@
       var $ = function (s, c) { return (c || document).querySelector(s); };
       var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-      /* ============ TOAST ============ */
+      /* TOASTS */
       var toastStack = document.getElementById('toast-stack');
       function toast(message, icon) {
         if (!toastStack) return;
@@ -1407,7 +1301,7 @@
         }, 2400);
       }
 
-      /* ============ ACCENT ============ */
+      /* ACCENT */
       var ACCENTS = ['mint', 'sky', 'rose', 'lavender', 'peach', 'teal'];
       function setAccent(name, announce) {
         if (ACCENTS.indexOf(name) === -1) name = 'mint';
@@ -1426,7 +1320,7 @@
         if (savedAccent) setAccent(savedAccent, false);
       } catch (e) {}
 
-      /* ============ HAMBURGER / DRAWER ============ */
+      /* HAMBURGER / DRAWER */
       var hamburger = document.getElementById('hamburger');
       var drawer = document.getElementById('drawer');
       var overlay = document.getElementById('drawer-overlay');
@@ -1462,7 +1356,6 @@
       if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
       if (overlay) overlay.addEventListener('click', closeDrawer);
 
-      // Close on drawer link click + smooth scroll
       drawerLinks.forEach(function (link) {
         link.addEventListener('click', function (e) {
           var href = link.getAttribute('href');
@@ -1480,14 +1373,10 @@
         });
       });
 
-      // ESC to close
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) {
-          closeDrawer();
-        }
+        if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
       });
 
-      // Trap focus inside drawer
       document.addEventListener('keydown', function (e) {
         if (!drawer || !drawer.classList.contains('open')) return;
         if (e.key !== 'Tab') return;
@@ -1499,7 +1388,7 @@
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       });
 
-      /* ============ CURSOR GLOW ============ */
+      /* CURSOR GLOW */
       var cursorGlow = document.getElementById('cursor-glow');
       if (cursorGlow && canHover && !reduce) {
         var glowX = window.innerWidth / 2, glowY = window.innerHeight / 2;
@@ -1513,7 +1402,7 @@
         })();
       } else if (cursorGlow) { cursorGlow.style.display = 'none'; }
 
-      /* ============ SCROLL / NAV / TO TOP ============ */
+      /* SCROLL */
       var progressBar = document.getElementById('scroll-progress');
       var toTopBtn = document.getElementById('to-top');
       var toTopRing = document.getElementById('to-top-ring');
@@ -1538,7 +1427,7 @@
       onScrollFrame();
       if (toTopBtn) toTopBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
 
-      /* ============ STAGGER + REVEAL ============ */
+      /* STAGGER + REVEAL */
       $$('[data-stagger]').forEach(function (group) {
         Array.prototype.forEach.call(group.children, function (child, i) {
           child.classList.add('reveal');
@@ -1555,7 +1444,7 @@
         revealEls.forEach(function (el) { revealObserver.observe(el); });
       } else { revealEls.forEach(function (el) { el.classList.add('is-visible'); }); }
 
-      /* ============ COUNTERS ============ */
+      /* COUNTERS */
       function runCounter(el) {
         var target = parseFloat(el.getAttribute('data-count') || '0');
         var pad = parseInt(el.getAttribute('data-pad') || '0', 10);
@@ -1581,7 +1470,7 @@
         counters.forEach(function (el) { counterObserver.observe(el); });
       }
 
-      /* ============ SPOTLIGHT ============ */
+      /* SPOTLIGHT */
       if (canHover && !reduce) {
         $$('.m3-card').forEach(function (card) {
           card.addEventListener('pointermove', function (e) {
@@ -1592,7 +1481,7 @@
         });
       }
 
-      /* ============ RIPPLE ============ */
+      /* RIPPLE */
       document.addEventListener('click', function (e) {
         var btn = e.target.closest ? e.target.closest('.btn-filled, .btn-tonal, .btn-wa') : null;
         if (!btn || reduce) return;
@@ -1608,7 +1497,7 @@
         setTimeout(function () { ripple.remove(); }, 620);
       });
 
-      /* ============ COPY ============ */
+      /* COPY */
       function copyText(text) {
         function done() { toast('Copied ' + text, 'fa-copy'); }
         function fallback() {
@@ -1630,7 +1519,7 @@
         copyText(target.getAttribute('data-copy'));
       });
 
-      /* ============ FAB ============ */
+      /* FAB */
       var fab = document.getElementById('fab');
       var fabMenu = document.getElementById('fab-menu');
       function toggleFab(force) {
@@ -1645,7 +1534,7 @@
         if (fab.getAttribute('aria-expanded') === 'true' && !fab.contains(e.target) && !fabMenu.contains(e.target)) toggleFab(false);
       });
 
-      /* ============ SMOOTH ANCHOR ============ */
+      /* SMOOTH ANCHOR */
       document.addEventListener('click', function (e) {
         var link = e.target.closest ? e.target.closest('a[href^="#"]') : null;
         if (!link) return;
@@ -1658,7 +1547,7 @@
         if (history.replaceState) history.replaceState(null, '', hash);
       });
 
-      /* ============ BOOKING FORM ============ */
+      /* BOOKING FORM */
       var form = document.getElementById('booking-form');
       var WA_NUMBER = '919659233313';
       var selectedServices = new Set();
@@ -1718,7 +1607,7 @@
           if (cityEl.value.trim()) lines.push('📍 *Location:* ' + cityEl.value.trim());
           if (g.medical.length) { lines.push(''); lines.push('🏥 *Medical Services:*'); g.medical.forEach(function (s) { lines.push('• ' + s); }); }
           if (g.fire.length) { lines.push(''); lines.push('🔥 *Fire Safety:*'); g.fire.forEach(function (s) { lines.push('• ' + s); }); }
-          if (g.civil.length) { lines.push(''); lines.push('🏗️ *Civil & Renovation:*'); g.civil.forEach(function (s) { lines.push('• ' + s); }); }
+          if (g.civil.length) { lines.push(''); lines.push('🏗️ *Hospital Renovation:*'); g.civil.forEach(function (s) { lines.push('• ' + s); }); }
           if (g.other.length) { lines.push(''); lines.push('➕ *Other:*'); g.other.forEach(function (s) { lines.push('• ' + s); }); }
           if (dateEl.value) { lines.push(''); lines.push('📅 *Preferred Date:* ' + formatDate()); }
           if (notesEl.value.trim()) { lines.push(''); lines.push('📝 *Requirements:* ' + notesEl.value.trim()); }
@@ -1735,7 +1624,7 @@
           if (cityEl.value.trim()) html += '📍 <b>Location:</b> ' + escapeHtml(cityEl.value.trim()) + '\n';
           if (g.medical.length) { html += '\n<span class="wa-group-title">🏥 Medical Services:</span>'; g.medical.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
           if (g.fire.length) { html += '\n<span class="wa-group-title">🔥 Fire Safety:</span>'; g.fire.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
-          if (g.civil.length) { html += '\n<span class="wa-group-title">🏗️ Civil &amp; Renovation:</span>'; g.civil.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
+          if (g.civil.length) { html += '\n<span class="wa-group-title">🏗️ Hospital Renovation:</span>'; g.civil.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
           if (g.other.length) { html += '\n<span class="wa-group-title">➕ Other:</span>'; g.other.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
           if (dateEl.value) html += '\n\n📅 <b>Preferred Date:</b> ' + escapeHtml(formatDate());
           if (notesEl.value.trim()) html += '\n📝 <b>Requirements:</b> ' + escapeHtml(notesEl.value.trim());
@@ -1797,7 +1686,7 @@
         updatePreview();
       }
 
-      /* ============ CTA PRESETS ============ */
+      /* CTA PRESETS */
       document.querySelectorAll('[data-book-preset]').forEach(function (link) {
         link.addEventListener('click', function () {
           var preset = link.getAttribute('data-book-preset');
@@ -1805,7 +1694,7 @@
         });
       });
 
-      /* ============ WELCOME TOAST ============ */
+      /* WELCOME TOAST */
       setTimeout(function () {
         toast(canHover ? 'Tip: tap the hamburger for full menu' : 'Tip: tap ☰ for full navigation', 'fa-wand-magic-sparkles');
       }, 1800);
