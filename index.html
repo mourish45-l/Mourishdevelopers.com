@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-accent="mint">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mourish Developers · Medical · Fire Safety · Hospital Renovation</title>
+  <meta name="description" content="Mourish Developers: Medical Gas Pipeline, ICU Curtains, OT, Vinyl Flooring, Hospital Fire Safety, Hospital Renovation, Web &amp; App Development." />
+  <meta name="theme-color" content="#FBF9FF" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mint: '#C9EBDC', lav: '#EADDFF', sky: '#D6E3FF',
+            rose: '#FFD9E2', sand: '#FFDEA6', peach: '#FFDCC7', teal: '#B2ECEE'
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter+Tight:wght@700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+    :root {
+      --primary: #386A20;
+      --on-primary: #FFFFFF;
+      --primary-container: #C9EBDC;
+      --on-primary-container: #042100;
+
+      --secondary-container: #EADDFF;
+      --tertiary-container: #D6E3FF;
+      --error: #B3261E;
+      --error-container: #FFDAD6;
+      --on-error-container: #410002;
+
+      --amber-container: #FFDEA6;
+      --peach-container: #FFDCC7;
+      --teal-container: #B2ECEE;
+
+      --surface: #FBF9FF;
+      --surface-container: #F1EFE7;
+      --on-surface: #1B1C18;
+      --on-surface-variant: #43483F;
+
+      --accent: var(--primary);
+      --accent-2: #4C8A2E;
+      --accent-3: #6BB84A;
+      --accent-glow: 201, 235, 220;
+
+      --fire: #B3261E;
+      --fire-soft: #FFDAD6;
+      --civil: #B45309;
+      --civil-soft: #FFDEA6;
+      --wa: #25D366;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+
+      --fs-h1: clamp(1.85rem, 3.8vw + 0.9rem, 4.4rem);
+      --fs-h2: clamp(1.4rem, 2.2vw + 0.8rem, 2.5rem);
+      --fs-h3: clamp(1.05rem, 0.8vw + 0.85rem, 1.4rem);
+      --fs-body: clamp(0.875rem, 0.35vw + 0.78rem, 1.0625rem);
+      --fs-sm: clamp(0.75rem, 0.25vw + 0.7rem, 0.875rem);
+      --fs-xs: clamp(0.6875rem, 0.15vw + 0.65rem, 0.75rem);
+      --fs-tiny: clamp(0.625rem, 0.1vw + 0.6rem, 0.6875rem);
+
+      --sp-section: clamp(3rem, 6vw + 1rem, 7rem);
+      --sp-card: clamp(1.15rem, 1.8vw + 0.75rem, 2rem);
+      --sp-gap: clamp(0.75rem, 1.3vw, 1.25rem);
+    }
+
+    html[data-accent="sky"] {
+      --primary: #415F91; --primary-container: #D6E3FF; --on-primary-container: #001B3D;
+      --accent: #415F91; --accent-2: #5879AC; --accent-3: #8FBDE8; --accent-glow: 214, 227, 255;
+    }
+    html[data-accent="rose"] {
+      --primary: #984061; --primary-container: #FFD9E2; --on-primary-container: #3E001D;
+      --accent: #984061; --accent-2: #B85778; --accent-3: #E8A0B8; --accent-glow: 255, 217, 226;
+    }
+    html[data-accent="lavender"] {
+      --primary: #6750A4; --primary-container: #EADDFF; --on-primary-container: #22005D;
+      --accent: #6750A4; --accent-2: #8B72D4; --accent-3: #C4B2E8; --accent-glow: 234, 221, 255;
+    }
+    html[data-accent="peach"] {
+      --primary: #7D5700; --primary-container: #FFDEA6; --on-primary-container: #261A00;
+      --accent: #7D5700; --accent-2: #A07020; --accent-3: #D4A050; --accent-glow: 255, 222, 166;
+    }
+    html[data-accent="teal"] {
+      --primary: #006A6A; --primary-container: #B2ECEE; --on-primary-container: #002020;
+      --accent: #006A6A; --accent-2: #008080; --accent-3: #60C4C4; --accent-glow: 178, 236, 238;
+    }
+
+    html[data-accent] .text-m3Primary { color: var(--primary); }
+    html[data-accent] .bg-mint { background-color: var(--primary-container); }
+    html[data-accent] .bg-m3Primary { background-color: var(--primary); }
+    html[data-accent] .border-m3PrimaryContainer { border-color: var(--primary-container); }
+
+    * { -webkit-tap-highlight-color: transparent; }
+    html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; scroll-padding-top: 88px; }
+    body {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: clip;
+      font-size: var(--fs-body);
+      background: var(--surface);
+    }
+    body.drawer-open { overflow: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    button, a, input, textarea { touch-action: manipulation; }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 8px; }
+
+    /* Ambient background */
+    .bg-scene { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; contain: strict; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; transform: translateZ(0); }
+    .orb-1 { width: 55vmax; height: 55vmax; top: -25vmax; left: -20vmax; background: radial-gradient(circle, rgba(var(--accent-glow), .70), transparent 62%); animation: orb1 32s var(--ease-out) infinite; }
+    .orb-2 { width: 45vmax; height: 45vmax; bottom: -20vmax; right: -15vmax; background: radial-gradient(circle, rgba(234, 221, 255, .55), transparent 62%); animation: orb2 40s var(--ease-out) infinite; }
+    .orb-3 { width: 40vmax; height: 40vmax; top: 42%; left: 55%; background: radial-gradient(circle, rgba(214, 227, 255, .50), transparent 62%); animation: orb3 46s var(--ease-out) infinite; }
+    @keyframes orb1 { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(9vmax,7vmax,0) scale(1.12); } }
+    @keyframes orb2 { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(-8vmax,-6vmax,0) scale(1.16); } }
+    @keyframes orb3 { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(-11vmax,5vmax,0) scale(.9); } }
+    .grid-pattern {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(47, 109, 91, .10) 1px, transparent 1px);
+      background-size: 34px 34px;
+      -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 72%);
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 72%);
+    }
+
+    /* Glass + cards */
+    .glass {
+      background: rgba(255, 255, 255, 0.78);
+      -webkit-backdrop-filter: blur(22px) saturate(155%);
+      backdrop-filter: blur(22px) saturate(155%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 12px 34px -16px rgba(47, 109, 91, 0.30);
+    }
+    .m3-card {
+      position: relative; isolation: isolate;
+      background: #FFFFFF;
+      border-radius: clamp(18px, 2vw, 28px);
+      border: 1px solid rgba(47, 109, 91, 0.08);
+      box-shadow: 0 6px 22px -12px rgba(47, 109, 91, 0.22);
+      transition: box-shadow .35s var(--ease-out), border-color .35s var(--ease-out), transform .35s var(--ease-out);
+    }
+    .m3-card:hover { box-shadow: 0 26px 54px -24px rgba(47, 109, 91, 0.42); border-color: rgba(47, 109, 91, 0.20); }
+    .m3-card::before {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+      background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-glow), .25), transparent 62%);
+      opacity: 0; transition: opacity .35s var(--ease-out); z-index: -1;
+    }
+    .m3-card:hover::before { opacity: 1; }
+
+    .fire-card { border-color: rgba(179, 38, 30, 0.10); }
+    .fire-card:hover { border-color: rgba(179, 38, 30, 0.30); box-shadow: 0 26px 54px -24px rgba(179, 38, 30, 0.30); }
+    .fire-icon { background: var(--fire-soft); color: var(--fire); }
+
+    .civil-card { border-color: rgba(180, 83, 9, 0.10); }
+    .civil-card:hover { border-color: rgba(180, 83, 9, 0.30); box-shadow: 0 26px 54px -24px rgba(180, 83, 9, 0.30); }
+    .civil-icon { background: var(--civil-soft); color: #7A3D00; }
+
+    .tonal {
+      border-radius: clamp(18px, 2vw, 28px);
+      border: 1px solid rgba(47, 109, 91, 0.07);
+      transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out);
+    }
+    .tonal:hover { transform: translate3d(0, -4px, 0); box-shadow: 0 20px 40px -22px rgba(47, 109, 91, 0.35); }
+
+    /* Buttons */
+    .btn-filled, .btn-wa, .btn-tonal {
+      position: relative; overflow: hidden;
+      transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), background-position .55s var(--ease-out), filter .2s var(--ease-out);
+    }
+    .btn-filled { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 55%, var(--accent-3) 100%); background-size: 200% auto; box-shadow: 0 10px 24px -12px rgba(var(--accent-glow), 1); color: #fff; }
+    .btn-filled:hover { background-position: right center; box-shadow: 0 16px 32px -12px rgba(var(--accent-glow), 1); }
+    .btn-wa { background: linear-gradient(135deg, #25D366 0%, #1DA851 55%, #128C7E 100%); background-size: 200% auto; box-shadow: 0 12px 28px -14px rgba(37, 211, 102, .95); color: #fff; }
+    .btn-wa:hover { background-position: right center; box-shadow: 0 20px 40px -16px rgba(37, 211, 102, 1); }
+    .btn-tonal { background: var(--primary-container); color: var(--on-primary-container); }
+    .btn-tonal:hover { filter: brightness(.96); }
+    .btn-filled:active, .btn-wa:active, .btn-tonal:active { transform: scale(.975); }
+
+    .ripple { position: absolute; border-radius: 9999px; transform: scale(0); animation: ripple .58s var(--ease-out) forwards; pointer-events: none; }
+    @keyframes ripple { to { transform: scale(2.8); opacity: 0; } }
+
+    /* Hamburger */
+    .hamburger {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 5px; width: 44px; height: 44px; cursor: pointer;
+      background: var(--primary-container); border-radius: 9999px; border: none;
+      position: relative; transition: background .2s var(--ease-out), transform .25s var(--ease-spring);
+      flex-shrink: 0;
+    }
+    .hamburger:hover { filter: brightness(.94); }
+    .hamburger:active { transform: scale(.94); }
+    .hamburger span {
+      display: block; width: 20px; height: 2px;
+      background: var(--on-primary-container); border-radius: 9999px;
+      transition: transform .35s var(--ease-spring), opacity .2s var(--ease-out);
+      transform-origin: center;
+    }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Drawer */
+    #drawer-overlay {
+      position: fixed; inset: 0;
+      background: rgba(16, 26, 46, .45);
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+      z-index: 90; opacity: 0; pointer-events: none;
+      transition: opacity .35s var(--ease-out);
+    }
+    #drawer-overlay.open { opacity: 1; pointer-events: auto; }
+
+    #drawer {
+      position: fixed; top: 0; right: 0;
+      height: 100vh; height: 100dvh;
+      width: min(400px, 100vw);
+      z-index: 91; background: #FFFFFF;
+      border-left: 1px solid rgba(47, 109, 91, .12);
+      box-shadow: -20px 0 60px -20px rgba(16, 26, 46, .35);
+      transform: translate3d(100%, 0, 0);
+      transition: transform .42s var(--ease-out);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    #drawer.open { transform: translate3d(0, 0, 0); }
+    @media (max-width: 480px) { #drawer { width: 100vw; } }
+
+    #drawer-scroll {
+      flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 0 0 1.5rem; overscroll-behavior: contain;
+    }
+
+    .drawer-link {
+      display: flex; align-items: center; gap: .85rem;
+      padding: .85rem 1rem; border-radius: 16px;
+      color: var(--on-surface); font-weight: 600; font-size: var(--fs-sm);
+      text-decoration: none;
+      transition: background .2s var(--ease-out), color .2s var(--ease-out), transform .2s var(--ease-out);
+    }
+    .drawer-link:hover { background: var(--primary-container); color: var(--primary); transform: translateX(2px); }
+    .drawer-link .di {
+      width: 36px; height: 36px; border-radius: 12px;
+      display: grid; place-items: center; font-size: 15px; flex-shrink: 0;
+      background: var(--surface-container); color: var(--on-surface-variant);
+      transition: background .2s var(--ease-out), color .2s var(--ease-out);
+    }
+    .drawer-link:hover .di { background: var(--primary); color: #fff; }
+    .drawer-link.fire .di { background: var(--fire-soft); color: var(--fire); }
+    .drawer-link.fire:hover { background: var(--fire-soft); color: var(--fire); }
+    .drawer-link.fire:hover .di { background: var(--fire); color: #fff; }
+    .drawer-link.civil .di { background: var(--civil-soft); color: var(--civil); }
+    .drawer-link.civil:hover { background: var(--civil-soft); color: var(--civil); }
+    .drawer-link.civil:hover .di { background: var(--civil); color: #fff; }
+    .drawer-link.wa .di { background: rgba(37, 211, 102, .14); color: #0d7a3e; }
+    .drawer-link.wa:hover { background: rgba(37, 211, 102, .14); color: #0d7a3e; }
+    .drawer-link.wa:hover .di { background: var(--wa); color: #fff; }
+
+    .drawer-section { padding: 0 1rem; margin-top: 1.25rem; }
+    .drawer-section-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: #94a3b8;
+      padding: 0 .85rem; margin-bottom: .5rem; display: block;
+    }
+    .drawer-chip {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .45rem .8rem; border-radius: 9999px;
+      border: 1px solid rgba(47, 109, 91, .16); background: #fff;
+      font-size: 11px; font-weight: 600; color: #475569;
+      text-decoration: none;
+      transition: all .2s var(--ease-out);
+    }
+    .drawer-chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-container); transform: translateY(-1px); }
+    .drawer-chip.fire:hover { border-color: var(--fire); color: var(--fire); background: var(--fire-soft); }
+    .drawer-chip.civil:hover { border-color: var(--civil); color: var(--civil); background: var(--civil-soft); }
+
+    .accent-dot {
+      width: 26px; height: 26px; border-radius: 9999px;
+      background: var(--dot); border: 2px solid transparent;
+      outline: 1px solid rgba(16, 26, 46, .12);
+      transition: transform .2s var(--ease-spring), box-shadow .2s var(--ease-out);
+      cursor: pointer;
+    }
+    .accent-dot:hover { transform: scale(1.15); }
+    .accent-dot[aria-pressed="true"] { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--dot); }
+
+    /* Progress + To top */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+      transform: scaleX(0); transform-origin: 0 50%; z-index: 80;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      box-shadow: 0 0 16px rgba(var(--accent-glow), .6);
+    }
+    #to-top { opacity: 0; transform: translate3d(0, 14px, 0) scale(.9); pointer-events: none; transition: opacity .3s var(--ease-out), transform .3s var(--ease-spring); }
+    #to-top.is-visible { opacity: 1; transform: translate3d(0,0,0) scale(1); pointer-events: auto; }
+    #to-top-ring { transition: stroke-dashoffset .12s linear; }
+
+    .reveal { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); transition-delay: var(--d, 0ms); }
+    .reveal.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+    .marquee { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); overflow: hidden; }
+    .marquee-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-group { display: flex; align-items: center; gap: clamp(1.25rem, 2.5vw, 2.25rem); padding-right: clamp(1.25rem, 2.5vw, 2.25rem); }
+    @keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+
+    .hero-grad {
+      background-image: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 30%, var(--accent-3) 55%, var(--accent-2) 80%, var(--accent) 100%);
+      background-size: 240% auto;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shimmer 8s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 240% center; } }
+
+    .link-sweep { position: relative; }
+    .link-sweep::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 1px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .3s var(--ease-out); }
+    .link-sweep:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    [data-copy] { cursor: copy; transition: filter .2s var(--ease-out), transform .15s var(--ease-out); }
+    [data-copy]:hover { filter: brightness(1.05); }
+    [data-copy]:active { transform: scale(.97); }
+
+    #fab-container { position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 70; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; }
+    @media (min-width: 640px) { #fab-container { right: 1.5rem; bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); } }
+    #fab-menu { display: flex; flex-direction: column; align-items: flex-end; gap: .625rem; }
+    #fab-menu .fab-item { opacity: 0; transform: translate3d(0, 12px, 0) scale(.9); pointer-events: none; transition: opacity .25s var(--ease-out), transform .25s var(--ease-spring); }
+    #fab-menu.is-open .fab-item { opacity: 1; transform: translate3d(0,0,0) scale(1); pointer-events: auto; }
+    #fab-menu.is-open .fab-item:nth-child(1) { transition-delay: .02s; }
+    #fab-menu.is-open .fab-item:nth-child(2) { transition-delay: .07s; }
+    #fab-menu.is-open .fab-item:nth-child(3) { transition-delay: .12s; }
+    #fab-icon { transition: transform .3s var(--ease-spring); }
+    #fab[aria-expanded="true"] #fab-icon { transform: rotate(135deg); }
+
+    #to-top { position: fixed; left: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 70; }
+    @media (min-width: 640px) { #to-top { left: auto; right: 1.5rem; bottom: calc(6rem + env(safe-area-inset-bottom, 0px)); } }
+
+    .toast {
+      display: flex; align-items: center; justify-content: center; gap: .6rem;
+      background: #1B1C18; color: #fff; font-size: 12px; font-weight: 600;
+      padding: 10px 16px; border-radius: 9999px;
+      box-shadow: 0 14px 34px -14px rgba(16, 26, 46, .65);
+      transform: translate3d(0, 16px, 0) scale(.95); opacity: 0;
+      transition: transform .3s var(--ease-spring), opacity .3s var(--ease-out);
+      max-width: 100%; text-align: center; word-break: break-word;
+    }
+    .toast.in { transform: translate3d(0,0,0) scale(1); opacity: 1; }
+    .toast.out { transform: translate3d(0, -8px, 0); opacity: 0; }
+    .toast i { color: var(--primary-container); flex-shrink: 0; }
+
+    #cursor-glow { position: fixed; top: 0; left: 0; width: 360px; height: 360px; border-radius: 9999px; pointer-events: none; z-index: 1; background: radial-gradient(circle at center, rgba(var(--accent-glow), .30) 0%, rgba(var(--accent-glow), .10) 30%, transparent 62%); transform: translate3d(-50%, -50%, 0); mix-blend-mode: multiply; }
+    @media (hover: none), (pointer: coarse) { #cursor-glow { display: none; } }
+
+    .form-input { width: 100%; padding: .75rem .9rem; border-radius: 14px; border: 1px solid rgba(47, 109, 91, 0.15); background: #fff; font-size: max(16px, var(--fs-sm)); line-height: 1.4; color: var(--on-surface); transition: border-color .2s var(--ease-out), box-shadow .2s var(--ease-out); font-family: inherit; }
+    .form-input::placeholder { color: #94a3b8; }
+    .form-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(var(--accent-glow), .25); }
+    .form-input.has-error { border-color: var(--error); box-shadow: 0 0 0 3px rgba(179, 38, 30, .15); }
+    textarea.form-input { min-height: 88px; resize: vertical; }
+
+    .phone-wrap { position: relative; }
+    .phone-prefix { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 13px; font-weight: 700; color: #64748b; font-family: 'JetBrains Mono', monospace; pointer-events: none; }
+    .phone-input { padding-left: 3rem; }
+
+    .svc-chip { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .9rem; border-radius: 9999px; border: 1px solid rgba(47, 109, 91, 0.16); background: #fff; font-size: 12px; font-weight: 600; color: #475569; cursor: pointer; user-select: none; transition: background-color .2s var(--ease-out), border-color .2s var(--ease-out), color .2s var(--ease-out), transform .15s var(--ease-out), box-shadow .2s var(--ease-out); }
+    .svc-chip i { font-size: 11px; color: var(--primary); transition: color .2s var(--ease-out); }
+    .svc-chip:hover { border-color: var(--primary); color: var(--primary); transform: translate3d(0, -1px, 0); }
+    .svc-chip[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 14px -4px rgba(var(--accent-glow), .65); }
+    .svc-chip[aria-pressed="true"] i { color: #fff; }
+    .svc-chip.fire-chip i { color: var(--fire); }
+    .svc-chip.fire-chip:hover { border-color: var(--fire); color: var(--fire); }
+    .svc-chip.fire-chip[aria-pressed="true"] { background: var(--fire); border-color: var(--fire); }
+    .svc-chip.civil-chip i { color: var(--civil); }
+    .svc-chip.civil-chip:hover { border-color: var(--civil); color: var(--civil); }
+    .svc-chip.civil-chip[aria-pressed="true"] { background: var(--civil); border-color: var(--civil); }
+
+    .wa-bubble { background: #DCF8C6; border-radius: 14px 14px 14px 4px; padding: 12px 14px; font-size: 12px; line-height: 1.6; color: #1f2d1f; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; max-height: 240px; overflow-y: auto; box-shadow: 0 2px 8px -4px rgba(0,0,0,.12); border: 1px solid rgba(0,0,0,.04); }
+    .wa-bubble b { color: #075E54; font-weight: 700; }
+    .wa-bubble .wa-group-title { font-weight: 700; color: #075E54; margin-top: 8px; display: block; }
+
+    .step-num { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 9999px; background: #fff; font-size: 10px; font-weight: 800; color: var(--primary); flex-shrink: 0; }
+
+    @keyframes shake { 0%, 100% { transform: translate3d(0,0,0); } 25%, 75% { transform: translate3d(-3px,0,0); } 50% { transform: translate3d(3px,0,0); } }
+    .shake { animation: shake .3s var(--ease-out); }
+
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+    .chev { transition: transform .28s var(--ease-out); }
+    details > .acc-body { opacity: 0; transform: translate3d(0, -6px, 0); transition: opacity .28s var(--ease-out), transform .28s var(--ease-out); }
+    details[open] > .acc-body { opacity: 1; transform: translate3d(0, 0, 0); transition: opacity .3s var(--ease-out) .05s, transform .3s var(--ease-out) .05s; }
+
+    .skip-link { position: absolute; top: -60px; left: 16px; background: var(--primary); color: #fff; padding: 10px 18px; font-weight: 700; font-size: 12px; z-index: 9999; border-radius: 9999px; transition: top .22s var(--ease-out); }
+    .skip-link:focus { top: 16px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .marquee-track { animation: none !important; }
+      .orb { animation: none !important; }
+      #cursor-glow { display: none !important; }
+      .hero-grad { animation: none !important; }
+    }
+
+    /* Product/service detail dialog */
+    .product-detail-card { cursor: pointer; }
+    .product-detail-card:focus-visible { outline: 3px solid var(--primary); outline-offset: 4px; }
+    .product-detail-hint { margin-top:auto; padding-top:.85rem; display:flex; justify-content:space-between; align-items:center; gap:.75rem; color:var(--primary); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    #product-detail-modal { position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:1rem; }
+    #product-detail-modal.open { display:flex; }
+    #product-detail-backdrop { position:absolute; inset:0; background:rgba(10,20,14,.62); backdrop-filter:blur(8px); }
+    .product-detail-panel { position:relative; width:min(760px,100%); max-height:min(88dvh,900px); overflow:auto; background:var(--surface); border:1px solid rgba(255,255,255,.7); border-radius:26px; box-shadow:0 30px 100px rgba(0,0,0,.3); padding:clamp(1.1rem,4vw,2.2rem); }
+    .product-detail-panel .detail-copy { color:var(--on-surface-variant); line-height:1.8; }
+    .product-detail-panel .detail-original { margin-top:1.25rem; padding:1rem; border-radius:18px; background:#fff; border:1px solid rgba(47,109,91,.10); }
+    body.product-modal-open { overflow:hidden; }
+    @media (prefers-reduced-motion: reduce) { .product-detail-panel { scroll-behavior:auto; } }
+
+
+
+    /* ==========================================================
+       CONTAINED 3D CURVED CYLINDRICAL CAROUSEL (NO OVERLAP)
+       ========================================================== */
+    .hero-curve-band {
+      position: relative; width: 100%; height: 440px; margin: 1.5rem 0;
+      border-radius: clamp(20px, 2.5vw, 32px); background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(47, 109, 91, 0.10); overflow: hidden; contain: layout paint;
+    }
+
+    .carousel-stage-box {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; z-index: 10;
+    }
+    .carousel-stage-box:active { cursor: grabbing; }
+
+    .curve-card-item {
+      position: absolute; top: 0; left: 0; will-change: transform, clip-path;
+      border-radius: 18px; overflow: hidden; background-color: #17241b;
+      box-shadow: 0 16px 36px rgba(8, 72, 45, 0.15); border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .curve-card-item img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .curve-card-item .card-grad {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8, 72, 45, 0.08) 0%, rgba(5, 25, 16, 0.90) 100%);
+      pointer-events: none;
+    }
+    .curve-card-item .card-meta { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 12px; color: #FFFFFF; pointer-events: none; z-index: 2; }
+    .curve-card-item .card-tag {
+      display: inline-block; font-size: 10px; text-transform: uppercase; font-weight: 700;
+      background: var(--primary-container); color: var(--primary); padding: 2px 7px; border-radius: 999px; margin-bottom: 4px;
+    }
+    .curve-card-item .card-title { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 14px; line-height: 1.25; color: #FFFFFF; }
+
+    .doodle-badge { position: absolute; pointer-events: none; font-family: 'Caveat', cursive; font-weight: 600; color: var(--primary); z-index: 20; }
+    .doodle-top-right { top: 16px; right: 28px; font-size: 23px; line-height: 1.1; transform: rotate(12deg); }
+    .arrow-top-right { position: absolute; top: 55px; right: 32px; width: 65px; height: 65px; pointer-events: none; z-index: 20; }
+    .doodle-bottom-left { bottom: 14px; left: 24px; font-size: 22px; transform: rotate(-10deg); }
+    .arrow-bottom-left { position: absolute; bottom: 22px; left: 140px; width: 48px; height: 30px; pointer-events: none; z-index: 20; }
+    .path-draw { stroke-dasharray: 400; stroke-dashoffset: 400; animation: drawDoodle 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes drawDoodle { to { stroke-dashoffset: 0; } }
+
+  </style>
+
+<style id="product-detail-breakdown-styles">
+.product-detail-extra{margin-top:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;text-align:left}
+.product-detail-extra .detail-box{background:#f7faf9;border:1px solid #dfe9e5;border-radius:16px;padding:16px}
+.product-detail-extra h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#18745b;font-weight:800;margin:0 0 10px}
+.product-detail-extra ul{margin:0;padding-left:18px;color:#334155;font-size:13px;line-height:1.65}
+.product-detail-extra p{font-size:13px;line-height:1.65;color:#334155;margin:0}
+.product-detail-extra .detail-note{grid-column:1/-1;background:#fff7ed;border-color:#fed7aa}
+@media(max-width:640px){.product-detail-extra{grid-template-columns:1fr}.product-detail-extra .detail-note{grid-column:auto}}
+</style>
+
+</head>
+
+<body class="text-slate-800 font-sans antialiased selection:bg-mint selection:text-slate-900">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <div class="bg-scene" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-pattern"></div>
+  </div>
+
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ===================== HAMBURGER DRAWER ===================== -->
+  <div id="drawer-overlay" aria-hidden="true"></div>
+
+  <aside id="drawer" aria-labelledby="drawer-title" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="flex items-center justify-between px-4 py-4 border-b" style="border-color: rgba(47, 109, 91, .10);">
+      <a href="#top" class="flex items-center gap-2.5 group" aria-label="Mourish home" data-drawer-link>
+        <div class="w-9 h-9 rounded-2xl bg-mint grid place-items-center relative shrink-0 transition-transform duration-300 group-hover:rotate-3">
+          <span class="absolute inset-0 grid place-items-center font-extrabold text-sm" style="color: var(--on-primary-container)">M</span>
+          <img src="IMG_20260812_211849.png" alt="Mourish logo" class="relative w-full h-full object-cover rounded-2xl" onerror="this.remove()" />
+        </div>
+        <span class="flex flex-col leading-tight">
+          <span class="font-extrabold tracking-tight text-slate-900" style="font-size: var(--fs-sm)">Mourish</span>
+          <span class="font-mono font-bold tracking-[0.20em] text-m3Primary uppercase" style="font-size: 8px">Developers</span>
+        </span>
+      </a>
+      <button id="drawer-close" type="button" aria-label="Close menu"
+              class="w-10 h-10 rounded-full grid place-items-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors">
+        <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div id="drawer-scroll">
+      <h2 id="drawer-title" class="sr-only">Navigation menu</h2>
+
+      <nav class="p-3 space-y-0.5" aria-label="Main menu">
+        <a href="#services" class="drawer-link" data-drawer-link>
+          <span class="di"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+          <span>Services</span>
+        </a>
+        <a href="#fire-safety" class="drawer-link fire" data-drawer-link>
+          <span class="di"><i class="fa-solid fa-fire-extinguisher" aria-hidden="true"></i></span>
+          <span>Fire Safety</span>
+        </a>
+        <a href="#renovation" class="drawer-link civil" data-drawer-link>
+          <span class="di"><i class="fa-solid fa-hospital" aria-hidden="true"></i></span>
+          <span>Hospital Renovation</span>
+        </a>
+        <a href="#book" class="drawer-link wa" data-drawer-link>
+          <span class="di"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
+          <span>Book a Service</span>
+          <span class="ml-auto w-1.5 h-1.5 rounded-full animate-pulse" style="background: var(--wa)" aria-hidden="true"></span>
+        </a>
+        <a href="#about" class="drawer-link" data-drawer-link>
+          <span class="di"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+          <span>About</span>
+        </a>
+        <a href="#team" class="drawer-link" data-drawer-link>
+          <span class="di"><i class="fa-solid fa-users" aria-hidden="true"></i></span>
+          <span>Team &amp; Partners</span>
+        </a>
+        <a href="#dev" class="drawer-link" data-drawer-link>
+          <span class="di"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
+          <span>Web &amp; App Dev</span>
+        </a>
+        <a href="#terms" class="drawer-link" data-drawer-link>
+          <span class="di"><i class="fa-solid fa-file-shield" aria-hidden="true"></i></span>
+          <span>Terms &amp; Conditions</span>
+        </a>
+      </nav>
+
+      <div class="drawer-section">
+        <span class="drawer-section-title">Quick services</span>
+        <div class="flex flex-wrap gap-1.5 px-1">
+          <a href="#services" class="drawer-chip" data-drawer-link><i class="fa-solid fa-bolt text-[10px]" aria-hidden="true"></i>Gas</a>
+          <a href="#services" class="drawer-chip" data-drawer-link><i class="fa-solid fa-vector-square text-[10px]" aria-hidden="true"></i>ICU</a>
+          <a href="#services" class="drawer-chip" data-drawer-link><i class="fa-solid fa-syringe text-[10px]" aria-hidden="true"></i>OT</a>
+          <a href="#fire-safety" class="drawer-chip fire" data-drawer-link><i class="fa-solid fa-fire-extinguisher text-[10px]" aria-hidden="true"></i>Fire Safety</a>
+          <a href="#renovation" class="drawer-chip civil" data-drawer-link><i class="fa-solid fa-hospital text-[10px]" aria-hidden="true"></i>Renovation</a>
+        </div>
+      </div>
+
+      <div class="drawer-section">
+        <span class="drawer-section-title">MD3 Pastel Palette</span>
+        <div class="flex flex-wrap items-center gap-2 px-1" role="group" aria-label="Theme colour">
+          <button type="button" data-accent-btn="mint" aria-pressed="true" aria-label="Green" class="accent-dot" style="--dot:#386A20"></button>
+          <button type="button" data-accent-btn="sky" aria-pressed="false" aria-label="Blue" class="accent-dot" style="--dot:#415F91"></button>
+          <button type="button" data-accent-btn="rose" aria-pressed="false" aria-label="Red" class="accent-dot" style="--dot:#984061"></button>
+          <button type="button" data-accent-btn="lavender" aria-pressed="false" aria-label="Purple" class="accent-dot" style="--dot:#6750A4"></button>
+          <button type="button" data-accent-btn="peach" aria-pressed="false" aria-label="Amber" class="accent-dot" style="--dot:#7D5700"></button>
+          <button type="button" data-accent-btn="teal" aria-pressed="false" aria-label="Teal" class="accent-dot" style="--dot:#006A6A"></button>
+        </div>
+      </div>
+
+      <div class="drawer-section">
+        <span class="drawer-section-title">Contact</span>
+        <div class="px-1 space-y-1.5">
+          <a href="tel:9659233313" class="drawer-link" style="padding: .7rem .85rem;">
+            <span class="di" style="background: var(--error-container); color: var(--fire);"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+            <span class="flex flex-col leading-tight">
+              <span class="font-mono font-bold text-slate-900" style="font-size: var(--fs-sm);">9659233313</span>
+              <span class="text-slate-500" style="font-size: var(--fs-tiny);">Medical · Fire · Renovation</span>
+            </span>
+          </a>
+          <a href="tel:9487410078" class="drawer-link" style="padding: .7rem .85rem;">
+            <span class="di" style="background: var(--tertiary-container); color: #415F91;"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
+            <span class="flex flex-col leading-tight">
+              <span class="font-mono font-bold text-slate-900" style="font-size: var(--fs-sm);">9487410078</span>
+              <span class="text-slate-500" style="font-size: var(--fs-tiny);">Web · App · Digital</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="drawer-section">
+        <button type="button" data-copy="33CQLPT6813M1Z7"
+                class="w-full text-left font-mono p-2.5 rounded-xl border"
+                style="font-size: var(--fs-tiny); background: var(--surface-container); border-color: rgba(47, 109, 91, .10); color: var(--on-surface-variant);"
+                aria-label="Copy GSTIN">
+          <i class="fa-solid fa-fingerprint mr-1.5" aria-hidden="true"></i>
+          GSTIN: <strong style="color: var(--primary)">33CQLPT6813M1Z7</strong>
+        </button>
+      </div>
+    </div>
+
+    <div class="px-4 py-3 border-t space-y-2" style="border-color: rgba(47, 109, 91, .10);">
+      <a href="#book" class="btn-wa w-full px-5 py-3 rounded-full font-bold text-white inline-flex items-center justify-center gap-2" style="font-size: var(--fs-sm);" data-drawer-link>
+        <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i>
+        Book a Service
+      </a>
+      <p class="text-center font-mono text-slate-400" style="font-size: 9px;">© 2026 Mourish Developers</p>
+    </div>
+  </aside>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 pt-3 sm:pt-4">
+    <nav class="max-w-7xl mx-auto glass rounded-full px-3 sm:px-5 py-2 flex items-center justify-between gap-2" aria-label="Main navigation">
+      <a href="#top" class="flex items-center gap-2.5 sm:gap-3 group shrink-0" aria-label="Mourish home">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-mint grid place-items-center relative shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3">
+          <span class="absolute inset-0 grid place-items-center font-extrabold text-sm" style="color: var(--on-primary-container)">M</span>
+          <img src="IMG_20260812_211849.png" alt="Mourish logo" class="relative w-full h-full object-cover rounded-2xl" onerror="this.remove()" />
+        </div>
+        <span class="flex flex-col leading-tight">
+          <span class="font-extrabold tracking-tight text-slate-900" style="font-size: var(--fs-sm)">Mourish</span>
+          <span class="font-mono font-bold tracking-[0.20em] text-m3Primary uppercase" style="font-size: 8px">Developers</span>
+        </span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <a href="#book" class="btn-wa text-white px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap inline-flex items-center gap-1.5">
+          <i class="fa-brands fa-whatsapp text-sm" aria-hidden="true"></i>
+          <span class="hidden xs:inline sm:inline">Book</span>
+        </a>
+        <button id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer" class="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main id="main-content" class="relative z-10 px-4 sm:px-6 max-w-7xl mx-auto" style="padding-top: clamp(6rem, 10vw, 8rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+
+    <!-- HERO -->
+    <section id="top" aria-labelledby="hero-title" class="grid lg:grid-cols-12 gap-3 sm:gap-5 items-stretch" style="margin-bottom: var(--sp-section)">
+      <div class="lg:col-span-7 m3-card reveal relative overflow-hidden flex flex-col justify-center gap-5" style="padding: var(--sp-card)">
+        <div class="absolute w-56 h-56 -top-20 -right-20 rounded-full filter blur-3xl pointer-events-none opacity-50" style="background: var(--primary-container)" aria-hidden="true"></div>
+
+        <div class="relative flex flex-wrap items-center gap-2">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full font-bold border" style="font-size: var(--fs-tiny); background: var(--primary-container); color: var(--on-primary-container); border-color: rgba(var(--accent-glow), .55);">
+            <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background: var(--primary)" aria-hidden="true"></span>
+            Medical · Fire Safety · Hospital Renovation
+          </span>
+          <span data-copy="33CQLPT6813M1Z7" role="button" tabindex="0" aria-label="Copy GSTIN" class="px-3 py-1.5 rounded-full font-mono font-bold border" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00; border-color: rgba(180, 83, 9, .2);">
+            GSTIN: 33CQLPT6813M1Z7
+          </span>
+        </div>
+
+        <h1 id="hero-title" class="relative font-black tracking-tight leading-[1.05] text-slate-900" style="font-size: var(--fs-h1); letter-spacing: -0.025em;">
+          Turnkey
+          <span class="hero-grad">Gas, Safety,</span><br />
+          Renovation &amp; Digital.
+        </h1>
+
+        <p class="relative text-slate-600 max-w-xl leading-relaxed" style="font-size: var(--fs-body)">
+          Medical gas pipelines, ICU &amp; OT infrastructure, hospital fire safety and firefighting systems, full hospital renovation works, and premium web &amp; app development — all under one roof.
+        </p>
+
+        <div class="relative flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1">
+          <a href="#book" class="btn-wa text-white px-5 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold uppercase tracking-widest inline-flex items-center gap-2" style="font-size: var(--fs-tiny)">
+            <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i>
+            Book a Service
+          </a>
+          <a href="#services" class="btn-tonal px-5 sm:px-6 py-3 sm:py-3.5 rounded-full font-bold uppercase tracking-widest" style="font-size: var(--fs-tiny)">
+            Explore Solutions
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-5 content-start" data-stagger>
+        <div class="tonal" style="padding: var(--sp-card); background: var(--tertiary-container); color: #001B3D;">
+          <div class="flex items-center justify-between">
+            <span class="font-mono uppercase tracking-widest opacity-70" style="font-size: var(--fs-tiny)">Established</span>
+            <span class="px-3 py-1 rounded-full font-bold bg-white/70" style="font-size: var(--fs-tiny); color: var(--primary);">Since 2025</span>
+          </div>
+          <h2 class="font-extrabold mt-3" style="font-size: var(--fs-h3)">New Medical 2026</h2>
+          <p class="mt-1.5 leading-relaxed opacity-80" style="font-size: var(--fs-xs)">Precision execution for hospital lifelines, fire safety, and complete hospital renovation.</p>
+        </div>
+
+        <div class="tonal text-white" style="padding: var(--sp-card); background: linear-gradient(135deg, #1E3F35, #1B1C18);">
+          <span class="font-mono uppercase tracking-widest text-emerald-300" style="font-size: var(--fs-tiny)">Unified Tax Identity</span>
+          <p data-copy="33CQLPT6813M1Z7" role="button" tabindex="0" aria-label="Copy GSTIN" class="font-mono font-bold text-emerald-300 mt-2 select-all" style="font-size: var(--fs-sm)">33CQLPT6813M1Z7</p>
+          <p class="text-slate-300 leading-relaxed mt-2" style="font-size: var(--fs-xs)">Common GSTIN across medical, fire safety, renovation, and digital operations.</p>
+        </div>
+
+        <div class="tonal flex items-center gap-4" style="padding: var(--sp-card); background: var(--peach-container); color: #311300;">
+          <div class="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0 bg-white/70" style="color: var(--civil);">
+            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+          </div>
+          <div>
+            <p class="font-bold" style="font-size: var(--fs-sm)">Official Partner</p>
+            <p class="opacity-80" style="font-size: var(--fs-xs)">Life Gas System ecosystem</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <!-- 3D CYLINDRICAL CURVED CAROUSEL (CONTAINED, NO OVERLAP) -->
+    <section aria-label="Featured Infrastructure Reel" class="mb-16 sm:mb-24">
+      <div class="hero-curve-band">
+        <div class="doodle-badge doodle-top-right">Turnkey<br>Hospital Setups</div>
+        <svg class="arrow-top-right" viewBox="0 0 65 65" fill="none">
+          <path class="path-draw" d="M50 8 C35 30, 20 38, 12 55" stroke="var(--primary)" stroke-width="2.2" stroke-linecap="round"/>
+          <path class="path-draw" d="M8 48 L12 55 L20 52" stroke="var(--primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <div class="carousel-stage-box" id="cylinderStage"></div>
+
+        <div class="doodle-badge doodle-bottom-left">Zero cost quote</div>
+        <svg class="arrow-bottom-left" viewBox="0 0 48 30" fill="none">
+          <path class="path-draw" d="M4 18 C16 15, 26 12, 38 6" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
+          <path class="path-draw" d="M30 4 L38 6 L34 13" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+
+    <section aria-label="Capabilities" class="reveal" style="margin-bottom: var(--sp-section)">
+      <div class="marquee select-none">
+        <div class="marquee-track">
+          <div class="marquee-group font-mono font-bold uppercase tracking-[0.20em] text-slate-400" style="font-size: var(--fs-tiny)">
+            <span>Medical Gas Pipeline</span><span style="color: var(--primary)">◆</span>
+            <span>ICU Curtains</span><span style="color: var(--primary)">◆</span>
+            <span>Modular OT</span><span style="color: var(--primary)">◆</span>
+            <span>Vinyl Flooring</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--fire)">Fire Safety</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--fire)">Fire NOC</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--civil)">Hospital Renovation</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--civil)">Ward Refurbishment</span><span style="color: var(--primary)">◆</span>
+            <span>Websites</span><span style="color: var(--primary)">◆</span>
+            <span>Android · iOS</span><span style="color: var(--primary)">◆</span>
+          </div>
+          <div class="marquee-group font-mono font-bold uppercase tracking-[0.20em] text-slate-400" style="font-size: var(--fs-tiny)" aria-hidden="true">
+            <span>Medical Gas Pipeline</span><span style="color: var(--primary)">◆</span>
+            <span>ICU Curtains</span><span style="color: var(--primary)">◆</span>
+            <span>Modular OT</span><span style="color: var(--primary)">◆</span>
+            <span>Vinyl Flooring</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--fire)">Fire Safety</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--fire)">Fire NOC</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--civil)">Hospital Renovation</span><span style="color: var(--primary)">◆</span>
+            <span style="color: var(--civil)">Ward Refurbishment</span><span style="color: var(--primary)">◆</span>
+            <span>Websites</span><span style="color: var(--primary)">◆</span>
+            <span>Android · iOS</span><span style="color: var(--primary)">◆</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section aria-label="Key figures" class="grid grid-cols-2 lg:grid-cols-4" style="gap: var(--sp-gap); margin-bottom: var(--sp-section)" data-stagger>
+      <div class="tonal text-center" style="padding: var(--sp-card); background: var(--tertiary-container); color: #001B3D;">
+        <p class="font-extrabold" style="font-size: var(--fs-h2)" data-count="8" data-pad="02">08</p>
+        <p class="font-mono uppercase tracking-widest mt-1 opacity-70" style="font-size: var(--fs-tiny)">Service Lines</p>
+      </div>
+      <div class="tonal text-center" style="padding: var(--sp-card); background: var(--primary-container); color: var(--on-primary-container);">
+        <p class="font-extrabold" style="font-size: var(--fs-h2)" data-count="90">90</p>
+        <p class="font-mono uppercase tracking-widest mt-1 opacity-70" style="font-size: var(--fs-tiny)">Day Warranty</p>
+      </div>
+      <div class="tonal text-center" style="padding: var(--sp-card); background: var(--error-container); color: var(--on-error-container);">
+        <p class="font-extrabold" style="font-size: var(--fs-h2)" data-prefix="₹" data-count="3" data-suffix="K">₹3K</p>
+        <p class="font-mono uppercase tracking-widest mt-1 opacity-70" style="font-size: var(--fs-tiny)">Websites From</p>
+      </div>
+      <div class="tonal text-center" style="padding: var(--sp-card); background: var(--amber-container); color: #261A00;">
+        <p class="font-extrabold" style="font-size: var(--fs-h2)" data-count="12" data-suffix=" min">12 min</p>
+        <p class="font-mono uppercase tracking-widest mt-1 opacity-70" style="font-size: var(--fs-tiny)">Avg Response</p>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="services-title" style="margin-bottom: var(--sp-section)">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 reveal">
+        <div>
+          <span class="font-mono font-bold tracking-[0.2em] text-m3Primary uppercase" style="font-size: var(--fs-tiny)">Infrastructure Solutions</span>
+          <h2 id="services-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2)">Complete Medical Infrastructure</h2>
+          <p class="text-slate-600 mt-1.5" style="font-size: var(--fs-sm)">End-to-end solutions for modern healthcare facilities</p>
+        </div>
+        <a href="#book" class="btn-wa self-start inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full font-bold uppercase tracking-wider" style="font-size: var(--fs-tiny)">
+          <i class="fa-brands fa-whatsapp text-sm" aria-hidden="true"></i>
+          Book Now
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3" style="gap: var(--sp-gap)" data-stagger>
+        <article class="m3-card flex flex-col gap-4" style="padding: var(--sp-card)">
+          <div class="flex items-start justify-between">
+            <div class="w-11 h-11 rounded-2xl grid place-items-center text-lg" style="background: var(--primary-container); color: var(--primary);" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+            <span class="font-mono font-bold text-slate-300" style="font-size: var(--fs-tiny)">01</span>
+          </div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3)">Medical Gas Pipeline</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm)">Central oxygen, vacuum, medical air — certified installation with manifold &amp; alarm systems.</p>
+        </article>
+
+        <article class="m3-card flex flex-col gap-4" style="padding: var(--sp-card)">
+          <div class="flex items-start justify-between">
+            <div class="w-11 h-11 rounded-2xl grid place-items-center text-lg" style="background: var(--secondary-container); color: #6750A4;" aria-hidden="true"><i class="fa-solid fa-vector-square"></i></div>
+            <span class="font-mono font-bold text-slate-300" style="font-size: var(--fs-tiny)">02</span>
+          </div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3)">ICU Curtains &amp; Cubical Track</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm)">Privacy, infection control, smooth glide tracks — custom sizes &amp; fire-retardant fabrics.</p>
+        </article>
+
+        <article class="m3-card flex flex-col gap-4" style="padding: var(--sp-card)">
+          <div class="flex items-start justify-between">
+            <div class="w-11 h-11 rounded-2xl grid place-items-center text-lg" style="background: var(--tertiary-container); color: #415F91;" aria-hidden="true"><i class="fa-solid fa-syringe"></i></div>
+            <span class="font-mono font-bold text-slate-300" style="font-size: var(--fs-tiny)">03</span>
+          </div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3)">Operational Theatre</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm)">Modular OT, laminar flow, surgical lighting, pendants, and medical gas outlets.</p>
+        </article>
+
+        <article class="m3-card flex flex-col gap-4" style="padding: var(--sp-card)">
+          <div class="flex items-start justify-between">
+            <div class="w-11 h-11 rounded-2xl grid place-items-center text-lg" style="background: var(--amber-container); color: #7A5A12;" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
+            <span class="font-mono font-bold text-slate-300" style="font-size: var(--fs-tiny)">04</span>
+          </div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3)">Vinyl Flooring</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm)">Hygienic, anti-slip, homogeneous sheet &amp; tile — ideal for OT, ICU, and wards.</p>
+        </article>
+
+        <article class="m3-card flex flex-col gap-4" style="padding: var(--sp-card)">
+          <div class="flex items-start justify-between">
+            <div class="w-11 h-11 rounded-2xl grid place-items-center text-lg" style="background: var(--error-container); color: var(--fire);" aria-hidden="true"><i class="fa-solid fa-microscope"></i></div>
+            <span class="font-mono font-bold text-slate-300" style="font-size: var(--fs-tiny)">05</span>
+          </div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3)">Medical Equipment</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm)">Patient monitors, ventilators, ICU beds, infusion pumps, and diagnostic devices.</p>
+        </article>
+
+        <a href="#fire-safety" class="m3-card flex flex-col gap-4 group" style="padding: var(--sp-card); text-decoration: none;">
+          <div class="flex items-start justify-between">
+            <div class="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" style="background: linear-gradient(135deg, var(--error-container), var(--amber-container)); color: var(--fire);" aria-hidden="true"><i class="fa-solid fa-fire-extinguisher"></i></div>
+            <span class="font-mono font-bold text-slate-300" style="font-size: var(--fs-tiny)">06</span>
+          </div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3)">Fire Safety &amp; Renovation</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm)">Dedicated hospital firefighting systems and full hospital renovation — see the two sections below.</p>
+          <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between font-mono" style="font-size: var(--fs-tiny);">
+            <span class="font-semibold" style="color: var(--fire);">Explore below</span>
+            <i class="fa-solid fa-arrow-down group-hover:translate-y-0.5 transition-transform" style="color: var(--fire);" aria-hidden="true"></i>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================== FIRE SAFETY ===================== -->
+    <section id="fire-safety" aria-labelledby="fire-title" style="margin-bottom: var(--sp-section)">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 reveal">
+        <div>
+          <span class="font-mono font-bold tracking-[0.2em] uppercase flex items-center gap-1.5" style="font-size: var(--fs-tiny); color: var(--fire);">
+            <i class="fa-solid fa-fire-extinguisher" aria-hidden="true"></i>
+            Hospital Fire Safety &amp; Firefighting
+          </span>
+          <h2 id="fire-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2)">Fire Safety &amp; Protection Systems</h2>
+          <p class="text-slate-600 mt-1.5" style="font-size: var(--fs-sm)">Life-safety code compliant firefighting systems for hospitals and critical care facilities.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--error-container); color: var(--on-error-container);"><i class="fa-solid fa-certificate" aria-hidden="true"></i>NBC 2016</span>
+          <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--error-container); color: var(--on-error-container);"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>NABH</span>
+          <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--error-container); color: var(--on-error-container);"><i class="fa-solid fa-file-shield" aria-hidden="true"></i>Fire NOC</span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-3 sm:gap-5 items-start">
+        <div class="lg:col-span-8 grid sm:grid-cols-2" style="gap: var(--sp-gap)" data-stagger>
+          <article class="m3-card fire-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="fire-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-fire-flame-curved"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Fire Detection &amp; Alarm</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Addressable smoke &amp; heat detectors, manual call points, hooters, and repeater panels for full hospital coverage.</p>
+          </article>
+          <article class="m3-card fire-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="fire-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-droplet"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Fire Suppression</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Wet riser, sprinklers, and clean-agent gas suppression for OT, ICU, and server rooms.</p>
+          </article>
+          <article class="m3-card fire-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="fire-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-fire-extinguisher"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Hydrants &amp; Extinguishers</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Landing valves, hose reels, CO2 &amp; ABC extinguishers, and NFPA-compliant signage across all zones.</p>
+          </article>
+          <article class="m3-card fire-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="fire-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Emergency Lighting &amp; Exit</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Illuminated exit signs, battery-backed emergency lights, and photoluminescent escape route marking.</p>
+          </article>
+          <article class="m3-card fire-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="fire-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-wind"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Smoke Management</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Stairwell pressurization, smoke exhaust systems, and fire-rated compartmentation between zones.</p>
+          </article>
+          <article class="m3-card fire-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="fire-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-clipboard-check"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Compliance &amp; Audits</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">NBC 2016 &amp; NABH fire safety audits, plus full Fire NOC coordination with local authorities.</p>
+          </article>
+        </div>
+
+        <aside class="lg:col-span-4">
+          <div class="rounded-3xl overflow-hidden relative" style="padding: var(--sp-card); background: linear-gradient(135deg, #7F1D1D 0%, #B3261E 55%, #E11D48 100%);">
+            <div class="relative">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur grid place-items-center text-white text-lg shrink-0"><i class="fa-solid fa-fire-extinguisher" aria-hidden="true"></i></div>
+                <div>
+                  <p class="text-white/70 font-mono uppercase tracking-widest" style="font-size: var(--fs-tiny)">Life-Safety Priority</p>
+                  <h3 class="text-white font-extrabold" style="font-size: var(--fs-h3)">24-hour response</h3>
+                </div>
+              </div>
+              <ul class="space-y-2 text-white/90" style="font-size: var(--fs-xs);">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-white/70 mt-0.5 text-[10px]" aria-hidden="true"></i>Critical hospital cases get immediate attention</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-white/70 mt-0.5 text-[10px]" aria-hidden="true"></i>NABH fire compliance support</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-white/70 mt-0.5 text-[10px]" aria-hidden="true"></i>Fire NOC coordination with local authorities</li>
+              </ul>
+              <a href="#book" data-book-preset="Fire Safety Systems" class="mt-5 inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full font-bold text-[#7F1D1D] bg-white hover:bg-white/95 transition-colors" style="font-size: var(--fs-xs);">
+                <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+                Book Fire Safety Assessment
+              </a>
+              <p class="text-white/70 mt-2.5 text-center font-mono" style="font-size: var(--fs-tiny);">
+                or call <a href="tel:9659233313" class="text-white font-bold hover:underline">9659233313</a>
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== HOSPITAL RENOVATION ===================== -->
+    <section id="renovation" aria-labelledby="renovation-title" style="margin-bottom: var(--sp-section)">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 reveal">
+        <div>
+          <span class="font-mono font-bold tracking-[0.2em] uppercase flex items-center gap-1.5" style="font-size: var(--fs-tiny); color: var(--civil);">
+            <i class="fa-solid fa-hospital" aria-hidden="true"></i>
+            Hospital Renovation &amp; Refurbishment
+          </span>
+          <h2 id="renovation-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2)">Hospital Renovation Works</h2>
+          <p class="text-slate-600 mt-1.5" style="font-size: var(--fs-sm)">Complete renovation, refurbishment, and upgrade of existing hospital facilities — phased and live-hospital friendly.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00;"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>Renovation</span>
+          <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00;"><i class="fa-solid fa-wheelchair" aria-hidden="true"></i>Barrier-Free</span>
+          <span class="px-3 py-1.5 rounded-full font-mono font-bold flex items-center gap-1.5" style="font-size: var(--fs-tiny); background: var(--amber-container); color: #261A00;"><i class="fa-solid fa-hard-hat" aria-hidden="true"></i>Phased</span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-3 sm:gap-5 items-start">
+        <div class="lg:col-span-8 grid sm:grid-cols-2" style="gap: var(--sp-gap)" data-stagger>
+          <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-hospital"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Ward &amp; ICU Renovation</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Full renovation of patient wards, ICU bays, and isolation rooms — new finishes, upgraded services, modern layout.</p>
+          </article>
+          <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-syringe"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">OT Refurbishment</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Existing operating theatres modernized — new laminar flow, sterilized wall finishes, gas outlet upgrades, surgical lighting.</p>
+          </article>
+          <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-couch"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Interior Refit</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Flooring replacement, ceiling upgrades, wall cladding, joinery renewal, and nurse-station reconfiguration.</p>
+          </article>
+          <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-shower"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Washroom Modernization</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Accessible washrooms, medical-grade fixtures, drainage rework, and anti-microbial surfaces throughout.</p>
+          </article>
+          <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-wheelchair"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Barrier-Free Upgrades</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Retrofitting ramps, widening doors, adding grab bars, tactile paths, and wheelchair turning radius to existing buildings.</p>
+          </article>
+          <article class="m3-card civil-card flex flex-col gap-3" style="padding: var(--sp-card);">
+            <div class="civil-icon w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0" aria-hidden="true"><i class="fa-solid fa-paint-roller"></i></div>
+            <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm)">Finishes &amp; Repainting</h3>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs)">Anti-bacterial paint, hygienic wall cladding, and epoxy floor coatings applied to clinical zones during off-hours.</p>
+          </article>
+        </div>
+
+        <aside class="lg:col-span-4">
+          <div class="rounded-3xl overflow-hidden relative" style="padding: var(--sp-card); background: linear-gradient(135deg, #FFFBEB 0%, #FFDEA6 60%, #FDE68A 100%);">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-white/70 backdrop-blur grid place-items-center text-[#B45309] text-lg shrink-0"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></div>
+              <div>
+                <p class="text-[#92400E]/80 font-mono uppercase tracking-widest" style="font-size: var(--fs-tiny)">Renovation Process</p>
+                <h3 class="text-[#451A03] font-extrabold" style="font-size: var(--fs-h3)">4-step handover</h3>
+              </div>
+            </div>
+            <ol class="space-y-2.5" style="font-size: var(--fs-xs);">
+              <li class="flex gap-2.5"><span class="step-num" style="background:#fff;color:#B45309">1</span><span class="text-[#451A03]">Site survey &amp; scope freeze</span></li>
+              <li class="flex gap-2.5"><span class="step-num" style="background:#fff;color:#B45309">2</span><span class="text-[#451A03]">Drawings + BOQ approval</span></li>
+              <li class="flex gap-2.5"><span class="step-num" style="background:#fff;color:#B45309">3</span><span class="text-[#451A03]">Phased execution (live-hospital friendly)</span></li>
+              <li class="flex gap-2.5"><span class="step-num" style="background:#fff;color:#B45309">4</span><span class="text-[#451A03]">Snag closure + handover</span></li>
+            </ol>
+            <a href="#book" data-book-preset="Hospital Renovation" class="mt-5 inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full font-bold text-white hover:scale-[1.01] transition-transform" style="font-size: var(--fs-xs); background: linear-gradient(135deg, #B45309, #D97706 55%, #F59E0B);">
+              <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+              Book Renovation Site Visit
+            </a>
+            <p class="text-[#92400E]/80 mt-2.5 text-center font-mono" style="font-size: var(--fs-tiny);">
+              or call <a href="tel:9659233313" class="text-[#451A03] font-bold hover:underline">9659233313</a>
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== BOOK ===================== -->
+    <section id="book" aria-labelledby="book-title" style="margin-bottom: var(--sp-section)">
+      <div class="grid lg:grid-cols-12 gap-3 sm:gap-5 items-start">
+        <div class="lg:col-span-7 m3-card reveal relative overflow-hidden" style="padding: var(--sp-card);">
+          <div class="absolute top-0 left-0 right-0 h-1" style="background: linear-gradient(90deg, var(--wa), #128C7E 40%, var(--fire) 70%, var(--civil) 100%);" aria-hidden="true"></div>
+
+          <header class="mb-5 sm:mb-6">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-bold bg-[#25D366]/12 text-[#0d7a3e] border border-[#25D366]/30" style="font-size: var(--fs-tiny);">
+                <i class="fa-brands fa-whatsapp text-[11px]" aria-hidden="true"></i>
+                WhatsApp booking
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono font-bold" style="font-size: var(--fs-tiny); background: var(--primary-container); color: var(--on-primary-container);">
+                <i class="fa-solid fa-bolt text-[9px]" aria-hidden="true"></i>
+                Avg 12 min
+              </span>
+            </div>
+            <h2 id="book-title" class="font-extrabold text-slate-900" style="font-size: var(--fs-h2)">Book a service</h2>
+            <p class="text-slate-600 mt-1.5" style="font-size: var(--fs-sm);">
+              <strong class="text-slate-800">Medical · Fire Safety · Hospital Renovation</strong> — all confirmed via WhatsApp on
+              <a href="tel:9659233313" class="font-mono font-bold text-m3Primary hover:underline">+91 9659233313</a>.
+            </p>
+          </header>
+
+          <form id="booking-form" novalidate>
+            <fieldset class="mb-5">
+              <legend class="block font-bold text-slate-800 mb-2.5" style="font-size: var(--fs-xs);">
+                <i class="fa-solid fa-list-check text-m3Primary mr-1.5" aria-hidden="true"></i>
+                Which service do you need? <span class="text-slate-400 font-normal">(select one or more)</span>
+              </legend>
+              <div id="service-chips" class="flex flex-wrap gap-2" role="group" aria-label="Select services">
+                <button type="button" class="svc-chip" data-svc="Medical Gas Pipeline" data-cat="medical" aria-pressed="false"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span>Gas Pipeline</span></button>
+                <button type="button" class="svc-chip" data-svc="ICU Curtains &amp; Cubical Track" data-cat="medical" aria-pressed="false"><i class="fa-solid fa-vector-square" aria-hidden="true"></i><span>ICU Curtains</span></button>
+                <button type="button" class="svc-chip" data-svc="Modular OT Setup" data-cat="medical" aria-pressed="false"><i class="fa-solid fa-syringe" aria-hidden="true"></i><span>Modular OT</span></button>
+                <button type="button" class="svc-chip" data-svc="Vinyl Flooring" data-cat="medical" aria-pressed="false"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>Vinyl Flooring</span></button>
+                <button type="button" class="svc-chip" data-svc="Medical Equipment" data-cat="medical" aria-pressed="false"><i class="fa-solid fa-microscope" aria-hidden="true"></i><span>Equipment</span></button>
+                <button type="button" class="svc-chip fire-chip" data-svc="Fire Safety Systems" data-cat="fire" aria-pressed="false"><i class="fa-solid fa-fire-extinguisher" aria-hidden="true"></i><span>Fire Safety</span></button>
+                <button type="button" class="svc-chip civil-chip" data-svc="Hospital Renovation" data-cat="civil" aria-pressed="false"><i class="fa-solid fa-hospital" aria-hidden="true"></i><span>Hospital Renovation</span></button>
+                <button type="button" class="svc-chip" data-svc="Other / Custom" data-cat="other" aria-pressed="false"><i class="fa-solid fa-plus" aria-hidden="true"></i><span>Other</span></button>
+              </div>
+              <p id="err-services" class="hidden mt-2 font-semibold" style="font-size: var(--fs-tiny); color: var(--error)" role="alert"></p>
+            </fieldset>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="bk-name" class="block font-bold text-slate-700 mb-1.5" style="font-size: var(--fs-xs);">Full name <span style="color: var(--error)">*</span></label>
+                <input id="bk-name" name="name" type="text" required placeholder="Dr. Priya Sharma" autocomplete="name" class="form-input" />
+                <p id="err-name" class="hidden mt-1 font-semibold" style="font-size: var(--fs-tiny); color: var(--error)" role="alert"></p>
+              </div>
+              <div>
+                <label for="bk-phone" class="block font-bold text-slate-700 mb-1.5" style="font-size: var(--fs-xs);">Phone <span style="color: var(--error)">*</span></label>
+                <div class="phone-wrap">
+                  <span class="phone-prefix">+91</span>
+                  <input id="bk-phone" name="phone" type="tel" inputmode="numeric" required maxlength="10" placeholder="9876543210" autocomplete="tel-national" class="form-input phone-input" />
+                </div>
+                <p id="err-phone" class="hidden mt-1 font-semibold" style="font-size: var(--fs-tiny); color: var(--error)" role="alert"></p>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label for="bk-facility" class="block font-bold text-slate-700 mb-1.5" style="font-size: var(--fs-xs);">Hospital / Facility</label>
+                <input id="bk-facility" name="facility" type="text" placeholder="ABC Multi-Specialty" class="form-input" />
+              </div>
+              <div>
+                <label for="bk-city" class="block font-bold text-slate-700 mb-1.5" style="font-size: var(--fs-xs);">City / Location</label>
+                <input id="bk-city" name="city" type="text" placeholder="Chennai" autocomplete="address-level2" class="form-input" />
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="bk-date" class="block font-bold text-slate-700 mb-1.5" style="font-size: var(--fs-xs);">Preferred visit date</label>
+              <input id="bk-date" name="date" type="date" class="form-input" />
+            </div>
+
+            <div class="mb-4">
+              <label for="bk-notes" class="block font-bold text-slate-700 mb-1.5" style="font-size: var(--fs-xs);">Requirements</label>
+              <textarea id="bk-notes" name="notes" rows="3" maxlength="400" placeholder="e.g. 20-bed ICU renovation + fire NOC audit + ward flooring" class="form-input"></textarea>
+              <div class="flex justify-between mt-1">
+                <span class="font-mono text-slate-400" style="font-size: var(--fs-tiny);">Details help us quote faster.</span>
+                <span id="notes-count" class="font-mono text-slate-400" style="font-size: var(--fs-tiny);">0 / 400</span>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="flex items-center gap-2 font-bold text-slate-700 mb-2" style="font-size: var(--fs-xs);">
+                <i class="fa-brands fa-whatsapp text-[#25D366] text-sm" aria-hidden="true"></i>
+                This is what we'll receive
+              </p>
+              <div id="wa-preview" class="wa-bubble" aria-live="polite"></div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+              <button type="submit" id="bk-submit" class="btn-wa w-full sm:w-auto px-7 py-3.5 rounded-full font-bold inline-flex items-center justify-center gap-2.5" style="font-size: var(--fs-sm);">
+                <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
+                <span>Send on WhatsApp</span>
+              </button>
+              <p class="text-slate-500 text-center sm:text-left" style="font-size: var(--fs-tiny);">
+                or <a href="tel:9659233313" class="font-mono font-bold text-m3Primary">call 9659233313</a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <aside class="lg:col-span-5 space-y-3 sm:space-y-4">
+          <div class="tonal reveal" style="padding: var(--sp-card); background: var(--tertiary-container); color: #001B3D;">
+            <h3 class="font-bold mb-3" style="font-size: var(--fs-sm);">What happens next</h3>
+            <ol class="space-y-2.5 opacity-90" style="font-size: var(--fs-xs);">
+              <li class="flex gap-2.5"><span class="step-num" style="color: #415F91">1</span><span>You send the form to our WhatsApp</span></li>
+              <li class="flex gap-2.5"><span class="step-num" style="color: #415F91">2</span><span>We confirm within minutes during business hours</span></li>
+              <li class="flex gap-2.5"><span class="step-num" style="color: #415F91">3</span><span>We schedule a free site assessment</span></li>
+              <li class="flex gap-2.5"><span class="step-num" style="color: #415F91">4</span><span>You get a transparent, itemized quote</span></li>
+            </ol>
+          </div>
+
+          <div class="tonal reveal" style="padding: var(--sp-card); background: var(--error-container); color: var(--on-error-container);">
+            <div class="flex items-center gap-2.5 mb-2">
+              <i class="fa-solid fa-fire-extinguisher" style="color: var(--fire)" aria-hidden="true"></i>
+              <p class="font-bold" style="font-size: var(--fs-xs);">Fire safety emergencies</p>
+            </div>
+            <p class="opacity-80 mb-2.5" style="font-size: var(--fs-tiny);">Critical hospital cases get 24-hour priority response.</p>
+            <a href="tel:9659233313" class="flex items-center gap-2 font-mono font-bold" style="font-size: var(--fs-sm);">
+              <i class="fa-solid fa-phone" style="color: var(--fire)" aria-hidden="true"></i> 9659233313
+            </a>
+          </div>
+
+          <div class="tonal reveal" style="padding: var(--sp-card); background: var(--peach-container); color: #311300;">
+            <p class="font-bold mb-1" style="font-size: var(--fs-xs);">Prefer to talk?</p>
+            <p class="opacity-80 mb-3" style="font-size: var(--fs-tiny);">Call our unified line — medical, fire, and renovation enquiries.</p>
+            <a href="tel:9659233313" class="flex items-center gap-2 font-mono font-bold" style="font-size: var(--fs-sm);">
+              <i class="fa-solid fa-phone" style="color: var(--civil)" aria-hidden="true"></i> 9659233313
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title" class="m3-card reveal relative overflow-hidden" style="padding: var(--sp-card); margin-bottom: var(--sp-section);">
+      <div class="relative grid lg:grid-cols-12 gap-6 sm:gap-10 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="font-mono font-bold tracking-[0.2em] text-m3Primary uppercase" style="font-size: var(--fs-tiny);">Our Trajectory</span>
+          <h2 id="about-title" class="font-extrabold text-slate-900" style="font-size: var(--fs-h2);">Building Healthcare &amp; Digital Futures</h2>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-body);">
+            Mourish Developers is a multidisciplinary firm specializing in medical infrastructure, hospital fire safety, hospital renovation, and digital innovation. We combine engineering excellence with cutting-edge technology to deliver holistic solutions for modern healthcare facilities.
+          </p>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-body);">
+            From medical gas pipelines and firefighting systems to complete ward renovations and AI-driven platforms — we are your trusted partner for end-to-end project execution.
+          </p>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="glass rounded-3xl p-6 sm:p-8 space-y-5">
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-2xl bg-mint text-m3Primary grid place-items-center text-xl shrink-0"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
+              <div>
+                <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm);">Trusted Partner</h3>
+                <p class="text-slate-500" style="font-size: var(--fs-xs);">Since 2025</p>
+              </div>
+            </div>
+            <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-xs);">Official life-support gas, fire safety, and hospital renovation provider.</p>
+            <div class="pt-4 border-t border-slate-200/70">
+              <span class="font-mono uppercase tracking-widest text-slate-400" style="font-size: var(--fs-tiny);">Registered GSTIN</span>
+              <p data-copy="33CQLPT6813M1Z7" role="button" tabindex="0" aria-label="Copy GSTIN" class="font-mono font-bold text-m3Primary mt-1 select-all" style="font-size: var(--fs-sm);">33CQLPT6813M1Z7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" aria-labelledby="team-title" style="margin-bottom: var(--sp-section);">
+      <div class="mb-6 sm:mb-8 reveal">
+        <span class="font-mono font-bold tracking-[0.2em] text-m3Primary uppercase" style="font-size: var(--fs-tiny);">Decades of Mastery</span>
+        <h2 id="team-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2);">Expert Workers &amp; Partnerships</h2>
+      </div>
+      <div class="grid lg:grid-cols-2" style="gap: var(--sp-gap);" data-stagger>
+        <article class="m3-card space-y-4" style="padding: var(--sp-card);">
+          <div class="w-11 h-11 rounded-2xl bg-mint text-m3Primary grid place-items-center text-xl"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3);">Experienced Engineering Team</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm);">Our core team consists of elite engineers, technicians, and developers with hands-on expertise in medical gas systems, fire safety, hospital renovation, and digital infrastructure.</p>
+        </article>
+        <article class="m3-card space-y-4" style="padding: var(--sp-card);">
+          <div class="w-11 h-11 rounded-2xl bg-lav grid place-items-center text-xl" style="color: #6750A4;"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i></div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-h3);">Official Partner — Life Gas System</h3>
+          <p class="text-slate-600 leading-relaxed" style="font-size: var(--fs-sm);">We are proud to be an integral part of the <strong class="text-slate-900">Life Gas System</strong> ecosystem, delivering high-quality medical gas, fire safety, and OT infrastructure for leading healthcare providers across India.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- DIGITAL -->
+    <section id="dev" aria-labelledby="dev-title" style="margin-bottom: var(--sp-section);">
+      <div class="mb-6 sm:mb-8 reveal">
+        <span class="font-mono font-bold tracking-[0.2em] text-m3Primary uppercase" style="font-size: var(--fs-tiny);">Digital Products</span>
+        <h2 id="dev-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2);">Web &amp; App Development</h2>
+        <p class="text-slate-600 mt-1.5" style="font-size: var(--fs-sm);">Premium multi-page websites &amp; cross-platform apps from ₹3,000</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style="gap: var(--sp-gap);" data-stagger>
+        <article class="m3-card flex flex-col" style="padding: var(--sp-card);">
+          <div class="w-10 h-10 rounded-2xl bg-mint text-m3Primary grid place-items-center mb-4"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm);">Multi-Page Websites</h3>
+          <p class="text-slate-500 mt-2 leading-relaxed" style="font-size: var(--fs-xs);">Responsive, SEO, e-commerce, AI chatbots, unlimited pages.</p>
+          <div class="mt-auto pt-5 border-t border-slate-100 mt-6"><span class="font-bold font-mono text-m3Primary" style="font-size: var(--fs-xs);">from ₹3,000</span></div>
+        </article>
+        <article class="m3-card flex flex-col" style="padding: var(--sp-card);">
+          <div class="w-10 h-10 rounded-2xl bg-lav grid place-items-center mb-4" style="color: #6750A4;"><i class="fa-brands fa-android" aria-hidden="true"></i></div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm);">Android Apps</h3>
+          <p class="text-slate-500 mt-2 leading-relaxed" style="font-size: var(--fs-xs);">Native, Firebase, payment gateways, multi-screen flows.</p>
+          <div class="mt-auto pt-5 border-t border-slate-100 mt-6"><span class="font-bold font-mono" style="color: #6750A4; font-size: var(--fs-xs);">from ₹10,000</span></div>
+        </article>
+        <article class="m3-card flex flex-col relative" style="padding: var(--sp-card);">
+          <span class="absolute top-4 right-4 font-mono font-bold bg-sky px-2 py-0.5 rounded-full z-10" style="font-size: var(--fs-tiny); color: #415F91;">New</span>
+          <div class="w-10 h-10 rounded-2xl bg-sky grid place-items-center mb-4" style="color: #415F91;"><i class="fa-brands fa-apple" aria-hidden="true"></i></div>
+          <h3 class="font-bold text-slate-900" style="font-size: var(--fs-sm);">iOS Native</h3>
+          <p class="text-slate-500 mt-2 leading-relaxed" style="font-size: var(--fs-xs);">iPhone &amp; iPad, App Store ready, multi-page flows.</p>
+          <div class="mt-auto pt-5 border-t border-slate-100 mt-6"><span class="font-bold font-mono" style="color: #415F91; font-size: var(--fs-xs);">from ₹15,000</span></div>
+        </article>
+        <article class="btn-filled rounded-3xl flex flex-col text-white" style="padding: var(--sp-card);">
+          <div class="w-10 h-10 rounded-2xl bg-white/20 grid place-items-center mb-4"><i class="fa-solid fa-rocket" aria-hidden="true"></i></div>
+          <h3 class="font-bold" style="font-size: var(--fs-sm);">Full-Stack</h3>
+          <p class="text-white/90 mt-2 leading-relaxed" style="font-size: var(--fs-xs);">Web + App + Admin panel, multi-tenant architecture.</p>
+          <div class="mt-auto pt-5 border-t border-white/25 mt-6"><span class="font-bold font-mono" style="font-size: var(--fs-xs);">Custom Quote</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TERMS -->
+    <section id="terms" aria-labelledby="terms-title" style="margin-bottom: var(--sp-section);">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-6 sm:mb-8 reveal">
+          <span class="font-mono font-bold tracking-[0.2em] text-m3Primary uppercase" style="font-size: var(--fs-tiny);">Legal &amp; Compliance</span>
+          <h2 id="terms-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2);">Terms &amp; Conditions</h2>
+          <p class="font-mono text-slate-500 mt-1.5" style="font-size: var(--fs-tiny);">for Web Development only</p>
+        </div>
+
+        <div class="space-y-2.5" data-stagger>
+          <details class="m3-card overflow-hidden" open>
+            <summary class="flex items-center gap-3" style="padding: var(--sp-card);">
+              <span class="w-7 h-7 rounded-xl bg-mint text-m3Primary font-mono font-bold grid place-items-center shrink-0" style="font-size: var(--fs-tiny);">01</span>
+              <h3 class="font-bold text-slate-900 flex-1" style="font-size: var(--fs-sm);">Payment and Deployment</h3>
+              <i class="fa-solid fa-chevron-down chev text-xs text-slate-400" aria-hidden="true"></i>
+            </summary>
+            <div class="acc-body" style="padding: 0 var(--sp-card) var(--sp-card) calc(var(--sp-card) + 2.5rem); font-size: var(--fs-xs); line-height: 1.7; color: #475569;">
+              <p class="mb-2"><strong class="text-slate-900">Pre-Payment Policy:</strong> Full payment for the service and the domain registration must be cleared before the website is published.</p>
+              <p class="mb-2"><strong class="text-slate-900">No Free Trials:</strong> We do not offer free trials or "test periods".</p>
+              <p><strong class="text-slate-900">Transparency:</strong> For domains and yearly maintenance, we provide a screenshot of the official registrar's billing page.</p>
+            </div>
+          </details>
+
+          <details class="m3-card overflow-hidden">
+            <summary class="flex items-center gap-3" style="padding: var(--sp-card);">
+              <span class="w-7 h-7 rounded-xl bg-mint text-m3Primary font-mono font-bold grid place-items-center shrink-0" style="font-size: var(--fs-tiny);">02</span>
+              <h3 class="font-bold text-slate-900 flex-1" style="font-size: var(--fs-sm);">Data Privacy</h3>
+              <i class="fa-solid fa-chevron-down chev text-xs text-slate-400" aria-hidden="true"></i>
+            </summary>
+            <div class="acc-body" style="padding: 0 var(--sp-card) var(--sp-card) calc(var(--sp-card) + 2.5rem); font-size: var(--fs-xs); line-height: 1.7; color: #475569;">
+              <p class="mb-2">We require PAN Card and temporary Google Account access for Payment Gateway and Firebase setup.</p>
+              <p><strong class="text-m3Primary">DPDP Act Compliance:</strong> We act as a "Data Processor" and process your data only for the setup purposes.</p>
+            </div>
+          </details>
+
+          <details class="m3-card overflow-hidden">
+            <summary class="flex items-center gap-3" style="padding: var(--sp-card);">
+              <span class="w-7 h-7 rounded-xl bg-mint text-m3Primary font-mono font-bold grid place-items-center shrink-0" style="font-size: var(--fs-tiny);">03</span>
+              <h3 class="font-bold text-slate-900 flex-1" style="font-size: var(--fs-sm);">Warranty &amp; Support</h3>
+              <i class="fa-solid fa-chevron-down chev text-xs text-slate-400" aria-hidden="true"></i>
+            </summary>
+            <div class="acc-body" style="padding: 0 var(--sp-card) var(--sp-card) calc(var(--sp-card) + 2.5rem); font-size: var(--fs-xs); line-height: 1.7; color: #475569;">
+              <p class="mb-2"><strong class="text-slate-900">90-Day Bug Window:</strong> All identified bugs fixed free during the first 90 days of delivery.</p>
+              <p><strong class="text-slate-900">Post-Warranty Charge:</strong> ₹20 per request after the 90-day window.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section aria-labelledby="cta-title" class="m3-card reveal relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6" style="padding: var(--sp-card);">
+      <div class="relative">
+        <span class="font-mono font-bold tracking-[0.2em] text-m3Primary uppercase" style="font-size: var(--fs-tiny);">Get Started</span>
+        <h2 id="cta-title" class="font-extrabold text-slate-900 mt-2" style="font-size: var(--fs-h2);">Ready to build something great?</h2>
+      </div>
+      <div class="relative flex flex-wrap items-center gap-2.5">
+        <a href="#book" class="btn-wa px-5 sm:px-7 py-3 rounded-full font-bold inline-flex items-center gap-2" style="font-size: var(--fs-xs);">
+          <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i>
+          <span>Book a Service</span>
+        </a>
+        <a href="tel:9659233313" class="btn-tonal px-5 sm:px-6 py-3 rounded-full font-mono font-bold flex items-center gap-2.5" style="font-size: var(--fs-xs);">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span>9659233313</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-[#101A2E] text-slate-300 px-4 sm:px-6 py-12" role="contentinfo">
+    <div class="max-w-7xl mx-auto space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-m3Primary grid place-items-center text-white font-extrabold text-sm">M</div>
+          <span class="font-extrabold text-white text-base">Mourish Developers</span>
+        </div>
+        <div class="flex flex-wrap gap-4 font-mono text-xs">
+          <a href="tel:9659233313" class="hover:text-white transition-colors"><i class="fa-solid fa-phone mr-1.5 text-rose-400"></i>9659233313</a>
+          <a href="tel:9487410078" class="hover:text-white transition-colors"><i class="fa-solid fa-phone mr-1.5 text-emerald-400"></i>9487410078</a>
+        </div>
+      </div>
+      <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between font-mono text-slate-500 gap-3 text-xs">
+        <span>© 2026 Mourish Developers — All rights reserved · GSTIN: 33CQLPT6813M1Z7</span>
+        <div class="flex gap-5">
+          <a href="#terms" class="hover:text-slate-300">Terms</a>
+          <a href="#book" class="hover:text-slate-300">Book</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="to-top" type="button" aria-label="Back to top" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full glass grid place-items-center text-m3Primary">
+    <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="20" fill="none" stroke="var(--primary-container)" stroke-width="2"></circle>
+      <circle id="to-top-ring" cx="24" cy="24" r="20" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"></circle>
+    </svg>
+    <i class="fa-solid fa-arrow-up text-xs relative" aria-hidden="true"></i>
+  </button>
+
+  <!-- FAB -->
+  <div id="fab-container">
+    <div id="fab-menu">
+      <a href="#book" class="fab-item rounded-full pl-4 pr-5 py-2.5 flex items-center gap-2.5 font-mono font-bold text-white shadow-lg" style="font-size: var(--fs-tiny); background: linear-gradient(135deg,#25D366,#128C7E);">
+        <i class="fa-brands fa-whatsapp text-sm" aria-hidden="true"></i> Book Service
+      </a>
+      <a href="#fire-safety" class="fab-item rounded-full pl-4 pr-5 py-2.5 flex items-center gap-2.5 font-mono font-bold text-white shadow-lg" style="font-size: var(--fs-tiny); background: linear-gradient(135deg,#B3261E,#E11D48);">
+        <i class="fa-solid fa-fire-extinguisher text-sm" aria-hidden="true"></i> Fire Safety
+      </a>
+      <a href="#renovation" class="fab-item rounded-full pl-4 pr-5 py-2.5 flex items-center gap-2.5 font-mono font-bold text-white shadow-lg" style="font-size: var(--fs-tiny); background: linear-gradient(135deg,#B45309,#D97706);">
+        <i class="fa-solid fa-hospital text-sm" aria-hidden="true"></i> Renovation
+      </a>
+    </div>
+    <button id="fab" type="button" aria-expanded="false" aria-controls="fab-menu" aria-label="Quick contact" class="rounded-2xl btn-filled text-white grid place-items-center shadow-xl" style="width: 3.25rem; height: 3.25rem;">
+      <i id="fab-icon" class="fa-solid fa-plus text-lg" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <!-- TOASTS -->
+
+  <div id="product-detail-modal" aria-hidden="true">
+    <div id="product-detail-backdrop" data-detail-close></div>
+    <section class="product-detail-panel" role="dialog" aria-modal="true" aria-labelledby="product-detail-title" tabindex="-1">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="font-mono font-bold uppercase tracking-[.18em] text-m3Primary text-xs">Service details</p>
+          <h2 id="product-detail-title" class="font-extrabold text-slate-900 mt-2" style="font-size:var(--fs-h2)"></h2>
+        </div>
+        <button type="button" data-detail-close class="w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-600 hover:text-slate-900 shrink-0" aria-label="Close details"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p id="product-detail-summary" class="detail-copy mt-4"></p>
+      <div id="product-detail-original" class="detail-original"></div>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <a id="product-detail-book" href="#book" class="btn-wa inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-bold text-xs uppercase tracking-wider"><i class="fa-brands fa-whatsapp"></i> Enquire about this service</a>
+        <button type="button" data-detail-close class="btn-tonal px-5 py-3 rounded-full font-bold text-xs">Continue browsing</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast-stack" class="fixed left-1/2 -translate-x-1/2 z-[110] flex flex-col items-center gap-2 pointer-events-none px-4 w-full max-w-md" style="bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      var $ = function (s, c) { return (c || document).querySelector(s); };
+      var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+      /* TOASTS */
+      var toastStack = document.getElementById('toast-stack');
+      function toast(message, icon) {
+        if (!toastStack) return;
+        var el = document.createElement('div');
+        el.className = 'toast';
+        el.innerHTML = '<i class="fa-solid ' + (icon || 'fa-circle-check') + '" aria-hidden="true"></i><span></span>';
+        el.querySelector('span').textContent = message;
+        toastStack.appendChild(el);
+        requestAnimationFrame(function () { el.classList.add('in'); });
+        setTimeout(function () {
+          el.classList.remove('in');
+          el.classList.add('out');
+          setTimeout(function () { el.remove(); }, 320);
+        }, 2400);
+      }
+
+      /* ACCENT */
+      var ACCENTS = ['mint', 'sky', 'rose', 'lavender', 'peach', 'teal'];
+      function setAccent(name, announce) {
+        if (ACCENTS.indexOf(name) === -1) name = 'mint';
+        document.documentElement.setAttribute('data-accent', name);
+        $$('[data-accent-btn]').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-accent-btn') === name));
+        });
+        try { localStorage.setItem('mourish-accent', name); } catch (e) {}
+        if (announce) toast(name.charAt(0).toUpperCase() + name.slice(1) + ' theme applied', 'fa-palette');
+      }
+      $$('[data-accent-btn]').forEach(function (btn) {
+        btn.addEventListener('click', function () { setAccent(btn.getAttribute('data-accent-btn'), true); });
+      });
+      try {
+        var savedAccent = localStorage.getItem('mourish-accent');
+        if (savedAccent) setAccent(savedAccent, false);
+      } catch (e) {}
+
+      /* HAMBURGER / DRAWER */
+      var hamburger = document.getElementById('hamburger');
+      var drawer = document.getElementById('drawer');
+      var overlay = document.getElementById('drawer-overlay');
+      var closeBtn = document.getElementById('drawer-close');
+      var drawerLinks = $$('[data-drawer-link]');
+      var lastFocused = null;
+
+      function openDrawer() {
+        lastFocused = document.activeElement;
+        drawer.classList.add('open');
+        overlay.classList.add('open');
+        document.body.classList.add('drawer-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        setTimeout(function () { if (closeBtn) closeBtn.focus(); }, 100);
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.classList.remove('drawer-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+      }
+
+      if (hamburger) {
+        hamburger.addEventListener('click', function () {
+          var isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+          if (isOpen) closeDrawer(); else openDrawer();
+        });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (overlay) overlay.addEventListener('click', closeDrawer);
+
+      drawerLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var href = link.getAttribute('href');
+          closeDrawer();
+          if (href && href.charAt(0) === '#') {
+            var target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              setTimeout(function () {
+                target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+                if (history.replaceState) history.replaceState(null, '', href);
+              }, 200);
+            }
+          }
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) closeDrawer();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (!drawer || !drawer.classList.contains('open')) return;
+        if (e.key !== 'Tab') return;
+        var focusables = drawer.querySelectorAll('a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusables.length === 0) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+      /* CURSOR GLOW */
+      var cursorGlow = document.getElementById('cursor-glow');
+      if (cursorGlow && canHover && !reduce) {
+        var glowX = window.innerWidth / 2, glowY = window.innerHeight / 2;
+        var targetGX = glowX, targetGY = glowY;
+        window.addEventListener('mousemove', function (e) { targetGX = e.clientX; targetGY = e.clientY; }, { passive: true });
+        (function loopGlow() {
+          glowX += (targetGX - glowX) * 0.14;
+          glowY += (targetGY - glowY) * 0.14;
+          cursorGlow.style.transform = 'translate3d(' + (glowX - 180) + 'px,' + (glowY - 180) + 'px,0)';
+          requestAnimationFrame(loopGlow);
+        })();
+      } else if (cursorGlow) { cursorGlow.style.display = 'none'; }
+
+      /* SCROLL */
+      var progressBar = document.getElementById('scroll-progress');
+      var toTopBtn = document.getElementById('to-top');
+      var toTopRing = document.getElementById('to-top-ring');
+      var RING_C = 2 * Math.PI * 20;
+      if (toTopRing) {
+        toTopRing.style.strokeDasharray = String(RING_C);
+        toTopRing.style.strokeDashoffset = String(RING_C);
+      }
+      var ticking = false;
+      function onScrollFrame() {
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = max > 0 ? Math.min(y / max, 1) : 0;
+        if (progressBar) progressBar.style.transform = 'scaleX(' + pct + ')';
+        if (toTopBtn) toTopBtn.classList.toggle('is-visible', y > 520);
+        if (toTopRing) toTopRing.style.strokeDashoffset = String(RING_C * (1 - pct));
+        ticking = false;
+      }
+      function requestScroll() { if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); } }
+      window.addEventListener('scroll', requestScroll, { passive: true });
+      window.addEventListener('resize', requestScroll, { passive: true });
+      onScrollFrame();
+      if (toTopBtn) toTopBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+
+      /* STAGGER + REVEAL */
+      $$('[data-stagger]').forEach(function (group) {
+        Array.prototype.forEach.call(group.children, function (child, i) {
+          child.classList.add('reveal');
+          child.style.setProperty('--d', (i * 45) + 'ms');
+        });
+      });
+      var revealEls = $$('.reveal');
+      if ('IntersectionObserver' in window && !reduce) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+          });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+        revealEls.forEach(function (el) { revealObserver.observe(el); });
+      } else { revealEls.forEach(function (el) { el.classList.add('is-visible'); }); }
+
+      /* COUNTERS */
+      function runCounter(el) {
+        var target = parseFloat(el.getAttribute('data-count') || '0');
+        var pad = parseInt(el.getAttribute('data-pad') || '0', 10);
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        function format(v) { var s = String(v); if (pad) { while (s.length < pad) s = '0' + s; } return prefix + s + suffix; }
+        if (reduce) { el.textContent = format(target); return; }
+        var duration = 1100;
+        var start = performance.now();
+        function step(now) {
+          var t = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = format(Math.round(target * eased));
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      var counters = $$('[data-count]');
+      if ('IntersectionObserver' in window && counters.length) {
+        var counterObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) { if (entry.isIntersecting) { runCounter(entry.target); counterObserver.unobserve(entry.target); } });
+        }, { threshold: 0.6 });
+        counters.forEach(function (el) { counterObserver.observe(el); });
+      }
+
+      /* SPOTLIGHT */
+      if (canHover && !reduce) {
+        $$('.m3-card').forEach(function (card) {
+          card.addEventListener('pointermove', function (e) {
+            var r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+          }, { passive: true });
+        });
+      }
+
+      /* RIPPLE */
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('.btn-filled, .btn-tonal, .btn-wa') : null;
+        if (!btn || reduce) return;
+        var rect = btn.getBoundingClientRect();
+        var size = Math.max(rect.width, rect.height);
+        var ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        ripple.style.background = btn.classList.contains('btn-tonal') ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.4)';
+        btn.appendChild(ripple);
+        setTimeout(function () { ripple.remove(); }, 620);
+      });
+
+      /* COPY */
+      function copyText(text) {
+        function done() { toast('Copied ' + text, 'fa-copy'); }
+        function fallback() {
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; ta.style.left = '-9999px';
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); done(); }
+          catch (err) { toast('Copy failed', 'fa-triangle-exclamation'); }
+          ta.remove();
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(fallback);
+        } else fallback();
+      }
+      document.addEventListener('click', function (e) {
+        var target = e.target.closest ? e.target.closest('[data-copy]') : null;
+        if (!target) return;
+        e.preventDefault();
+        copyText(target.getAttribute('data-copy'));
+      });
+
+      /* FAB */
+      var fab = document.getElementById('fab');
+      var fabMenu = document.getElementById('fab-menu');
+      function toggleFab(force) {
+        if (!fab || !fabMenu) return;
+        var open = typeof force === 'boolean' ? force : fab.getAttribute('aria-expanded') !== 'true';
+        fabMenu.classList.toggle('is-open', open);
+        fab.setAttribute('aria-expanded', String(open));
+      }
+      if (fab) fab.addEventListener('click', function (e) { e.stopPropagation(); toggleFab(); });
+      document.addEventListener('click', function (e) {
+        if (!fab || !fabMenu) return;
+        if (fab.getAttribute('aria-expanded') === 'true' && !fab.contains(e.target) && !fabMenu.contains(e.target)) toggleFab(false);
+      });
+
+      /* SMOOTH ANCHOR */
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+        if (!link) return;
+        var hash = link.getAttribute('href');
+        if (!hash || hash === '#') return;
+        var target = document.querySelector(hash);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        if (history.replaceState) history.replaceState(null, '', hash);
+      });
+
+      /* BOOKING FORM */
+      var form = document.getElementById('booking-form');
+      var WA_NUMBER = '919659233313';
+      var selectedServices = new Set();
+
+      function applyBookPreset(presetValue) {
+        if (!form) return;
+        var chip = form.querySelector('.svc-chip[data-svc="' + presetValue + '"]');
+        if (chip && chip.getAttribute('aria-pressed') !== 'true') {
+          chip.click();
+          var card = form.closest('.m3-card');
+          if (card) {
+            card.classList.add('shake');
+            setTimeout(function () { card.classList.remove('shake'); }, 320);
+            card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+          }
+          toast('Pre-selected: ' + presetValue, 'fa-check-circle');
+        }
+      }
+
+      if (form) {
+        var nameEl = document.getElementById('bk-name');
+        var phoneEl = document.getElementById('bk-phone');
+        var facilityEl = document.getElementById('bk-facility');
+        var cityEl = document.getElementById('bk-city');
+        var dateEl = document.getElementById('bk-date');
+        var notesEl = document.getElementById('bk-notes');
+        var notesCount = document.getElementById('notes-count');
+        var previewEl = document.getElementById('wa-preview');
+        var submitBtn = document.getElementById('bk-submit');
+        var chips = document.querySelectorAll('.svc-chip');
+
+        (function () {
+          var today = new Date();
+          if (dateEl) dateEl.min = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+        })();
+
+        function escapeHtml(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+        function formatDate() {
+          if (!dateEl || !dateEl.value) return '';
+          var d = new Date(dateEl.value + 'T00:00:00');
+          if (isNaN(d.getTime())) return dateEl.value;
+          return d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+        }
+        function groupSelected() {
+          var groups = { medical: [], fire: [], civil: [], other: [] };
+          document.querySelectorAll('.svc-chip[aria-pressed="true"]').forEach(function (chip) {
+            var svc = chip.getAttribute('data-svc');
+            var cat = chip.getAttribute('data-cat') || 'other';
+            if (groups[cat]) groups[cat].push(svc); else groups.other.push(svc);
+          });
+          return groups;
+        }
+        function buildMessage() {
+          var g = groupSelected();
+          var lines = ['🏥 *Service Booking Request*', '— Mourish Developers', '', '👤 *Name:* ' + (nameEl.value.trim() || '—'), '📞 *Phone:* +91 ' + (phoneEl.value.trim() || '—')];
+          if (facilityEl.value.trim()) lines.push('🏥 *Facility:* ' + facilityEl.value.trim());
+          if (cityEl.value.trim()) lines.push('📍 *Location:* ' + cityEl.value.trim());
+          if (g.medical.length) { lines.push(''); lines.push('🏥 *Medical Services:*'); g.medical.forEach(function (s) { lines.push('• ' + s); }); }
+          if (g.fire.length) { lines.push(''); lines.push('🔥 *Fire Safety:*'); g.fire.forEach(function (s) { lines.push('• ' + s); }); }
+          if (g.civil.length) { lines.push(''); lines.push('🏗️ *Hospital Renovation:*'); g.civil.forEach(function (s) { lines.push('• ' + s); }); }
+          if (g.other.length) { lines.push(''); lines.push('➕ *Other:*'); g.other.forEach(function (s) { lines.push('• ' + s); }); }
+          if (dateEl.value) { lines.push(''); lines.push('📅 *Preferred Date:* ' + formatDate()); }
+          if (notesEl.value.trim()) { lines.push(''); lines.push('📝 *Requirements:* ' + notesEl.value.trim()); }
+          lines.push(''); lines.push('📋 *GSTIN:* 33CQLPT6813M1Z7');
+          return lines.join('\n');
+        }
+        function updatePreview() {
+          if (!previewEl) return;
+          var g = groupSelected();
+          var html = '<b>🏥 Service Booking Request</b>\n— Mourish Developers\n\n';
+          html += '👤 <b>Name:</b> ' + escapeHtml(nameEl.value.trim() || '—') + '\n';
+          html += '📞 <b>Phone:</b> +91 ' + escapeHtml(phoneEl.value.trim() || '—') + '\n';
+          if (facilityEl.value.trim()) html += '🏥 <b>Facility:</b> ' + escapeHtml(facilityEl.value.trim()) + '\n';
+          if (cityEl.value.trim()) html += '📍 <b>Location:</b> ' + escapeHtml(cityEl.value.trim()) + '\n';
+          if (g.medical.length) { html += '\n<span class="wa-group-title">🏥 Medical Services:</span>'; g.medical.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
+          if (g.fire.length) { html += '\n<span class="wa-group-title">🔥 Fire Safety:</span>'; g.fire.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
+          if (g.civil.length) { html += '\n<span class="wa-group-title">🏗️ Hospital Renovation:</span>'; g.civil.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
+          if (g.other.length) { html += '\n<span class="wa-group-title">➕ Other:</span>'; g.other.forEach(function (s) { html += '\n• ' + escapeHtml(s); }); }
+          if (dateEl.value) html += '\n\n📅 <b>Preferred Date:</b> ' + escapeHtml(formatDate());
+          if (notesEl.value.trim()) html += '\n📝 <b>Requirements:</b> ' + escapeHtml(notesEl.value.trim());
+          html += '\n\n📋 <b>GSTIN:</b> 33CQLPT6813M1Z7';
+          previewEl.innerHTML = html;
+        }
+        function showError(id, msg) { var el = document.getElementById(id); if (el) { el.textContent = msg; el.classList.remove('hidden'); } }
+        function hideError(id) { var el = document.getElementById(id); if (el) el.classList.add('hidden'); }
+        function markError(el, id, msg) {
+          if (!el) return;
+          el.classList.add('has-error', 'shake');
+          setTimeout(function () { el.classList.remove('shake'); }, 320);
+          showError(id, msg);
+        }
+
+        chips.forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            var svc = chip.getAttribute('data-svc');
+            var pressed = chip.getAttribute('aria-pressed') === 'true';
+            chip.setAttribute('aria-pressed', String(!pressed));
+            if (pressed) selectedServices.delete(svc); else selectedServices.add(svc);
+            hideError('err-services');
+            updatePreview();
+          });
+        });
+        [nameEl, phoneEl, facilityEl, cityEl, dateEl, notesEl].forEach(function (el) {
+          if (!el) return;
+          el.addEventListener('input', function () { el.classList.remove('has-error'); updatePreview(); });
+        });
+        if (notesEl && notesCount) notesEl.addEventListener('input', function () { notesCount.textContent = notesEl.value.length + ' / 400'; });
+        if (phoneEl) phoneEl.addEventListener('input', function () { phoneEl.value = phoneEl.value.replace(/\D/g, '').slice(0, 10); });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var valid = true;
+          if (!nameEl.value.trim() || nameEl.value.trim().length < 2) { markError(nameEl, 'err-name', 'Please enter your name'); valid = false; } else hideError('err-name');
+          if (!/^[6-9]\d{9}$/.test(phoneEl.value.trim())) { markError(phoneEl, 'err-phone', 'Enter a valid 10-digit mobile'); valid = false; } else hideError('err-phone');
+          if (selectedServices.size === 0) { showError('err-services', 'Please select at least one service'); valid = false; } else hideError('err-services');
+
+          if (!valid) {
+            toast('Please fix the highlighted fields', 'fa-circle-exclamation');
+            var firstErr = form.querySelector('.has-error') || document.getElementById('err-services');
+            if (firstErr) firstErr.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+            return;
+          }
+
+          var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(buildMessage());
+          var originalHTML = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-lg"></i><span>Opening WhatsApp…</span>';
+
+          var win = window.open(url, '_blank', 'noopener,noreferrer');
+          if (!win) window.location.href = url;
+          else toast('WhatsApp opened — send the message to confirm', 'fa-whatsapp');
+
+          setTimeout(function () { submitBtn.disabled = false; submitBtn.innerHTML = originalHTML; }, 1600);
+        });
+
+        updatePreview();
+      }
+
+      /* CTA PRESETS */
+      document.querySelectorAll('[data-book-preset]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var preset = link.getAttribute('data-book-preset');
+          setTimeout(function () { applyBookPreset(preset); }, 450);
+        });
+      });
+
+      /* WELCOME TOAST */
+      setTimeout(function () {
+        toast(canHover ? 'Tip: tap the hamburger for full menu' : 'Tip: tap ☰ for full navigation', 'fa-wand-magic-sparkles');
+      }, 1800);
+    })();
+
+      /* CLICK ANY SERVICE CARD TO VIEW ITS FULL DETAILS */
+      (function () {
+        var modal = document.getElementById('product-detail-modal');
+        if (!modal) return;
+        var panel = modal.querySelector('.product-detail-panel');
+        var title = document.getElementById('product-detail-title');
+        var summary = document.getElementById('product-detail-summary');
+        var original = document.getElementById('product-detail-original');
+        var book = document.getElementById('product-detail-book');
+        var lastFocused = null;
+        var selector = '#services article.m3-card, #fire-safety article.m3-card, #renovation article.m3-card';
+        document.querySelectorAll(selector).forEach(function(card) {
+          card.classList.add('product-detail-card');
+          card.setAttribute('role', 'button');
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('aria-haspopup', 'dialog');
+          if (!card.querySelector('.product-detail-hint')) {
+            var hint = document.createElement('div');
+            hint.className = 'product-detail-hint';
+            hint.innerHTML = '<span>View full details</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
+            card.appendChild(hint);
+          }
+          function openDetails() {
+            lastFocused = document.activeElement;
+            var heading = card.querySelector('h3,h4');
+            title.textContent = heading ? heading.textContent.trim() : 'Service details';
+            var paragraphs = Array.from(card.querySelectorAll('p')).map(function(p){return p.textContent.trim();}).filter(Boolean);
+            summary.textContent = paragraphs.join(' ');
+            original.replaceChildren();
+            var clone = card.cloneNode(true);
+            clone.classList.remove('product-detail-card');
+            clone.removeAttribute('role'); clone.removeAttribute('tabindex'); clone.removeAttribute('aria-haspopup');
+            clone.querySelectorAll('.product-detail-hint').forEach(function(el){el.remove();});
+            clone.style.cursor = 'default';
+            original.appendChild(clone);
+
+            // Expanded service breakdowns and well-known brand examples.
+            // Brand names are examples only; availability, compatibility and approval must be confirmed per project.
+            var detailCatalog = [
+              {keys:['medical gas','mgps','gas pipeline'], summary:'A hospital-wide medical gas distribution solution planned around clinical demand, patient safety and maintainability.', includes:['Medical-grade copper pipeline route planning and installation','Oxygen, medical air, vacuum and other required gas outlets','Zone valve boxes, area alarms and master alarms as specified','Manifolds / source equipment coordination and labelled services','Pressure, leakage, cross-connection and commissioning checks'], brands:'BeaconMedaes, Dräger, Ohio Medical, Amico and other project-approved manufacturers', spec:'Gas types, outlet standard (BS/DIN/NFPA), pipe sizing, alarm zoning and test documents are confirmed from the hospital specification.'},
+              {keys:['fire detection','fire alarm'], summary:'Detection and notification designed to help identify an incident early and support safe evacuation.', includes:['Addressable or conventional fire alarm control panel','Smoke / heat detectors and manual call points','Sounders, strobes and interface modules where required','Loop / zone layout, cause-and-effect matrix and testing','Handover documents, user orientation and maintenance plan'], brands:'Honeywell / NOTIFIER, Siemens, Agni, Ravel and other approved makes', spec:'Final make/model and design must comply with the applicable local fire authority requirements and approved drawings.'},
+              {keys:['fire suppression','hydrant','extinguisher','smoke management','emergency lighting','fire safety','compliance','audits'], summary:'A coordinated fire-protection package based on the building risk, occupancy, layout and authority requirements.', includes:['Fire-risk and site requirement review','Portable extinguishers selected for relevant fire classes','Hydrant / hose reel / sprinkler interfaces where specified','Clean-agent suppression for suitable protected rooms, if required','Exit signs, emergency lights and smoke-control coordination','Inspection, testing, maintenance schedule and compliance documents'], brands:'Honeywell, NOTIFIER, Siemens and Ceasefire are examples to evaluate by product category; extinguisher and hydrant makes depend on approved specifications', spec:'No single product fits every hazard. Capacity, agent, spacing, hydraulic calculations and statutory approvals must be verified by qualified fire professionals.'},
+              {keys:['curtain','cubicle','icu privacy'], summary:'A privacy partition system for wards, ICU bays and treatment areas, designed for practical cleaning and smooth operation.', includes:['Ceiling / wall track layout and corner bends','Carriers, runners, end stops and mounting hardware','Curtain fabric and suitable privacy / hygiene options','Bay-wise measurements, installation and operation check','Cleaning and replacement guidance'], brands:'Brand-neutral supply; specify track and fabric system against hospital infection-control and maintenance requirements', spec:'Confirm track load, ceiling substrate, curtain height, fabric performance and required fire-retardant / antimicrobial claims before ordering.'},
+              {keys:['vinyl flooring','flooring','ot flooring'], summary:'A seamless, easy-to-maintain floor finish selected for the room use, traffic and cleaning regime.', includes:['Subfloor moisture and flatness assessment','Surface preparation and levelling compound as needed','Homogeneous / heterogeneous vinyl selection by use','Welded joints, coving and skirting details where specified','Antistatic / conductive option for rooms that require it','Installation, seam inspection and care instructions'], brands:'Tarkett, Gerflor and Armstrong are examples of established flooring brands to evaluate', spec:'OT / cleanroom flooring requirements differ by project; confirm conductivity, slip resistance, chemical resistance, seams and warranty in writing.'},
+              {keys:['operation theatre','modular ot','ot refurbishment'], summary:'An integrated operating-theatre environment planned around workflow, cleanability, services and equipment coordination.', includes:['Wall and ceiling panel system coordination','OT lighting, pendants and medical-gas points as specified','HVAC / filtration and pressure-control coordination','Antistatic flooring, doors and sealed junctions','Equipment positioning, service coordination and handover'], brands:'Equipment and panel brands should be shortlisted from approved vendor lists for the project; Dräger and BeaconMedaes are examples for relevant gas-management components', spec:'Theatre classification, air-change targets, filtration, pressure cascade and validation must be defined by the appointed design team.'},
+              {keys:['ward','renovation','interior refit','washroom','barrier-free','repainting','modernization'], summary:'Phased hospital renovation that aims to reduce disruption while improving durability, accessibility and daily operations.', includes:['Site survey, quantities and phased work plan','Civil repairs, partitions, doors and finishes','Washroom fittings and accessible-use upgrades as specified','Painting, protection, debris removal and cleaning','Coordination with active clinical services','Snag list, completion inspection and handover'], brands:'Finish and fixture brands can be selected from approved options based on durability, hygiene, service support and budget', spec:'Exact materials, quantities, colours, warranty and infection-control precautions are finalised after site measurement and client approval.'},
+              {keys:['medical equipment'], summary:'Equipment sourcing and coordination based on clinical department needs and the approved technical schedule.', includes:['Requirement and specification review','Brand / model comparison against required features','Compatibility and utility-point coordination','Delivery, installation and user orientation where included','Warranty and service-support documentation'], brands:'Brand selection is category-specific; examples may include Dräger for selected respiratory / gas-management equipment and other manufacturers approved by the hospital', spec:'Do not assume a brand is included or authorised until a written quotation names the exact manufacturer, model, accessories and warranty.'},
+              {keys:['web','android','ios','full-stack','digital'], summary:'A digital solution planned around the organisation’s workflow, audience, content and support needs.', includes:['Scope, sitemap and user-flow planning','Responsive interface design','Frontend and backend development as scoped','Testing, deployment and handover','Optional analytics, maintenance and future enhancements'], brands:'Technology stack and hosting providers are chosen for the requirements; no third-party partnership is implied', spec:'Hosting, domains, app-store fees, integrations, source-code ownership and ongoing support should be itemised in the proposal.'}
+            ];
+            var cardTitle = title.textContent.toLowerCase();
+            var info = detailCatalog.find(function(item){return item.keys.some(function(key){return cardTitle.indexOf(key)!==-1;});});
+            if (!info) info = {summary:'A tailored solution scoped to your facility, operational requirements and approved specification.',includes:['Site assessment and requirement confirmation','Scope, materials and quantity breakdown','Installation / implementation plan','Testing, handover and after-service coordination'],brands:'Brand and model options are proposed against the project specification and client approval',spec:'Exact products, brands, quantities, compliance requirements and warranty are confirmed in the written quotation.'};
+            var extra = document.createElement('div');
+            extra.className = 'product-detail-extra';
+            function listBox(label, items) {
+              var box = document.createElement('section'); box.className='detail-box';
+              var h=document.createElement('h4'); h.textContent=label; box.appendChild(h);
+              var ul=document.createElement('ul');
+              items.forEach(function(text){var li=document.createElement('li');li.textContent=text;ul.appendChild(li);});
+              box.appendChild(ul); return box;
+            }
+            var summaryBox=document.createElement('section'); summaryBox.className='detail-box';
+            var sh=document.createElement('h4'); sh.textContent='Overview'; summaryBox.appendChild(sh);
+            var sp=document.createElement('p'); sp.textContent=info.summary; summaryBox.appendChild(sp); extra.appendChild(summaryBox);
+            extra.appendChild(listBox('What the package can include', info.includes));
+            var brandBox=document.createElement('section'); brandBox.className='detail-box';
+            var bh=document.createElement('h4'); bh.textContent='Established brand examples'; brandBox.appendChild(bh);
+            var bp=document.createElement('p'); bp.textContent=info.brands; brandBox.appendChild(bp); extra.appendChild(brandBox);
+            var note=document.createElement('section'); note.className='detail-box detail-note';
+            var nh=document.createElement('h4'); nh.textContent='Specification & approval'; note.appendChild(nh);
+            var np=document.createElement('p'); np.textContent=info.spec + ' Brand names are examples for discussion only—not a claim of dealership, partnership, stock availability or endorsement by Mourish. Final selection is subject to technical suitability, current local approvals and client sign-off.'; note.appendChild(np); extra.appendChild(note);
+            original.appendChild(extra);
+            book.href = '#book';
+            book.setAttribute('data-book-preset', title.textContent);
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('product-modal-open');
+            panel.focus();
+          }
+          card.addEventListener('click', function(e) {
+            if (e.target.closest('a,button')) return;
+            openDetails();
+          });
+          card.addEventListener('keydown', function(e) {
+            if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a,button')) {
+              e.preventDefault(); openDetails();
+            }
+          });
+        });
+        function closeDetails() {
+          modal.classList.remove('open');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('product-modal-open');
+          if (lastFocused && lastFocused.focus) lastFocused.focus();
+        }
+        modal.querySelectorAll('[data-detail-close]').forEach(function(el){el.addEventListener('click', closeDetails);});
+        document.addEventListener('keydown', function(e){if(e.key==='Escape' && modal.classList.contains('open')) closeDetails();});
+        book.addEventListener('click', function(){ closeDetails(); });
+      })();
+
+  </script>
+  <script>
+    (function () {
+      'use strict';
+      /* 3D CYLINDRICAL CURVED CAROUSEL */
+      var cylinderStage = document.getElementById('cylinderStage');
+      if (cylinderStage) {
+        var CARDS_DATA = [
+          { tag: "Healthcare", title: "Medical Gas Pipeline (MGPS)", img: "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRNqdLBBrqnR9JY_xlFdV_FtjivinoBHyCu3dXy7Q7pQK7pC93BHQNQulEctudLCkA7wJIBB-B7-VfW1AM" },
+          { tag: "Cleanroom", title: "Modular Operation Theatre", img: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRB0MIVOEy2Q4pLKyDihb5Sd7IQdygYh9rzjtjEn6FBowP_72N-qw8iZ6i7ZOHkBV2vp-alIHx3ujPGPP8" },
+          { tag: "ICU Privacy", title: "Hospital Cubicle Tracks", img: "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRMen_XO_9Oj1C0FquIhTyyzOSPYIZ8fHd1p-AWRidN4WdRyF0Z74KTlgswwmEDGZZ75CzxnMkuzdEw22Y" },
+          { tag: "Flooring", title: "Antistatic Vinyl Flooring", img: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRB0MIVOEy2Q4pLKyDihb5Sd7IQdygYh9rzjtjEn6FBowP_72N-qw8iZ6i7ZOHkBV2vp-alIHx3ujPGPP8" },
+          { tag: "Safety", title: "Fire Safety & Suppression", img: "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRNqdLBBrqnR9JY_xlFdV_FtjivinoBHyCu3dXy7Q7pQK7pC93BHQNQulEctudLCkA7wJIBB-B7-VfW1AM" },
+          { tag: "Civil", title: "Hospital Ward Modernization", img: "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRMen_XO_9Oj1C0FquIhTyyzOSPYIZ8fHd1p-AWRidN4WdRyF0Z74KTlgswwmEDGZZ75CzxnMkuzdEw22Y" },
+          { tag: "Digital", title: "Custom Web & App Coding", img: "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSzyltMji-jWCrZOTc3bk8Vta-dW4K7yuCc03yruh3PaJpU4XTchfivbXGZJMKHp-KZbt9rYEN0aoVyuwA" }
+        ];
+
+        var TOTAL = CARDS_DATA.length;
+        var PITCH = 210;
+        var TOTAL_TRACK = TOTAL * PITCH;
+
+        var cardEls = CARDS_DATA.map(function(item) {
+          var el = document.createElement('a');
+          el.href = '#services';
+          el.className = 'curve-card-item cursor-pointer block';
+          el.innerHTML =
+            '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy">' +
+            '<div class="card-grad"></div>' +
+            '<div class="card-meta">' +
+              '<span class="card-tag">' + item.tag + '</span>' +
+              '<div class="card-title">' + item.title + '</div>' +
+            '</div>';
+          cylinderStage.appendChild(el);
+          return el;
+        });
+
+        var scrollOffset = 0, velocity = -48, isDragging = false, lastPointerX = 0, lastTime = performance.now();
+
+        cylinderStage.addEventListener('pointerdown', function(e) {
+          isDragging = true; lastPointerX = e.clientX; velocity = 0;
+        });
+        window.addEventListener('pointermove', function(e) {
+          if (!isDragging) return;
+          var deltaX = e.clientX - lastPointerX;
+          scrollOffset += deltaX; velocity = deltaX * 58; lastPointerX = e.clientX;
+        });
+        window.addEventListener('pointerup', function() { isDragging = false; });
+
+        function generateQuadPath(w, hL, hR, r) {
+          var hMax = Math.max(hL, hR);
+          var yTopL = (hMax - hL) / 2, yBotL = yTopL + hL;
+          var yTopR = (hMax - hR) / 2, yBotR = yTopR + hR;
+          return "path('M " + r + " " + yTopL + " L " + (w - r) + " " + yTopR + " Q " + w + " " + yTopR + " " + w + " " + (yTopR + r) +
+                 " L " + w + " " + (yBotR - r) + " Q " + w + " " + yBotR + " " + (w - r) + " " + yBotR + " L " + r + " " + yBotL +
+                 " Q 0 " + yBotL + " 0 " + (yBotL - r) + " L 0 " + (yTopL + r) + " Q 0 " + yTopL + " " + r + " " + yTopL + " Z')";
+        }
+
+        function renderCylinder(now) {
+          var dt = Math.min((now - lastTime) / 1000, 0.1);
+          lastTime = now;
+          var rect = cylinderStage.getBoundingClientRect();
+          var cWidth = rect.width, centerY = rect.height / 2, centerX = cWidth / 2;
+          var scale = Math.min(Math.max(cWidth / 1280, 0.58), 1.0);
+
+          if (!isDragging) {
+            velocity += (-48 - velocity) * (1 - Math.exp(-2.8 * dt));
+            scrollOffset += velocity * dt;
+          }
+          scrollOffset = ((scrollOffset % TOTAL_TRACK) + TOTAL_TRACK) % TOTAL_TRACK;
+
+          cardEls.forEach(function(card, i) {
+            var basePos = (i * PITCH + scrollOffset) % TOTAL_TRACK;
+            var t = basePos - TOTAL_TRACK / 2;
+            if (t > TOTAL_TRACK / 2) t -= TOTAL_TRACK;
+            if (t < -TOTAL_TRACK / 2) t += TOTAL_TRACK;
+
+            var d = Math.abs(t) / (TOTAL_TRACK / 2);
+            var cardW = (185 + 40 * Math.pow(d, 2)) * scale;
+            var xPos = centerX + t * scale * (1 + 0.08 * Math.pow(d, 2));
+
+            var tL = t - cardW / (2 * scale), tR = t + cardW / (2 * scale);
+            var qL = Math.min(Math.abs(tL) / (TOTAL_TRACK / 2), 1.25);
+            var qR = Math.min(Math.abs(tR) / (TOTAL_TRACK / 2), 1.25);
+
+            var hL = (260 + 80 * Math.pow(qL, 2.5)) * scale;
+            var hR = (260 + 80 * Math.pow(qR, 2.5)) * scale;
+            var maxH = Math.max(hL, hR);
+            var yPos = centerY - (10 * Math.pow(d, 2) * scale);
+
+            card.style.width = cardW + 'px'; card.style.height = maxH + 'px';
+            card.style.transform = 'translate3d(' + (xPos - cardW / 2) + 'px, ' + (yPos - maxH / 2) + 'px, 0)';
+
+            var clip = generateQuadPath(cardW, hL, hR, Math.min(15 * scale, cardW / 2));
+            card.style.clipPath = clip; card.style.webkitClipPath = clip;
+            card.style.visibility = (xPos < -cardW || xPos > cWidth + cardW) ? 'hidden' : 'visible';
+          });
+          requestAnimationFrame(renderCylinder);
+        }
+        requestAnimationFrame(renderCylinder);
+      }
+
+    })();
+  </script>
+</body>
+</html>
